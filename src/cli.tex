@@ -1,0 +1,21 @@
+\section{Command Line Interface}
+
+In den ersten Versionen wird das Programm durch ein Command Line Interface
+benutzt. Die Kommandozeilenprogram nimmt Skripte entgegen und Konfiguriert den
+Zielserver damit.
+
+\code{sscontrol -profile <profile-script> -script <script-name> -server
+<server-ip>}
+
+Der \code{-profile <profile-script>} Parameter wird ein Serverprofil laden.
+
+\begin{asparaitem}
+\item \code{ubuntu\_profile.groovy}
+\item \code{fedora\_profile.groovy}
+\end{asparaitem}
+
+Der \code{-script <script-name>} Parameter setzt das Verzeichnis in dem die
+Server-Scripte aufbewart sind. Dort ist auch das Serverprofil zu finden.
+
+Der \code{-server <server-ip>} Parameter setzt den Server der Konfiguriert
+werden soll. Der Server wird anhand der IP-Adresse identifiziert.

@@ -13,3 +13,31 @@ SMTP Server, IMAP/POP3 Server. Es soll keinen Unterschied machen ob auf einem
 bestimmten Server Apache oder lighttpd installiert ist, das Script soll beide
 konfigurieren können. Z.B. mit dem FTP Server: Vsftpd oder Pure-FTPd; SMTP
 Server: Postfix oder Sendmail; IMAP/POP3 Server: Dovecot oder Cyrus; usw.
+
+Im Skript muss auch eine Profil des Systems enthalten sein. Dieses
+Profil enthält: Welche Services installiert sind (Apache/lighttpd,
+Vsftpd/Pure-FTPd, Postfix/Sendmail, usw.), wo sich die Konfiguration befindet
+(Fedora hat die Konfiguration in anderen Verzeichnisen als Ubuntu).
+
+Wir behalten alle Script in einem Verzeichnis, die Scripte werden nach den
+Services aufgeteilt. Z. B. ein Scriptdatei für Hosts, Hostname und Network, für
+Firewall, für den HTTP Server, für den FTP Server, usw.
+
+\begin{asparaitem}
+\item \code{network.groovy}
+\item \code{firewall.groovy}
+\item \code{http.groovy}
+\item \code{http-website1.groovy}
+\item \code{http-website2.groovy}
+\item \code{ftp.groovy}
+\item \code{mail.groovy}
+\end{asparaitem}
+
+Im Falle des HTTP Servers werden wir das Script noch weiter aufteilen. Eine
+Scriptdatei wird für die globale Konfiguration und eine Scriptdatei pro
+Webseite.
+
+\begin{asparaitem}
+\item \code{ubuntu\_profile.groovy}
+\item \code{fedora\_profile.groovy}
+\end{asparaitem}
