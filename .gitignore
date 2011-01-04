@@ -5,3 +5,5 @@ temp*
 .project
 .texlipse
 *~
+*.pdf
+*.toc
