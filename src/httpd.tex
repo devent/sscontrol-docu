@@ -1,0 +1,89 @@
+\section{Httpd}
+
+\subsection{Apache 2 Konfigurationsdateien}
+
+Die Apache 2 Konfiguration ist gespeichert in XML Dateien. Es gibt zwei
+Gültigkeitsbereich: Die globale Konfiguration und lokale Konfiguration für die
+virtuellen Hosts.
+
+SSC sollte die globale Konfiguration verwalten und die virtuellen Hosts. In den
+virtuellen Hosts werden die Websiten zu finden sein.
+
+\subsection{Groovy Httpd Scripts}
+
+\subsubsection{Globale Gitweb Konfiguration}
+
+Ein Beispiel des Gitweb Anwendung, konfiguriert im globalem Gültigkeitsbereich.
+\code{globalBuilder} ist eine injezierte Variable die ein Groovy-Builder
+für den globalen Gültigkeitsbereich representiert.
+
+\begin{multicols}{2}
+\begin{lstlisting}[style=Java, caption=Gitweb Httpd Script]
+globalBuilder.AddAlias("/git", "/var/www/git")
+
+globalBuilder.AddDirectory("/var/www/git") {
+    Options { AddExecCGI }
+    Handler("cgi-script", ".cgi")
+    DirectoryIndex("gitweb.cgi")
+}
+\end{lstlisting}
+
+\begin{lstlisting}[style=XML, caption=Gitweb Configuration]
+Alias /git /var/www/git
+
+<Directory /var/www/git>
+  Options +ExecCGI
+  AddHandler cgi-script .cgi
+  DirectoryIndex gitweb.cgi
+</Directory>
+\end{lstlisting}
+\end{multicols}
+
+\code{globalBuilder.AddAlias} erstellt eine neuene Alias-Directive.
+
+\code{globalBuilder.AddDirectory} erstellt eine neue Directory-Directive.
+
+\code{Options} nimmt die Optionen wie \config{+ExecCGI} oder \config{-ExecCGI}
+auf. Mit \code{AddExecCGI} fügen wir die Option \config{ExecCGI} hinzu. 
+
+\newpage
+\subsubsection{Virtuelle Host Konfiguration}
+
+\begin{multicols}{2}
+\begin{lstlisting}[style=Java, caption=Virtuel Host Httpd Script]
+globalBuilder.NameVirtualHost("*:80")
+
+globalBuilder.VirtualHost("*:80") {
+    ServerName("www.domain.tld")
+    ServerAlias("domain.tld", "*.domain.tld")
+    DocumentRoot("/www/domain")
+}
+
+globalBuilder.VirtualHost("*:80") {
+    ServerName("www.otherdomain.tld")
+    DocumentRoot("/www/otherdomain")
+}
+\end{lstlisting}
+
+\begin{lstlisting}[style=XML, caption=Virtual Host Configuration]
+NameVirtualHost *:80
+
+<VirtualHost *:80>
+    ServerName www.domain.tld
+    ServerAlias domain.tld *.domain.tld
+    DocumentRoot /www/domain
+</VirtualHost>
+
+<VirtualHost *:80>
+    ServerName www.otherdomain.tld
+    DocumentRoot /www/otherdomain
+</VirtualHost>
+\end{lstlisting}
+\end{multicols}
+
+\code{globalBuilder.VirtualHost("*:80")} wird einen neuen virtuellen Host
+einleiten.
+
+\code{ServerAlias} nimmt einen Array von Strings entgegen, da es mehrere Aliase
+sein können.
+
