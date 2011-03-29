@@ -1,0 +1,71 @@
+\section{Profile}
+
+Die Profile in \sscontrol{} beschreiben die Umgebungen in denen \sscontrol{} die
+Services einrichten sol.
+
+Ein typisches Profil enthält einen Namen, wie ``ubuntu'', und eine Auflistung
+der Services, die \sscontrol{} einrichten und verwalten soll. Alle diese
+Services wird \sscontrol{} verwalten, alle anderen Services sind für
+\sscontrol{} unbekannt.
+
+\subsection{Profile Direktiven}
+
+Ein Profilscript wird eingeleitet durch die \directive{profiles}.
+Danach wird ein neues Profil angelegt durch die
+\directive{create\_profile("name")}. Der \parameter{name} bezeichnet das Profil
+und kann durch diesen Namen ausgewählt werden. Danach kommt eine Auflistung der
+Services, die \sscontrol{} verwalten soll.
+
+\subsection{Beispiel Profil Ubuntu Server}
+
+Wie man durch das Beispiel sieht, anthält das Profil die Konfiguration der
+Services, wo sich bestimmte Kommandozeilentools befinden und wo die
+Konfiguration für die Services gespeichert wird. Die Services enthalten meistens
+die Direktiven:
+\begin{inparaitem}
+\item \directive{configuration\_directory},
+\item \directive{restart\_command},
+\item \directive{status\_command}
+\end{inparaitem}. 
+
+Außerdem können die Direktiven auch Variablen enthalten, hervorgedrückt durch
+das Paarweise ``\$'' Symbol. Diese Variablen werden später durch die Services
+selbst ersetzt.
+
+Die Bedeutung der einzelnen Servicedirektiven werden später in den Abschnitten
+der Services erklärt.
+
+\begin{lstlisting}[style=Java, caption=Beispiel Profil Ubuntu Server]
+profiles {
+    create_profile("ubuntu") {
+        hostname {
+            configuration_directory '/etc'
+            restart_command '/etc/init.d/hostname restart'
+            status_command '/bin/hostname'
+        }
+        hosts {
+            configuration_directory '/etc'
+            service ''
+            status_command '/bin/cat /etc/hosts'
+        }
+        network {
+            configuration_directory '/etc/network'
+            restart_command '/etc/init.d/networking restart'
+            status_command '/bin/cat /etc/network/interfaces'
+        }
+        httpd {
+            configuration_directory '/etc/apache2'
+            restart_command '/etc/init.d/apache2 restart'
+            status_command '/usr/sbin/apache2ctl configtest'
+            domain_web_directory_prefix '/var/www/sites/$domain_name$/web'
+            domain_ssl_directory_prefix '/var/www/sites/$domain_name$/ssl'
+            domain_page_directory_prefix '/var/www/sites/$domain_name$/$page_name$/web'
+        }
+        database {
+            configuration_directory '/etc/mysql/conf.d'
+            restart_command '/sbin/restart mysql'
+            status_command '/sbin/status mysql'
+        }
+    }
+}
+\end{lstlisting}
