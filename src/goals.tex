@@ -1,43 +1,25 @@
 \section{Ziele}
 
-Das erste Ziel von Simple Server Control ist es einen Server vollständig
-durch ein einziges Script einzurichten. Das Script sollte vom Menschen leicht
-verständlich sein und leicht zu bearbeiten sein. Desweiteren soll man durch das
-Aktuallisieren des Scriptes den Server anpassen können. Das Server Script kann
-in mehrere Dateien aufgeteilt sein zur besseren Übersicht.
+Das Ziel von \sscontrol{} ist es durch ein Script zu sagen welche Serverservices
+eingerichtet werden sollen und \sscontrol{} soll vollständig in der Lage sein
+diese Services einzurichten.
 
-Dieses Server Script soll verschiedene Linux Systeme einstellen können,
-vorrausgesetzt die Services sind installiert. Es soll die generischen Services
-einstellen können: Hosts, Hostname, Network, Firewall, HTTP Server, FTP Server,
-SMTP Server, IMAP/POP3 Server. Es soll keinen Unterschied machen ob auf einem
-bestimmten Server Apache oder lighttpd installiert ist, das Script soll beide
-konfigurieren können. Z.B. mit dem FTP Server: Vsftpd oder Pure-FTPd; SMTP
-Server: Postfix oder Sendmail; IMAP/POP3 Server: Dovecot oder Cyrus; usw.
+Als Beispiel, wenn man dem \sscontrol{} durch ein Script eingibt einen Webserver
+einzurichten, dass mehrere Domains mit jeweils Drupal Seiten verwalten
+soll, dann enthält das Script nicht wie man einen Web Server einrichtet,
+sondern dass man einen Web Server haben will. \sscontrol{} wird sich
+eigenständig darum kümmern die Pakate zu installieren und die Domains mit den
+Drupal Seiten einzurichten.
 
-Im Skript muss auch eine Profil des Systems enthalten sein. Dieses
-Profil enthält: Welche Services installiert sind (Apache/lighttpd,
-Vsftpd/Pure-FTPd, Postfix/Sendmail, usw.), wo sich die Konfiguration befindet
-(Fedora hat die Konfiguration in anderen Verzeichnisen als Ubuntu).
+\sscontrol{} verwendet Konvention über Konfiguration mit der Hilfestellung von
+Profilen. Die Profile werden für den Zielserver eingerichtet und enthalten
+Informationen über die Umgebung und über die einzusetzenden Services.
 
-Wir behalten alle Script in einem Verzeichnis, die Scripte werden nach den
-Services aufgeteilt. Z. B. ein Scriptdatei für Hosts, Hostname und Network, für
-Firewall, für den HTTP Server, für den FTP Server, usw.
+Zum Beispiel, ein Ubuntu Server muss anderes eingerichtet sein als ein RedHat
+Server, und Apache2 muss anderes eingerichtet werden als Lighthttpd.
 
-\begin{asparaitem}
-\item \code{network.groovy}
-\item \code{firewall.groovy}
-\item \code{http.groovy}
-\item \code{http-website1.groovy}
-\item \code{http-website2.groovy}
-\item \code{ftp.groovy}
-\item \code{mail.groovy}
-\end{asparaitem}
-
-Im Falle des HTTP Servers werden wir das Script noch weiter aufteilen. Eine
-Scriptdatei wird für die globale Konfiguration und eine Scriptdatei pro
-Webseite.
-
-\begin{asparaitem}
-\item \code{ubuntu\_profile.groovy}
-\item \code{fedora\_profile.groovy}
-\end{asparaitem}
+Diese Profile muss man nur einmal erstellen und dann kann man sie für
+verschiedene Konfigurationen des \sscontrol{} verwenden. Als Beispiel kann man
+das gleiche Profil verwenden um einen Webserver mit Domains in denen Drupal
+Seiten eingerichtet werden sollen und einen Dateiserver einzurichten, der FTP
+Zugriff für Benutzer liefert.
