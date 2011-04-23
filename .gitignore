@@ -5,6 +5,7 @@ temp*
 .project
 .texlipse
 *~
+*.backup
 *.pdf
 *.toc
 *.kilepr
