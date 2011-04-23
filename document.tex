@@ -1,18 +1,27 @@
 %%This is a very basic article template.
 %%There is just one section and two subsections.
 \documentclass{article1}
+\usepackage[ngerman]{babel}
 \usepackage{defaultpackages}
 \usepackage{scrheadings1}
 \usepackage{multicol}
+\usepackage[footnotesize,bf]{caption}
+
 \input{pagestyles}
 
 \begin{document}
-\maketitle
-\tableofcontents
-\thispagestyle{empty}
 
+\thispagestyle{empty}
+\maketitle
+
+\cleardoublepage
+\tableofcontents
+
+\cleardoublepage
 \input{goals}
-\newpage
+\cleardoublepage
 \input{profiles}
+\cleardoublepage
+\input{services}
 
 \end{document}

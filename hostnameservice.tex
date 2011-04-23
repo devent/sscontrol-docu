@@ -1,0 +1,28 @@
+\subsection{Hostname Service}
+
+\begin{multicols}{2}
+
+Der Hostname wird von verschiedenen Services verwenden um den Namen der Maschine
+zu erhalten.
+
+\paragraph{Hostname Profil}
+
+Das Hostname Profil wird eingeleitet durch die \directive{hostname}. Gefolgt von
+den folgenden Direktiven:
+
+\begin{asparadesc}
+\item[\directive{configuration\_directory}] beschreibt in welchem Verzeichnis
+sich die Konfiguration für den Hostnamen befinden. Unter Ubuntu und Debian
+Systemen wird die Konfiguration in der Datei \code{/etc/hostname} gespeichert,
+somit ist das Verzeichnis \code{/etc}.
+\item[\directive{restart\_command}] enthält das Kommando mit dem man im
+laufendem Betrieb den Hostnamen ändern kann.  Unter Ubuntu und Debian
+Systemen ist es das Kommando\\
+\code{/etc/init.d/hostname restart}.
+\item[\directive{status\_command}] enthält das Kommando mit dem man den
+aktuellen Hostnamen abfragen kann. Unter Ubuntu und Debian Systemen ist es das
+Kommando \code{/bin/hostname}.
+\end{asparadesc}
+
+\end{multicols}
+

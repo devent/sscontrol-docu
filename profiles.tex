@@ -1,5 +1,7 @@
 \section{Profile}
 
+\begin{multicols}{2}
+
 Die Profile in \sscontrol{} beschreiben die Umgebungen in denen \sscontrol{} die
 Services einrichten sol.
 
@@ -8,7 +10,11 @@ der Services, die \sscontrol{} einrichten und verwalten soll. Alle diese
 Services wird \sscontrol{} verwalten, alle anderen Services sind für
 \sscontrol{} unbekannt.
 
+\end{multicols}
+
 \subsection{Profile Direktiven}
+
+\begin{multicols}{2}
 
 Ein Profilscript wird eingeleitet durch die \directive{profiles}.
 Danach wird ein neues Profil angelegt durch die
@@ -16,7 +22,7 @@ Danach wird ein neues Profil angelegt durch die
 und kann durch diesen Namen ausgewählt werden. Danach kommt eine Auflistung der
 Services, die \sscontrol{} verwalten soll.
 
-\subsection{Beispiel Profil Ubuntu Server}
+\paragraph{Beispiel Profil Ubuntu Server}
 
 Wie man durch das Beispiel sieht, anthält das Profil die Konfiguration der
 Services, wo sich bestimmte Kommandozeilentools befinden und wo die
@@ -34,6 +40,8 @@ selbst ersetzt.
 
 Die Bedeutung der einzelnen Servicedirektiven werden später in den Abschnitten
 der Services erklärt.
+
+\end{multicols}
 
 \begin{lstlisting}[style=Java, caption=Beispiel Profil Ubuntu Server]
 profiles {
@@ -69,3 +77,4 @@ profiles {
     }
 }
 \end{lstlisting}
+
