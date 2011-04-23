@@ -1,28 +1,56 @@
 \subsection{Hostname Service}
 
-\begin{multicols}{2}
-
 Der Hostname wird von verschiedenen Services verwenden um den Namen der Maschine
-zu erhalten.
+zu erhalten. Mit diesem Service kann man diesen Namen setzen lassen.
 
-\paragraph{Hostname Profil}
+\subsubsection{Hostname Profil}
 
 Das Hostname Profil wird eingeleitet durch die \directive{hostname}. Gefolgt von
-den folgenden Direktiven:
+den folgenden drei Direktiven:
 
-\begin{asparadesc}
-\item[\directive{configuration\_directory}] beschreibt in welchem Verzeichnis
+\paragraph{\directive{configuration\_directory}}
+
+beschreibt in welchem Verzeichnis
 sich die Konfiguration für den Hostnamen befinden. Unter Ubuntu und Debian
 Systemen wird die Konfiguration in der Datei \code{/etc/hostname} gespeichert,
 somit ist das Verzeichnis \code{/etc}.
-\item[\directive{restart\_command}] enthält das Kommando mit dem man im
+
+\paragraph{\directive{restart\_command}}
+
+enthält das Kommando mit dem man im
 laufendem Betrieb den Hostnamen ändern kann.  Unter Ubuntu und Debian
-Systemen ist es das Kommando\\
+Systemen ist es das Kommando 
 \code{/etc/init.d/hostname restart}.
-\item[\directive{status\_command}] enthält das Kommando mit dem man den
+
+\paragraph{\directive{status\_command}}
+
+enthält das Kommando mit dem man den
 aktuellen Hostnamen abfragen kann. Unter Ubuntu und Debian Systemen ist es das
 Kommando \code{/bin/hostname}.
-\end{asparadesc}
 
-\end{multicols}
+\begin{lstlisting}[style=Java, caption=Beispiel Hostname Profil Ubuntu Server]
+profiles {
+    create_profile("ubuntu") {
+        hostname {
+            configuration_directory '/etc'
+            restart_command '/etc/init.d/hostname restart'
+            status_command '/bin/hostname'
+        }
+    }
+}
+\end{lstlisting}
+
+\subsubsection{Hostname Script}
+
+Das Script enthält nur eine Direktive, der Name des Hosts.
+
+\paragraph{\directive{hostname}}
+
+erwartet eine einzige Zeichenfolge, der Name des Hosts.
+
+\begin{lstlisting}[style=Java, caption=Beispiel Hostname Script]
+server {
+	hostname 'srv1'
+}
+\end{lstlisting}
 
