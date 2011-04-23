@@ -13,7 +13,7 @@ den folgenden drei Direktiven:
 beschreibt in welchem Verzeichnis
 sich die Konfiguration für den Hostnamen befinden. Unter Ubuntu und Debian
 Systemen wird die Konfiguration in der Datei \code{/etc/hostname} gespeichert,
-somit ist das Verzeichnis \code{/etc}.
+somit ist es das Verzeichnis \code{/etc}.
 
 \paragraph{\directive{restart\_command}}
 
@@ -30,13 +30,13 @@ Kommando \code{/bin/hostname}.
 
 \begin{lstlisting}[style=Java, caption=Beispiel Hostname Profil Ubuntu Server]
 profiles {
-    create_profile("ubuntu") {
-        hostname {
-            configuration_directory '/etc'
-            restart_command '/etc/init.d/hostname restart'
-            status_command '/bin/hostname'
-        }
-    }
+	create_profile("ubuntu") {
+		hostname {
+			configuration_directory '/etc'
+			restart_command '/etc/init.d/hostname restart'
+			status_command '/bin/hostname'
+		}
+	}
 }
 \end{lstlisting}
 
