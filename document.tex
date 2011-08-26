@@ -1,24 +1,29 @@
 %%This is a very basic article template.
 %%There is just one section and two subsections.
-\documentclass{article1}
+\documentclass{article1} % one side
+
+\usepackage[utf8x]{inputenc}
+
+\PassOptionsToPackage{symbol,perpage}{footmisc}
+\PassOptionsToPackage{pdftex}{hyperref}
+
+\usepackage{rulelefttitle}
+\usepackage{scrheadings1}
+\usepackage{colorhyper}
+\usepackage{noparinent}
 \usepackage[ngerman]{babel}
 \usepackage{defaultpackages}
-\usepackage{scrheadings1}
 \usepackage{multicol}
 \usepackage[footnotesize,bf]{caption}
-\usepackage{color}
 
 \input{pagestyles}
 
 \begin{document}
 
-\thispagestyle{empty}
 \maketitle
-
-\cleardoublepage
 \tableofcontents
-
 \cleardoublepage
+
 \input{goals}
 \cleardoublepage
 \input{profiles}

@@ -1,13 +1,24 @@
-\ProvidesPackage{scrheadings1}[2010/08/13 v1.0 Set headings for scrheadings style.]
+\ProvidesPackage{scrheadings1}[2010/08/15 v1.0 Nice header with rightmark and leftmark and a footer with page number.]
 
-% use to separate the current page number from the total pages count
+% for \pagestyle{scrheadings}
+\RequirePackage{scrpage2}
+
+% for \pageref{LastPage}
+\RequirePackage{lastpage}
+
+% the logo to be used
+%   \includegraphics[height=1em]{logo}
+\newcommand{\logo}{}
+
+% the character to be used to seperate the actual page and the total page number
 \newcommand{\pagenumsep}{/}
 
 \pagestyle{scrheadings}
 \clearscrheadfoot
 \automark[section]{subsection}
-\ihead[]{}
+\ihead[]{\logo} 
 \rohead[]{\rightmark}
 \lehead[]{\leftmark}
 \ofoot{\pagemark~\pagenumsep~\pageref{LastPage}}
 \setheadsepline[1.0\textwidth]{1pt}
+

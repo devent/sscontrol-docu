@@ -1,0 +1,44 @@
+\ProvidesClass{rulelefttitle}[2010/06/11 v. 0.1 Title page with a left ruler.]
+
+% for \toprule in versions history table
+\RequirePackage{booktabs}
+
+\def\thickhrulefill{\leavevmode \leaders \hrule height 1pt\hfill \kern \z@}
+\renewcommand{\maketitle}{\begin{titlepage}%
+  \let\footnotesize\small
+  \let\footnoterule\relax
+  \parindent \z@
+  \reset@font
+  \null
+  \vskip 10\p@
+  \hbox{\mbox{\hspace{3em}}%
+    \vrule depth 0.05\textheight%
+    \mbox{\hspace{2em}}
+    \vbox{
+      \vskip 3cm
+      \begin{flushleft}
+	\large \@author \par
+      \end{flushleft}
+      \begin{flushleft}
+	\huge \bfseries \@title \par
+      \end{flushleft}
+
+      \vskip 0.5\textwidth
+      \begin{flushleft}
+
+      \versionshistory
+      \end{flushleft}
+    }
+  }
+  \null
+  \end{titlepage}%
+  \setcounter{footnote}{0}%
+}
+
+\newcommand{\versionshistory}{
+  \begin{tabular*}{0.8\textwidth}{llp{3cm}p{4cm}}
+  Version & Date & Author & Changes \\
+  \toprule
+  1.0 & \today & \@author & Draft\\
+  \end{tabular*}
+}
