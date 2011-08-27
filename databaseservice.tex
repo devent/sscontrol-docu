@@ -1,19 +1,19 @@
 \subsection{Database Service}
 
 Mit diesem Service kann man einen Datenbankserver, wie MySQL oder PostgreSQL,
-einrichten. Der Service kann einen Datenbankserver installieren, Datenbanken
-und Benutzer einrichten.
+einrichten. Es wird ein Datenbankserver installieren und Datenbanken
+und Benutzer eingerichtet.
 
 \subsubsection{Database Script}
 
-Das Hostname Profil wird eingeleitet durch die \directive{database}. Gefolgt von
-den folgenden vier Direktiven:
+Das Database Profil wird eingeleitet durch die \directive{database}. Gefolgt von
+den folgenden Direktiven:
 
 \paragraph{\directive{bind\_address}}
 
 die IP Adresse, an die der Server gebunden wird. Der Server empfängt nur auf diese
 Adresse Anfragen. Die Adresse kann entweder eine IPv4, IPv6 Adresse oder
-einen Hostnamen sein.
+ein Hostnamen sein.
 
 Die Direktive erwartet die Adresse als den ersten Parameter als eine Zeichenfolge.
 
@@ -37,7 +37,7 @@ Die Direktive erwartet den Namen der Datenbank als den ersten Parameter als eine
 
 bezeichnet einen neuen Benutzer. Der Benutzer wird auf dem Server erstellt, falls er
 noch nicht existiert. Die Direktive kann ein oder mehrere \directive{use\_database}
-enthalten, die bezeichnen für welche Datenbank der Benutzer zugriff haben soll.
+enthalten, die bezeichnen für welche Datenbank der Benutzer Zugriff haben soll.
 
 Die Direktive erwartet zwei Parameter:
 
@@ -65,31 +65,32 @@ Erwartet den Namen der Datenbank als eine Zeichenfolge im ersten Parameter.
 
 \begin{lstlisting}[style=Java, caption=Beispiel Database Script]
 server {
-	database {
-		bind_address '127.0.0.1'
-
-		admin_password 'mysqladminpassword'
-
-		database 'drupal6db'
-
-		user name: 'test1', password: 'user1password'
-
-		user name: 'test2', password: 'user1password', server: "srv1"
-
-		user(name: 'drupal6', password: 'user1password', server: "localhost") { 
-			use_database 'drupal6db' 
-		}
-	}
+    database {
+        bind_address "127.0.0.1"
+        admin_password "mysqladminpassword"
+        database "drupal6db"
+        user "test1" password "test1password"
+        user "test2" password "test2password" server "srv1"
+        user "drupal6" password "drupal6password" server "localhost", {
+            use_database "drupal6db"
+        }
+        user "wordpress" password "wordpresspassword", {
+            use_database "wordpresdb"
+        }
+    }
 }
 \end{lstlisting}
 
 \begin{asparadesc}
 \item[Zeile 3] Bindet den Datenbankserver an die Adresse ``127.0.0.1'';
-\item[Zeile 5] Setzt das Administratorpasswort des Servers;
-\item[Zeile 7] Erstellt eine neue Datenbank;
-\item[Zeile 9] Erstellt einen neuen Benutzer an ``localhost'' (implizit);
-\item[Zeile 11] Erstellt einen neuen Benutzer an ``srv1'';
-\item[Zeile 13] Erstellt einen neuen Benutzer an ``localhost'' (explizit) und
+\item[Zeile 4] Setzt das Administratorpasswort des Servers;
+\item[Zeile 5] Erstellt eine neue Datenbank;
+\item[Zeile 6] Erstellt einen neuen Benutzer an ``localhost'' (implizit);
+\item[Zeile 7] Erstellt einen neuen Benutzer an ``srv1'';
+\item[Zeile 8] Erstellt einen neuen Benutzer an ``localhost'' (explizit) und
 erlaubt alle üblichen Rechte an der Datenbank ``drupal6db'';
+\item[Zeile 11] Erstellt einen neuen Benutzer an ``localhost'' (implizit) und
+erlaubt alle üblichen Rechte an der Datenbank ``wordpresdb'', wobei die Datenbank
+bereits zuvor erstellt worden ist;
 \end{asparadesc}
 
