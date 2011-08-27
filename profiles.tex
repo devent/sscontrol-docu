@@ -1,12 +1,10 @@
 \section{Profile}
 
-Die Profile in \sscontrol{} beschreiben die Umgebungen in denen \sscontrol{} die
-Services einrichten soll.
-
-Ein typisches Profil enthält einen Namen, wie ``ubuntu'', und eine Auflistung
-der Services, die \sscontrol{} einrichten und verwalten soll. Alle diese
-Services wird \sscontrol{} verwalten, alle anderen Services sind für
-\sscontrol{} unbekannt.
+Die Profile beschreiben die Umgebungen in denen die
+Services einrichten soll. Ein typisches Profil enthält einen Namen,
+wie ``ubuntu'', und eine Auflistung
+der Services, die eingerichtet werden sollen. Nur die Services die in einem
+Profil gelistet sind werden verwaltet.
 
 Die Services werden in der Reihenfolge abgearbeitet, die sie im Profil stehen.
 Nur wenn ein Service erfolgreich abgeschlossen ist, wird das nächste Service eingerichtet.
@@ -18,13 +16,13 @@ Danach wird ein neues Profil angelegt durch die
 \directive{create\_profile(name)}. Der \parameter{name} ist eine Zeichenfolge und
 bezeichnet das Profil. Das Profil kann durch diesen Namen ausgewählt werden. 
 Danach kommt eine Auflistung der
-Services, die \sscontrol{} verwalten soll.
+Services, die verwalten werden sollen.
 
 Wie man am Beispiel sehen kann enthalten die Profildirektiven Anweisungen
 über die Ubuntu-Umgebung, also wo sich die Konfiguration befindet, welche
 Kommandos man für die Services braucht, usw.
 
-\begin{lstlisting}[style=Java, caption=Beispiel Profil Ubuntu Server]
+\begin{lstlisting}[style=Java, caption=Beispiel Profil eines Ubuntu Servers]
 profiles {
 	create_profile("ubuntu") {
 		system {
