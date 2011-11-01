@@ -9,3 +9,5 @@ temp*
 *.pdf
 *.toc
 *.kilepr
+.directory
+
