@@ -1,0 +1,54 @@
+\ProvidesClass{rulelefttitlewithlogo}[2011/08/30 v. 0.1 Title page with a left ruler and a logo.]
+
+% for \toprule in versions history table
+\RequirePackage{booktabs}
+% for logo image
+\RequirePackage{graphicx}
+
+\def\thickhrulefill{\leavevmode \leaders \hrule height 1pt\hfill \kern \z@}
+\renewcommand{\maketitle}{\begin{titlepage}%
+    \let\footnotesize\small
+    \let\footnoterule\relax
+    \parindent \z@
+    \reset@font
+    \null
+    \vskip 10\p@
+    \hbox{\mbox{\hspace{3em}}%
+        \vrule depth 0.05\textheight%
+        \mbox{\hspace{2em}}
+        \vbox{
+            % logo
+            \begin{flushleft}
+            \includegraphics[width=138px]{logo}%
+            \end{flushleft}
+
+            % author
+            \vskip 3cm
+            \begin{flushleft}
+            \normalsize \@author \par
+            \end{flushleft}
+
+            % title
+            \begin{flushleft}
+            \huge \bfseries \@title \par
+            \end{flushleft}
+
+            % versions history
+            \vskip 0.5\textwidth
+            \begin{flushleft}
+            \small \versionshistory
+            \end{flushleft}
+        }
+    }
+    \null
+    \end{titlepage}%
+    \setcounter{footnote}{0}%
+}
+
+\newcommand{\versionshistory}{
+  \begin{tabular*}{0.8\textwidth}{llp{3cm}p{4cm}}
+  Version & Date & Author & Changes \\
+  \toprule
+  1.0 & \today & \@author & Draft\\
+  \end{tabular*}
+}

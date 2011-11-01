@@ -1,0 +1,26 @@
+\ProvidesPackage{makefig}[2010/08/13 v1.0 makefig command]
+
+% \makefig[width=5cm]{filename}[short text]{long text} or
+% \makefig{filename}{long text} or
+% \makefig{filename}[short Text]{long text} or
+% \makefig[width=5cm]{filename}{long text}
+\newcommand*{\makefig}[2][width=16em]{%
+  \@dblarg{\@makefig[{#1}]{#2}}%
+}
+
+\newcommand*{\@makefig}{}
+\def\@makefig[#1]#2[#3]#4{%
+  % #1 empty or options for \includegraphics
+  % #2 image file name
+  % #3 optional argument for \caption
+  %    \@dblarg will set it to "Long Text", if
+  %    it was not set before.
+  % #4 long text for \caption
+  \begin{figure}[H]%
+    \captionsetup{width=.75\textwidth}
+    \centering
+    \includegraphics[{#1}]{#2}%
+    \caption[{#3}]{#4}%
+  \end{figure}%
+}
+

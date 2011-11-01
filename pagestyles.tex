@@ -1,21 +1,45 @@
 \setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
 
-\title{Simple Server Control}
+\title{\textsc{Simple Server Control}
+\\
+\normalsize{Version \softwareversion}}
+
+\author{Erwin Mueller, \url{erwin.mueller@deventm.org}}
+
+\renewcommand{\versionshistory}{
+  \begin{tabular*}{0.8\textwidth}{llp{3cm}p{4cm}}
+  Version & Date & Author & Changes \\
+  \toprule
+  0.1 & 2011-09-04 & Erwin Müller & Erste Version der Zielbestimmungen. \\
+  \end{tabular*}
+}
 
 \newcommand{\sscontrol}{\textit{Simple Server Control}}
 \newcommand{\code}{\texttt}
+\newcommand{\config}[1]{``\texttt{#1}''}
 \newcommand{\parameter}[1]{``\texttt{#1}'' Parameter}
 \newcommand{\directive}[1]{``\texttt{#1}'' Direktive}
 \newcommand{\variable}[1]{``\texttt{#1}'' Variable}
+\newcommand{\imgnumber}[1]{\texttt{\##1}}
+
+\newcommand{\softwarename}{\textit{FDS Keys Command Line}}
+\newcommand{\softwareversion}{0.8}
+
+\newcommand{\refsection}[1]{Abschnitt \ref{#1}}
+\newcommand{\reflisting}[1]{Listing \ref{#1}}
+\newcommand{\refequation}[1]{Formel \ref{#1}}
+\newcommand{\reftable}[1]{Tabelle \ref{#1}}
+
 
 \lstdefinestyle{numbers}
-{breaklines, tabsize=2,
-numbers=left, stepnumber=1, numberstyle=\tiny, numbersep=4pt, basicstyle=\scriptsize\ttfamily, 
-xleftmargin=12pt, xrightmargin=0pt,
-framesep=2pt, framexleftmargin=10pt, frame=shadowbox, rulesepcolor=\color{blue}}
+{breaklines, numbers=left, stepnumber=1, numberstyle=\tiny, numbersep=10pt, basicstyle=\scriptsize\ttfamily, frame=l, xleftmargin=6pt, numbersep=4pt}
 \lstdefinestyle{nonumbers}
 {style=numbers,numbers=none}
+\lstdefinestyle{Bash}
+{language=Bash,style=nonumbers}
 \lstdefinestyle{XML}
 {language=XML,style=nonumbers}
 \lstdefinestyle{Java}
 {language=Java,style=numbers}
+
+\setlength{\columnseprule}{.1pt}

@@ -1,0 +1,14 @@
+\ProvidesPackage{insertwrapfig}[v1.0 Inserts an image where the text is wrapped around.]
+
+\RequirePackage{wrapfig}
+
+\newcommand*{\insertwrapfig}[5]{
+
+\begin{wrapfigure}{#1}{#2}
+  \begin{center}
+    \includegraphics[#3]{#4}
+  \end{center}
+  \caption{#5}
+\end{wrapfigure}
+
+}
