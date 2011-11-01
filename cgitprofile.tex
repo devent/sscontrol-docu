@@ -35,6 +35,7 @@ server {
 
                 cgit_url cgitUrl
                 cgit_hash_url cgitMd5Url
+                cgit_packages "build-essential, libssl-dev"
                 cgit_cache_root "/var/cache/cgit"
                 cgit_update_apache_user true
             }
@@ -58,6 +59,12 @@ Die optionale \directive{cgit\_url} erwartet eine Zeichenfolge, die die URL enth
 \paragraph{cgit\_hash\_url}
 
 Die optionale \directive{cgit\_hash\_url} erwartet eine Zeichenfolge, die die URL enthält von wo man das Hash zum Cgit-Archiv herunter laden kann. Diese Direktive ist nur nötig, wenn das System kein Cgit-Paket anbietet und man das Cgit-Archiv automatisch überprüfen will. Auf der Homepage von Cgit befindet sich leider kein Hash-Datei zum herunter laden, aber man kann einmal eine Hash-Datei erstellen und diese benutzen.
+
+\paragraph{cgit\_packages}
+
+Die \directive{cgit\_packages} erwartet eine Liste von Paketen, die man benötigt um Cgit zu installieren. Falls Cgit von dem System als ein Paket angeboten wird, dann kann hier der Paketname eingetragen werden.
+
+Ubuntu 10.10 enthält kein Cgit-Paket, somit muss Cgit aus dem Quellcode kompiliert werden.
 
 \paragraph{cgit\_cache\_root}
 
