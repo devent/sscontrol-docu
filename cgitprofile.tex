@@ -3,44 +3,45 @@
 \begin{lstlisting}[style=Java, caption=Beispiel Cgit Profil]
 cgitUrl = "http://hjemli.net/git/cgit/snapshot/cgit-0.9.0.2.tar.gz"
 cgitMd5Url = "cgit-0.9.0.2.tar.gz.md5"
+
 server {
-    profiles {
-        create_profile("ubuntu") {
-            system {
-                packages_install_command 'export DEBIAN_FRONTEND=noninteractive; /usr/bin/apt-get -q -y update && /usr/bin/apt-get -q -y install'
-                chown_command '/bin/chown -R'
-                chmod_command '/bin/chmod -R'
-                usermod_command "/usr/sbin/usermod"
-            }
-            httpd {
-                handler 'apache2'
-                configuration_directory '/etc/apache2'
-                restart_command '/etc/init.d/apache2 restart'
-                status_command '/usr/sbin/apache2ctl configtest'
-                status_command_expected '.*Syntax OK.*'
-                packages 'apache2'
+  profiles {
+    create_profile("ubuntu") {
+      system {
+        packages_install_command 'export DEBIAN_FRONTEND=noninteractive; /usr/bin/apt-get -q -y update && /usr/bin/apt-get -q -y install'
+        chown_command '/bin/chown -R'
+        chmod_command '/bin/chmod -R'
+        usermod_command "/usr/sbin/usermod"
+      }
+      httpd {
+        handler 'apache2'
+        configuration_directory '/etc/apache2'
+        restart_command '/etc/init.d/apache2 restart'
+        status_command '/usr/sbin/apache2ctl configtest'
+        status_command_expected '.*Syntax OK.*'
+        packages 'apache2'
 
-                domain_web_directory_prefix '/var/www/$domain_name$/web'
-                domain_ssl_directory_prefix '/var/www/$domain_name$/ssl'
-                domain_page_directory_prefix '/var/www/$domain_name$/$page_name$/web'
-                domain_web_group 'www-data'
-                domain_web_owner 'www-data'
-                domain_web_directory_mod 'a-rx,o-w'
-                domain_ssl_group 'root'
-                domain_ssl_owner 'root'
-                domain_ssl_directory_mod 'o-wrx'
+        domain_web_directory_prefix '/var/www/$domain_name$/web'
+        domain_ssl_directory_prefix '/var/www/$domain_name$/ssl'
+        domain_page_directory_prefix '/var/www/$domain_name$/$page_name$/web'
+        domain_web_group 'www-data'
+        domain_web_owner 'www-data'
+        domain_web_directory_mod 'a-rx,o-w'
+        domain_ssl_group 'root'
+        domain_ssl_owner 'root'
+        domain_ssl_directory_mod 'o-wrx'
 
-                apache2_a2enmod_command '/usr/sbin/a2enmod'
-                apache2_mods 'ssl, rewrite'
+        apache2_a2enmod_command '/usr/sbin/a2enmod'
+        apache2_mods 'ssl, rewrite'
 
-                cgit_url cgitUrl
-                cgit_hash_url cgitMd5Url
-                cgit_packages "build-essential, libssl-dev"
-                cgit_cache_root "/var/cache/cgit"
-                cgit_update_apache_user true
-            }
-        }
+        cgit_url cgitUrl
+        cgit_hash_url cgitMd5Url
+        cgit_packages "build-essential, libssl-dev"
+        cgit_cache_root "/var/cache/cgit"
+        cgit_update_apache_user true
+      }
     }
+  }
 }
 \end{lstlisting}
 

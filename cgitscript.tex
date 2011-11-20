@@ -6,30 +6,30 @@ certFile = "www.${domain}.crt"
 certKeyFile = "www.${domain}.keyinsecure"
 
 server {
-    httpd {
-        domain "${domain}", "192.168.0.50", {
-            redirect_to_www
-            redirect_http_to_https
-        }
-        ssl_domain "${domain}", "192.168.0.50", {
-            certification_file certFile
-            certification_key_file certKeyFile
-            redirect_to_www
-
-            setup_cgit "gitpublic", {
-                title "Public Repositories"
-                description "Current public projects."
-                clone_prefix "git://${domain} ssh://gitpublic@${domain}"
-                repositories "/home/gitpublic/repository", {
-                    title "Public Projects"
-                    repository "gitosis-admin.git", {
-                        description "gitosis administration repository."
-                        snapshots "tar.gz tar.bz2 zip"
-                    }
-                }
-            }
-        }
+  httpd {
+    domain "${domain}", "192.168.0.50", {
+      redirect_to_www
+      redirect_http_to_https
     }
+    ssl_domain "${domain}", "192.168.0.50", {
+      certification_file certFile
+      certification_key_file certKeyFile
+      redirect_to_www
+
+      setup_cgit "gitpublic", {
+        title "Public Repositories"
+        description "Current public projects."
+        clone_prefix "git://${domain} ssh://gitpublic@${domain}"
+        repositories "/home/gitpublic/repository", {
+          title "Public Projects"
+          repository "gitosis-admin.git", {
+            description "gitosis administration repository."
+            snapshots "tar.gz tar.bz2 zip"
+          }
+        }
+      }
+    }
+  }
 }
 \end{lstlisting}
 
