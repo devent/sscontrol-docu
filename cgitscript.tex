@@ -16,7 +16,7 @@ server {
             certification_key_file certKeyFile
             redirect_to_www
 
-            cgit "gitpublic", {
+            setup_cgit "gitpublic", {
                 title "Public Repositories"
                 description "Current public projects."
                 clone_prefix "git://${domain} ssh://gitpublic@${domain}"
@@ -33,13 +33,20 @@ server {
 }
 \end{lstlisting}
 
-Die Cgit Script Directiven befinden sich im cgit-Block. Das Beispiel zeigt eine Konfiguration mit minimalem Aufwand. Es wird der Titel und eine Beschreibung der Cgit-Seite gesetzt, URLs um die Git-Repositories klonen zu können und es wird eine Repositories-Kategorie konfiguriert. Die Repositories-Kategorie ist so eingestellt, dass Cgit in dem Verzeichnis automatisch nach Git-Repositories suchen wird. Für ein Repository setzen wir spezielle Parameter.
+Die Cgit Script Directiven befinden sich im setup\_cgit-Block. Das Beispiel
+zeigt eine Konfiguration mit minimalem Aufwand. Es wird der Titel und eine
+Beschreibung der Cgit-Seite gesetzt, URLs um die Git-Repositories klonen zu
+können und es wird eine Repositories-Kategorie konfiguriert. Die
+Repositories-Kategorie ist so eingestellt, dass Cgit in dem Verzeichnis
+automatisch nach Git-Repositories suchen wird. Für ein Repository setzen wir
+spezielle Parameter.
 
 Im folgendem werden die gültigen Direktive erklärt.
 
-\paragraph{cgit}
+\paragraph{setup\_cgit}
 
-\directive{cgit} erwartet a) eine Zeichenfolge, die das Root-Verzeichnis darstellt und b) den Direktive-Block.
+\directive{setup\_cgit} erwartet a) eine Zeichenfolge, die das Root-Verzeichnis
+darstellt und b) den Direktive-Block.
 
 \paragraph{title}
 
@@ -47,13 +54,20 @@ Im folgendem werden die gültigen Direktive erklärt.
 
 \paragraph{description}
 
-\directive{description} erwartet eine Zeichenfolge, die Beschreibung der Cgit-Seite. Die Beschreibung wird unterhalb des Titels angezeigt.
+\directive{description} erwartet eine Zeichenfolge, die Beschreibung der
+Cgit-Seite. Die Beschreibung wird unterhalb des Titels angezeigt.
 
 \paragraph{clone\_prefix}
 
-\directive{clone\_prefix} erwartet eine Zeichenfolge, die eine Liste von Prefixen enthält, die für das klonen der Repositories verwendet wird. Die einzelnen Einträge in der Zeichenfolge können mit einem Leerzeichen oder einem Komma getrennt sein. Die \directive{clone\_prefix} kann auch mehrfach gesetzt sein, dann werden die jeweiligen Direktiven zu einer Liste der Prefixen zusammengefast.
+\directive{clone\_prefix} erwartet eine Zeichenfolge, die eine Liste von
+Prefixen enthält, die für das klonen der Repositories verwendet wird. Die
+einzelnen Einträge in der Zeichenfolge können mit einem Leerzeichen oder einem
+Komma getrennt sein. Die \directive{clone\_prefix} kann auch mehrfach gesetzt
+sein, dann werden die jeweiligen Direktiven zu einer Liste der Prefixen
+zusammengefast.
 
-\begin{lstlisting}[style=Java, caption=Beispiele für die \directive{clone\_prefix}]
+\begin{lstlisting}[style=Java, caption=Beispiele für die
+\directive{clone\_prefix}]
 clone_prefix "git://${domain} ssh://gitpublic@${domain}"
 clone_prefix "git://${domain}, ssh://gitpublic@${domain}"
 
@@ -63,25 +77,35 @@ clone_prefix "ssh://gitpublic@${domain}"
 
 \paragraph{repositories}
 
-\directive{repositories} leitet einen Block von Git-Repositories ein. Es sind eine optionale Zeichenfolgen möglich, ein Verzeichnis in dem Cgit automatisch nach Git-Repositories suchen soll. Wenn kein Verzeichnis angegeben worden ist, dann müssen die Repositories einzeln konfiguriert werden.
+\directive{repositories} leitet einen Block von Git-Repositories ein. Es sind
+eine optionale Zeichenfolgen möglich, ein Verzeichnis in dem Cgit automatisch
+nach Git-Repositories suchen soll. Wenn kein Verzeichnis angegeben worden ist,
+dann müssen die Repositories einzeln konfiguriert werden.
 
 \paragraph{repositories.title}
 
-\directive{title} erwartet eine Zeichenfolge, der Titeltext der Repositories-Gruppe.
+\directive{title} erwartet eine Zeichenfolge, der Titeltext der
+Repositories-Gruppe.
 
 \paragraph{repositories.repository}
 
-\directive{repository} leitet einen Block ein, in dem man ein einzelnes Git-Repository konfigurieren kann.
+\directive{repository} leitet einen Block ein, in dem man ein einzelnes
+Git-Repository konfigurieren kann.
 
 \paragraph{repository.description}
 
-\directive{description} erwartet eine Zeichenfolge, die Beschreibung des Git-Repository.
+\directive{description} erwartet eine Zeichenfolge, die Beschreibung des
+Git-Repository.
 
 \paragraph{repository.snapshots}
 
-\directive{snapshots} erwartet eine Zeichenfolge, die eine Liste von Dateitypen enthält, die man als Snapshots des Git-Repository herunder laden kann. Die \directive{snapshots} kann auch mehrfach gesetzt sein, dann werden die jeweiligen Direktiven zu einer Liste der Dateitypen zusammengefast.
+\directive{snapshots} erwartet eine Zeichenfolge, die eine Liste von Dateitypen
+enthält, die man als Snapshots des Git-Repository herunder laden kann. Die
+\directive{snapshots} kann auch mehrfach gesetzt sein, dann werden die
+jeweiligen Direktiven zu einer Liste der Dateitypen zusammengefast.
 
-Falls eine leere Zeichenfolge gesetzt worden ist, dann werden die Snapshots für das Repository ausgeschaltet.
+Falls eine leere Zeichenfolge gesetzt worden ist, dann werden die Snapshots für
+das Repository ausgeschaltet.
 
 \begin{lstlisting}[style=Java, caption=Beispiele für die \directive{snapshots}]
 snapshots ""

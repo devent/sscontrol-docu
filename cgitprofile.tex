@@ -44,32 +44,57 @@ server {
 }
 \end{lstlisting}
 
-Die Cgit Profil-Directiven befinden sich im httpd-Block und haben das cgit-Prefix. Das Beispiel zeigt eine Konfiguration für einen Ubuntu 10.10 Server mit Apache2 als den httpd-Server.
+Die Cgit Profil-Directiven befinden sich im httpd-Block und haben das
+cgit-Prefix. Das Beispiel zeigt eine Konfiguration für einen Ubuntu 10.10 Server
+mit Apache2 als den httpd-Server.
 
 Im folgendem werden die gültigen Direktive erklärt.
 
 \paragraph{usermod\_command}
 
-\directive{usermod\_command} erwartet eine Zeichenfolge, die das usermod-Kommando bezeichnen. Es muss dafür gesorgen werden, dass der Apache2 Server auch die Git-Repositories lesen kann damit Cgit sie anzeigen kann. Das Programm wird automatisch den Apache2-Benutzer zu den Gruppen hinzufügen, die Lesezugriff auf die Git-Repositories haben, wenn die \directive{cgit\_update\_apache\_user} gesetzt ist.
+\directive{usermod\_command} erwartet eine Zeichenfolge, die das
+usermod-Kommando bezeichnen. Es muss dafür gesorgen werden, dass der Apache2
+Server auch die Git-Repositories lesen kann damit Cgit sie anzeigen kann. Das
+Programm wird automatisch den Apache2-Benutzer zu den Gruppen hinzufügen, die
+Lesezugriff auf die Git-Repositories haben, wenn die
+\directive{cgit\_update\_apache\_user} gesetzt ist.
 
 \paragraph{cgit\_url}
 
-Die optionale \directive{cgit\_url} erwartet eine Zeichenfolge, die die URL enthält von wo man Cgit herunter laden kann. Diese Direktive ist nur nötig, wenn das System kein Cgit-Paket anbietet.
+Die optionale \directive{cgit\_url} erwartet eine Zeichenfolge, die die URL
+enthält von wo man Cgit herunter laden kann. Diese Direktive ist nur nötig, wenn
+das System kein Cgit-Paket anbietet.
 
 \paragraph{cgit\_hash\_url}
 
-Die optionale \directive{cgit\_hash\_url} erwartet eine Zeichenfolge, die die URL enthält von wo man das Hash zum Cgit-Archiv herunter laden kann. Diese Direktive ist nur nötig, wenn das System kein Cgit-Paket anbietet und man das Cgit-Archiv automatisch überprüfen will. Auf der Homepage von Cgit befindet sich leider kein Hash-Datei zum herunter laden, aber man kann einmal eine Hash-Datei erstellen und diese benutzen.
+Die optionale \directive{cgit\_hash\_url} erwartet eine Zeichenfolge, die die
+URL enthält von wo man das Hash zum Cgit-Archiv herunter laden kann. Diese
+Direktive ist nur nötig, wenn das System kein Cgit-Paket anbietet und man das
+Cgit-Archiv automatisch überprüfen will. Auf der Homepage von Cgit befindet sich
+leider kein Hash-Datei zum herunter laden, aber man kann einmal eine Hash-Datei
+erstellen und diese benutzen.
 
 \paragraph{cgit\_packages}
 
-Die \directive{cgit\_packages} erwartet eine Liste von Paketen, die man benötigt um Cgit zu installieren. Falls Cgit von dem System als ein Paket angeboten wird, dann kann hier der Paketname eingetragen werden.
+Die \directive{cgit\_packages} erwartet eine Liste von Paketen, die man benötigt
+um Cgit zu installieren. Falls Cgit von dem System als ein Paket angeboten wird,
+dann kann hier der Paketname eingetragen werden.
 
-Ubuntu 10.10 enthält kein Cgit-Paket, somit muss Cgit aus dem Quellcode kompiliert werden.
+Ubuntu 10.10 enthält kein Cgit-Paket, somit muss Cgit aus dem Quellcode
+kompiliert werden.
 
 \paragraph{cgit\_cache\_root}
 
-Die \directive{cgit\_cache\_root} erwartet eine Zeichenfolge, die das Verzeichnis ist, wo Cgit sein Cache speichern kann. Für jede Cgit Installation wird ein neues Unterverzeichnis unter diesem Verzeichnis erstellt, damit die Installationen sich nicht gegenseitig beeinflussen können.
+Die \directive{cgit\_cache\_root} erwartet eine Zeichenfolge, die das
+Verzeichnis ist, wo Cgit sein Cache speichern kann. Für jede Cgit Installation
+wird ein neues Unterverzeichnis unter diesem Verzeichnis erstellt, damit die
+Installationen sich nicht gegenseitig beeinflussen können.
 
 \paragraph{cgit\_update\_apache\_user}
 
-Die \directive{cgit\_update\_apache\_user} erwartet entweder \code{true} oder \code{false}, je nach dem ob das Programm automatisch den Apache2-Benutzer zu den Gruppen hinzufügen soll, die Lesezugriff auf die Git-Repositories haben. Falls der Wert \code{true} ist, dann wird der in der \directive{usermod\_command} Kommando benutzt, um den Apache2-Benutzer zu den Gruppen hinzuzufügen.
+Die \directive{cgit\_update\_apache\_user} erwartet entweder \code{true} oder
+\code{false}, je nach dem ob das Programm automatisch den Apache2-Benutzer zu
+den Gruppen hinzufügen soll, die Lesezugriff auf die Git-Repositories haben.
+Falls der Wert \code{true} ist, dann wird der in der
+\directive{usermod\_command} Kommando benutzt, um den Apache2-Benutzer zu den
+Gruppen hinzuzufügen.
