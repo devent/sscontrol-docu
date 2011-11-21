@@ -1,6 +1,6 @@
 \subsubsection{Cgit Script}
 
-\begin{lstlisting}[style=Java, caption=Beispiel Cgit Script]
+\begin{lstlisting}[style=Java, caption=Beispiel Cgit Script mit Scan-Path]
 domain = "globalscalingsoftware.com"
 certFile = "www.${domain}.crt"
 certKeyFile = "www.${domain}.keyinsecure"
@@ -23,6 +23,21 @@ server {
         repositories "/home/gitpublic/repository", {
           title "Public Projects"
           repository "gitosis-admin.git", {
+            description "gitosis administration repository."
+            snapshots "tar.gz tar.bz2 zip"
+          }
+        }
+      }
+    }
+  }
+}
+\end{lstlisting}
+
+\begin{lstlisting}[style=Java, caption=Beispiel Cgit Script ohne Scan-Path]
+...
+        repositories {
+          title "Public Projects"
+          repository "/home/gitpublic/repositories/gitosis-admin.git", {
             description "gitosis administration repository."
             snapshots "tar.gz tar.bz2 zip"
           }
@@ -77,7 +92,7 @@ clone_prefix "ssh://gitpublic@${domain}"
 
 \paragraph{repositories}
 
-\directive{repositories} leitet einen Block von Git-Repositories ein. Es sind
+\directive{repositories} leitet einen Block von Git-Repositories ein. Es ist
 eine optionale Zeichenfolgen möglich, ein Verzeichnis in dem Cgit automatisch
 nach Git-Repositories suchen soll. Wenn kein Verzeichnis angegeben worden ist,
 dann müssen die Repositories einzeln konfiguriert werden.
