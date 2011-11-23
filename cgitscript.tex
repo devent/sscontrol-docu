@@ -19,8 +19,9 @@ server {
       setup_cgit "gitpublic", {
         title "Public Repositories"
         description "Current public projects."
+        cache_size 1000
         clone_prefix "git://${domain} ssh://gitpublic@${domain}"
-        repositories "/home/gitpublic/repository", {
+        repositories "/home/gitpublic/repositories", {
           title "Public Projects"
           repository "gitosis-admin.git", {
             description "gitosis administration repository."
@@ -32,6 +33,25 @@ server {
   }
 }
 \end{lstlisting}
+
+\begin{lstlisting}[style=Java, caption=Beispiel Cgit Script mit Scan-Path]
+...
+      setup_cgit "gitpublic", {
+        repositories_groups "gitpublic"
+        title "Public Repositories"
+        description "Current public projects."
+        cache_size 1000
+        clone_prefix "git://${domain} ssh://gitpublic@${domain}"
+        repositories "/home/gitpublic/repositories", {
+          title "Public Projects"
+          repository "gitosis-admin.git", {
+            description "gitosis administration repository."
+            snapshots "tar.gz tar.bz2 zip"
+          }
+        }
+...
+\end{lstlisting}
+
 
 \begin{lstlisting}[style=Java, caption=Beispiel Cgit Script ohne Scan-Path]
 ...
@@ -61,7 +81,16 @@ Im folgendem werden die gültigen Direktive erklärt.
 \paragraph{setup\_cgit}
 
 \directive{setup\_cgit} erwartet a) eine Zeichenfolge, die das Root-Verzeichnis
-darstellt und b) den Direktive-Block.
+darstellt und b) den Direktive-Block. Wenn die \directive{repositories\_groups}
+nicht benutzt wird, dann ist das Root-Verzeichnis auch der Name der Gruppe des 
+Repository. Dies wird so von gitosis eingerichtet.
+
+\paragraph{repositories\_groups}
+
+Die \directive{repositories\_groups} erwartet eine Liste von Repository-Gruppen,
+denen das Repository gehört. Dies wird benutzt um den Apache2 Benutzer zu diesen
+Gruppen hinzuzufügen, falls die \directive{cgit\_update\_apache\_user} auf \code{true}
+gesetzt wurde.
 
 \paragraph{title}
 
@@ -71,6 +100,11 @@ darstellt und b) den Direktive-Block.
 
 \directive{description} erwartet eine Zeichenfolge, die Beschreibung der
 Cgit-Seite. Die Beschreibung wird unterhalb des Titels angezeigt.
+
+\paragraph{cache\_size}
+
+Die optionale \directive{clone\_prefix} erwartet eine positive Zahl wieviele Einträge im Cache gespeichert
+werden sollen. Wenn die Direktive nicht angegeben ist, werden als Standard 1000 Einträge im Cache gespeichert.
 
 \paragraph{clone\_prefix}
 

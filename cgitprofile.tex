@@ -1,45 +1,49 @@
 \subsubsection{Cgit Profil}
 
 \begin{lstlisting}[style=Java, caption=Beispiel Cgit Profil]
-cgitGitUrl = "git://github.com/metajack/cgit.git"
+cgitGitUrl = "git://hjemli.net/pub/git/cgit"
 cgitGitBranch = "stable"
 
 server {
   profiles {
     create_profile("ubuntu") {
       system {
-        packages_install_command 'export DEBIAN_FRONTEND=noninteractive; /usr/bin/apt-get -q -y update && /usr/bin/apt-get -q -y install'
+        packages_install_command "export DEBIAN_FRONTEND=noninteractive; /usr/bin/apt-get -q -y update && /usr/bin/apt-get -q -y install"
         tmp_directory "/tmp"
+        chown_command "/bin/chown -R"
+        chmod_command "/bin/chmod -R"
+        cd_command "cd"
         usermod_command "/usr/sbin/usermod"
         git_command "/usr/bin/git"
         make_command "/usr/bin/make"
       }
       httpd {
-        handler 'apache2'
-        configuration_directory '/etc/apache2'
-        restart_command '/etc/init.d/apache2 restart'
-        status_command '/usr/sbin/apache2ctl configtest'
-        status_command_expected '.*Syntax OK.*'
-        packages 'apache2'
+        handler "apache2"
+        configuration_directory "/etc/apache2"
+        restart_command "/etc/init.d/apache2 restart"
+        status_command "/usr/sbin/apache2ctl configtest"
+        status_command_expected ".*Syntax OK.*"
+        packages "apache2"
 
-        domain_web_directory_prefix '/var/www/$domain_name$/web'
-        domain_ssl_directory_prefix '/var/www/$domain_name$/ssl'
-        domain_page_directory_prefix '/var/www/$domain_name$/$page_name$/web'
-        domain_web_group 'www-data'
-        domain_web_owner 'www-data'
-        domain_web_directory_mod 'a-rx,o-w'
-        domain_ssl_group 'root'
-        domain_ssl_owner 'root'
-        domain_ssl_directory_mod 'o-wrx'
+        domain_web_directory_prefix "/var/www/%domain_name%/web"
+        domain_web_group "www-data"
+        domain_web_owner "www-data"
+        domain_web_directory_mod "a-rx,o-w"
+        domain_ssl_directory_prefix "/var/www/%domain_name%/ssl"
+        domain_ssl_group "root"
+        domain_ssl_owner "root"
+        domain_ssl_directory_mod "o-wrx"
 
-        apache2_a2enmod_command '/usr/sbin/a2enmod'
-        apache2_mods 'ssl, rewrite'
+        apache2_a2enmod_command "/usr/sbin/a2enmod"
+        apache2_mods "ssl, rewrite"
 
+        cgit_packages "build-essential, git-core, libssl-dev, libcurl4-openssl-dev"
+        cgit_user "www-data"
+        cgit_group "www-data"
         cgit_git_url cgitGitUrl
         cgit_git_branch cgitGitBranch
-        cgit_packages "build-essential, git, libssl-dev, libcurl4-openssl-dev"
-        cgit_cache_root "/var/cache/cgit"
-        cgit_update_apache_user true
+        cgit_cache_root_prefix "/var/cache/cgit"
+        cgit_update_user true
       }
     }
   }
@@ -62,6 +66,23 @@ bezeichnen, dass verwendet wird um neue Pakete zu installieren.
 \directive{tmp\_directory} erwartet eine Zeichenfolge, die das Verzeichnis bezeichnet
 das für temporäre Dateien benutzt werden kann.
 
+\paragraph{chmod\_command}
+
+\directive{chmod\_command} erwartet eine Zeichenfolge, die das
+chmod-Kommando bezeichnen. Es ist nötig, wenn man Cgit von dem Git-Repository installieren will.
+
+\paragraph{chown\_command}
+
+\directive{chown\_command} erwartet eine Zeichenfolge, die das
+chown-Kommando bezeichnen.
+
+Damit wird der Benutzername und Gruppe des Cache-Root-Verzeichnis zugewiesen.
+
+\paragraph{cd\_command}
+
+\directive{cd\_command} erwartet eine Zeichenfolge, die das
+cd-Kommando bezeichnen. Es ist nötig, wenn man Cgit von dem Git-Repository installieren will.
+
 \paragraph{usermod\_command}
 
 \directive{usermod\_command} erwartet eine Zeichenfolge, die das
@@ -69,7 +90,7 @@ usermod-Kommando bezeichnen. Es muss dafür gesorgen werden, dass der Apache2
 Server auch die Git-Repositories lesen kann damit Cgit sie anzeigen kann. Das
 Programm wird automatisch den Apache2-Benutzer zu den Gruppen hinzufügen, die
 Lesezugriff auf die Git-Repositories haben, wenn die
-\directive{cgit\_update\_apache\_user} gesetzt ist.
+\directive{cgit\_update\_apache\_user} auf \code{true} gesetzt ist.
 
 \paragraph{git\_command}
 
@@ -82,6 +103,22 @@ Es ist nötig, wenn man Cgit von dem Git-Repository installieren will.
 Es ist nötig, wenn man Cgit von den Source-Quellen installieren will.
 
 Es werden weitere Direktiven benötigt:
+
+\paragraph{cgit\_user}
+
+\directive{cgit\_user} erwartet eine Zeichenfolge, die den Benutzernamen
+bezeichnet, mit dem das Cgit Script läuft. Dieser Benutzer muss Lesezugriff auf
+die Repositories haben.
+
+Diesem Benutzer wird auch das Cache-Root-Verzeichnis zugewiesen.
+
+\paragraph{cgit\_group}
+
+\directive{cgit\_group} erwartet eine Zeichenfolge, die den Gruppennamen
+bezeichnet, mit dem das Cgit Script läuft. Diese Gruppe muss Lesezugriff auf
+die Repositories haben.
+
+Dieser Gruppe wird auch das Cache-Root-Verzeichnis zugewiesen.
 
 \paragraph{cgit\_git\_url}
 
@@ -121,20 +158,30 @@ dann kann hier der Paketname eingetragen werden.
 
 Ubuntu 10.10 enthält kein Cgit-Paket, somit muss Cgit aus dem Quellcode
 kompiliert werden. Dazu werden die folgenden Pakete benötigt:
-\code{build-essential}, \code{git}, \code{libssl-dev}, \code{libcurl4-openssl-dev}.
+\begin{asparaitem}
+\item \code{build-essential},
+\item \code{git-core},
+\item \code{libssl-dev},
+\item \code{libcurl4-openssl-dev}.
+\end{asparaitem}
 
-\paragraph{cgit\_cache\_root}
+\paragraph{cgit\_cache\_root\_prefix}
 
-Die \directive{cgit\_cache\_root} erwartet eine Zeichenfolge, die das
+Die \directive{cgit\_cache\_root\_prefix} erwartet eine Zeichenfolge, die das
 Verzeichnis ist, wo Cgit sein Cache speichern kann. Für jede Cgit Installation
 wird ein neues Unterverzeichnis unter diesem Verzeichnis erstellt, damit die
 Installationen sich nicht gegenseitig beeinflussen können.
 
-\paragraph{cgit\_update\_apache\_user}
+Wenn z.B. das Prefix \code{/var/cache/cgit} ist und es zwei Cgit Installation, gitpublic und gitprivate,
+gibt, dann werden \code{/var/cache/cgit/gitpublic} und \code{/var/cache/cgit/gitprivate} als Cache-Root-Verzeichnisse
+benutzt.
 
-Die \directive{cgit\_update\_apache\_user} erwartet entweder \code{true} oder
-\code{false}, je nach dem ob das Programm automatisch den Apache2-Benutzer zu
+\paragraph{cgit_update_user}
+
+Die \directive{cgit_update_user} erwartet entweder \code{true} oder
+\code{false}, je nach dem ob das Programm automatisch dem Cgit-Benutzer zu
 den Gruppen hinzufügen soll, die Lesezugriff auf die Git-Repositories haben.
+
 Falls der Wert \code{true} ist, dann wird der in der
-\directive{usermod\_command} Kommando benutzt, um den Apache2-Benutzer zu den
-Gruppen hinzuzufügen.
+\directive{usermod\_command} Kommando benutzt, um den Benutzer zu den
+Repositories-Gruppen hinzuzufügen.
