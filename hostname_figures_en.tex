@@ -1,0 +1,62 @@
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{hostname_service_script}
+\label{fig:hostname_script_statements}
+\caption{Hostname Script Statements}
+\end{figure}
+
+\begin{lstlisting}[style=Java,label=lst:hostname_ubuntu_profile,caption=Hostname Example Ubuntu Profile]
+profile "ubuntu_10_04", {
+    system {
+        install_command "/usr/bin/aptitude update && /usr/bin/aptitude install"
+    }
+    hostname {
+        configuration_directory "/etc"
+        restart_command "/sbin/restart hostname"
+    }
+}
+\end{lstlisting}
+
+\begin{lstlisting}[style=Java,label=lst:hostname_example_script,caption=Hostname Example Script]
+hostname {
+    set_hostname "test"
+}
+\end{lstlisting}
+
+\begin{longtable}{lp{0.5\textwidth}}
+\multicolumn{2}{l}{Commands Properties} \\*
+\toprule
+\endfirsthead
+\endhead
+\caption{Hostname Ubuntu 10.04 Properties}
+\label{tbl:hostname_ubuntu_10_04_properties}
+\endlastfoot
+%
+install\_command &
+\code{/usr/bin/aptitude update \&\& /usr/bin/aptitude install} \\
+%
+restart\_command &
+\code{/sbin/restart hostname} \\
+%
+\toprule
+%
+\multicolumn{2}{l}{Files and Directories Properties} \\*
+\toprule
+%
+configuration\_directory &
+\code{/etc} \\
+%
+configuration\_file &
+\code{hostname} \\*
+%
+\toprule
+%
+\multicolumn{2}{l}{Other Properties} \\*
+\toprule
+%
+packages &
+\code{hostname} \\
+%
+\end{longtable}
+
+
