@@ -6,7 +6,7 @@
 
 \newcommand{\command}{\@ifstar\commandStar\commandNoStar}
 \newcommand{\commandStar}[1]{\mbox{\texttt{#1}}}
-\newcommand{\commandNoStar}[2]{\index{#1}\mbox{\texttt{#2}}}
+\newcommand{\commandNoStar}[2]{\index{#1@\texttt{#2}}\mbox{\texttt{#2}}}
 
 \newcommand{\property}{\@ifstar\propertyStar\propertyNoStar}
 \newcommand{\propertyStar}[1]{\mbox{\texttt{#1}}}
