@@ -1,0 +1,58 @@
+\begin{figure}
+\centering
+\includegraphics[width=0.9\textwidth]{hosts_service_script}
+\label{fig:hosts_script_statements}
+\caption{Hosts Script Statements}
+\end{figure}
+
+\begin{lstlisting}[style=Java,label=lst:hosts_ubuntu_profile,caption=Hosts Example Ubuntu Profile]
+profile "ubuntu_10_04", {
+    system {
+    }
+    hosts {
+        configuration_directory "/etc"
+    }
+}
+\end{lstlisting}
+
+\begin{lstlisting}[style=Java,label=lst:hosts_example_script,caption=Hosts Example Script]
+hosts {
+    ip "192.168.0.49" host "srv1.ubuntutest.com" alias "srv1"
+    ip "192.168.0.50" host "srv1.ubuntutest.org" alias "srva", "srvb"
+}
+\end{lstlisting}
+
+\begin{longtable}{lp{0.5\textwidth}}
+\multicolumn{2}{l}{Files and Directories Properties} \\*
+\toprule
+\endfirsthead
+\endhead
+\caption{Hosts Ubuntu 10.04 Properties}
+\label{tbl:hosts_ubuntu_10_04_properties}
+\endlastfoot
+%
+configuration\_directory &
+\code{/etc} \\
+%
+configuration\_file &
+\code{hosts} \\*
+\toprule
+%
+\multicolumn{2}{l}{Other Properties} \\*
+\toprule
+%
+default\_hosts &
+``\code{address:"127.0.0.1";name:"localhost.
+localdomain";aliases:["localhost"],
+address:"::1";name:"localhost6.local
+domain6";aliases:["localhost6"]}''
+\begin{compactitem}
+\item \code{127.0.0.1 localhost.localdomain localhost}
+\item \code{::1 localhost6.localdomain6 localhost6}
+\end{compactitem}
+
+\\
+%
+\end{longtable}
+
+
