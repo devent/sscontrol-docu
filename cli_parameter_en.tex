@@ -1,0 +1,52 @@
+\subsection{Parameter}
+
+\paragraph{scripts}
+
+\statement{scripts}{--scripts \typestring$|$\typefile$|$\typeurl$|$\typeuri}
+
+Sets the location for the server scripts as a string, file, URL or URI.
+A string will be interpreted according to the format. If no scheme is used the string
+is assumed to be a local file, otherwise the string is assumed to be a URI.
+
+The URI must be absolute and start with the scheme such as file: or ftp:,
+followed by the file name. Some examples:
+\begin{compactitem}
+\item \code{--scripts file:///\\home/user/scripts.zip}
+\item \code{--scripts ftp://\\exampe.com/scripts}
+\end{compactitem}
+
+The scripts can be in a directory or a container file. The container files
+can be compressed files in the Bzip2, Gzip, Jar or Zip format. Multiple
+scripts locations can be set. All set locations are concedered when searching
+for server scripts.
+
+\paragraph{profile}
+
+\statement{profile}{--profile \typestring}
+
+Sets the profile to activate. The profile name is searched in each of the
+script files in each of the set scripts locations that match the regular expression:
+
+\begin{compactitem}
+\item ``\code{.+Profile\textbackslash.\textbackslash{}w+\$}''
+\end{compactitem}
+
+The loaded profile will list the services that are deployed to the server.
+Each of the services are expected in it's own script file.
+
+\paragraph{server}
+
+\statement{server}{--server \typestring}
+
+Sets the server where the services are deployed. The string can be a IP address
+or a host name. The server is expected to run an instance of the server control
+application.
+
+Multiple server can be set with this parameter. Server and local flag can be
+used together.
+
+\paragraph{local}
+
+\statement{local}{--local}
+
+Flag that indicates that the services should be deployed on the local machine.
