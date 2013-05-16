@@ -1,0 +1,16 @@
+\begin{lstlisting}[style=Java,label=lst:dns_ubuntu_profile,caption=MaraDns Example Ubuntu Profile]
+profile "ubuntu_10_04", {
+    system {
+        install_command "/usr/bin/aptitude update && /usr/bin/aptitude install"
+        enable_repository_command "/usr/bin/add-apt-repository \"deb http://archive.ubuntu.com/ubuntu %1\$s %2\$s\""
+        system_packages "python-software-properties"
+    }
+    dns {
+        service "maradns"
+        packages "maradns"
+        configuration_directory "/etc/maradns"
+        restart_command "/etc/init.d/maradns restart"
+    }
+}
+\end{lstlisting}
+

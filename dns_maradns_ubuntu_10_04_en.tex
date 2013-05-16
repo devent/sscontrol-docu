@@ -1,0 +1,62 @@
+\subsection{MaraDNS - Ubuntu 10.04}
+
+Ubuntu 10.04 comes with MaraDNS version 1.3 in the main repository.
+
+\subsubsection{Properties}
+
+The values for the default properties can be found
+in \reftbl{tbl:database_mysql_ubuntu_10_04_properties}.
+
+\paragraph{install\_command}
+
+\property{database!install\_command}{install\_command \typestring}
+
+The command to install package on the Ubuntu system.
+
+\paragraph{restart\_command}
+
+\property{database!restart\_command}{restart\_command \typestring}
+
+The restart command for the MaraDNS server.
+
+\paragraph{mysqladmin\_command}
+
+\property{database!mysqladmin\_command}{mysqladmin\_command \typestring}
+
+The \command{database!mysqladmin}{mysqladmin} command.
+
+\paragraph{mysql\_command}
+
+\property{database!mysql\_command}{mysql\_command \typestring}
+
+The \command{database!mysql}{mysql} command.
+
+\paragraph{configuration\_directory}
+
+\property{database!configuration\_directory}{configuration\_directory \typestring}
+
+The path of the MaraDNS configuration directory.
+
+\paragraph{mysqld\_configuration\_file}
+
+\property{database!mysqld\_configuration\_file}{mysqld\_configuration\_file \typestring}
+
+The file name of the {@code mysqld} configuration file.
+
+\paragraph{packages}
+
+\property{database!packages}{packages \typelist}
+
+The packages needed for the MaraDNS service.
+
+\paragraph{default\_character\_set}
+
+\property{database!default\_character\_set}{default\_character\_set \typestring}
+
+The default character set for databases.
+
+\paragraph{default\_collate}
+
+\property{database!default\_collate}{default\_collate \typestring}
+
+The default collate for databases.
