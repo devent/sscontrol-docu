@@ -1,0 +1,73 @@
+\section{Profile}
+
+Die Profile beschreiben die Umgebungen in denen die
+Services einrichten soll. Ein typisches Profil enthält einen Namen,
+wie ``ubuntu'', und eine Auflistung
+der Services, die eingerichtet werden sollen. Nur die Services die in einem
+Profil gelistet sind werden verwaltet.
+
+Die Services werden in der Reihenfolge abgearbeitet, die sie im Profil stehen.
+Nur wenn ein Service erfolgreich abgeschlossen ist, wird das nächste Service eingerichtet.
+
+\subsection{Profile Direktiven}
+
+Ein Profilscript wird eingeleitet durch die \directive{profiles}.
+Danach wird ein neues Profil angelegt durch die
+\directive{create\_profile(name)}. Der \parameter{name} ist eine Zeichenfolge und
+bezeichnet das Profil. Das Profil kann durch diesen Namen ausgewählt werden. 
+Danach kommt eine Auflistung der
+Services, die verwalten werden sollen.
+
+Wie man am Beispiel sehen kann enthalten die Profildirektiven Anweisungen
+über die Ubuntu-Umgebung, also wo sich die Konfiguration befindet, welche
+Kommandos man für die Services braucht, usw.
+
+\begin{lstlisting}[style=Java, caption=Beispiel Profil eines Ubuntu Servers]
+profiles {
+	create_profile("ubuntu") {
+		system {
+			packages_install_command 'export DEBIAN_FRONTEND=noninteractive; /usr/bin/apt-get -q -y update && /usr/bin/apt-get -q -y install'
+			tmp_directory '/tmp'
+			wget_command '/usr/bin/wget -nv'
+			targz_command '/bin/tar xf'
+			local_bin_directory '/usr/local/bin'
+			chown_command '/bin/chown -R'
+			chmod_command '/bin/chmod -R'
+		}
+		hostname {
+			configuration_directory '/etc'
+			restart_command '/etc/init.d/hostname restart'
+			status_command '/bin/hostname'
+		}
+		hosts {
+			configuration_directory '/etc'
+			status_command '/bin/cat /etc/hosts'
+		}
+		database {
+			configuration_directory '/etc/mysql/conf.d'
+			restart_command '/sbin/restart mysql'
+			status_command '/sbin/status mysql'
+			
+			packages 'mysql-server, mysql-client'
+			
+			mysql_admin_command '/usr/bin/mysqladmin'
+			mysql_command '/usr/bin/mysql'
+			mysql_status_pattern 'Uptime.*'
+			
+		}
+		httpd {
+			configuration_directory '/etc/apache2'
+			restart_command '/etc/init.d/apache2 restart'
+			status_command '/usr/sbin/apache2ctl configtest 1> echo'
+			status_command_expected ''
+			
+			domain_web_directory_prefix '/var/www/$domain_name$/web'
+			domain_ssl_directory_prefix '/var/www/$domain_name$/ssl'
+			domain_page_directory_prefix '/var/www/$domain_name$/$page_name$/web'
+			
+			packages 'apache2'
+		}
+	}
+}
+\end{lstlisting}
+

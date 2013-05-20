@@ -1,0 +1,13 @@
+\section{Server Konfiguration}
+
+Wir werden den Server durch den SSH Service konfigurieren. Auf dem Server muss
+ein Benutzer eingerichtet sein, entweder direkt der root-Benutzer oder ein extra
+Benutzer, der durch sudo root-Rechte hat. Dieser Benutzer wird die
+Konfigurationsdateien des Servers ersetzen und die Services verwalten (starten,
+beenden, neu starten, status abfragen).
+
+\code{ssh <user>@<server> 'sudo /bin/echo "<config>" >
+/etc/httpd/apach2.conf'}
+
+\code{ssh <user>@<server> 'sudo /etc/init.d/apache2 start'}
+

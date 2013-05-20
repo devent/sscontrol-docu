@@ -1,0 +1,13 @@
+*.aux
+*.log
+*.out
+temp*
+.project
+.texlipse
+*~
+*.backup
+*.pdf
+*.toc
+*.kilepr
+.directory
+

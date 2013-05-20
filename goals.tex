@@ -1,0 +1,26 @@
+\section{Ziele}
+
+Das Ziel von \sscontrol{} ist es durch ein Script zu sagen welche Serverservices
+eingerichtet werden sollen und \sscontrol{} soll vollständig in der Lage sein
+diese Services einzurichten.
+
+Als Beispiel, wenn man dem \sscontrol{} durch ein Script eingibt einen Webserver
+einzurichten, dass mehrere Domains mit jeweils Drupal Seiten verwalten
+soll, dann enthält das Script nicht wie man einen Web Server einrichtet,
+sondern dass man einen Web Server haben will. \sscontrol{} wird sich
+eigenständig darum kümmern die Pakate zu installieren und die Domains mit den
+Drupal Seiten einzurichten.
+
+\sscontrol{} verwendet Konvention über Konfiguration mit der Hilfestellung von
+Profilen. Die Profile werden für den Zielserver eingerichtet und enthalten
+Informationen über die Umgebung und über die einzusetzenden Services.
+
+Zum Beispiel, ein Ubuntu Server muss anderes eingerichtet sein als ein RedHat
+Server, und Apache2 muss anderes eingerichtet werden als Lighthttpd.
+
+Diese Profile muss man nur einmal erstellen und dann kann man sie für
+verschiedene Konfigurationen des \sscontrol{} verwenden. Als Beispiel kann man
+das gleiche Profil verwenden um einen Webserver mit Domains in denen Drupal
+Seiten eingerichtet werden sollen und einen Dateiserver einzurichten, der FTP
+Zugriff für Benutzer liefert.
+

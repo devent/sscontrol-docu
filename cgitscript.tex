@@ -1,0 +1,168 @@
+\subsubsection{Cgit Script}
+
+\begin{lstlisting}[style=Java, caption=Beispiel Cgit Script mit Scan-Path]
+domain = "globalscalingsoftware.com"
+certFile = "www.${domain}.crt"
+certKeyFile = "www.${domain}.keyinsecure"
+
+server {
+  httpd {
+    domain "${domain}", "192.168.0.50", {
+      redirect_to_www
+      redirect_http_to_https
+    }
+    ssl_domain "${domain}", "192.168.0.50", {
+      certification_file certFile
+      certification_key_file certKeyFile
+      redirect_to_www
+
+      setup_cgit "gitpublic", {
+        title "Public Repositories"
+        description "Current public projects."
+        cache_size 1000
+        clone_prefix "git://${domain} ssh://gitpublic@${domain}"
+        repositories "/home/gitpublic/repositories", {
+          title "Public Projects"
+          repository "gitosis-admin.git", {
+            description "gitosis administration repository."
+            snapshots "tar.gz tar.bz2 zip"
+          }
+        }
+      }
+    }
+  }
+}
+\end{lstlisting}
+
+\begin{lstlisting}[style=Java, caption=Beispiel Cgit Script mit Scan-Path]
+...
+      setup_cgit "gitpublic", {
+        repositories_groups "gitpublic"
+        title "Public Repositories"
+        description "Current public projects."
+        cache_size 1000
+        clone_prefix "git://${domain} ssh://gitpublic@${domain}"
+        repositories "/home/gitpublic/repositories", {
+          title "Public Projects"
+          repository "gitosis-admin.git", {
+            description "gitosis administration repository."
+            snapshots "tar.gz tar.bz2 zip"
+          }
+        }
+...
+\end{lstlisting}
+
+
+\begin{lstlisting}[style=Java, caption=Beispiel Cgit Script ohne Scan-Path]
+...
+        repositories {
+          title "Public Projects"
+          repository "/home/gitpublic/repositories/gitosis-admin.git", {
+            description "gitosis administration repository."
+            snapshots "tar.gz tar.bz2 zip"
+          }
+        }
+      }
+    }
+  }
+}
+\end{lstlisting}
+
+Die Cgit Script Directiven befinden sich im setup\_cgit-Block. Das Beispiel
+zeigt eine Konfiguration mit minimalem Aufwand. Es wird der Titel und eine
+Beschreibung der Cgit-Seite gesetzt, URLs um die Git-Repositories klonen zu
+können und es wird eine Repositories-Kategorie konfiguriert. Die
+Repositories-Kategorie ist so eingestellt, dass Cgit in dem Verzeichnis
+automatisch nach Git-Repositories suchen wird. Für ein Repository setzen wir
+spezielle Parameter.
+
+Im folgendem werden die gültigen Direktive erklärt.
+
+\paragraph{setup\_cgit}
+
+\directive{setup\_cgit} erwartet a) eine Zeichenfolge, die das Root-Verzeichnis
+darstellt und b) den Direktive-Block. Wenn die \directive{repositories\_groups}
+nicht benutzt wird, dann ist das Root-Verzeichnis auch der Name der Gruppe des 
+Repository. Dies wird so von gitosis eingerichtet.
+
+\paragraph{repositories\_groups}
+
+Die \directive{repositories\_groups} erwartet eine Liste von Repository-Gruppen,
+denen das Repository gehört. Dies wird benutzt um den Apache2 Benutzer zu diesen
+Gruppen hinzuzufügen, falls die \directive{cgit\_update\_apache\_user} auf \code{true}
+gesetzt wurde.
+
+\paragraph{title}
+
+\directive{title} erwartet eine Zeichenfolge, der Titeltext der Cgit-Seite.
+
+\paragraph{description}
+
+\directive{description} erwartet eine Zeichenfolge, die Beschreibung der
+Cgit-Seite. Die Beschreibung wird unterhalb des Titels angezeigt.
+
+\paragraph{cache\_size}
+
+Die optionale \directive{clone\_prefix} erwartet eine positive Zahl wieviele Einträge im Cache gespeichert
+werden sollen. Wenn die Direktive nicht angegeben ist, werden als Standard 1000 Einträge im Cache gespeichert.
+
+\paragraph{clone\_prefix}
+
+\directive{clone\_prefix} erwartet eine Zeichenfolge, die eine Liste von
+Prefixen enthält, die für das klonen der Repositories verwendet wird. Die
+einzelnen Einträge in der Zeichenfolge können mit einem Leerzeichen oder einem
+Komma getrennt sein. Die \directive{clone\_prefix} kann auch mehrfach gesetzt
+sein, dann werden die jeweiligen Direktiven zu einer Liste der Prefixen
+zusammengefast.
+
+\begin{lstlisting}[style=Java, caption=Beispiele für die
+\directive{clone\_prefix}]
+clone_prefix "git://${domain} ssh://gitpublic@${domain}"
+clone_prefix "git://${domain}, ssh://gitpublic@${domain}"
+
+clone_prefix "git://${domain}"
+clone_prefix "ssh://gitpublic@${domain}"
+\end{lstlisting}
+
+\paragraph{repositories}
+
+\directive{repositories} leitet einen Block von Git-Repositories ein. Es ist
+eine optionale Zeichenfolgen möglich, ein Verzeichnis in dem Cgit automatisch
+nach Git-Repositories suchen soll. Wenn kein Verzeichnis angegeben worden ist,
+dann müssen die Repositories einzeln konfiguriert werden.
+
+\paragraph{repositories.title}
+
+\directive{title} erwartet eine Zeichenfolge, der Titeltext der
+Repositories-Gruppe.
+
+\paragraph{repositories.repository}
+
+\directive{repository} leitet einen Block ein, in dem man ein einzelnes
+Git-Repository konfigurieren kann.
+
+\paragraph{repository.description}
+
+\directive{description} erwartet eine Zeichenfolge, die Beschreibung des
+Git-Repository.
+
+\paragraph{repository.snapshots}
+
+\directive{snapshots} erwartet eine Zeichenfolge, die eine Liste von Dateitypen
+enthält, die man als Snapshots des Git-Repository herunder laden kann. Die
+\directive{snapshots} kann auch mehrfach gesetzt sein, dann werden die
+jeweiligen Direktiven zu einer Liste der Dateitypen zusammengefast.
+
+Falls eine leere Zeichenfolge gesetzt worden ist, dann werden die Snapshots für
+das Repository ausgeschaltet.
+
+\begin{lstlisting}[style=Java, caption=Beispiele für die \directive{snapshots}]
+snapshots ""
+
+snapshots "tar.gz tar.bz2 zip"
+snapshots "tar.gz, tar.bz2, zip"
+
+snapshots "tar.gz"
+snapshots "tar.bz2"
+snapshots "zip"
+\end{lstlisting}
