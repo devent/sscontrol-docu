@@ -4,7 +4,7 @@
 % License. To view a copy of this license, visit
 % http://creativecommons.org/licenses/by/3.0/ or send a letter to Creative
 % Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
-\ProvidesPackage{scrheadings}[2010/08/15 v1.0 Nice header with rightmark and leftmark and a footer with page number.]
+\ProvidesPackage{scrheadings}[2013/04/07 Header with rightmark and leftmark and a footer with page number.]
 
 % for \pagestyle{scrheadings}
 \RequirePackage{scrpage2}
@@ -12,19 +12,21 @@
 % for \pageref{LastPage}
 \RequirePackage{lastpage}
 
-% the logo to be used
+% the logo to be used, example:
 %   \includegraphics[height=1em]{logo}
-\newcommand{\logo}{\includegraphics[height=1em]{logo}}
+\newcommand{\TheHeadingLogo}{}
+
+\newcommand{\TheHeadingAuthor}{}
 
 % the character to be used to seperate the actual page and the total page number
-\newcommand{\pagenumsep}{/}
+\newcommand{\ThePagenumSep}{/}
 
 \pagestyle{scrheadings}
 \clearscrheadfoot
 \automark[section]{subsection}
-\ihead[]{\logo} 
+\ihead[]{\TheHeadingLogo~\TheHeadingAuthor} 
 \rohead[]{\rightmark}
 \lehead[]{\leftmark}
-\ofoot{\pagemark~\pagenumsep~\pageref{LastPage}}
+\ofoot{\pagemark~\ThePagenumSep~\pageref{LastPage}}
 \setheadsepline[1.0\textwidth]{1pt}
 

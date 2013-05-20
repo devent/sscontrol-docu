@@ -1,14 +1,21 @@
 \subsection{Hostname Script}
 
-\paragraph{hostname}
+\input{hostname_script_statements_en}
 
-\statement{hostname}{hostname \{...\}}
+\TheStatement{hostname}
+\Statement{hostname \{ set \}}
 
 Entry point in the hostname script.
 
-\paragraph{set}
+\TheStatement[hostname:set]{set}
+\TheStatement*[hostname!set]{set: \TypeString}
 
-\statement{hostname!set}{set \typestring}
+The host name.
 
-Sets the host name.
-
+\begin{lstlisting}[style=Sscontrol,
+label={lst:hostname_example_script},
+title={Sets the host name.}]
+hostname {
+    set "test"
+}
+\end{lstlisting}

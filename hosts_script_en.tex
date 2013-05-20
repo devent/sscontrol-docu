@@ -1,26 +1,33 @@
 \subsection{Hosts Script}
 
-\paragraph{hosts}
+\input{hosts_script_statements_en}
 
-\statement{hosts}{hosts \{...\}}
+\TheStatement{hosts}
+\Statement{hosts \{ ip host alias \}}
 
 Entry point in the hosts script.
 
-\paragraph{ip}
-
-\statement{hosts!ip}{ip \typestring}
-
-Adds a new host entry with the specified IP address.
-
-\paragraph{host}
-
-\statement{hosts!host}{host \typestring}
+\TheStatement[hosts:ip]{ip}
+\TheStatement*[hosts!ip]{ip \TypeString}
 
 Adds a new host entry with the specified IP address.
 
-\paragraph{alias}
+\TheStatement[hosts:host]{host}
+\TheStatement*[hosts!host]{host \TypeString}
 
-\statement{hosts!alias}{alias \typelist}
+Adds a new host entry with the specified IP address.
+
+\TheStatement[hosts:alias]{alias}
+\TheStatement*[hosts!alias]{alias \TypeList}
 
 Optionally, adds the specified aliases for the host.
+
+\begin{lstlisting}[style=Sscontrol,
+label={lst:hosts_example_script},
+title={Adds IP addresses and the host name.}]
+hosts {
+    ip "192.168.0.49" host "srv1.ubuntutest.com" alias "srv1"
+    ip "192.168.0.50" host "srv1.ubuntutest.org" alias "srva", "srvb"
+}
+\end{lstlisting}
 

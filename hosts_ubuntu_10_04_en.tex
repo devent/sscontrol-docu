@@ -1,27 +1,46 @@
 \subsection{Hostname - Ubuntu 10.04}
 
-Ubuntu 10.04 comes with hosts file.
+Ubuntu 10.04 comes with the hosts file.
+The properties below have already set meaningful default values.
 
-\subsubsection{Properties}
-
-The values for the default properties can be found
-in \reftbl{tbl:hosts_ubuntu_10_04_properties}.
-
-\paragraph{configuration\_directory}
-
-\property{hosts!configuration\_directory}{configuration\_directory \typestring}
+\TheProperty[hosts:configuration_directory]{configuration\_\\directory}
+\TheProperty*[hosts!configuration\_directory]{configuration\_directory \TypeString}
 
 The path of the hosts configuration directory.
+Default value set to \qcode{/etc} for the configuration file \qcode{/etc/hosts}.
 
-\paragraph{configuration\_file}
-
-\property{hosts!configuration\_file}{configuration\_file \typestring}
+\TheProperty[hosts:configuration_file]{configuration\_\\file}
+\TheProperty*[hosts!configuration\_file]{configuration\_file \TypeString}
 
 The file name of the {@code hosts} configuration file.
+Default value set to \qcode{hosts}. This is a text file that contains 
+the IP addresses, the host name and optional aliases on each line.
 
-\paragraph{default\_hosts}
-
-\property{hosts!default\_hosts}{default\_hosts \typelist}
+\TheProperty[hosts:default_hosts]{default\_hosts}
+\TheProperty*[hosts!default\_hosts]{default\_hosts \TypeList}
 
 A list of the default hosts.
+Defaults to the IP addresses and the host names:
+\begin{compactitem}
+\item ``127.0.0.1'' -- localhost.localdomain -- localhost;
+\item ``::1'' -- localhost6.localdomain6 -- localhost6;
+\end{compactitem}
+
+\begin{lstlisting}[style=numbers,
+label={lst:hosts_ubuntu_default_hosts},
+title={Default Ubuntu 10.04 hosts}]
+'address:"127.0.0.1";name:"localhost.localdomain";aliases:["localhost"],address:"::1";name:"localhost6.localdomain6";aliases:["localhost6"]'
+\end{lstlisting}
+
+\begin{lstlisting}[style=Sscontrol,
+label={lst:hosts_ubuntu_profile},
+title={Ubuntu hostname profile.}]
+profile "ubuntu_10_04", {
+    system {
+    }
+    hosts {
+        configuration_directory "/etc"
+    }
+}
+\end{lstlisting}
 

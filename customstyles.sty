@@ -1,0 +1,111 @@
+\ProvidesPackage{customstyles}[2013/04/08 Custom styles for the document]
+\RequirePackage{suffix}
+\RequirePackage{ulem}
+\RequirePackage{emptyspacecolumns}
+\RequirePackage{listingstyles}
+\RequirePackage{groovylstlang}
+\RequirePackage{noparinent}
+\RequirePackage{fmtcount}
+\RequirePackage{microtype}
+\RequirePackage{xspace}
+\RequirePackage{ifthen}
+\RequirePackage{longtable}
+
+%%%%
+% Format chapter, section and paragraph
+%
+\newcommand{\FontTitle}{\fontsize{36}{36}\selectfont\textls*[200]}
+\setkomafont{title}{\bfseries\sffamily\scshape}
+\setkomafont{chapter}{\Huge\bfseries\sffamily\scshape}
+\setkomafont{section}{\normalfont\large\bfseries\itshape\textsf}
+\setkomafont{subsection}{\normalfont\large\itshape\textsf}
+\setkomafont{subsubsection}{\normalfont\textsf\normalsize\uline}
+\setkomafont{paragraph}{\normalsize\normalfont\itshape}
+\setkomafont{subparagraph}{\normalsize\normalfont\itshape}
+\newcommand{\FontAuthor}{\normalsize}
+\newcommand{\FontDate}{\normalsize}
+\newcommand{\FontPublishers}{\normalsize}
+\renewcommand*{\chapterformat}{\makebox[0pt][r]{\chapappifchapterprefix{\ }\thechapter\autodot\enskip}\noindent}
+\renewcommand*{\othersectionlevelsformat}[3]{\makebox[0pt][r]{#3\autodot\enskip}}
+%%%%
+
+%%%%
+% hyphenation for code
+\DeclareTextFontCommand{\hytexttt}{\ttfamily\hyphenchar\font=45\relax}
+%
+\newcommand{\initmarginpar}[1]{\leavevmode\marginpar{\flushright{#1}}\ignorespaces}
+\newcommand{\AutoLabel}[2][empty]{\ifthenelse{\equal{#1}{empty}}{\label{ex:#2}}{\label{ex:#1}}}
+\newcommand{\AutoRef}[2][empty]{\ifthenelse{\equal{#1}{empty}}{\ref{ex:#2}}{\ref{ex:#1}}}
+\newcommand{\AutoIdx}[2][empty]{\ifthenelse{\equal{#1}{empty}}{\index{#2}}{\index{#1}}}
+% Different formats
+% Statement
+\definecolor{StatementColor}{named}{MediumBlue}
+\newcommand{\TheStatement}[2][empty]{\AutoLabel[#1]{#2}\initmarginpar{\textcolor{StatementColor}{\ttfamily\bfseries#2}}}
+\WithSuffix\newcommand\TheStatement*[2][empty]{\AutoIdx[#1]{#2}{\ttfamily\bfseries#2}}
+\newcommand{\Statement}[1]{{\ttfamily\bfseries#1}}
+\WithSuffix\newcommand\Statement*[2][empty]{\Statement{#2} (\AutoRef[#1]{#2})}
+% Properties
+\definecolor{PropertyColor}{named}{DarkBlue}
+\newcommand{\TheProperty}[2][empty]{\AutoLabel[#1]{#2}\initmarginpar{\textcolor{PropertyColor}{\ttfamily\bfseries#2}}}
+\WithSuffix\newcommand\TheProperty*[2][empty]{\AutoIdx[#1]{#2}{\ttfamily\bfseries#2}}
+\newcommand{\Property}[1]{{\ttfamily\bfseries#1}}
+\WithSuffix\newcommand\Property*[2][empty]{\Property{#2} (\AutoRef[#1]{#2})}
+% Types
+\newcommand{\Type}[1]{\textit{#1}\xspace}
+\newcommand{\TypeString}{\textit{string}\xspace}
+\newcommand{\TypeList}{\textit{list}\xspace}
+\newcommand{\TypeTrue}{\textit{true}\xspace}
+\newcommand{\TypeFalse}{\textit{false}\xspace}
+%%%%
+% variable typewriter font
+\newcommand\textvtt[1]{{\normalfont\fontfamily{cmvtt}\selectfont #1}\xspace}
+% code
+\newcommand{\code}[1]{\textvtt{\bfseries #1}}
+\newcommand{\qcode}[1]{\textvtt{\bfseries ``#1''}}
+% arguments
+\definecolor{ArgsColor}{named}{Green}
+\newcommand{\Arg}[1]{\textit{\textcolor{ArgsColor}{#1}}}
+%%%%
+% Table for a type
+\newcommand{\TypeTable}[2]{%
+\begin{small}
+\sffamily
+\begin{tabular}{l}
+\toprule
+#1
+\midrule
+#2
+\bottomrule
+\end{tabular} 
+\end{small}
+}
+% table head column
+\newcommand{\cbf}[2]{\multicolumn{1}{#1}{\textbf{#2}}}
+% left align column
+\newcommand{\mcl}[2]{\multicolumn{#1}{l}{#2}}
+
+\newcounter{Feature}
+\newcommand{\printTheFeature}{\stepcounter{Feature}\padzeroes[2]{\decimal{Feature}}}
+\newcommand{\TheFeature}{\padzeroes[2]{\decimal{Feature}}}
+
+\reversemarginpar
+
+%%%%
+% Format listings
+\lstdefinelanguage{Sscontrol}[]{Groovy}{%
+morekeywords={},
+morekeywords=[2]{hostname,set,profile,system,hosts,ip,host,alias},
+morekeywords=[3]{install_command,restart_command,configuration_directory,configuration_file,packages,default_hosts}
+}
+
+\lstdefinestyle{Sscontrol}{
+    language=Sscontrol, style=numbers, basicstyle=\small,
+    keywordstyle=\color{red},
+    keywordstyle=[1]\color{DarkMagenta}\textbf,
+    keywordstyle=[2]\color{StatementColor},
+    keywordstyle=[3]\color{PropertyColor},
+    keywordstyle=[4],
+}
+%%%%
+
+
