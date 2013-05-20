@@ -1,0 +1,25 @@
+\section{Services}
+
+Die Services werden durch Scripte eingerichtet. In den Scripten steht eine
+Beschreibung dessen, was man eingerichtet haben möchte, nicht wie. 
+
+Als Beispiel,
+ein Httpd Servicescript enthält Anweisungen verschiedene Domains einzurichten,
+die verschiedene Seiten liefern. Wir beschreiben nicht wie man den Apache2
+Webserver einrichtet, sondern nur die Anweisungen, dass wir diese Domains gerne
+hätten. Es ist die Aufgabe des \sscontrol{} die Konfiguration für den Apach2
+Webserver zu erstellen und ihn einzurichten. Diese Aufgabe löst \sscontrol{} mit
+Hilfe der Profile.
+
+Dadurch dass wir diese Konfiguration abstrahieren können wir das benutzte Profil
+austauschen. Z.B. Profil A enthält Anweisungen wie man einen Ubuntu Server mit
+dem Apache2 Webserver einrichtet und Profil B enthält Anweisungen wie man einen
+RedHat Server mit Lighthttpd einrichtet. Man kann nun Profil A durch Profil B
+ersetzen und \sscontrol{} wird die gleichen Domains mit den gleichen Seiten
+einrichten.
+
+\input{hostnameservice}
+\input{hostsservice}
+\input{databaseservice}
+\input{httpd}
+

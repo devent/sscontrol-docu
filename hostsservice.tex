@@ -1,0 +1,79 @@
+\subsection{Hosts Service}
+
+Unter Linux Systemen ist es üblich in der \code{/etc/hosts} Datei bekannte
+Hostnamen und deren IP-Adressen zu speichern. Mit dieser Datei kann das System
+Hostnamen auflösen ohne einen DNS-Server.
+
+Mit dem Hosts Service können wir diese statische Liste der bekannten Hostnamen und
+deren IP Adresse konfigurieren lassen.
+
+\subsubsection{Hosts Profil}
+
+Das Hostname Profil wird eingeleitet durch die \directive{hosts}. Gefolgt von
+den folgenden zwei Direktiven:
+
+\paragraph{\directive{configuration\_directory}}
+
+beschreibt in welchem Verzeichnis
+sich die Konfiguration für die Hosts befinden. Unter Ubuntu und Debian
+Systemen wird die Konfiguration in der Datei \code{/etc/hosts} gespeichert,
+somit ist es das Verzeichnis \code{/etc}.
+
+\paragraph{\directive{status\_command}}
+
+enthält das Kommando mit dem man die eingestellten Hosts abfragen kann. Es gibt
+eigentlich kein Kommando, dass so einen Status abfragen kann da es nur normalerweise
+nur die Datei \code{/etc/hosts} gibt. Wir können uns daher dem Kommando \code{cat}
+bedienen, dass den Inhalt der Datei \code{/etc/hosts} auslesen kann.
+
+\begin{lstlisting}[style=Java, caption=Beispiel Hosts Profil Ubuntu Server]
+profiles {
+	create_profile("ubuntu") {
+		hostname {
+			configuration_directory '/etc'
+			status_command '/bin/cat /etc/hosts'
+		}
+	}
+}
+\end{lstlisting}
+
+\subsubsection{Hosts Script}
+
+Das Script enthält ein oder mehrere \directive{host}, dass ein oder mehrere
+\directive{alias} anthalten kann.
+
+\paragraph{\directive{hosts}}
+
+Repräsentiert einen neuen Host mit der dazugehörigen IP Adresse. Braucht die zwei
+Parameter:
+
+\begin{asparadesc}
+\item[\code{ip}] eine Zeichenfolge mit der IP Adresse des Host und
+\item[\code{hostname}] der Name des Host, als eine Zeichenfolge.
+\end{asparadesc}
+
+\paragraph{\directive{alias}}
+
+eine Zeichenfolge, die den Pseudonym des Host angibt.
+
+\subsubsection*{Beispiel Listing}
+
+\begin{lstlisting}[style=Java, caption=Beispiel Hosts Script]
+server {
+	host ip: '127.0.0.1', hostname: 'localhost'
+	host(ip: '192.168.0.49', hostname: 'srv1a.globalscalingsoftware.com') {
+		alias 'srv1'
+		alias 'srv1a'
+	}
+	host(ip: '192.168.0.50', hostname: 'srv1b.globalscalingsoftware-projects.com') {
+		alias 'srv1b'
+	}
+}
+\end{lstlisting}
+
+\begin{asparadesc}
+\item[Zeile 2] zeigt die einfachste Form der \directive{host} an. Es wird ein Hosteintrag
+erstellt, mit dem Hostnamen ``localhost'' und der IP Adresse ``127.0.0.1'';
+\item[Zeile 3 und 6] zeigt die die \directive{host} mit einem oder mehreren Pseudonymen für einen Host.
+\end{asparadesc}
+
