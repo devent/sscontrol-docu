@@ -1,19 +1,39 @@
-\subsection{Hostname - Ubuntu 10.04}
+\subsection{Hosts - Profile}
 
-Ubuntu 10.04 comes with the hosts file.
-The properties below have already set meaningful default values.
+The distributions have the hosts file
+\begin{compactitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 14.04,
+\item[\TheDistribution{debian}] Debian.
+\end{compactitem}
 
 \TheProperty[hosts:configuration_directory]{configuration\_\\directory}
 \TheProperty*[hosts!configuration\_directory]{configuration\_directory \TypeString}
 
 The path of the hosts configuration directory.
-Default value set to \qcode{/etc} for the configuration file \qcode{/etc/hosts}.
+For the distributions 
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 14.04,
+\item[\TheDistribution{debian}] Debian,
+\end{inparaitem}
+the value is set to \qcode{/etc} so that the hosts configuration 
+file can be found in \qcode{/etc/hosts}.
 
 \TheProperty[hosts:configuration_file]{configuration\_\\file}
 \TheProperty*[hosts!configuration\_file]{configuration\_file \TypeString}
 
 The file name of the {@code hosts} configuration file.
-Default value set to \qcode{hosts}. This is a text file that contains 
+For the distributions 
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 14.04,
+\item[\TheDistribution{debian}] Debian,
+\end{inparaitem}
+the value is set to \qcode{hosts}. This is a text file that contains 
 the IP addresses, the host name and optional aliases on each line.
 
 \TheProperty[hosts:default_hosts]{default\_hosts}
@@ -25,12 +45,6 @@ Defaults to the IP addresses and the host names:
 \item ``127.0.0.1'' -- localhost.localdomain -- localhost;
 \item ``::1'' -- localhost6.localdomain6 -- localhost6;
 \end{compactitem}
-
-\begin{lstlisting}[style=numbers,
-label={lst:hosts_ubuntu_default_hosts},
-title={Default Ubuntu 10.04 hosts}]
-'address:"127.0.0.1";name:"localhost.localdomain";aliases:["localhost"],address:"::1";name:"localhost6.localdomain6";aliases:["localhost6"]'
-\end{lstlisting}
 
 \begin{lstlisting}[style=Sscontrol,
 label={lst:hosts_ubuntu_profile},
