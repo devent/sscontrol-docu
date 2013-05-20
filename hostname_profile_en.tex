@@ -1,15 +1,27 @@
-\subsection{Hostname - Ubuntu 10.04}
+\subsection{Hostname - Profile}
 
-Ubuntu 10.04 comes with hostname version 3.03 in the main repository.
-The properties below have already set meaningful default values.
+The hostname comes in the distributions 
+\begin{compactitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04 in version 3.03 in the main repository;
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 14.04,
+\item[\TheDistribution{debian}] Debian,
+\end{compactitem}
 
 \subsubsection*{System}
 
 \TheProperty[hostname:install_command]{install\_\\command}
 \TheProperty*[hostname!install\_command]{install\_command \TypeString}
 
-The command to install package on the Ubuntu system.
-Default value set to \qcode{/usr/bin/aptitude update \&\& /usr/bin/aptitude install}.
+The command to install package on the system.
+For the distributions 
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 14.04,
+\item[\TheDistribution{debian}] Debian,
+\end{inparaitem}
+the value is set to \qcode{/usr/bin/aptitude update \&\& /usr/bin/aptitude install}.
 
 \subsubsection*{Hostname}
 
@@ -17,27 +29,43 @@ Default value set to \qcode{/usr/bin/aptitude update \&\& /usr/bin/aptitude inst
 \TheProperty*[hostname!restart\_command]{restart\_command \TypeString}
 
 The command to reload the hostname.
-Default value set to \qcode{/sbin/restart hostname}
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to \qcode{/sbin/restart hostname}.
 
 \TheProperty[hostname:configuration_directory]{configuration\_\\directory}
 \TheProperty*[hostname!configuration\_directory]{configuration\_directory \TypeString}
 
 The path of the hostname configuration directory.
-Default value set to \qcode{/etc}, so that the hostname configuration
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to \qcode{/etc}, so that the hostname configuration
 file can be found in \qcode{/etc/hostname}.
 
 \TheProperty[hostname:configuration_file]{configuration\_\\file}
 \TheProperty*[hostname!configuration\_file]{configuration\_file \TypeString}
 
 The file name of the {@code hostname} configuration file.
-Default value set to the file \qcode{hostname}. The hostname configuration
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to the file \qcode{hostname}. The hostname configuration
 file is normally found in \qcode{/etc}.
 
 \TheProperty[hostname:packages]{packages}
 \TheProperty*[hostname!packages]{packages \TypeList}
 
 The packages needed for the hostname service.
-Default value set to the package \qcode{hostname}.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to the package \qcode{hostname}.
 
 \begin{lstlisting}[style=Sscontrol,
 label={lst:hostname_ubuntu_profile},
