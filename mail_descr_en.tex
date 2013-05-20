@@ -1,0 +1,38 @@
+\subsection{Description}
+
+The mail service conists of the following processes.
+
+\paragraph{Transport}
+
+The mail transport is to receive emails for users and send emails to domains.
+For the transport the services
+\service{sendmail}{sendmail}\cite{sendmail},
+\service{postfix}{postfix}\cite{postfix} or
+\service{exim}{exim}\cite{exim}
+are available, for example.
+
+\subparagraph{Postfix MySQL}
+
+Postfix can be configured to use MySQL to manage users, domains and aliases.
+
+\paragraph{Delivery}
+
+The mail delivery is for the users to read the emails and is done with the POP or IMAP
+protocols. For the derlivery the services
+\service{dovecot}{dovecot}\cite{dovecot} or
+\service{courier}{courier}\cite{courier}
+are available, for example.
+
+\paragraph{Spam Detection}
+
+Spam detection is optional but is recommendet.
+\service{amavisd}{amavisd}\cite{amavisd} will bring together Spam detection and anti-virus.
+\service{SpamAssassin}{SpamAssassin}\cite{SpamAssassin}
+and \service{postgrey}{postgrey}\cite{postgrey}, for example.
+
+\paragraph{Anti-Virus}
+
+Anti-virus detection is optional but is recommendet.
+\service*{amavisd} will bring together Spam detection and anti-virus.
+The service \service{clam-av}{clam-av}\cite{clam-av} can be used, for example.
+

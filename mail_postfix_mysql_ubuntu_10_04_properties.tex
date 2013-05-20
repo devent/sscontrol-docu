@@ -1,0 +1,36 @@
+\begin{longtable}{lp{0.5\textwidth}}
+\multicolumn{2}{l}{Other Properties} \\*
+\toprule
+\endfirsthead
+\endhead
+\caption{Postfix MySQL Ubuntu 10.04 Properties}
+\label{tbl:mail_postfix_mysql_ubuntu_10_04_properties}
+\endlastfoot
+%
+packages &
+\code{"postfix-mysql"} \\
+%
+virtual\_mailbox\_base &
+\code{"/var/spool/mail/virtual"} \\
+%
+virtual\_mailbox\_maps &
+\code{"mysql:\$\{configuration\_directory\}/
+mysql\_mailbox.cf"} \\
+%
+virtual\_alias\_maps &
+\code{"mysql:\$\{configuration\_directory\}/
+mysql\_alias.cf"} \\
+%
+virtual\_mailbox\_domains &
+\code{"mysql:\$\{configuration\_directory\}/
+mysql\_domains.cf"} \\
+%
+virtual\_uid\_maps &
+\code{"static:5000"} \\
+%
+virtual\_gid\_maps &
+\code{"static:5000"} \\
+%
+\end{longtable}
+
+

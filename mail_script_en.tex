@@ -1,0 +1,153 @@
+\subsection{Mail Script}
+
+\paragraph{mail}
+
+\statement{mail}{mail \{...\}}
+
+Entry point in the mail script.
+
+\paragraph{name}
+
+\statement{mail!name}{name \typestring}
+
+The domain name of the server.
+
+\paragraph{origin}
+
+\statement{mail!origin}{origin \typestring}
+
+The domain name that locally-posted mail appears to come
+from, and that locally posted mail is delivered to.
+
+\paragraph{bind\_addresses}
+
+\property{mail!bind\_addresses}{bind\_addresses \literalall$|$\literalloopback$|$\typestring}
+
+The network interface addresses that this mail system receives mail on.
+Specify \literalall{} to receive mail on all network interfaces,
+and \literalloopback{} to receive mail on loopback network interfaces only.
+Defaults to \literalall.
+
+\paragraph{masquerade}
+
+\statement*{masquerade \{ }\\
+\statement*{[domain \typelist] }\\
+\statement*{[user \typelist] \} }
+
+\paragraph{masquerade}
+
+\statement{mail!masquerade}{masquerade \{ \dots \}}
+
+Starts a list of domains and users to masquerade. Masqueraded domains and
+users are stripped off of their subdomain structure in email addresses.
+A domain name prefixed with ``!'' means do not masquerade this domain
+or its subdomains.
+
+\paragraph{domain}
+
+\statement{mail!masquerade!domain}{domain \typelist}
+
+Sets the domains to masquerade.
+
+\paragraph{user}
+
+\statement{mail!masquerade!user}{user \typelist}
+
+Sets the list of user names that are not subjected to address masquerading.
+
+\paragraph{certificate}
+
+\statement*{certificate }\\
+\statement*{file: \typestring,}\\
+\statement*{key: \typestring,}\\
+\statement*{ca: \typestring}
+
+Defines the location of the certificate files for TLS.
+
+\paragraph{file}
+
+\statement{mail!certificate!file}{file \typestring{}}
+
+The location of the certificate file.
+
+\paragraph{key}
+
+\statement{mail!certificate!key}{key \typestring{}}
+
+The location of the certificate key file.
+
+\paragraph{ca}
+
+\statement{mail!certificate!ca}{ca \typestring{}}
+
+The location of the certificate CA file.
+
+\paragraph{domain}
+
+\statement*{domain \typestring{} \{}\\
+\statement*{catchall \dots}\\
+\statement*{alias \dots}\\
+\statement*{user \dots}\\
+\statement*{enabled \typeboolean}\\
+\statement*{\}}
+
+Adds domains that are known to the mail server. A domain can have a catch-all
+alias, other aliases, users and an enabled flag. The current domain is appended
+to aliases and users without a domain part. So for example the user ``xandros''
+in the ``blobber.org'' domain will have the address ``xandros@blobber.org''.
+
+\paragraph{catchall}
+
+\statement{mail!domain!catchall}{catchall destination: \typestring{}}
+
+Creates a catch-all alias to the current destination. The catch-all is equal
+to the alias ``@domain'', where the ``domain'' is the current domain name.
+
+Example:
+
+\begin{compactitem}
+\item ``\code{catchall destination: "@blobber.org"}''
+\item ``\code{catchall destination: "xandros@blobber.org"}''
+\end{compactitem}
+
+\paragraph{alias}
+
+\statement*{alias \typestring{}, destination \typestring}\\
+\statement*{[\{ enabled \typeboolean \}]}\\
+
+\paragraph{alias}
+
+\statement{mail!domain!alias}{alias \typestring, destination: \typestring{}}
+
+Creates a new alias with the specified destination. The current domain is appended
+to the aliases without a domain part. So for example the alias ``karl''
+in the ``blobber.org'' domain will have the address ``karl@blobber.org''.
+
+Example:
+
+\begin{compactitem}
+\item ``\code{alias "karl", destination: "karl.vovianda@galias.com"}''
+\item ``\code{alias "postmaster@blobber.org", destination: "postmaster@\\localhost"}''
+\end{compactitem}
+
+\paragraph{enabled}
+
+\statement{mail!domain!enabled}{enabled \typeboolean}
+
+Sets the enabled flag on a domain, user or alias. Disabled domains, users or
+aliases are ignored by the mail server.
+
+\paragraph{user}
+
+\statement*{user \typestring{}, password \typestring}\\
+\statement*{[\{ enabled \typeboolean \}]}\\
+
+\paragraph{user}
+
+\statement{mail!domain!user}{user \typestring, password: \typestring{}}
+
+Adds a new user with the specified passwrod for the domain.
+The current domain is appended
+to the users without a domain part. So for example the user ``karl''
+in the ``blobber.org'' domain will have the address ``karl@blobber.org''.
+
