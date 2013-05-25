@@ -10,9 +10,10 @@ The hostname comes in the distributions
 \subsubsection*{System}
 
 \TheProperty[hostname:install_command]{install\_\\command}
-\TheProperty*[hostname!install\_command]{install\_command \TypeString}
+\TheProperty*[hostname!install\_command]{install\_command \Arg{command}}
 
-The command to install package on the system.
+The \Arg{command} to install package on the system. Can be a full path or
+just the command name that can be found in the current search path. 
 For the distributions 
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 10.04,
@@ -24,9 +25,10 @@ the value is set to \qcode{/usr/bin/aptitude update \&\& /usr/bin/aptitude insta
 \subsubsection*{Hostname}
 
 \TheProperty[hostname:restart_command]{restart\_\\command}
-\TheProperty*[hostname!restart\_command]{restart\_command \TypeString}
+\TheProperty*[hostname!restart\_command]{restart\_command \Arg{command}}
 
-The command to reload the hostname.
+The \Arg{command} to reload the hostname. Can be a full path or
+just the command name that can be found in the current search path.
 For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 10.04
@@ -34,9 +36,10 @@ For the distribution
 the value is set to \qcode{/sbin/restart hostname}.
 
 \TheProperty[hostname:configuration_directory]{configuration\_\\directory}
-\TheProperty*[hostname!configuration\_directory]{configuration\_directory \TypeString}
+\TheProperty*[hostname!configuration\_directory]{configuration\_directory \Arg{command}}
 
-The path of the hostname configuration directory.
+The path of the hostname configuration directory. Can be a full path or
+just the command name that can be found in the current search path.
 For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 10.04
@@ -45,36 +48,24 @@ the value is set to \qcode{/etc}, so that the hostname configuration
 file can be found in \qcode{/etc/hostname}.
 
 \TheProperty[hostname:configuration_file]{configuration\_\\file}
-\TheProperty*[hostname!configuration\_file]{configuration\_file \TypeString}
+\TheProperty*[hostname!configuration\_file]{configuration\_file \Arg{name}}
 
-The file name of the {@code hostname} configuration file.
+The file \Arg{name} of the host name configuration file. The configuration file
+is places inside the specified configuration directory.
 For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 10.04
 \end{inparaitem}
 the value is set to the file \qcode{hostname}. The hostname configuration
-file is normally found in \qcode{/etc}.
+file is normally found in the directory \qcode{/etc}.
 
 \TheProperty[hostname:packages]{packages}
-\TheProperty*[hostname!packages]{packages \TypeList}
+\TheProperty*[hostname!packages]{packages \Arg{packages}}
 
-The packages needed for the hostname service.
+The list of \Arg{packages} needed for the hostname service. The packages
+are installed with the specified installation command.
 For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 10.04
 \end{inparaitem}
 the value is set to the package \qcode{hostname}.
-
-\begin{lstlisting}[style=Sscontrol,
-label={lst:hostname_ubuntu_profile},
-title={Ubuntu hostname profile.}]
-profile "ubuntu_10_04", {
-    system {
-        install_command "/usr/bin/aptitude update && /usr/bin/aptitude install"
-    }
-    hostname {
-        configuration_directory "/etc"
-        restart_command "/sbin/restart hostname"
-    }
-}
-\end{lstlisting}

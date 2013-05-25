@@ -10,6 +10,7 @@
 \RequirePackage{xspace}
 \RequirePackage{ifthen}
 \RequirePackage{longtable}
+\RequirePackage{rcfilelang}
 
 %%%%
 % Format chapter, section and paragraph
@@ -102,9 +103,9 @@ morekeywords={},
 morekeywords=[2]{hostname,set,profile,system,hosts,ip,host,alias},
 morekeywords=[3]{install_command,restart_command,configuration_directory,configuration_file,packages,default_hosts}
 }
-
 \lstdefinestyle{Sscontrol}{
-    language=Sscontrol, style=numbers, basicstyle=\small,
+    language=Sscontrol, 
+    style=numbers, 
     keywordstyle=\color{red},
     keywordstyle=[1]\color{DarkMagenta}\textbf,
     keywordstyle=[2]\color{StatementColor},
