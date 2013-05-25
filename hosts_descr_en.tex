@@ -1,0 +1,17 @@
+\subsection{Hosts Description}
+
+The hosts file is a list of IP addresses and their host names, with optional
+aliases. This list is used to loop up which host name belongs to what 
+IP address and wise versa. The hosts service can add new entries or change
+old entries in the hosts file. The profile can be set to include a default
+list of entries to be included.
+
+An entry is identifiert by the IP address. If the same IP address is found
+in the hosts file then the entry is updated with the host name and aliases
+specified in the script file. If the IP address is not found then the 
+entry is a new entry and will be added in the hosts file. Unknown host entries
+are not modified by the script.
+
+The hosts file normally contains a default set of entries, which are the local
+host in the local domain. Such default hosts can be set as a profile property
+and can be customized to the server type.
