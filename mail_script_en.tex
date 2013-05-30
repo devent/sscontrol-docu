@@ -1,104 +1,86 @@
 \subsection{Mail Script}
+\input{mail_script_statements}
 
-\paragraph{mail}
-
-\statement{mail}{mail \{...\}}
+\TheStatement{mail}
+\TheStatement*[mail]{mail \{ name origin masquerade certificate domain \}}
 
 Entry point in the mail script.
 
-\paragraph{name}
+\TheStatement[mail:name]{name}
+\TheStatement*[mail!name]{name \Arg{name}}
 
-\statement{mail!name}{name \typestring}
+The domain \Arg{name} of the server.
 
-The domain name of the server.
+\TheStatement[mail:origin]{origin}
+\TheStatement*[mail!origin]{origin \Arg{name}}
 
-\paragraph{origin}
-
-\statement{mail!origin}{origin \typestring}
-
-The domain name that locally-posted mail appears to come
+The domain \Arg{name} that locally-posted mail appears to come
 from, and that locally posted mail is delivered to.
 
-\paragraph{bind\_addresses}
-
-\property{mail!bind\_addresses}{bind\_addresses \literalall$|$\literalloopback$|$\typestring}
+\TheStatement[mail:bind_addresses]{bind\_addresses}
+\TheStatement*[mail!bind\_addresses]{bind\_addresses all|loopback|\Arg{addresses}}
 
 The network interface addresses that this mail system receives mail on.
-Specify \literalall{} to receive mail on all network interfaces,
-and \literalloopback{} to receive mail on loopback network interfaces only.
-Defaults to \literalall.
+Specify all to receive mail on all network interfaces,
+and loopback to receive mail on loopback network interfaces only. Otherwise
+a list of \Arg{addresses} can be specified.
+Defaults to all.
 
-\paragraph{masquerade}
+\TheStatement[mail:destinations]{destinations}
+\TheStatement*[mail!destinations]{destinations \Arg{domains}}
 
-\statement*{masquerade \{ }\\
-\statement*{[domain \typelist] }\\
-\statement*{[user \typelist] \} }
+Additional list of \Arg{domains} that are delivered to local mail users.
+Do not specify names of virtual domains, those domains are specified
+in the \Statement*[mail:domain]{domain} statements.
 
-\paragraph{masquerade}
-
-\statement{mail!masquerade}{masquerade \{ \dots \}}
+\TheStatement[mail:masquerade]{masquerade}
+\TheStatement*[mail!masquerade]{masquerade \{ domains user \}}
 
 Starts a list of domains and users to masquerade. Masqueraded domains and
 users are stripped off of their subdomain structure in email addresses.
 A domain name prefixed with ``!'' means do not masquerade this domain
 or its subdomains.
 
-\paragraph{domain}
+\TheStatement[mail:masquerade:domains]{domains}
+\TheStatement*[mail!masquerade!domains]{domains \Arg{domains}}
 
-\statement{mail!masquerade!domain}{domain \typelist}
+Sets the \Arg{domains} to masquerade.
 
-Sets the domains to masquerade.
+\TheStatement[mail:masquerade:user]{user}
+\TheStatement*[mail!masquerade!user]{user \Arg{users}}
 
-\paragraph{user}
+Sets the list of \Arg{users} that are not subjected to address masquerading.
 
-\statement{mail!masquerade!user}{user \typelist}
-
-Sets the list of user names that are not subjected to address masquerading.
-
-\paragraph{certificate}
-
-\statement*{certificate }\\
-\statement*{file: \typestring,}\\
-\statement*{key: \typestring,}\\
-\statement*{ca: \typestring}
+\TheStatement[mail:certificate]{certificate}
+\TheStatement*{certificate file key ca}
 
 Defines the location of the certificate files for TLS.
 
-\paragraph{file}
-
-\statement{mail!certificate!file}{file \typestring{}}
+\TheStatement[mail:certificate:file]{file}
+\TheStatement*[mail!certificate!file]{file \Arg{file}}
 
 The location of the certificate file.
 
-\paragraph{key}
-
-\statement{mail!certificate!key}{key \typestring{}}
+\TheStatement[mail:certificate:key]{key}
+\TheStatement*[mail!certificate!key]{key \Arg{file}}
 
 The location of the certificate key file.
 
-\paragraph{ca}
-
-\statement{mail!certificate!ca}{ca \typestring{}}
+\TheStatement[mail:certificate:ca]{ca}
+\TheStatement*[mail!certificate!ca]{ca \Arg{file}}
 
 The location of the certificate CA file.
 
-\paragraph{domain}
-
-\statement*{domain \typestring{} \{}\\
-\statement*{catchall \dots}\\
-\statement*{alias \dots}\\
-\statement*{user \dots}\\
-\statement*{enabled \typeboolean}\\
-\statement*{\}}
+\TheStatement[mail:domain]{domain}
+\TheStatement*[mail!domain]{domain \Arg{domain} catchall alias user enabled \}}
 
 Adds domains that are known to the mail server. A domain can have a catch-all
 alias, other aliases, users and an enabled flag. The current domain is appended
 to aliases and users without a domain part. So for example the user ``xandros''
 in the ``blobber.org'' domain will have the address ``xandros@blobber.org''.
 
-\paragraph{catchall}
-
-\statement{mail!domain!catchall}{catchall destination: \typestring{}}
+\TheStatement[mail:domain:catchall]{catchall}
+\TheStatement*[mail!domain!catchall]{catchall destination: \Arg{destination}}
 
 Creates a catch-all alias to the current destination. The catch-all is equal
 to the alias ``@domain'', where the ``domain'' is the current domain name.
@@ -110,14 +92,8 @@ Example:
 \item ``\code{catchall destination: "xandros@blobber.org"}''
 \end{compactitem}
 
-\paragraph{alias}
-
-\statement*{alias \typestring{}, destination \typestring}\\
-\statement*{[\{ enabled \typeboolean \}]}\\
-
-\paragraph{alias}
-
-\statement{mail!domain!alias}{alias \typestring, destination: \typestring{}}
+\TheStatement[mail:domain:alias]{alias}
+\TheStatement*[mail!domain!alias]{alias \Arg{alias}, destination: \Arg{destination}}
 
 Creates a new alias with the specified destination. The current domain is appended
 to the aliases without a domain part. So for example the alias ``karl''
@@ -130,24 +106,19 @@ Example:
 \item ``\code{alias "postmaster@blobber.org", destination: "postmaster@\\localhost"}''
 \end{compactitem}
 
-\paragraph{enabled}
-
-\statement{mail!domain!enabled}{enabled \typeboolean}
+\TheStatement[mail:domain:enabled]{enabled}
+\TheStatement*[mail!domain!enabled]{enabled true|false}
 
 Sets the enabled flag on a domain, user or alias. Disabled domains, users or
 aliases are ignored by the mail server.
 
-\paragraph{user}
+\TheStatement[mail:domain:user]{user}
+\TheStatement*[mail!domain!user]{user \Arg{user}, password: \Arg{password}}
 
-\statement*{user \typestring{}, password \typestring}\\
-\statement*{[\{ enabled \typeboolean \}]}\\
-
-\paragraph{user}
-
-\statement{mail!domain!user}{user \typestring, password: \typestring{}}
-
-Adds a new user with the specified passwrod for the domain.
-The current domain is appended
-to the users without a domain part. So for example the user ``karl''
-in the ``blobber.org'' domain will have the address ``karl@blobber.org''.
+Adds a new user with the specified password for the domain.
+Only virtual users are created or their passwords changed.
+Local account management is not in scope with the mail service.
+The current domain is appended to the users without a domain part. 
+So for example the user ``karl'' in the ``blobber.org'' domain will 
+have the address ``karl@blobber.org''.
 

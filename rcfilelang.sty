@@ -1,0 +1,20 @@
+\ProvidesPackage{rcfilelang}[2013/05/25 Language definition for a Unix configuration file.]
+
+\RequirePackage{listings}
+\RequirePackage{listingstyles}
+\RequirePackage{xcolor}
+
+\lstdefinelanguage{rcfile}{
+    sensitive=false,
+    morecomment=[l]\#
+}
+\lstdefinestyle{rcfile_numbers}{
+    language=rcfile, 
+    style=numbers, 
+    commentstyle=\color{gray}\textit
+}
+\lstdefinestyle{rcfile_nonumbers}{
+    language=rcfile, 
+    style=nonumbers, 
+    commentstyle=\color{gray}\textit
+}

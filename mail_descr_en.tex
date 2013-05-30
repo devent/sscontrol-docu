@@ -1,38 +1,25 @@
 \subsection{Description}
 
-The mail service conists of the following processes.
+The mail service conists of multiple processes. The transport or MTA
+will receive emails for users and send them to different domains.
+There are different transport services available, like
+sendmail\cite{sendmail}, postfix\cite{postfix} or exim\cite{exim}.
+Only one MTA can operate on the same host and port. The default port
+is either the SMTP port 25 or the SMTPS port 465.
 
-\paragraph{Transport}
+Virtual mail accounts can be managed with various backends, like MySQL or
+PostgeSQL. If a virtual mail account is used with a database backend then
+the database \refsec{sec:database} service can be configured alongside the mail service.
 
-The mail transport is to receive emails for users and send emails to domains.
-For the transport the services
-\service{sendmail}{sendmail}\cite{sendmail},
-\service{postfix}{postfix}\cite{postfix} or
-\service{exim}{exim}\cite{exim}
-are available, for example.
+The delivery or MDA is used by the users to get the received emails and read
+them on a email client. The MDA is operating on the POP port 110, POPS 995, IMAP
+port 143 or IMAPS 993. It is recomended to depricate the POP for IMAP.
+For the delivery there are different services available, like
+dovecot\cite{dovecot} or courier\cite{courier}.
 
-\subparagraph{Postfix MySQL}
-
-Postfix can be configured to use MySQL to manage users, domains and aliases.
-
-\paragraph{Delivery}
-
-The mail delivery is for the users to read the emails and is done with the POP or IMAP
-protocols. For the derlivery the services
-\service{dovecot}{dovecot}\cite{dovecot} or
-\service{courier}{courier}\cite{courier}
-are available, for example.
-
-\paragraph{Spam Detection}
-
-Spam detection is optional but is recommendet.
-\service{amavisd}{amavisd}\cite{amavisd} will bring together Spam detection and anti-virus.
-\service{SpamAssassin}{SpamAssassin}\cite{SpamAssassin}
-and \service{postgrey}{postgrey}\cite{postgrey}, for example.
-
-\paragraph{Anti-Virus}
-
-Anti-virus detection is optional but is recommendet.
-\service*{amavisd} will bring together Spam detection and anti-virus.
-The service \service{clam-av}{clam-av}\cite{clam-av} can be used, for example.
-
+The received and sent emails can be checked for spam or viruses.
+The services amavisd\cite{amavisd} can unify spam detection and anti-virus.
+The services SpamAssassin\cite{SpamAssassin} and postgrey\cite{postgrey}
+can be used for spam detection, for example. 
+The service clam-av\cite{clam-av} can be used
+for virus detection.
