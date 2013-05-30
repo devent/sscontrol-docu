@@ -1,0 +1,12 @@
+\ProvidesPackage{graphicsmaxwidth}[2013/05/30 Provides maximum width for include grahpics.]
+%%%
+% Source: http://tex.stackexchange.com/questions/86350/includegraphics-maximum-width
+% 
+% Adds \maxwidth for \includegraphics:
+% 
+% \includegraphics[width=\maxwidth{1cm}]{image}
+%%%
+
+\RequirePackage{graphicx}
+
+\def\maxwidth#1{\ifdim\Gin@nat@width>#1 #1\else\Gin@nat@width\fi}

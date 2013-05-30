@@ -1,22 +1,26 @@
 \subsection{Mail Script}
 \input{mail_script_statements}
 
+%% mail
 \TheStatement{mail}
-\TheStatement*[mail]{mail \{ name origin masquerade certificate domain \}}
+\TheStatement*[mail]{mail \{ name origin bind\_addresses destinations masquerade \\certificate domain \}}
 
 Entry point in the mail script.
 
+%% name
 \TheStatement[mail:name]{name}
 \TheStatement*[mail!name]{name \Arg{name}}
 
 The domain \Arg{name} of the server.
 
+%% origin
 \TheStatement[mail:origin]{origin}
 \TheStatement*[mail!origin]{origin \Arg{name}}
 
 The domain \Arg{name} that locally-posted mail appears to come
 from, and that locally posted mail is delivered to.
 
+%% bind_addresses
 \TheStatement[mail:bind_addresses]{bind\_addresses}
 \TheStatement*[mail!bind\_addresses]{bind\_addresses all|loopback|\Arg{addresses}}
 
@@ -26,6 +30,7 @@ and loopback to receive mail on loopback network interfaces only. Otherwise
 a list of \Arg{addresses} can be specified.
 Defaults to all.
 
+%% destinations
 \TheStatement[mail:destinations]{destinations}
 \TheStatement*[mail!destinations]{destinations \Arg{domains}}
 
@@ -33,6 +38,7 @@ Additional list of \Arg{domains} that are delivered to local mail users.
 Do not specify names of virtual domains, those domains are specified
 in the \Statement*[mail:domain]{domain} statements.
 
+%% masquerade
 \TheStatement[mail:masquerade]{masquerade}
 \TheStatement*[mail!masquerade]{masquerade \{ domains user \}}
 
@@ -41,48 +47,56 @@ users are stripped off of their subdomain structure in email addresses.
 A domain name prefixed with ``!'' means do not masquerade this domain
 or its subdomains.
 
+%% domains
 \TheStatement[mail:masquerade:domains]{domains}
 \TheStatement*[mail!masquerade!domains]{domains \Arg{domains}}
 
 Sets the \Arg{domains} to masquerade.
 
+%% user
 \TheStatement[mail:masquerade:user]{user}
 \TheStatement*[mail!masquerade!user]{user \Arg{users}}
 
 Sets the list of \Arg{users} that are not subjected to address masquerading.
 
+%% certificate
 \TheStatement[mail:certificate]{certificate}
 \TheStatement*{certificate file key ca}
 
 Defines the location of the certificate files for TLS.
 
+%% file
 \TheStatement[mail:certificate:file]{file}
 \TheStatement*[mail!certificate!file]{file \Arg{file}}
 
 The location of the certificate file.
 
+%% key
 \TheStatement[mail:certificate:key]{key}
 \TheStatement*[mail!certificate!key]{key \Arg{file}}
 
 The location of the certificate key file.
 
+%% ca
 \TheStatement[mail:certificate:ca]{ca}
 \TheStatement*[mail!certificate!ca]{ca \Arg{file}}
 
 The location of the certificate CA file.
 
+%% domain
 \TheStatement[mail:domain]{domain}
-\TheStatement*[mail!domain]{domain \Arg{domain} catchall alias user enabled \}}
+\TheStatement*[mail!domain]{domain \Arg{domain} \{ catchall alias user enabled \}}
 
-Adds domains that are known to the mail server. A domain can have a catch-all
+Adds the \Arg{domain} that are known to the mail server. A domain can have a catch-all
 alias, other aliases, users and an enabled flag. The current domain is appended
 to aliases and users without a domain part. So for example the user ``xandros''
 in the ``blobber.org'' domain will have the address ``xandros@blobber.org''.
 
+%% catchall
 \TheStatement[mail:domain:catchall]{catchall}
-\TheStatement*[mail!domain!catchall]{catchall destination: \Arg{destination}}
+\TheStatement*[mail!domain!catchall]{catchall destination: \Arg{destination} \{ enabled \}}
 
-Creates a catch-all alias to the current destination. The catch-all is equal
+Creates a catch-all alias to the specified \Arg{destination}. The catch-all is equal
 to the alias ``@domain'', where the ``domain'' is the current domain name.
 
 Example:
@@ -92,10 +106,12 @@ Example:
 \item ``\code{catchall destination: "xandros@blobber.org"}''
 \end{compactitem}
 
+%% alias
 \TheStatement[mail:domain:alias]{alias}
-\TheStatement*[mail!domain!alias]{alias \Arg{alias}, destination: \Arg{destination}}
+\TheStatement*[mail!domain!alias]{alias \Arg{alias}, destination: \Arg{destination} \{ enabled \}}
 
-Creates a new alias with the specified destination. The current domain is appended
+Creates a new \Arg{alias} with the specified \Arg{destination}. 
+The current domain is appended
 to the aliases without a domain part. So for example the alias ``karl''
 in the ``blobber.org'' domain will have the address ``karl@blobber.org''.
 
@@ -106,19 +122,21 @@ Example:
 \item ``\code{alias "postmaster@blobber.org", destination: "postmaster@\\localhost"}''
 \end{compactitem}
 
-\TheStatement[mail:domain:enabled]{enabled}
-\TheStatement*[mail!domain!enabled]{enabled true|false}
-
-Sets the enabled flag on a domain, user or alias. Disabled domains, users or
-aliases are ignored by the mail server.
-
+%% user
 \TheStatement[mail:domain:user]{user}
-\TheStatement*[mail!domain!user]{user \Arg{user}, password: \Arg{password}}
+\TheStatement*[mail!domain!user]{user \Arg{user}[, password: \Arg{password}] \{ enabled \}}
 
-Adds a new user with the specified password for the domain.
+Adds a new \Arg{user} with the optional \Arg{password} for the domain.
 Only virtual users are created or their passwords changed.
 Local account management is not in scope with the mail service.
 The current domain is appended to the users without a domain part. 
 So for example the user ``karl'' in the ``blobber.org'' domain will 
 have the address ``karl@blobber.org''.
+
+%% enabled
+\TheStatement[mail:domain:enabled]{enabled}
+\TheStatement*[mail!domain!enabled]{enabled true|false}
+
+Sets the enabled flag on a domain, user or alias. Disabled domains, users or
+aliases are ignored by the mail server.
 
