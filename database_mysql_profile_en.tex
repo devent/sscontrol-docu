@@ -1,0 +1,82 @@
+\label{sec:mysql_profile}
+\subsection{MySQL - Profile}
+
+%% mysqladmin_command
+\TheProperty[database:mysql:mysqladmin_command]{mysqladmin\_\\command}
+\TheProperty*[database!mysql!mysqladmin\_command]{mysqladmin\_command \Arg{command}}
+
+The \Arg{command} path to the \code{mysqladmin} command. Can be a full path or
+just the command name that can be found in the current search path. 
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to \qcode{/usr/bin/mysqladmin}.
+
+%% mysql_command
+\TheProperty[database:mysql:mysql_command]{mysql\_command}
+\TheProperty*[database!mysql!mysql\_command]{mysql\_command \Arg{command}}
+
+The \Arg{command} path to the \code{mysql} command. Can be a full path or
+just the command name that can be found in the current search path.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to \qcode{/usr/bin/mysql}.
+
+%% configuration_directory
+\TheProperty[database:mysql:configuration_directory]{configuration\_\\directory}
+\TheProperty*[database!mysql!configuration\_directory]{configuration\_directory \Arg{path}}
+
+The \Arg{path} of the configuration directory of the mysql service. 
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to \qcode{/etc/mysql/conf.d}.
+
+%% mysqld_configuration_file
+\TheProperty[database:mysql:mysqld_configuration_file]{mysqld\_\\configuration\_\\file}
+\TheProperty*[database!mysql!mysqld\_configuration\_file]{mysqld\_configuration\_file \Arg{name}}
+
+The \Arg{name} of the database server configuration file. The server configuration
+file is created in the configuration directory.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to \qcode{sscontrol\_mysqld.cnf}.
+
+%% packages
+\TheProperty[database:mysql:packages]{packages}
+\TheProperty*[database!mysql!packages]{packages \Arg{packages}}
+
+The \Arg{packages} list that needed to be installed for the MySQL service.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to \qcode{mysql-server, mysql-client}.
+
+%% default_character_set
+\TheProperty[database:mysql:default_character_set]{default\_\\character\_set}
+\TheProperty*[database!mysql!default\_character\_set]{default\_character\_set \Arg{name}}
+
+The \Arg{name} of the default character set for databases.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to \qcode{utf-8}.
+
+%% default_collate
+\TheProperty[database:mysql:default_collate]{default\_collate}
+\TheProperty*[database!mysql!default\_collate]{default\_collate \Arg{name}}
+
+The \Arg{name} of the default collate for databases.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to \qcode{utf8\_general\_ci}.

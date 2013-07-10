@@ -1,114 +1,59 @@
 \subsection{Database Script}
+\input{database_script_statements_en}
 
-\paragraph{database}
-
-\statement{database}{database \{...\}}
+\TheStatement{database}
+\TheStatement*[database]{database \{ debugging bind\_address admin\_password database user \}}
 
 Entry point in the database script.
 
-\paragraph{debugging}
-
-\statement{database!debugging}{debugging \typeboolean}
+\TheStatement{debugging}
+\TheStatement*[database!debugging]{debugging true|false}
 
 Enables or disables the general logging for the database server.
-Defaults to \literalfalse.
+Default logging is off.
 
-\paragraph{bind\_address}
+\TheStatement[bind_address]{bind\_address}
+\TheStatement*[database!bind\_address]{bind\_address \Arg{address}}
 
-\statement{database!bind\_address}{bind\_address \typestring}
+The IP \Arg{address} or the host name on which the database server should listen
+to connections. Defaults to the localhost address \code{"127.0.0.1"}.
 
-The IP address or the host name on which the database server should listen
-to connections. Defaults to \literal{"127.0.0.1"}.
+\TheStatement[admin_password]{admin\_password}
+\TheStatement*[database!admin\_password]{admin\_password \Arg{password}}
 
-\paragraph{admin\_password}
-
-\statement{database!admin\_password}{admin\_password \typestring}
-
-The administrator password for the database server. If no password for
+The administrator \Arg{password} for the database server. If no password for
 the administrator account was yet set this password is set. Used to login as
 the administrator user to create users, create databases and set permissions.
 
-\paragraph{database}
+\TheStatement{database}
+\TheStatement*[database!database]{database \Arg{name} [, character\_set: \Arg{name}] [, collate: \Arg{name}] \{ import\_sql \}}
 
-\statement*{database \typestring{}}\\
-\statement*{[, character\_set: \typestring{}]}\\
-\statement*{[, collate: \typestring{}]}\\
-\statement*{[, \{ <import\_sql> \}]}
+Creates a new database with the specified database \Arg{name}, character set and collate.
+If the database was already on the server, it will update the character set and collate
+to the specified character set and collate.
 
-Creates a new database with the specified name, character set and collate.
-If the database was already on the server, updates the character set and collate
-to the specified.
-
-\paragraph{database}
-
-\statement{database!database}{database \typestring{}}
-
-The name of the database.
-
-\paragraph{character\_set}
-
-\statement{database!character\_set}{character\_set \typestring{}}
-
-The character set of the database. The database server needs to support the
-specified character set.
-Defaults to the UTF-8 character set:
+The database server needs to support the specified character set and collate.
+Defaults to the UTF-8 character set and the UTF-8 general collate:
 
 \begin{compactitem}
-\item MySQL: \literal{"utf-8"}
+\item MySQL: \code{"utf-8"}, \code{"utf8\_general\_ci"}
 \end{compactitem}
 
-\paragraph{collate}
+\TheStatement[import_sql]{import\_sql}
+\TheStatement*[database!import\_sql]{import\_sql \Arg{resource}}
 
-\statement{database!collate}{collate \typestring{}}
+Imports SQL script \Arg{resource} from the specified file, URL or URI. 
+A string will be interpreted according to the format. If no scheme is used 
+the string is assumed to be a local file, otherwise the string is assumed to 
+be a URI.
 
-The collate of the database. The database server needs to support the
-specified collate. Defaults to the UTF-8 character set default collate of
-the server:
+\TheStatement{user}
+\TheStatement*{user \Arg{name}, password: \Arg{password} [, server: \Arg{host}] [, \{ use\_database \}]}
 
-\begin{compactitem}
-\item MySQL: \literal{"utf8\_general\_ci"}
-\end{compactitem}
-
-\paragraph{import\_sql}
-
-\statement{database!import\_sql}{import\_sql \typestring$|$\typefile$|$\typeurl$|$\typeuri}
-
-Imports SQL script from the specified file, URL or URI. A string will be
-interpreted according to the format. If no scheme is used the string
-is assumed to be a local file, otherwise the string is assumed to be a URI.
-
-\paragraph{user}
-
-\statement*{user \typestring{}, password: \typestring{}}
-\statement*{[, server: \typestring{}]}\\
-\statement*{[, \{ <use\_database> \}]}
-
-Creates a new user with the specified name, password and server host.
+Creates a new user with the specified \Arg{name}, \Arg{password} and server \Arg{host}.
 If the user already exists on the server, the password is updated for that user.
 A user is identified by the user name and the server host.
+The server host name defaults to the server host \code{"localhost"}.
 
-\paragraph{user}
-
-\statement{database!user}{user \typestring{}}
-
-The user name.
-
-\paragraph{password}
-
-\statement{database!password}{password \typestring{}}
-
-The user password.
-
-\paragraph{server}
-
-\statement{database!server}{server \typestring{}}
-
-The server host name. Defaults to the server host \literal{"localhost"}.
-
-\paragraph{use\_database}
-
-\statement{database!use\_database}{use\_database \typestring{}}
-
-Sets the database that the user have read and write access to. This will not create
-the database on the server, to create a database use the statement \statement*{database}.
-
+The database that the user have read and write access to will be set. This will not create
+the database on the server, to create a database use the \TheStatement*{database} statement.

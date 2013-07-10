@@ -8,32 +8,6 @@ The postfix MTA comes in the distributions
 \item[\TheDistribution{debian}] Debian,
 \end{compactitem}
 
-\subsubsection*{System}
-
-\TheProperty[mail:postfix:install_command]{install\_\\command}
-\TheProperty*[mail!postfix!install\_command]{install\_command \Arg{command}}
-
-The \Arg{command} to install package on the system. Can be a full path or
-just the command name that can be found in the current search path. 
-For the distribution
-\begin{inparaitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04
-\end{inparaitem}
-the value is set to \qcode{/usr/bin/aptitude update \&\& /usr/bin/aptitude install}.
-
-\TheProperty[mail:postfix:restart_command]{restart\_\\command}
-\TheProperty*[mail!postfix!restart\_command]{restart\_command \Arg{command}}
-
-The \Arg{command} to reload the postfix service. Can be a full path or
-just the command name that can be found in the current search path.
-For the distribution
-\begin{inparaitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04
-\end{inparaitem}
-the value is set to \qcode{/sbin/restart}.
-
-\subsubsection*{Postfix}
-
 \TheProperty[mail:postfix:service]{service}
 \TheProperty*[mail!postfix!service]{service \Arg{name}}
 
@@ -98,7 +72,7 @@ If the path is not absolute then the path is assumed to be
 in the configuration directory.
 Default is the file \qcode{master.cf} in the configuration directory.
 
-\TheProperty[mail:postfix:alias_domains_file]{alias\_domains\_file}
+\TheProperty[mail:postfix:alias_domains_file]{alias\_domains\_\\file}
 \TheProperty*[mail!postfix!alias\_domains\_file]{alias\_domains\_file \Arg{path}}
 
 The \Arg{path} of the the alias domains hash table file. It is used to loop-up
@@ -116,7 +90,7 @@ in the configuration directory.
 Default is the file \qcode{alias\_maps} in the configuration directory.
 
 %% mailbox_maps_file
-\TheProperty[mail:postfix:mailbox_maps_file]{mailbox\_maps\_file}
+\TheProperty[mail:postfix:mailbox_maps_file]{mailbox\_maps\_\\file}
 \TheProperty*[mail!postfix!mailbox\_maps\_file]{mailbox\_maps\_file \Arg{path}}
 
 The \Arg{path} of the the mailbox maps hash table file. It is used to loop-up
@@ -137,7 +111,7 @@ For the distribution
 the value is set to \qcode{/etc/postfix}.
 
 %% mailbox_base_directory
-\TheProperty[mail:postfix:mailbox_base_directory]{mailbox\_base\_directory}
+\TheProperty[mail:postfix:mailbox_base_directory]{mailbox\_base\_\\directory}
 \TheProperty*[mail!postfix!mailbox\_base\_directory]{mailbox\_base\_directory \Arg{path}}
 
 The \Arg{path} of the base directory for virtual mailbox.

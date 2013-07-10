@@ -1,0 +1,62 @@
+
+\begin{lstlisting}[style=Java,label=lst:database_example_script,
+title={Example script for a database. It will set the database server address, create four databases and two users.}]
+database {
+
+    // enable debugging output
+    debugging true
+
+    // bind the database server to all addresses only
+    bind_address "0.0.0.0"
+
+    // set the administrator password
+    admin_password "mysqladminpassword"
+
+    // add new database with default character set and collate
+    database "wordpressdb"
+
+    // add new database
+    database "drupal6db", character_set: "latin1", collate: "latin1_swedish_ci"
+
+    // add new database and import tables
+    database "maildb", {
+        import_sql "postfixtables.sql"
+    }
+
+    // add new database and import tables
+    database "postfixdb", character_set: "latin1", collate: "latin1_swedish_ci", {
+        import_sql "postfixtables.sql"
+    }
+
+    // add a new user
+    user "test1", password: "test1password", server: "srv1"
+
+    // add a new user, grand all privileges on database
+    user "drupal6", password: "drupal6password", server: "srv2", {
+        use_database "drupal6db"
+    }
+}
+\end{lstlisting}
+
+\begin{lstlisting}[style=Java,label=lst:database_ubuntu_profile_min,
+title={Minimal Ubuntu database profile, only the database type is needed. The other profile properties are set to default values.}]
+profile "ubuntu_10_04", {
+    system {
+    }
+    database {
+        service "mysql"
+    }
+}
+\end{lstlisting}
+
+\begin{lstlisting}[style=rcfile_nonumbers,
+label=lst:database_maincf_example,
+title={Example MySQL server configuration file that is created from the database profile.
+The file is saved as /etc/mysql/conf.d/sscontrol\_mysqld.cnf}]
+# SSCONTROL-database
+[mysqld]
+bind-address = 0.0.0.0
+general_log = 1
+# SSCONTROL-database-END
+\end{lstlisting}
+
