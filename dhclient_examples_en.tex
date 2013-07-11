@@ -1,0 +1,37 @@
+
+\begin{lstlisting}[style=Java,label=lst:dhclient_example_script,
+title={Example script for the Dhclient service. It will remove the domain name servers from the DHCP request and use the DNS server on the localhost.}]
+dhclient {
+    requests "!domain-name-servers"
+    prepend "domain_name_servers", "127.0.0.1"
+}
+\end{lstlisting}
+
+\begin{lstlisting}[style=Java,label=lst:dhclient_ubuntu_profile_min,
+title={Minimal Ubuntu Dhclient profile, all needed profile properties are already set to sensible default values.}]
+profile "ubuntu_10_04", {
+    system {
+    }
+    dhclient {
+    }
+}
+\end{lstlisting}
+
+\begin{lstlisting}[style=rcfile_nonumbers,
+label=lst:dhclient_maincf_example,
+title={Example of the DHCP configuration file that is created from the Dhclient profile.
+The file is saved as /etc/dhcp3/dhclient.conf}]
+# SSCONTROL-dhclient
+option rfc3442-classless-static-routes code 121 = array of unsigned integer 8;
+# SSCONTROL-dhclient-END
+# SSCONTROL-dhclient
+send host-name "<hostname>";
+# SSCONTROL-dhclient-END
+# SSCONTROL-dhclient
+request subnet-mask, broadcast-address, time-offset, routers, domain-name, domain-search, host-name, netbios-name-servers, netbios-scope, interface-mtu, rfc3442-classless-static-routes, ntp-servers;
+# SSCONTROL-dhclient-END
+# SSCONTROL-dhclient
+prepend domain_name_servers 127.0.0.1;
+# SSCONTROL-dhclient-END
+\end{lstlisting}
+

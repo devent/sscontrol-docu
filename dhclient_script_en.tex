@@ -1,0 +1,37 @@
+\subsection{Dhclient Script}
+\input{dhclient_script_statements_en}
+
+\TheStatement{dhclient}
+\TheStatement*[dhclient]{dhclient \{ requests prepend \}}
+
+Entry point in the dhclient script.
+
+%% requests
+\TheStatement{requests}
+\TheStatement*[dhclient!requests]{requests \Arg{requests}}
+
+Sets the list of DHCP \Arg{requests}. Request item that starts with an 
+exclamation mark \qcode{!} is removed from the list. The default list
+of requests is: 
+\begin{inparaitem}[]
+\item subnet-mask,
+\item broadcast-address,
+\item time-offset,
+\item routers,
+\item domain-name,
+\item domain-name-servers,
+\item domain-search,
+\item host-name,
+\item netbios-name-servers,
+\item netbios-scope,
+\item interface-mtu,
+\item rfc3442-classless-static-routes,
+\item ntp-servers.
+\end{inparaitem}
+
+\TheStatement[prepend]{prepend}
+\TheStatement*[dhclient!prepend]{prepend \Arg{option} \Arg{desclaration}}
+
+Adds the \Arg{option} with the \Arg{desclaration} as a prepend statement 
+to the DHCP configuration.
+
