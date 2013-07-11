@@ -13,6 +13,8 @@
 \RequirePackage{rcfilelang}
 \RequirePackage{letltxmacro}
 \RequirePackage{graphicsmaxwidth}
+% show labels
+%\RequirePackage[inline]{showlabels}
 
 %%%%
 % Format chapter, section and paragraph
@@ -37,8 +39,8 @@
 \DeclareTextFontCommand{\hytexttt}{\ttfamily\hyphenchar\font=45\relax}
 %
 \newcommand{\initmarginpar}[1]{\leavevmode\marginpar{\flushright{#1}}\ignorespaces}
-\newcommand{\AutoLabel}[2][empty]{\ifthenelse{\equal{#1}{empty}}{\label{ex:#2}}{\label{ex:#1}}}
-\newcommand{\AutoRef}[2][empty]{\ifthenelse{\equal{#1}{empty}}{\ref{ex:#2}}{\ref{ex:#1}}}
+\newcommand{\AutoLabel}[2][empty]{\ifthenelse{\equal{#1}{empty}}{\label{#2}}{\label{#1}}}
+\newcommand{\AutoRef}[2][empty]{\ifthenelse{\equal{#1}{empty}}{\ref{#2}}{\ref{#1}}}
 \newcommand{\AutoIdx}[2][empty]{\ifthenelse{\equal{#1}{empty}}{\index{#2}}{\index{#1}}}
 % Different formats
 % Statement

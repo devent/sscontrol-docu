@@ -6,26 +6,26 @@
 
 Entry point in the database script.
 
-\TheStatement{debugging}
+\TheStatement[database:debugging]{debugging}
 \TheStatement*[database!debugging]{debugging true|false}
 
 Enables or disables the general logging for the database server.
 Default logging is off.
 
-\TheStatement[bind_address]{bind\_address}
+\TheStatement[database:bind_address]{bind\_address}
 \TheStatement*[database!bind\_address]{bind\_address \Arg{address}}
 
 The IP \Arg{address} or the host name on which the database server should listen
 to connections. Defaults to the localhost address \code{"127.0.0.1"}.
 
-\TheStatement[admin_password]{admin\_password}
+\TheStatement[database:admin_password]{admin\_password}
 \TheStatement*[database!admin\_password]{admin\_password \Arg{password}}
 
 The administrator \Arg{password} for the database server. If no password for
 the administrator account was yet set this password is set. Used to login as
 the administrator user to create users, create databases and set permissions.
 
-\TheStatement{database}
+\TheStatement[database:db]{database}
 \TheStatement*[database!database]{database \Arg{name} [, character\_set: \Arg{name}] [, collate: \Arg{name}] \{ import\_sql \}}
 
 Creates a new database with the specified database \Arg{name}, character set and collate.
@@ -39,7 +39,7 @@ Defaults to the UTF-8 character set and the UTF-8 general collate:
 \item MySQL: \code{"utf-8"}, \code{"utf8\_general\_ci"}
 \end{compactitem}
 
-\TheStatement[import_sql]{import\_sql}
+\TheStatement[database:import_sql]{import\_sql}
 \TheStatement*[database!import\_sql]{import\_sql \Arg{resource}}
 
 Imports SQL script \Arg{resource} from the specified file, URL or URI. 
@@ -47,7 +47,7 @@ A string will be interpreted according to the format. If no scheme is used
 the string is assumed to be a local file, otherwise the string is assumed to 
 be a URI.
 
-\TheStatement{user}
+\TheStatement[database:user]{user}
 \TheStatement*{user \Arg{name}, password: \Arg{password} [, server: \Arg{host}] [, \{ use\_database \}]}
 
 Creates a new user with the specified \Arg{name}, \Arg{password} and server \Arg{host}.

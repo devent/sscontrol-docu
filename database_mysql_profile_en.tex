@@ -1,6 +1,35 @@
 \label{sec:mysql_profile}
 \subsection{MySQL - Profile}
 
+The following system properties are needed for the MySQL service:
+
+\begin{compactitem}
+\item \Statement*[system:install_command]{install\_command};
+\end{compactitem}
+
+%% packages
+\TheProperty[database:mysql:packages]{packages}
+\TheProperty*[database!mysql!packages]{packages \Arg{packages}}
+
+The \Arg{packages} list that needed to be installed for the MySQL service.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to \qcode{mysql-server, mysql-client}.
+
+%% restart_command
+\TheProperty[database:mysql:restart_command]{restart\_\\command}
+\TheProperty*[database!mysql!restart\_command]{restart\_command \Arg{command}}
+
+The \Arg{command} to reload the database service. Can be a full path or
+just the command name that can be found in the current search path.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to \qcode{/sbin/restart mysql}.
+
 %% mysqladmin_command
 \TheProperty[database:mysql:mysqladmin_command]{mysqladmin\_\\command}
 \TheProperty*[database!mysql!mysqladmin\_command]{mysqladmin\_command \Arg{command}}
@@ -47,17 +76,6 @@ For the distribution
 \item[\TheDistribution{ubuntu}] Ubuntu 10.04
 \end{inparaitem}
 the value is set to \qcode{sscontrol\_mysqld.cnf}.
-
-%% packages
-\TheProperty[database:mysql:packages]{packages}
-\TheProperty*[database!mysql!packages]{packages \Arg{packages}}
-
-The \Arg{packages} list that needed to be installed for the MySQL service.
-For the distribution
-\begin{inparaitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04
-\end{inparaitem}
-the value is set to \qcode{mysql-server, mysql-client}.
 
 %% default_character_set
 \TheProperty[database:mysql:default_character_set]{default\_\\character\_set}

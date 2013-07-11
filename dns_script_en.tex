@@ -1,114 +1,88 @@
 \subsection{Dns Script}
+\input{dns_script_statements_en}
 
-\paragraph{dns}
-
-\statement{dns}{dns \{...\}}
+\TheStatement{dns}
+\TheStatement*[dns]{dns \{ serial bind\_address zone \}}
 
 Entry point in the dns script.
 
-\paragraph{debugging}
+\TheStatement[dns:serial]{serial}
+\TheStatement*[dns!serial]{serial \Arg{number} [, generate: true|false]}
 
-\statement{dns!debugging}{debugging \typeboolean}
+Sets the serial \Arg{number} of the zone records.
+The serial number can be any number, it is added to the automatically
+generated serial. The DNS service needs the serial number to be updated
+for all records that have been changed. The service can create serial
+numbers based on the current date but the user needs to update this
+serial number if the records are changed more then once in a day.
+If generate is set to \code{true} then the serial number is added to
+the automatically generated serial, otherwise the serial number is used 
+as specified.
 
-Enables or disables the general logging for the dns server.
-Defaults to \literalfalse.
+\TheStatement[serial:bind_address]{bind\_address}
+\TheStatement*[dns!bind\_address]{bind\_address \Arg{address}}
 
-\paragraph{bind\_address}
+The IP \Arg{address} or the host name on which the dns server should listen
+to connections. Defaults to the localhost address \qcode{127.0.0.1}.
 
-\statement{dns!bind\_address}{bind\_address \typestring}
+\TheStatement[dns:zone]{zone}
+\TheStatement*[dns!zone]{zone \Arg{name}, \Arg{primary}, \Arg{email} [, \Arg{address}] [, \Arg{ttl}] [, \{ ttl refresh retry expire minimum\_ttl ns\_record a\_record mx\_record cname\_record \} ]}
 
-The IP address or the host name on which the dns server should listen
-to connections. Defaults to \literal{"127.0.0.1"}.
+Adds a new DNS zone. The \Arg{name}, the \Arg{primary} DNS server and 
+the \Arg{email} address of the zone are required. An A-record for the zone
+can be created if the IP \Arg{address} of the zone is specified. If the
+\Arg{ttl} time is specified it is set for the A-record.
 
-\paragraph{admin\_password}
+\TheStatement[dns:ttl]{ttl}
+\TheStatement*[dns!ttl]{ttl \Arg{time}}
 
-\statement{dns!admin\_password}{admin\_password \typestring}
+Sets the time to live \Arg{time}. The default time to live time is 24 hours.
 
-The administrator password for the dns server. If no password for
-the administrator account was yet set this password is set. Used to login as
-the administrator user to create users, create dnss and set permissions.
+\TheStatement[dns:refresh]{refresh}
+\TheStatement*[dns!refresh]{refresh \Arg{time}}
 
-\paragraph{dns}
+Sets the refresh \Arg{time}. The default refresh time is 8 hours.
 
-\statement*{dns \typestring{}}\\
-\statement*{[, character\_set: \typestring{}]}\\
-\statement*{[, collate: \typestring{}]}\\
-\statement*{[, \{ <import\_sql> \}]}
+\TheStatement[dns:retry]{retry}
+\TheStatement*[dns!retry]{retry \Arg{time}}
 
-Creates a new dns with the specified name, character set and collate.
-If the dns was already on the server, updates the character set and collate
-to the specified.
+Sets the retry \Arg{time}. The default retry time is 2 hours.
 
-\paragraph{dns}
+\TheStatement[dns:expire]{expire}
+\TheStatement*[dns!expire]{expire \Arg{time}}
 
-\statement{dns!dns}{dns \typestring{}}
+Sets the expire \Arg{time}. The default expire time is 4 days.
 
-The name of the dns.
+\TheStatement[dns:minimum_ttl]{minimum\_ttl}
+\TheStatement*[dns!minimum\_ttl]{minimum\_ttl \Arg{time}}
 
-\paragraph{character\_set}
+Sets the minimum time to live \Arg{time}. The default minimum time is 1 day.
 
-\statement{dns!character\_set}{character\_set \typestring{}}
+\TheStatement[dns:ns_record]{ns\_record}
+\TheStatement*[dns!ns\_record]{ns\_record \Arg{name} [, \Arg{address}] [, \{ ttl \}]}
 
-The character set of the dns. The dns server needs to support the
-specified character set.
-Defaults to the UTF-8 character set:
+Adds a new NS-record with the specified name. If the \Arg{address}
+of the record is specified then a new A-record will be created that maps this 
+name to the specified address.
 
-\begin{compactitem}
-\item MySQL: \literal{"utf-8"}
-\end{compactitem}
+\TheStatement[da:a_record]{a\_record}
+\TheStatement*[da!a\_record]{a\_record \Arg{name} [, \Arg{address}] [, \{ ttl \}]}
 
-\paragraph{collate}
+Adds a new A-record with the specified \Arg{name} and \Arg{address}.
 
-\statement{dns!collate}{collate \typestring{}}
+\TheStatement[dmx:mx_record]{mx\_record}
+\TheStatement*[dmx!mx\_record]{mx\_record \Arg{name} [, \Arg{address}] [, \{ ttl priority \}]}
 
-The collate of the dns. The dns server needs to support the
-specified collate. Defaults to the UTF-8 character set default collate of
-the server:
+Adds a new MX-record with the specified name. If the \Arg{address}
+of the record is specified then a new A-record will be created that maps this 
+name to the specified address.
 
-\begin{compactitem}
-\item MySQL: \literal{"utf8\_general\_ci"}
-\end{compactitem}
+\TheStatement[dmx:priority]{priority}
+\TheStatement*[dmx!priority]{priority \Arg{priority}}
 
-\paragraph{import\_sql}
+Sets the priority for the MX-record. The default priority is 10.
 
-\statement{dns!import\_sql}{import\_sql \typestring$|$\typefile$|$\typeurl$|$\typeuri}
+\TheStatement[da:cname_record]{cname\_record}
+\TheStatement*[da!cname\_record]{cname\_record \Arg{name} \Arg{alias} [, \{ ttl \}]}
 
-Imports SQL script from the specified file, URL or URI. A string will be
-interpreted according to the format. If no scheme is used the string
-is assumed to be a local file, otherwise the string is assumed to be a URI.
-
-\paragraph{user}
-
-\statement*{user \typestring{}, password: \typestring{}}
-\statement*{[, server: \typestring{}]}\\
-\statement*{[, \{ <use\_dns> \}]}
-
-Creates a new user with the specified name, password and server host.
-If the user already exists on the server, the password is updated for that user.
-A user is identified by the user name and the server host.
-
-\paragraph{user}
-
-\statement{dns!user}{user \typestring{}}
-
-The user name.
-
-\paragraph{password}
-
-\statement{dns!password}{password \typestring{}}
-
-The user password.
-
-\paragraph{server}
-
-\statement{dns!server}{server \typestring{}}
-
-The server host name. Defaults to the server host \literal{"localhost"}.
-
-\paragraph{use\_dns}
-
-\statement{dns!use\_dns}{use\_dns \typestring{}}
-
-Sets the dns that the user have read and write access to. This will not create
-the dns on the server, to create a dns use the statement \statement*{dns}.
-
+Adds a new CNAME-record with the specified \Arg{name} and \Arg{alias}.

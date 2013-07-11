@@ -1,0 +1,45 @@
+\label{sec:maradns_profile}
+\subsection{MaraDNS Profile}
+
+The following system properties are needed for the MaraDNS service:
+
+\begin{compactitem}
+\item \Statement*[system:install_command]{install\_command};
+\item \Statement*[system:enable_repository_command]{enable\_repository\_command};
+\item \Statement*[system:system_packages]{system\_packages} with the package \qcode{python-software-properties}.
+\end{compactitem}
+
+%% packages
+\TheProperty[dns:maradns:packages]{packages}
+\TheProperty*[dns!maradns!packages]{packages \Arg{packages}}
+
+The \Arg{packages} list that needed to be installed for the MaraDNS service.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to \qcode{maradns}.
+
+%% restart_command
+\TheProperty[dns:maradns:restart_command]{restart\_\\command}
+\TheProperty*[dns!maradns!restart\_command]{restart\_command \Arg{command}}
+
+The \Arg{command} to reload the dns service. Can be a full path or
+just the command name that can be found in the current search path.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to \qcode{/etc/init.d/maradns restart}.
+
+%% configuration_directory
+\TheProperty[dns:maradns:configuration_directory]{configuration\_\\directory}
+\TheProperty*[dns!maradns!configuration\_directory]{configuration\_directory \Arg{path}}
+
+The \Arg{path} of the configuration directory of the MaraDNS service. 
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to \qcode{/etc/maradns}.
+

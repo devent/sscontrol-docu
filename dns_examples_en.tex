@@ -1,0 +1,122 @@
+\begin{lstlisting}[style=Java,label=lst:dns_example_script,
+title={Dns example script.}]
+dns {
+    serial 1, generate: false
+
+    // bind the dns server to address only
+    bind_address "127.0.0.1"
+
+    // soa entry, default timers
+    zone "example1.com", "ns.example1.com", "hostmaster@example1.com"
+
+    // soa entry, with timers
+    zone "example2.com", "ns.example2.com", "hostmaster@example2.com", {
+        ttl 1
+        refresh 2
+        retry 3
+        expire 4
+        minimum_ttl 5
+    }
+
+    // soa entry, default timers
+    zone "anrisoftware.com", "ns1.anrisoftware.com", "hostmaster@anrisoftware.com", {
+
+        // A record with ttl
+        ns_record "ns1.anrisoftware.com", "127.0.0.1", {  ttl 1  }
+
+        // NS and A record with default ttl, and the domain name ns2.anrisoftware.com
+        ns_record "ns2.anrisoftware.com", "192.168.0.49"
+
+        // A record with default ttl
+        a_record "anrisoftware.com", "192.168.0.49"
+
+        // A record with ttl
+        a_record "anrisoftware.com", "192.168.0.50", { ttl 1  }
+
+        // MX and A record with default ttl, and the domain name mx1.anrisoftware.com, priority 10
+        mx_record "mx1.anrisoftware.com", "192.168.0.49"
+
+        // MX and A record with default ttl, and the domain name mx2.anrisoftware.com
+        mx_record "mx2.anrisoftware.com", "192.168.0.49", { priority 20 }
+
+        // CNAME record with default ttl
+        cname_record "www.anrisoftware.com", "anrisoftware.com"
+
+        // CNAME record with ttl
+        cname_record "www.anrisoftware.com", "anrisoftware.com", { ttl 1 }
+    }
+
+}
+\end{lstlisting}
+
+\begin{lstlisting}[style=Java,label=lst:dns_example_min_script,
+title={Dns service minimumal example script using the zone placeholder.}]
+dns {
+    serial 1
+    bind_address "127.0.0.1"
+    zone "anrisoftware.com", "ns1.%", "hostmaster@%", "192.168.0.49", {
+        ns_record "ns1.%", "192.168.0.49"
+        mx_record "mx1.%", "192.168.0.49"
+        mx_record "mx2.%", "192.168.0.49", { priority 20 }
+        cname_record "www.%", "%"
+        cname_record "ftp.%", "%", { ttl 1 }
+    }
+}
+\end{lstlisting}
+
+\begin{lstlisting}[style=Java,label=lst:dns_ubuntu_profile_min,
+title={Minimal Ubuntu MaraDNS profile, only the DNS service type is needed. The other profile properties are set to default values.}]
+profile "ubuntu_10_04", {
+    system {
+    }
+    dns {
+        service "maradns"
+    }
+}
+\end{lstlisting}
+
+\begin{lstlisting}[style=rcfile_nonumbers,
+label=lst:dns_mararc_example,
+title={Example MaraDNS configuration file that is created from the DNS profile 
+and script. The file is saved as /etc/maradns/mararc}]
+
+# SSCONTROL-dns
+ipv4_bind_addresses = "127.0.0.1"
+# SSCONTROL-dns-END
+# SSCONTROL-dns
+csv2 = {}
+# SSCONTROL-dns-END
+# SSCONTROL-dns
+csv2["example1.com."] = "db.example1.com"
+# SSCONTROL-dns-END
+# SSCONTROL-dns
+csv2["example2.com."] = "db.example2.com"
+# SSCONTROL-dns-END
+# SSCONTROL-dns
+csv2["anrisoftware.com."] = "db.anrisoftware.com"
+# SSCONTROL-dns-END
+\end{lstlisting}
+
+\begin{lstlisting}[style=rcfile_nonumbers,
+label=lst:dns_zone1_example,
+title={Example MaraDNS zone configuration file that is created from the 
+DNS script. The file is saved as /etc/maradns/db.anrisoftware.com}]
+anrisoftware.com. +86400 SOA ns1.anrisoftware.com. hostmaster@anrisoftware.com. 1 28800 7200 345600 86400 ~
+anrisoftware.com. +1 NS ns1.anrisoftware.com. ~
+anrisoftware.com. +86400 NS ns2.anrisoftware.com. ~
+
+anrisoftware.com. MX 10 mx1.anrisoftware.com. ~
+anrisoftware.com. MX 20 mx2.anrisoftware.com. ~
+
+www.anrisoftware.com. +86400 CNAME anrisoftware.com. ~
+www.anrisoftware.com. +1 CNAME anrisoftware.com. ~
+
+ns1.anrisoftware.com. +86400 A 127.0.0.1 ~
+ns2.anrisoftware.com. +86400 A 192.168.0.49 ~
+anrisoftware.com. +86400 A 192.168.0.49 ~
+anrisoftware.com. +1 A 192.168.0.50 ~
+mx1.anrisoftware.com. +86400 A 192.168.0.49 ~
+mx2.anrisoftware.com. +86400 A 192.168.0.49 ~
+
+\end{lstlisting}
+
