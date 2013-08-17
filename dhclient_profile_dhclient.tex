@@ -1,0 +1,35 @@
+\subsubsection*{Dhclient}
+ 
+%% packages
+\TheProperty[dhclient:packages]{packages}
+\TheProperty*[dhclient!packages]{packages \Arg{packages}}
+
+The \Arg{packages} list that needed to be installed for the Dhclient service.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to \qcode{dhcp3-client}.
+
+%% configuration_directory
+\TheProperty[dhclient:configuration_directory]{configuration\_\\directory}
+\TheProperty*[dhclient!configuration\_directory]{configuration\_directory \Arg{path}}
+
+The \Arg{path} of the configuration directory of the Dhclient service. 
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to \qcode{/etc/dhcp3}.
+
+%% configuration_file
+\TheProperty[dhclient:configuration_file]{configuration\_\\file}
+\TheProperty*[dhclient!configuration\_file]{configuration\_file \Arg{name}}
+
+The \Arg{name} of the configuration file of the Dhclient service. 
+The file is located in the configuration directory.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to \qcode{dhclient.conf}.
