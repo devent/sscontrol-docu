@@ -6,8 +6,7 @@ temp*
 .texlipse
 *~
 *.backup
-*.pdf
 *.toc
 *.kilepr
 .directory
-
+*.bib

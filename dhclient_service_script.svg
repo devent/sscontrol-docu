@@ -41,6 +41,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -75,7 +76,7 @@
          clipPathUnits="userSpaceOnUse"
          id="clipPath1">
         <path
-           d="M0 0 L4197 0 L4197 1785 L0 1785 L0 0 Z"
+           d="M0 0 L3089 0 L3089 1161 L0 1161 L0 0 Z"
            id="path9" />
       </clipPath>
       <clipPath
