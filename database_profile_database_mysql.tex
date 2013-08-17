@@ -2,7 +2,7 @@
 
 %% mysqladmin_command
 \TheProperty[database:mysqladmin_command]{mysqladmin\_\\command}
-\TheProperty*[database!mysqladmin\_command]{mysqladmin\_command \Arg{name}}
+\TheProperty*[database!mysql!mysqladmin\_command]{mysqladmin\_command \Arg{name}}
 
 The \Arg{command} to \code{mysqladmin} command that is used to administer the 
 MySQL database. Can be a full path or
@@ -15,7 +15,7 @@ the value is set to \qcode{/usr/bin/mysqladmin}.
 
 %% mysql_command
 \TheProperty[database:mysql_command]{mysql\_command}
-\TheProperty*[database!mysql\_command]{mysql\_command \Arg{name}}
+\TheProperty*[database!mysql!mysql\_command]{mysql\_command \Arg{name}}
 
 The \Arg{command} to \code{mysql} command that is used to create databases,
 create users and set privileges. Can be a full path or
@@ -28,7 +28,7 @@ the value is set to \qcode{/usr/bin/mysql}.
 
 %% configuration_directory
 \TheProperty[database:configuration_directory]{configuration\_\\directory}
-\TheProperty*[database!configuration\_directory]{configuration\_directory \Arg{path}}
+\TheProperty*[database!mysql!configuration\_directory]{configuration\_directory \Arg{path}}
 
 The \Arg{path} of the MySQL configuration directory.
 For the distribution
@@ -39,7 +39,7 @@ the value is set to \qcode{/etc/mysql/conf.d}.
 
 %% mysqld_configuration_file
 \TheProperty[database:mysqld_configuration_file]{mysqld\_\\configuration\_\\file}
-\TheProperty*[database!mysqld\_configuration\_file]{mysqld\_configuration\_file \Arg{name}}
+\TheProperty*[database!mysql!mysqld\_configuration\_file]{mysqld\_configuration\_file \Arg{name}}
 
 The \Arg{name} of the custom MySQL configuration file. The file is saved
 under the configuration directory.
@@ -51,7 +51,7 @@ the value is set to \qcode{sscontrol\_mysqld.cnf}.
 
 %% packages
 \TheProperty[database:packages]{packages}
-\TheProperty*[database!packages]{packages \Arg{packages}}
+\TheProperty*[database!mysql!packages]{packages \Arg{packages}}
 
 The list of \Arg{packages} that are needed for the MySQL database. 
 For the distribution
@@ -62,7 +62,7 @@ the value is set to \qcode{mysql-server, mysql-client}.
 
 %% restart_services
 \TheProperty[database:restart_services]{restart\_\\services}
-\TheProperty*[database!restart\_services]{restart\_services \Arg{services}}
+\TheProperty*[database!mysql!restart\_services]{restart\_services \Arg{services}}
 
 The list of \Arg{services} to restart the MySQL database.
 For the distribution
@@ -73,7 +73,7 @@ the value is set to \qcode{mysql}.
 
 %% default_character_set
 \TheProperty[database:default_character_set]{default\_\\character\_\\set}
-\TheProperty*[database!default\_character\_set]{default\_character\_set \Arg{name}}
+\TheProperty*[database!mysql!default\_character\_set]{default\_character\_set \Arg{name}}
 
 The \Arg{name} of the character set to use per default for new created databases.
 For the distribution
@@ -84,7 +84,7 @@ the value is set to \qcode{utf8}.
 
 %% default_collate
 \TheProperty[database:default_collate]{default\_collate}
-\TheProperty*[database!default\_collate]{default\_collate \Arg{name}}
+\TheProperty*[database!mysql!default\_collate]{default\_collate \Arg{name}}
 
 The \Arg{name} of the collate to use per default for new created databases.
 For the distribution

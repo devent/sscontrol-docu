@@ -48,7 +48,7 @@ the string is assumed to be a local file, otherwise the string is assumed to
 be a URI.
 
 \TheStatement[database:user]{user}
-\TheStatement*{user \Arg{name}, password: \Arg{password} [, server: \Arg{host}] [, \{ use\_database \}]}
+\TheStatement*[database!user]{user \Arg{name}, password: \Arg{password} [, server: \Arg{host}] [, \{ use\_database \}]}
 
 Creates a new user with the specified \Arg{name}, \Arg{password} and server \Arg{host}.
 If the user already exists on the server, the password is updated for that user.

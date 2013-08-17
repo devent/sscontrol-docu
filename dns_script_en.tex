@@ -65,24 +65,24 @@ Adds a new NS-record with the specified name. If the \Arg{address}
 of the record is specified then a new A-record will be created that maps this 
 name to the specified address.
 
-\TheStatement[da:a_record]{a\_record}
-\TheStatement*[da!a\_record]{a\_record \Arg{name} [, \Arg{address}] [, \{ ttl \}]}
+\TheStatement[dns:a_record]{a\_record}
+\TheStatement*[dns!a\_record]{a\_record \Arg{name} [, \Arg{address}] [, \{ ttl \}]}
 
 Adds a new A-record with the specified \Arg{name} and \Arg{address}.
 
-\TheStatement[dmx:mx_record]{mx\_record}
-\TheStatement*[dmx!mx\_record]{mx\_record \Arg{name} [, \Arg{address}] [, \{ ttl priority \}]}
+\TheStatement[dns:mx_record]{mx\_record}
+\TheStatement*[dns!mx\_record]{mx\_record \Arg{name} [, \Arg{address}] [, \{ ttl priority \}]}
 
 Adds a new MX-record with the specified name. If the \Arg{address}
 of the record is specified then a new A-record will be created that maps this 
 name to the specified address.
 
-\TheStatement[dmx:priority]{priority}
-\TheStatement*[dmx!priority]{priority \Arg{priority}}
+\TheStatement[dns:priority]{priority}
+\TheStatement*[dns!priority]{priority \Arg{priority}}
 
 Sets the priority for the MX-record. The default priority is 10.
 
-\TheStatement[da:cname_record]{cname\_record}
-\TheStatement*[da!cname\_record]{cname\_record \Arg{name} \Arg{alias} [, \{ ttl \}]}
+\TheStatement[dns:cname_record]{cname\_record}
+\TheStatement*[dns!cname\_record]{cname\_record \Arg{name} \Arg{alias} [, \{ ttl \}]}
 
 Adds a new CNAME-record with the specified \Arg{name} and \Arg{alias}.
