@@ -1,6 +1,60 @@
 \label{sec:dhclient_profile}
-\subsection{Dhclient - Profile}
+\subsection{Dhclient Profile}
 
-\input{dhclient_profile_system}
-\input{dhclient_profile_dhclient}
+%% install_command
+\TheProperty[dhclient:install_command]{install\_\\command}
+\TheProperty*[dhclient!install\_command]{install\_command \Arg{command}}
 
+The \Arg{command} to install package on the system. Can be a full path or
+just the command name that can be found in the current search path. 
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to \qcode{/usr/bin/aptitude update \&\& /usr/bin/aptitude -y install}.
+
+%% restart_command
+\TheProperty[dhclient:restart_command]{restart\_\\command}
+\TheProperty*[dhclient!restart\_command]{restart\_command \Arg{command}}
+
+The \Arg{command} to restart the service. Can be a full path or
+just the command name that can be found in the current search path. 
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to \qcode{/etc/init.d/networking restart}.
+
+%% packages
+\TheProperty[dhclient:packages]{packages}
+\TheProperty*[dhclient!packages]{packages \Arg{packages}}
+
+The \Arg{packages} list that needed to be installed for the Dhclient service.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to \qcode{dhcp3-client}.
+
+%% configuration_directory
+\TheProperty[dhclient:configuration_directory]{configuration\_\\directory}
+\TheProperty*[dhclient!configuration\_directory]{configuration\_directory \Arg{path}}
+
+The \Arg{path} of the configuration directory of the Dhclient service. 
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to \qcode{/etc/dhcp3}.
+
+%% configuration_file
+\TheProperty[dhclient:configuration_file]{configuration\_\\file}
+\TheProperty*[dhclient!configuration\_file]{configuration\_file \Arg{name}}
+
+The \Arg{name} of the configuration file of the Dhclient service. 
+The file is located in the configuration directory.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to \qcode{dhclient.conf}.

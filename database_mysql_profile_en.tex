@@ -1,40 +1,36 @@
 \label{sec:mysql_profile}
-\subsection{MySQL - Profile}
+\subsection{MySQL Profile}
 
-The following system properties are needed for the MySQL service:
+%% install_command
+\TheProperty[system:install_command]{install\_\\command}
+\TheProperty*[system!install\_command]{install\_command \Arg{command}}
 
-\begin{compactitem}
-\item \Statement*[system:install_command]{install\_command};
-\end{compactitem}
-
-%% packages
-\TheProperty[database:mysql:packages]{packages}
-\TheProperty*[database!mysql!packages]{packages \Arg{packages}}
-
-The \Arg{packages} list that needed to be installed for the MySQL service.
+The \Arg{command} to install package on the system. Can be a full path or
+just the command name that can be found in the current search path. 
 For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 10.04
 \end{inparaitem}
-the value is set to \qcode{mysql-server, mysql-client}.
+the value is set to \qcode{/usr/bin/aptitude update \&\& DEBIAN\_FRONTEND=noninteractive /usr/bin/aptitude -y install}.
 
 %% restart_command
-\TheProperty[database:mysql:restart_command]{restart\_\\command}
-\TheProperty*[database!mysql!restart\_command]{restart\_command \Arg{command}}
+\TheProperty[system:restart_command]{restart\_\\command}
+\TheProperty*[system!restart\_command]{restart\_command \Arg{command}}
 
-The \Arg{command} to reload the database service. Can be a full path or
-just the command name that can be found in the current search path.
+The \Arg{command} to restart the service. Can be a full path or
+just the command name that can be found in the current search path. 
 For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 10.04
 \end{inparaitem}
-the value is set to \qcode{/sbin/restart mysql}.
+the value is set to \qcode{/sbin/restart}.
 
 %% mysqladmin_command
-\TheProperty[database:mysql:mysqladmin_command]{mysqladmin\_\\command}
-\TheProperty*[database!mysql!mysqladmin\_command]{mysqladmin\_command \Arg{command}}
+\TheProperty[database:mysqladmin_command]{mysqladmin\_\\command}
+\TheProperty*[database!mysql!mysqladmin\_command]{mysqladmin\_command \Arg{name}}
 
-The \Arg{command} path to the \code{mysqladmin} command. Can be a full path or
+The \Arg{command} to \code{mysqladmin} command that is used to administer the 
+MySQL database. Can be a full path or
 just the command name that can be found in the current search path. 
 For the distribution
 \begin{inparaitem}
@@ -43,11 +39,12 @@ For the distribution
 the value is set to \qcode{/usr/bin/mysqladmin}.
 
 %% mysql_command
-\TheProperty[database:mysql:mysql_command]{mysql\_command}
-\TheProperty*[database!mysql!mysql\_command]{mysql\_command \Arg{command}}
+\TheProperty[database:mysql_command]{mysql\_command}
+\TheProperty*[database!mysql!mysql\_command]{mysql\_command \Arg{name}}
 
-The \Arg{command} path to the \code{mysql} command. Can be a full path or
-just the command name that can be found in the current search path.
+The \Arg{command} to \code{mysql} command that is used to create databases,
+create users and set privileges. Can be a full path or
+just the command name that can be found in the current search path. 
 For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 10.04
@@ -55,10 +52,10 @@ For the distribution
 the value is set to \qcode{/usr/bin/mysql}.
 
 %% configuration_directory
-\TheProperty[database:mysql:configuration_directory]{configuration\_\\directory}
+\TheProperty[database:configuration_directory]{configuration\_\\directory}
 \TheProperty*[database!mysql!configuration\_directory]{configuration\_directory \Arg{path}}
 
-The \Arg{path} of the configuration directory of the mysql service. 
+The \Arg{path} of the MySQL configuration directory.
 For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 10.04
@@ -66,35 +63,58 @@ For the distribution
 the value is set to \qcode{/etc/mysql/conf.d}.
 
 %% mysqld_configuration_file
-\TheProperty[database:mysql:mysqld_configuration_file]{mysqld\_\\configuration\_\\file}
+\TheProperty[database:mysqld_configuration_file]{mysqld\_\\configuration\_\\file}
 \TheProperty*[database!mysql!mysqld\_configuration\_file]{mysqld\_configuration\_file \Arg{name}}
 
-The \Arg{name} of the database server configuration file. The server configuration
-file is created in the configuration directory.
+The \Arg{name} of the custom MySQL configuration file. The file is saved
+under the configuration directory.
 For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 10.04
 \end{inparaitem}
 the value is set to \qcode{sscontrol\_mysqld.cnf}.
 
-%% default_character_set
-\TheProperty[database:mysql:default_character_set]{default\_\\character\_set}
-\TheProperty*[database!mysql!default\_character\_set]{default\_character\_set \Arg{name}}
+%% packages
+\TheProperty[database:packages]{packages}
+\TheProperty*[database!mysql!packages]{packages \Arg{packages}}
 
-The \Arg{name} of the default character set for databases.
+The list of \Arg{packages} that are needed for the MySQL database. 
 For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 10.04
 \end{inparaitem}
-the value is set to \qcode{utf-8}.
+the value is set to \qcode{mysql-server, mysql-client}.
+
+%% restart_services
+\TheProperty[database:restart_services]{restart\_\\services}
+\TheProperty*[database!mysql!restart\_services]{restart\_services \Arg{services}}
+
+The list of \Arg{services} to restart the MySQL database.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to \qcode{mysql}.
+
+%% default_character_set
+\TheProperty[database:default_character_set]{default\_\\character\_\\set}
+\TheProperty*[database!mysql!default\_character\_set]{default\_character\_set \Arg{name}}
+
+The \Arg{name} of the character set to use per default for new created databases.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to \qcode{utf8}.
 
 %% default_collate
-\TheProperty[database:mysql:default_collate]{default\_collate}
+\TheProperty[database:default_collate]{default\_collate}
 \TheProperty*[database!mysql!default\_collate]{default\_collate \Arg{name}}
 
-The \Arg{name} of the default collate for databases.
+The \Arg{name} of the collate to use per default for new created databases.
 For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 10.04
 \end{inparaitem}
 the value is set to \qcode{utf8\_general\_ci}.
+ 

@@ -30,14 +30,8 @@ the administrator user to create users, create databases and set permissions.
 
 Creates a new database with the specified database \Arg{name}, character set and collate.
 If the database was already on the server, it will update the character set and collate
-to the specified character set and collate.
-
-The database server needs to support the specified character set and collate.
-Defaults to the UTF-8 character set and the UTF-8 general collate:
-
-\begin{compactitem}
-\item MySQL: \code{"utf-8"}, \code{"utf8\_general\_ci"}
-\end{compactitem}
+to the specified character set and collate. The database server needs to support 
+the specified character set and collate.
 
 \TheStatement[database:import_sql]{import\_sql}
 \TheStatement*[database!import\_sql]{import\_sql \Arg{resource}}
@@ -54,6 +48,5 @@ Creates a new user with the specified \Arg{name}, \Arg{password} and server \Arg
 If the user already exists on the server, the password is updated for that user.
 A user is identified by the user name and the server host.
 The server host name defaults to the server host \code{"localhost"}.
-
 The database that the user have read and write access to will be set. This will not create
 the database on the server, to create a database use the \TheStatement*{database} statement.
