@@ -1,4 +1,4 @@
-\subsection{Description}
+\subsection{Mail Description}
 
 The mail service conists of multiple processes. The transport or MTA
 will receive emails for users and send them to different domains.
@@ -7,13 +7,13 @@ sendmail\cite{sendmail}, postfix\cite{postfix} or exim\cite{exim}.
 Only one MTA can operate on the same host and port. The default port
 is either the SMTP port 25 or the SMTPS port 465.
 
-Virtual mail accounts can be managed with various backends, like MySQL or
-PostgeSQL. If a virtual mail account is used with a database backend then
+Virtual mail accounts can be managed with various backed, like MySQL or
+PostgeSQL. If a virtual mail account is used with a database backed then
 the database \refsec{sec:database} service can be configured alongside the mail service.
 
 The delivery or MDA is used by the users to get the received emails and read
 them on a email client. The MDA is operating on the POP port 110, POPS 995, IMAP
-port 143 or IMAPS 993. It is recomended to depricate the POP for IMAP.
+port 143 or IMAPS 993. It is recommended to deprecate the POP for IMAP.
 For the delivery there are different services available, like
 dovecot\cite{dovecot} or courier\cite{courier}.
 

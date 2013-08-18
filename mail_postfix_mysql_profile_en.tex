@@ -1,0 +1,240 @@
+\label{sec:postfix_mysql_profile}
+\subsection[Postfix MySQL Profile]{MySQL Storage Profile}
+
+%% install_command
+\TheProperty[mail:postfix:mysql:install_command]{install\_\\command}
+\TheProperty*[mail!postfix!mysql!install\_command]{install\_command \Arg{command}}
+
+The \Arg{command} to install package on the system. Can be a full path or
+just the command name that can be found in the current search path. 
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to \qcode{/usr/bin/aptitude update \&\& DEBIAN\_FRONTEND=noninteractive /usr/bin/aptitude -y install}.
+
+%% restart_command
+\TheProperty[mail:postfix:mysql:restart_command]{restart\_\\command}
+\TheProperty*[mail!postfix!mysql!restart\_command]{restart\_command \Arg{command}}
+
+The \Arg{command} to restart the service. Can be a full path or
+just the command name that can be found in the current search path. 
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to \qcode{/etc/init.d/postfix restart}.
+
+%% postalias_command
+\TheProperty[mail:postfix:mysql:postalias_command]{postalias\_\\command}
+\TheProperty*[mail!postfix!mysql!postalias\_command]{postalias\_command \Arg{command}}
+
+The \Arg{command} for the \code{postalias} command. Can be a full path or
+just the command name that can be found in the current search path.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to \qcode{/usr/sbin/postalias}.
+
+%% postmap_command
+\TheProperty[mail:postfix:mysql:postmap_command]{postmap\_\\command}
+\TheProperty*[mail!postfix!mysql!postmap\_command]{postmap\_command \Arg{command}}
+
+The \Arg{command} for the \code{postmap} command. Can be a full path or
+just the command name that can be found in the current search path.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to \qcode{/usr/sbin/postmap}.
+
+%% mysql_command
+\TheProperty[mail:postfix:mysql:mysql_command]{mysql\_command}
+\TheProperty*[mail!postfix!mysql!mysql\_command]{mysql\_command \Arg{command}}
+
+The \Arg{command} for the \code{mysql} command. Can be a full path or
+just the command name that can be found in the current search path.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to \qcode{/usr/bin/mysql}.
+
+%% chown_command
+\TheProperty[mail:postfix:mysql:chown_command]{chown\_command}
+\TheProperty*[mail!postfix!mysql!chown\_command]{chown\_command \Arg{command}}
+
+The \Arg{command} for the \code{chown} command. Can be a full path or
+just the command name that can be found in the current search path.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to \qcode{/bin/chown}.
+
+%% mailname_file
+\TheProperty[mail:postfix:mysql:mailname_file]{mailname\_\\file}
+\TheProperty*[mail!postfix!mysql!mailname\_file]{mailname\_file \Arg{path}}
+
+The \Arg{path} of the \code{mailname} file. Should be the full path 
+of the file.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to \qcode{/etc/mailname}.
+
+%% main_file
+\TheProperty[mail:postfix:mysql:main_file]{main\_file}
+\TheProperty*[mail!postfix!mysql!main\_file]{main\_file \Arg{path}}
+
+The \Arg{path} of the main configuration file of postfix.
+If the path is not absolute then the path is assumed to be
+in the configuration directory.
+Default is the file \qcode{main.cf} in the configuration directory.
+
+%% master_file
+\TheProperty[mail:postfix:mysql:master_file]{master\_file}
+\TheProperty*[mail!postfix!mysql!master\_file]{master\_file \Arg{path}}
+
+The \Arg{path} of the the master file of postfix configures
+the postfix master process. 
+If the path is not absolute then the path is assumed to be
+in the configuration directory.
+Default is the file \qcode{master.cf} in the configuration directory.
+
+%% configuration_directory
+\TheProperty[mail:postfix:mysql:configuration_directory]{configuration\_\\directory}
+\TheProperty*[mail!postfix!mysql!configuration\_directory]{configuration\_directory \Arg{path}}
+
+The \Arg{path} of the configuration directory of the postfix storage. 
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to \qcode{/etc/postfix}.
+
+%% mailbox_base_directory
+\TheProperty[mail:postfix:mysql:mailbox_base_directory]{mailbox\_base\_\\directory}
+\TheProperty*[mail!postfix!mysql!mailbox\_base\_directory]{mailbox\_base\_directory \Arg{path}}
+
+The \Arg{path} of the base directory for virtual mailbox.
+In the directory the mailbox is created for each virtual domain and user.
+Should be an absolute path.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to \qcode{/var/mail/vhosts}.
+
+%% packages
+\TheProperty[mail:postfix:mysql:packages]{packages}
+\TheProperty*[mail!postfix!mysql!packages]{packages \Arg{packages}}
+
+The \Arg{packages} list that needed to be installed for the MySQL storage.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to \qcode{postfix, postfix-mysql, mysql-client, mysql-server}.
+
+%% alias_maps
+\TheProperty[mail:postfix:mysql:alias_maps]{alias\_maps}
+\TheProperty*[mail!postfix!mysql!alias\_maps]{alias\_maps \Arg{uri}}
+
+The \Arg{uri} that points to the alias maps hash file.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to \qcode{hash://etc/postfix/aliases}.
+
+%% alias_database
+\TheProperty[mail:postfix:mysql:alias_database]{alias\_database}
+\TheProperty*[mail!postfix!mysql!alias\_database]{alias\_database \Arg{uri}}
+
+The \Arg{uri} that points to the alias databases hash file.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to \qcode{hash://etc/postfix/aliases}.
+
+%% virtual_mailbox_maps
+\TheProperty[mail:postfix:mysql:virtual_mailbox_maps]{virtual\_\\mailbox\_maps}
+\TheProperty*[mail!postfix!mysql!virtual\_mailbox\_maps]{virtual\_mailbox\_maps \Arg{uri}}
+
+The \Arg{uri} that points to the virtual mailbox maps MySQL configuration file.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to \qcode{mysql://etc/postfix/mysql\_mailbox.cf}.
+
+%% virtual_alias_maps
+\TheProperty[mail:postfix:mysql:virtual_alias_maps]{virtual\_\\alias\_maps}
+\TheProperty*[mail!postfix!mysql!virtual\_alias\_maps]{virtual\_alias\_maps \Arg{uri}}
+
+The \Arg{uri} that points to the virtual alias maps MySQL configuration file.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to \qcode{mysql://etc/postfix/mysql\_alias.cf}.
+
+%% virtual_mailbox_domains
+\TheProperty[mail:postfix:mysql:virtual_mailbox_domains]{virtual\_\\mailbox\_domains}
+\TheProperty*[mail!postfix!mysql!virtual\_mailbox\_domains]{virtual\_mailbox\_domains \Arg{uri}}
+
+The \Arg{uri} that points to the virtual mailbox domains MySQL configuration file.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to \qcode{mysql://etc/postfix/mysql\_domains.cf}.
+
+%% minimum_uid
+\TheProperty[mail:postfix:mysql:minimum_uid]{minimum\_uid}
+\TheProperty*[mail!postfix!mysql!minimum\_uid]{minimum\_uid \Arg{id}}
+
+The minimum user \Arg{id} for virtual users.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to \qcode{5000}.
+
+%% virtual_uid
+\TheProperty[mail:postfix:mysql:virtual_uid]{virtual\_uid}
+\TheProperty*[mail!postfix!mysql!virtual\_uid]{virtual\_uid \Arg{id}}
+
+The user \Arg{id} for virtual users.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to \qcode{5000}.
+
+%% virtual_gid
+\TheProperty[mail:postfix:mysql:virtual_gid]{virtual\_gid}
+\TheProperty*[mail!postfix!mysql!virtual\_gid]{virtual\_gid \Arg{id}}
+
+The group \Arg{id} for virtual users.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to \qcode{5000}.
+
+%% charset
+\TheProperty[mail:postfix:mysql:charset]{charset}
+\TheProperty*[mail!postfix!mysql!charset]{charset \Arg{name}}
+
+The \Arg{name} of the character set for the files.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to \qcode{utf-8}.
+

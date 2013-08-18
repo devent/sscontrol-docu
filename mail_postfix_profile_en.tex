@@ -1,155 +1,30 @@
 \label{sec:postfix_profile}
-\subsection{Postfix - Profile}
+\subsection{Postfix Profile}
 
-The postfix MTA comes in the distributions 
-\begin{compactitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04 in version 2.7.0 in the main repository;
-\item[\TheDistribution{ubuntu}] Ubuntu 12.04,
-\item[\TheDistribution{debian}] Debian,
-\end{compactitem}
+%% storage
+\TheProperty[mail:postfix:storage]{storage}
+\TheProperty*[mail!postfix!storage]{storage \Arg{name}}
 
-\TheProperty[mail:postfix:service]{service}
-\TheProperty*[mail!postfix!service]{service \Arg{name}}
-
-The \Arg{name} of the postfix service. Can be one of the following 
-service types.
+The \Arg{name} of the postfix storage. Can be one of the following 
+storage types.
 \begin{asparaitem}
-\item[\qcode{postfix}:] 
-the normal postfix service. Supports shared domains, UNIX system accounts;
+%
+\item[\qcode{hash}:] 
+the normal postfix storage. The aliases and domains are stored in Hash files.
+Supports shared domains, UNIX system accounts;
 separate domains, Unix system accounts; separate domains, non-UNIX accounts.
-
-\item[\qcode{postfix-mysql}:] supports the same types as the normal 
-postfix service but with MySQL as the back-end database.
+%
+\item[\qcode{postfix}:] supports the same types as the normal 
+postfix storage but with MySQL as the back-end mail.
+%
 \end{asparaitem}
 
-\TheProperty[mail:postfix:postalias_command]{postalias\_\\command}
-\TheProperty*[mail!postfix!postalias\_command]{postalias\_command \Arg{command}}
-
-The \Arg{command} for the \code{postalias} command. Can be a full path or
-just the command name that can be found in the current search path.
-For the distribution
-\begin{inparaitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04
-\end{inparaitem}
-the value is set to \qcode{/usr/sbin/postalias}.
-
-\TheProperty[mail:postfix:postmap_command]{postmap\_\\command}
-\TheProperty*[mail!postfix!postmap\_command]{postmap\_command \Arg{command}}
-
-The \Arg{command} for the \code{postmap} command. Can be a full path or
-just the command name that can be found in the current search path.
-For the distribution
-\begin{inparaitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04
-\end{inparaitem}
-the value is set to \qcode{/usr/sbin/postmap}.
-
-\TheProperty[mail:postfix:mailname_file]{mailname\_\\file}
-\TheProperty*[mail!postfix!mailname\_file]{mailname\_file \Arg{path}}
-
-The \Arg{path} of the \code{mailname} file. Should be the full path 
-of the file.
-For the distribution
-\begin{inparaitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04
-\end{inparaitem}
-the value is set to \qcode{/etc/mailname}.
-
-\TheProperty[mail:postfix:main_file]{main\_file}
-\TheProperty*[mail!postfix!main\_file]{main\_file \Arg{path}}
-
-The \Arg{path} of the main configuration file of postfix.
-If the path is not absolute then the path is assumed to be
-in the configuration directory.
-Default is the file \qcode{main.cf} in the configuration directory.
-
-\TheProperty[mail:postfix:master_file]{master\_file}
-\TheProperty*[mail!postfix!master\_file]{master\_file \Arg{path}}
-
-The \Arg{path} of the the master file of postfix configures
-the postfix master process. 
-If the path is not absolute then the path is assumed to be
-in the configuration directory.
-Default is the file \qcode{master.cf} in the configuration directory.
-
-\TheProperty[mail:postfix:alias_domains_file]{alias\_domains\_\\file}
-\TheProperty*[mail!postfix!alias\_domains\_file]{alias\_domains\_file \Arg{path}}
-
-The \Arg{path} of the the alias domains hash table file. It is used to loop-up
-virtual domains. If the path is not absolute then the path is assumed to be
-in the configuration directory. 
-Default is the file \qcode{alias\_domains} in the configuration directory.
-
-%% alias_maps_file
-\TheProperty[mail:postfix:alias_maps_file]{alias\_maps\_file}
-\TheProperty*[mail!postfix!alias\_maps\_file]{alias\_maps\_file \Arg{path}}
-
-The \Arg{path} of the the alias maps hash table file. It is used to loop-up
-virtual aliases. If the path is not absolute then the path is assumed to be
-in the configuration directory. 
-Default is the file \qcode{alias\_maps} in the configuration directory.
-
-%% mailbox_maps_file
-\TheProperty[mail:postfix:mailbox_maps_file]{mailbox\_maps\_\\file}
-\TheProperty*[mail!postfix!mailbox\_maps\_file]{mailbox\_maps\_file \Arg{path}}
-
-The \Arg{path} of the the mailbox maps hash table file. It is used to loop-up
-mailbox location for virtual users. 
-If the path is not absolute then the path is assumed to be in the 
-configuration directory. 
-Default is the file \qcode{mailbox\_maps} in the configuration directory.
-
-%% configuration_directory
-\TheProperty[mail:postfix:configuration_directory]{configuration\_\\directory}
-\TheProperty*[mail!postfix!configuration\_directory]{configuration\_directory \Arg{path}}
-
-The \Arg{path} of the configuration directory of the postfix service. 
-For the distribution
-\begin{inparaitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04
-\end{inparaitem}
-the value is set to \qcode{/etc/postfix}.
-
-%% mailbox_base_directory
-\TheProperty[mail:postfix:mailbox_base_directory]{mailbox\_base\_\\directory}
-\TheProperty*[mail!postfix!mailbox\_base\_directory]{mailbox\_base\_directory \Arg{path}}
-
-The \Arg{path} of the base directory for virtual mailbox.
-In the directory the mailbox is created for each virtual domain and user.
-Should be an absolute path.
-For the distribution
-\begin{inparaitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04
-\end{inparaitem}
-the value is set to \qcode{/var/mail/vhosts}.
-
-%% packages
-\TheProperty[mail:postfix:packages]{packages}
-\TheProperty*[mail!postfix!packages]{packages \Arg{packages}}
-
-The \Arg{packages} list that needed to be installed for the postfix service.
-For the distribution
-\begin{inparaitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04
-\end{inparaitem}
-the value is set to \qcode{postfix}.
-
-%% default_destinations
-\TheProperty[mail:postfix:default_destinations]{default\_\\destinations}
-\TheProperty*[mail!postfix!default\_destinations]{default\_destinations \Arg{domains}}
-
-List of \Arg{domains} that are appended to the destinations.
-Caution must be taked with the domain names that contains backslashes \qcode{\textbackslash} and 
-dollar signs \qcode{\$}. Dollar signs may be treated as references to 
-captured subsequences and backslashes are used to escape literal characters  in the domain name.
-The value is set to \qcode{\textbackslash\$myhostname, localhost.\textbackslash\$mydomain, localhost}.
-
 %% banner
-\TheProperty[mail:postfix:banner]{banner}
-\TheProperty*[mail!postfix!banner]{banner \Arg{text}}
+\TheProperty[mail:postfix:mysql:banner]{banner}
+\TheProperty*[mail!postfix!mysql!banner]{banner \Arg{text}}
 
 Sets the banner \Arg{text} that follows the 220 status code in the SMTP 
-greeting banner. The text can contain service specific variables. Caution
+greeting banner. The text can contain storage specific variables. Caution
 must be taked with banner text that contains backslashes \qcode{\textbackslash} and 
 dollar signs \qcode{\$}. Dollar signs may be treated as references to 
 captured subsequences and backslashes are used to escape literal characters 
@@ -160,9 +35,19 @@ For the distribution
 \end{inparaitem}
 the value is set to \qcode{\textbackslash\$myhostname ESMTP \textbackslash\$mail\_name}.
 
+%% default_destinations
+\TheProperty[mail:postfix:mysql:default_destinations]{default\_\\destinations}
+\TheProperty*[mail!postfix!mysql!default\_destinations]{default\_destinations \Arg{domains}}
+
+List of \Arg{domains} that are appended to the destinations.
+Caution must be taked with the domain names that contains backslashes \qcode{\textbackslash} and 
+dollar signs \qcode{\$}. Dollar signs may be treated as references to 
+captured subsequences and backslashes are used to escape literal characters  in the domain name.
+The value is set to \qcode{\textbackslash\$myhostname, localhost.\textbackslash\$mydomain}.
+
 %% mailbox_base_pattern
-\TheProperty[mail:postfix:mailbox_pattern]{mailbox\_pattern}
-\TheProperty*[mail!postfix!mailbox\_pattern]{mailbox\_pattern \Arg{pattern}}
+\TheProperty[mail:postfix:mysql:mailbox_pattern]{mailbox\_pattern}
+\TheProperty*[mail!postfix!mysql!mailbox\_pattern]{mailbox\_pattern \Arg{pattern}}
 
 Sets the \Arg{pattern} for the directories that are created for each virtual
 domain and virtual user under the mailbox base directory. 
@@ -173,37 +58,3 @@ Each of the variables needs to be eclosed in \qcode{\$\{\}}.
 \item[\qcode{user}:] the user name of the virtual user;
 \end{compactitem}
 Default is set the \qcode{\$\{domain\}/\$\{user\}} pattern.
-
-%% minimum_uid
-\TheProperty[mail:postfix:minimum_uid]{minimum\_uid}
-\TheProperty*[mail!postfix!minimum\_uid]{minimum\_uid \Arg{uid}}
-
-Sets the minimum user identification number \Arg{uid} for the virtual user.
-For the distribution
-\begin{inparaitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04
-\end{inparaitem}
-the value is set to \code{5000}.
-
-%% virtual_uid
-\TheProperty[mail:postfix:virtual_uid]{virtual\_uid}
-\TheProperty*[mail!postfix!virtual\_uid]{virtual\_uid \Arg{uid}}
-
-Sets the user identification number \Arg{uid} for virtual users.
-For the distribution
-\begin{inparaitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04
-\end{inparaitem}
-the value is set to \code{5000}.
-
-%% virtual_gid
-\TheProperty[mail:postfix:virtual_gid]{virtual\_gid}
-\TheProperty*[mail!postfix!virtual\_gid]{virtual\_gid \Arg{gid}}
-
-Sets the group identification number \Arg{gid} for virtual users.
-For the distribution
-\begin{inparaitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04
-\end{inparaitem}
-the value is set to \code{5000}.
-
