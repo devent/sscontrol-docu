@@ -13,11 +13,8 @@ label={lst:hostname_ubuntu_profile},
 title={Ubuntu hostname profile.}]
 profile "ubuntu_10_04", {
     system {
-        install_command "/usr/bin/aptitude update && /usr/bin/aptitude install"
     }
     hostname {
-        configuration_directory "/etc"
-        restart_command "/sbin/restart hostname"
     }
 }
 \end{lstlisting}
