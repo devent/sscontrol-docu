@@ -19,9 +19,22 @@ postfix storage but with MySQL as the back-end mail.
 %
 \end{asparaitem}
 
+%% delivery
+\TheProperty[mail:postfix:delivery]{delivery}
+\TheProperty*[mail!postfix!delivery]{delivery \Arg{name}}
+
+The \Arg{name} of the mail delivery. Can be one of the following 
+delivery types.
+\begin{asparaitem}
+%
+\item[\qcode{courier}:] 
+Courier/POP/IMAP mail delivery.
+%
+\end{asparaitem}
+
 %% banner
-\TheProperty[mail:postfix:mysql:banner]{banner}
-\TheProperty*[mail!postfix!mysql!banner]{banner \Arg{text}}
+\TheProperty[mail:postfix:banner]{banner}
+\TheProperty*[mail!postfix!banner]{banner \Arg{text}}
 
 Sets the banner \Arg{text} that follows the 220 status code in the SMTP 
 greeting banner. The text can contain storage specific variables. Caution
@@ -35,9 +48,21 @@ For the distribution
 \end{inparaitem}
 the value is set to \qcode{\textbackslash\$myhostname ESMTP \textbackslash\$mail\_name}.
 
+%% unknown_local_recipient_reject_code
+\TheProperty[mail:postfix:unknown_local_recipient_reject_code]{unknown\_local\_\\recipient\_\\reject\_code}
+\TheProperty*[mail!postfix!unknown\_local\_recipient\_reject\_code]{unknown\_local\_recipient\_reject\_code \Arg{code}}
+
+The numerical Postfix/SMTP server response code when a local recipient 
+address is unknown.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to \code{550}.
+
 %% default_destinations
-\TheProperty[mail:postfix:mysql:default_destinations]{default\_\\destinations}
-\TheProperty*[mail!postfix!mysql!default\_destinations]{default\_destinations \Arg{domains}}
+\TheProperty[mail:postfix:default_destinations]{default\_\\destinations}
+\TheProperty*[mail!postfix!default\_destinations]{default\_destinations \Arg{domains}}
 
 List of \Arg{domains} that are appended to the destinations.
 Caution must be taked with the domain names that contains backslashes \qcode{\textbackslash} and 
@@ -46,15 +71,236 @@ captured subsequences and backslashes are used to escape literal characters  in 
 The value is set to \qcode{\textbackslash\$myhostname, localhost.\textbackslash\$mydomain}.
 
 %% mailbox_base_pattern
-\TheProperty[mail:postfix:mysql:mailbox_pattern]{mailbox\_pattern}
-\TheProperty*[mail!postfix!mysql!mailbox\_pattern]{mailbox\_pattern \Arg{pattern}}
+\TheProperty[mail:postfix:mailbox_pattern]{mailbox\_pattern}
+\TheProperty*[mail!postfix!mailbox\_pattern]{mailbox\_pattern \Arg{pattern}}
 
 Sets the \Arg{pattern} for the directories that are created for each virtual
 domain and virtual user under the mailbox base directory. 
 Various variables can be used to specify the pattern.
-Each of the variables needs to be eclosed in \qcode{\$\{\}}.
+Each of the variables needs to be eclosed in \qcode{<>}.
 \begin{compactitem}
 \item[\qcode{domain}:] the domain name of the virtual user;
 \item[\qcode{user}:] the user name of the virtual user;
 \end{compactitem}
-Default is set the \qcode{\$\{domain\}/\$\{user\}} pattern.
+Default is set the \qcode{<domain>/<user>} pattern.
+
+%% delay_warning_time
+\TheProperty[mail:postfix:delay_warning_time]{delay\_warning\_\\time}
+\TheProperty*[mail!postfix!delay\_warning\_time]{delay\_warning\_time \Arg{time}}
+
+Sets the \Arg{time} after which the sender receives a copy of the message
+headers of the mails that are still queued. The time is expected to be in 
+the ISO 8601 format for durations.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to four hours \qcode{PT4H}.
+
+%% maximal_queue_lifetime
+\TheProperty[mail:postfix:maximal_queue_lifetime]{maximal\_\\queue\_lifetime}
+\TheProperty*[mail!postfix!maximal\_queue\_lifetime]{maximal\_queue\_lifetime \Arg{time}}
+
+Sets the \Arg{time} after which the message is consider as not possible to deliver. 
+The time is expected to be in the ISO 8601 format for durations.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to seven days \qcode{P7D}.
+
+%% minimal_retries_delay
+\TheProperty[mail:postfix:minimal_retries_delay]{minimal\_\\retries\_delay}
+\TheProperty*[mail!postfix!minimal\_retries\_delay]{minimal\_retries\_delay \Arg{time}}
+
+Sets the minimal \Arg{time} between attempts to deliver a deferred message.
+The time is expected to be in the ISO 8601 format for durations.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to fifteen minutes \qcode{PT15M}.
+
+%% maximal_retries_delay
+\TheProperty[mail:postfix:maximal_retries_delay]{maximal\_\\retries\_delay}
+\TheProperty*[mail!postfix!maximal\_retries\_delay]{maximal\_retries\_delay \Arg{time}}
+
+Sets the maximal \Arg{time} between attempts to deliver a deferred message.
+The time is expected to be in the ISO 8601 format for durations.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to two hours \qcode{PT2H}.
+
+%% helo_timeout
+\TheProperty[mail:postfix:helo_timeout]{helo\_timeout}
+\TheProperty*[mail!postfix!helo\_timeout]{helo\_timeout \Arg{time}}
+
+Sets the Postfix/SMTP client \Arg{time} limit for sending the HELO or
+EHLO command, and for receiving the initial remote SMTP server response.
+The time is expected to be in the ISO 8601 format for durations.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to one minute \qcode{PT1M}.
+
+%% recipient_limit
+\TheProperty[mail:postfix:recipient_limit]{recipient\_limit}
+\TheProperty*[mail!postfix!recipient\_limit]{recipient\_limit \Arg{number}}
+
+Sets the maximal \Arg{number} of recipients that the Postfix/SMTP server
+accepts per message delivery request.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to sixteen \code{16}.
+
+%% back_off_error_limit
+\TheProperty[mail:postfix:back_off_error_limit]{back\_off\_\\error\_limit}
+\TheProperty*[mail!postfix!back\_off\_error\_limit]{back\_off\_error\_limit \Arg{number}}
+
+Sets the \Arg{number} of errors before the Postfix/SMTP server slows
+down all its responses.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to three \code{3}.
+
+%% blocking_error_limit
+\TheProperty[mail:postfix:blocking_error_limit]{blocking\_\\error\_limit}
+\TheProperty*[mail!postfix!blocking\_error\_limit]{blocking\_error\_limit \Arg{number}}
+
+Sets the maximal \Arg{number} of errors a remote SMTP client is allowed
+to make without delivering mail.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to twelve \code{12}.
+
+%% helo_restrictions
+\TheProperty[mail:postfix:helo_restrictions]{helo\_\\restrictions}
+\TheProperty*[mail!postfix!helo\_restrictions]{helo\_restrictions \Arg{restrictions}}
+
+Sets the \Arg{restrictions} that the Postfix/SMTP server applies in the
+context of a client HELO command.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the restrictions are
+\begin{compactitem}
+\item \qcode{permit\_mynetworks},
+\item \qcode{warn\_if\_reject reject\_non\_fqdn\_hostname},
+\item \qcode{reject\_invalid\_hostname},
+\item \qcode{permit}.
+\end{compactitem}
+
+%% sender_restrictions
+\TheProperty[mail:postfix:sender_restrictions]{sender\_\\restrictions}
+\TheProperty*[mail!postfix!sender\_restrictions]{sender\_restrictions \Arg{restrictions}}
+
+Sets the \Arg{restrictions} that the Postfix/SMTP server applies in the
+context of a client MAIL FROM command.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the restrictions are
+\begin{compactitem}
+\item \qcode{permit\_mynetworks},
+\item \qcode{warn\_if\_reject reject\_non\_fqdn\_sender},
+\item \qcode{reject\_unknown\_sender\_domain},
+\item \qcode{reject\_unauth\_pipelining},
+\item \qcode{permit},
+\end{compactitem}
+
+%% client_restrictions
+\TheProperty[mail:postfix:client_restrictions]{client\_\\restrictions}
+\TheProperty*[mail!postfix!client\_restrictions]{client\_restrictions \Arg{restrictions}}
+
+Sets the \Arg{restrictions} that the Postfix/SMTP server applies in the
+context of a client connection request.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the restrictions are
+\begin{compactitem}
+\item \qcode{reject\_rbl\_client sbl.spamhaus.org},
+\item \qcode{reject\_rbl\_client blackholes.easynet.nl},
+\item \qcode{reject\_rbl\_client dnsbl.njabl.org}.
+\end{compactitem}
+
+%% recipient_restrictions
+\TheProperty[mail:postfix:recipient_restrictions]{recipient\_\\restrictions}
+\TheProperty*[mail!postfix!recipient\_restrictions]{recipient\_restrictions \Arg{restrictions}}
+
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the restrictions are
+\begin{compactitem}
+\item \qcode{reject\_unauth\_pipelining},
+\item \qcode{permit\_mynetworks},
+\item \qcode{reject\_non\_fqdn\_recipient},
+\item \qcode{reject\_unknown\_recipient\_domain},
+\item \qcode{reject\_unauth\_destination},
+\item \qcode{permit}.
+\end{compactitem}
+
+%% data_restrictions
+\TheProperty[mail:postfix:data_restrictions]{data\_\\restrictions}
+\TheProperty*[mail!postfix!data\_restrictions]{data\_restrictions \Arg{restrictions}}
+
+Sets the \Arg{restrictions} that the Postfix/SMTP server applies in the
+context of a client RCPT TO command.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the restrictions are
+\begin{compactitem}
+\item \qcode{reject\_unauth\_pipelining}.
+\end{compactitem}
+
+%% helo_required
+\TheProperty[mail:postfix:helo_required]{helo\_required}
+\TheProperty*[mail!postfix!helo\_required]{helo\_required \Arg{flag}}
+
+Sets requirement that a remote SMTP client introduces itself with the HELO/EHLO
+command. The flag is expected to be either \qcode{true} or \qcode{false}.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the flag is set to \qcode{true}.
+
+%% delay_reject
+\TheProperty[mail:postfix:delay_reject]{delay\_reject}
+\TheProperty*[mail!postfix!delay\_reject]{delay\_reject \Arg{flag}}
+
+Sets requirement to wait until the RCPT TO/ETRN command. 
+The flag is expected to be either \qcode{true} or \qcode{false}.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the flag is set to \qcode{true}.
+
+%% disable_vrfy_command
+\TheProperty[mail:postfix:disable_vrfy_command]{disable\_\\vrfy\_command}
+\TheProperty*[mail!postfix!disable\_vrfy\_command]{disable\_vrfy\_command \Arg{flag}}
+
+Sets to disable the SMTP VRFY command.
+The flag is expected to be either \qcode{true} or \qcode{false}.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the flag is set to \qcode{true}.
