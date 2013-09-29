@@ -2,51 +2,56 @@
 \input{database_script_statements_en}
 
 \TheStatement{database}
-\TheStatement*[database]{database \{ debugging bind\_address admin\_password database user \}}
+\TheStatement*[database]{database \{ debug bind admin database user \}}
 
 Entry point in the database script.
 
-\TheStatement[database:debugging]{debugging}
-\TheStatement*[database!debugging]{debugging true|false}
+\TheStatement[database:debug]{debug}
+\TheStatement*[database!debug]{debug logging: \Arg{level}}
 
-Enables or disables the general logging for the database server.
-Default logging is off.
+Sets the debug logging \Arg{level} for the database server. The \Arg{level}
+can be any positive number, zero is normally interpreted as no logging.
 
-\TheStatement[database:bind_address]{bind\_address}
-\TheStatement*[database!bind\_address]{bind\_address \Arg{address}}
+\TheStatement[database:bind]{bind}
+\TheStatement*[database!bind]{bind address: \Arg{address}}
 
-The IP \Arg{address} or the host name on which the database server should listen
-to connections. Defaults to the localhost address \code{"127.0.0.1"}.
+Sets IP \Arg{address} or the host name on which the database server should listen
+to connections. Defaults to the localhost address \qcode{127.0.0.1}.
 
-\TheStatement[database:admin_password]{admin\_password}
-\TheStatement*[database!admin\_password]{admin\_password \Arg{password}}
+\TheStatement[database:admin]{admin}
+\TheStatement*[database!admin]{admin password: \Arg{password}}
 
-The administrator \Arg{password} for the database server. If no password for
+Sets administrator \Arg{password} for the database server. If no password for
 the administrator account was yet set this password is set. Used to login as
 the administrator user to create users, create databases and set permissions.
 
 \TheStatement[database:db]{database}
-\TheStatement*[database!database]{database \Arg{name} [, character\_set: \Arg{name}] [, collate: \Arg{name}] \{ import\_sql \}}
+\TheStatement*[database!database]{database \Arg{name} [, charset: \Arg{name}] [, collate: \Arg{name}] [, \{ script \}]}
 
 Creates a new database with the specified database \Arg{name}, character set and collate.
 If the database was already on the server, it will update the character set and collate
 to the specified character set and collate. The database server needs to support 
 the specified character set and collate.
 
-\TheStatement[database:import_sql]{import\_sql}
-\TheStatement*[database!import\_sql]{import\_sql \Arg{resource}}
+\TheStatement[database:script]{script}
+\TheStatement*[database!script]{script execute: \Arg{resource}}
 
-Imports SQL script \Arg{resource} from the specified file, URL or URI. 
+Executes the script \Arg{resource}. The resource can be a file, URL or URI. 
 A string will be interpreted according to the format. If no scheme is used 
-the string is assumed to be a local file, otherwise the string is assumed to 
-be a URI.
+the string is assumed to be a local file.
 
 \TheStatement[database:user]{user}
-\TheStatement*[database!user]{user \Arg{name}, password: \Arg{password} [, server: \Arg{host}] [, \{ use\_database \}]}
+\TheStatement*[database!user]{user \Arg{name}, password: \Arg{password} [, server: \Arg{host}] [, \{ access \}]}
 
 Creates a new user with the specified \Arg{name}, \Arg{password} and server \Arg{host}.
 If the user already exists on the server, the password is updated for that user.
 A user is identified by the user name and the server host.
-The server host name defaults to the server host \code{"localhost"}.
+The server host name defaults to the server host \qcode{localhost}.
 The database that the user have read and write access to will be set. This will not create
 the database on the server, to create a database use the \TheStatement*{database} statement.
+
+\TheStatement[database:access]{access}
+\TheStatement*[database!access]{database: \Arg{database}}
+
+Sets the access rights for the \Arg{database} for the user. The user is granted 
+all permissions to the specified database.

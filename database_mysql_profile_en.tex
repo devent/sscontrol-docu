@@ -11,7 +11,7 @@ For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 10.04
 \end{inparaitem}
-the value is set to \qcode{/usr/bin/aptitude update \&\& DEBIAN\_FRONTEND=noninteractive /usr/bin/aptitude -y install}.
+the value is set to \qcode{export DEBIAN\_FRONTEND=noninteractive\textbackslash{n} /usr/bin/aptitude update \&\& /usr/bin/aptitude -y install}.
 
 %% restart_command
 \TheProperty[database:mysql:restart_command]{restart\_\\command}
@@ -96,6 +96,17 @@ For the distribution
 \end{inparaitem}
 the value is set to \qcode{mysql}.
 
+%% charset
+\TheProperty[database:mysql:charset]{charset}
+\TheProperty*[database!mysql!charset]{charset \Arg{name}}
+
+Sets the default character set \Arg{name} in which configuration files are 
+saved. For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to \qcode{utf-8}.
+
 %% default_character_set
 \TheProperty[database:mysql:default_character_set]{default\_\\character\_\\set}
 \TheProperty*[database!mysql!default\_character\_set]{default\_character\_set \Arg{name}}
@@ -117,4 +128,37 @@ For the distribution
 \item[\TheDistribution{ubuntu}] Ubuntu 10.04
 \end{inparaitem}
 the value is set to \qcode{utf8\_general\_ci}.
+ 
+%% default_debug_logging
+\TheProperty[database:mysql:default_debug_logging]{default\_debug\_\\logging}
+\TheProperty*[database!mysql!default\_debug\_logging]{default\_debug\_logging \Arg{level}}
+
+The default debug logging \Arg{level}.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to \qcode{0}.
+
+%% default_bind_address
+\TheProperty[database:mysql:default_bind_address]{default\_bind\_\\address}
+\TheProperty*[database!mysql!default\_bind\_address]{default\_bind\_address \Arg{address}}
+
+The default IP \Arg{address} or host name on which the database server should
+listen for connections. For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to \qcode{127.0.0.1}.
+ 
+%% default_user_server
+\TheProperty[database:mysql:default_user_server]{default\_user\_\\server}
+\TheProperty*[database!mysql!default\_user\_server]{default\_user\_server \Arg{server}}
+
+The default \Arg{server} that is used for database users.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to \qcode{localhost}.
  

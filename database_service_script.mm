@@ -3,19 +3,20 @@
 <node COLOR="#2121d3" CREATED="1329133574707" ID="ID_1726505626" MODIFIED="1373394808802" TEXT="database">
 <font BOLD="true" NAME="DejaVu Sans Mono" SIZE="12"/>
 <icon BUILTIN="forward"/>
-<node COLOR="#2121d3" CREATED="1334720731402" ID="ID_687016888" MODIFIED="1373394318590" POSITION="right" TEXT="debugging">
+<node COLOR="#2121d3" CREATED="1334720731402" ID="ID_687016888" MODIFIED="1380476460866" POSITION="right" TEXT="debug">
 <edge STYLE="bezier"/>
 <font BOLD="true" NAME="DejaVu Sans Mono" SIZE="12"/>
 <icon BUILTIN="forward"/>
 <icon BUILTIN="help"/>
-<node CREATED="1373394351829" ID="ID_1927015480" MODIFIED="1373394364287" TEXT="true">
+<node COLOR="#2121d3" CREATED="1380476462146" ID="ID_29083" MODIFIED="1380476481189" TEXT="logging">
 <font BOLD="true" NAME="DejaVu Sans Mono" SIZE="12"/>
+<icon BUILTIN="forward"/>
+<node COLOR="#43a14b" CREATED="1380476474853" ID="ID_1196927094" MODIFIED="1380476479212" TEXT="level">
+<font BOLD="true" ITALIC="true" NAME="DejaVu Sans Mono" SIZE="12"/>
 </node>
-<node CREATED="1373394353467" ID="ID_1152299577" MODIFIED="1373394366262" TEXT="false">
-<font BOLD="true" NAME="DejaVu Sans Mono" SIZE="12"/>
 </node>
 </node>
-<node COLOR="#2121d3" CREATED="1329133630153" ID="ID_116194451" MODIFIED="1373394320634" POSITION="right" TEXT="bind_address">
+<node COLOR="#2121d3" CREATED="1329133630153" ID="ID_116194451" MODIFIED="1380476248257" POSITION="right" TEXT="bind">
 <edge STYLE="bezier" WIDTH="2"/>
 <font BOLD="true" NAME="DejaVu Sans Mono" SIZE="12"/>
 <icon BUILTIN="forward"/>
@@ -24,7 +25,7 @@
 <font BOLD="true" ITALIC="true" NAME="DejaVu Sans Mono" SIZE="12"/>
 </node>
 </node>
-<node COLOR="#2121d3" CREATED="1329133730009" ID="ID_1302914741" MODIFIED="1373394321468" POSITION="right" TEXT="admin_password">
+<node COLOR="#2121d3" CREATED="1329133730009" ID="ID_1302914741" MODIFIED="1380476251649" POSITION="right" TEXT="admin">
 <edge STYLE="bezier"/>
 <font BOLD="true" NAME="DejaVu Sans Mono" SIZE="12"/>
 <icon BUILTIN="forward"/>
@@ -39,7 +40,7 @@
 <node COLOR="#43a14b" CREATED="1329134008337" ID="ID_860498321" MODIFIED="1373394428061" TEXT="name">
 <edge STYLE="bezier"/>
 <font BOLD="true" ITALIC="true" NAME="DejaVu Sans Mono" SIZE="12"/>
-<node COLOR="#2121d3" CREATED="1340184952377" ID="ID_1535476911" MODIFIED="1373398480850" TEXT="character_set">
+<node COLOR="#2121d3" CREATED="1340184952377" ID="ID_1535476911" MODIFIED="1380476267836" TEXT="charset">
 <edge STYLE="bezier"/>
 <font BOLD="true" NAME="DejaVu Sans Mono" SIZE="12"/>
 <icon BUILTIN="forward"/>
@@ -59,14 +60,18 @@
 </node>
 </node>
 </node>
-<node COLOR="#2121d3" CREATED="1360609885410" ID="ID_1263414272" MODIFIED="1373398482200" TEXT="import_sql">
+<node COLOR="#2121d3" CREATED="1360609885410" ID="ID_1263414272" MODIFIED="1380476281861" TEXT="script">
 <edge STYLE="bezier"/>
 <font BOLD="true" NAME="DejaVu Sans Mono" SIZE="12"/>
 <icon BUILTIN="forward"/>
 <icon BUILTIN="help"/>
+<node COLOR="#2121d3" CREATED="1380476293138" ID="ID_1965860529" MODIFIED="1380476327111" TEXT="execute">
+<font BOLD="true" NAME="DejaVu Sans Mono" SIZE="12"/>
+<icon BUILTIN="forward"/>
 <node COLOR="#43a14b" CREATED="1360609923981" ID="ID_203356434" MODIFIED="1373394521277" TEXT="resource">
 <edge STYLE="bezier"/>
 <font BOLD="true" ITALIC="true" NAME="DejaVu Sans Mono" SIZE="12"/>
+</node>
 </node>
 </node>
 </node>
@@ -96,14 +101,18 @@
 </node>
 </node>
 </node>
-<node COLOR="#2121d3" CREATED="1335086822805" ID="ID_503522635" MODIFIED="1373398483768" TEXT="use_database">
+<node COLOR="#2121d3" CREATED="1335086822805" ID="ID_503522635" MODIFIED="1380476334501" TEXT="access">
 <edge STYLE="bezier"/>
 <font BOLD="true" NAME="DejaVu Sans Mono" SIZE="12"/>
 <icon BUILTIN="forward"/>
 <icon BUILTIN="help"/>
+<node COLOR="#2121d3" CREATED="1380476344326" ID="ID_1020954880" MODIFIED="1380476346852" TEXT="database">
+<font BOLD="true" NAME="DejaVu Sans Mono" SIZE="12"/>
+<icon BUILTIN="forward"/>
 <node COLOR="#43a14b" CREATED="1335086835717" ID="ID_194096982" MODIFIED="1373394552734" TEXT="database">
 <edge STYLE="bezier"/>
 <font BOLD="true" ITALIC="true" NAME="DejaVu Sans Mono" SIZE="12"/>
+</node>
 </node>
 </node>
 </node>
