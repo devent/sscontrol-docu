@@ -4,28 +4,28 @@ title={Example script for a database. It will set the database server address, c
 database {
 
     // enable debugging output
-    debugging true
+    debug logging: 1
 
-    // bind the database server to all addresses only
-    bind_address "0.0.0.0"
+    // bind the database server to all addresses
+    bind address: "0.0.0.0"
 
     // set the administrator password
-    admin_password "mysqladminpassword"
+    admin password: "mysqladminpassword"
 
     // add new database with default character set and collate
     database "wordpressdb"
 
     // add new database
-    database "drupal6db", character_set: "latin1", collate: "latin1_swedish_ci"
+    database "drupal6db", charset: "latin1", collate: "latin1_swedish_ci"
 
     // add new database and import tables
     database "maildb", {
-        import_sql "postfixtables.sql"
+        script execute: "postfixtables.sql"
     }
 
     // add new database and import tables
-    database "postfixdb", character_set: "latin1", collate: "latin1_swedish_ci", {
-        import_sql "postfixtables.sql"
+    database "postfixdb", charset: "latin1", collate: "latin1_swedish_ci", {
+        script execute: "postfixtables.sql"
     }
 
     // add a new user
@@ -33,7 +33,7 @@ database {
 
     // add a new user, grand all privileges on database
     user "drupal6", password: "drupal6password", server: "srv2", {
-        use_database "drupal6db"
+        access database: "drupal6db"
     }
 }
 \end{lstlisting}
