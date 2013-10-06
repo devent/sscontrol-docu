@@ -2,7 +2,7 @@
 \input{dns_script_statements_en}
 
 \TheStatement{dns}
-\TheStatement*[dns]{dns \{ serial bind\_address zone \}}
+\TheStatement*[dns]{dns \{ serial bind zone \}}
 
 Entry point in the dns script.
 
@@ -19,11 +19,12 @@ If generate is set to \code{true} then the serial number is added to
 the automatically generated serial, otherwise the serial number is used 
 as specified.
 
-\TheStatement[serial:bind_address]{bind\_address}
-\TheStatement*[dns!bind\_address]{bind\_address \Arg{address}}
+\TheStatement[serial:bind]{bind}
+\TheStatement*[dns!bind]{bind [address: [\Arg{loopback}] [\Arg{all}] [\Arg{address}] [addresses: \Arg{addresses}]}
 
-The IP \Arg{address} or the host name on which the dns server should listen
-to connections. Defaults to the localhost address \qcode{127.0.0.1}.
+The IP \Arg{address} or a list of \Arg{addresses} or the host name(s) 
+on which the dns server should listen to connections. Set to \Arg{loopback}
+to set the address to the loopback 
 
 \TheStatement[dns:zone]{zone}
 \TheStatement*[dns!zone]{zone \Arg{name}, \Arg{primary}, \Arg{email} [, \Arg{address}] [, \Arg{ttl}] [, \{ ttl refresh retry expire minimum\_ttl ns\_record a\_record mx\_record cname\_record \} ]}
