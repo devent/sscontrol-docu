@@ -28,63 +28,59 @@ for the local host address \code{127.0.0.1} or to \qcode{all} to listen to all
 hosts.
 
 \TheStatement[dns:zone]{zone}
-\TheStatement*[dns!zone]{zone \Arg{name}, \Arg{primary}, \Arg{email} [, \Arg{address}] [, \Arg{ttl}] [, \{ ttl refresh retry expire minimum\_ttl ns\_record a\_record mx\_record cname\_record \} ]}
+\TheStatement*[dns!zone]{zone \Arg{name}, primary: \Arg{primary}, email: \Arg{email} [, serial: \Arg{serial}]}\\
+\TheStatement*{[, address: \Arg{address}] [, ttl: \Arg{time}] [, \{ ttl refresh retry}\\
+\TheStatement*{expire record \} ]}
 
 Adds a new DNS zone. The \Arg{name}, the \Arg{primary} DNS server and 
-the \Arg{email} address of the zone are required. An A-record for the zone
+the \Arg{email} address of the zone are required. The \Arg{serial} number can
+be set for the DNS zone.
+An A-record for the zone
 can be created if the IP \Arg{address} of the zone is specified. If the
-\Arg{ttl} time is specified it is set for the A-record.
+TTL \Arg{time} is specified it is set for the A-record.
 
 \TheStatement[dns:ttl]{ttl}
-\TheStatement*[dns!ttl]{ttl \Arg{time}}
+\TheStatement*[dns!ttl]{ttl duration: \Arg{duration} [, minimum: \Arg{duration}]}
 
-Sets the time to live \Arg{time}. The default time to live time is 24 hours.
+Sets the time to live \Arg{duration}. 
+The duration accept ISO 8601 time formats.
 
 \TheStatement[dns:refresh]{refresh}
-\TheStatement*[dns!refresh]{refresh \Arg{time}}
+\TheStatement*[dns!refresh]{refresh duration: \Arg{duration}}
 
-Sets the refresh \Arg{time}. The default refresh time is 8 hours.
+Sets the refresh time \Arg{duration}.
+The duration accept ISO 8601 time formats.
 
 \TheStatement[dns:retry]{retry}
-\TheStatement*[dns!retry]{retry \Arg{time}}
+\TheStatement*[dns!retry]{retry duration: \Arg{duration}}
 
-Sets the retry \Arg{time}. The default retry time is 2 hours.
+Sets the retry time \Arg{duration}.
+The duration accept ISO 8601 time formats.
 
 \TheStatement[dns:expire]{expire}
-\TheStatement*[dns!expire]{expire \Arg{time}}
+\TheStatement*[dns!expire]{expire duration: \Arg{duration}}
 
-Sets the expire \Arg{time}. The default expire time is 4 days.
+Sets the expire time \Arg{duration}.
+The duration accept ISO 8601 time formats.
 
-\TheStatement[dns:minimum_ttl]{minimum\_ttl}
-\TheStatement*[dns!minimum\_ttl]{minimum\_ttl \Arg{time}}
+\TheStatement[dns:record]{record}
+\TheStatement*[dns!record]{record a|ns|mx|cname [, name: \Arg{name}] [, alias: \Arg{alias}]}\\
+\TheStatement*{[, address: \Arg{address}] [, priority: \Arg{priority}] [, \{ ttl \}]}
 
-Sets the minimum time to live \Arg{time}. The default minimum time is 1 day.
-
-\TheStatement[dns:ns_record]{ns\_record}
-\TheStatement*[dns!ns\_record]{ns\_record \Arg{name} [, \Arg{address}] [, \{ ttl \}]}
-
-Adds a new NS-record with the specified name. If the \Arg{address}
-of the record is specified then a new A-record will be created that maps this 
-name to the specified address.
-
-\TheStatement[dns:a_record]{a\_record}
-\TheStatement*[dns!a\_record]{a\_record \Arg{name} [, \Arg{address}] [, \{ ttl \}]}
-
-Adds a new A-record with the specified \Arg{name} and \Arg{address}.
-
-\TheStatement[dns:mx_record]{mx\_record}
-\TheStatement*[dns!mx\_record]{mx\_record \Arg{name} [, \Arg{address}] [, \{ ttl priority \}]}
-
-Adds a new MX-record with the specified name. If the \Arg{address}
-of the record is specified then a new A-record will be created that maps this 
-name to the specified address.
-
-\TheStatement[dns:priority]{priority}
-\TheStatement*[dns!priority]{priority \Arg{priority}}
-
-Sets the priority for the MX-record. The default priority is 10.
-
-\TheStatement[dns:cname_record]{cname\_record}
-\TheStatement*[dns!cname\_record]{cname\_record \Arg{name} \Arg{alias} [, \{ ttl \}]}
-
-Adds a new CNAME-record with the specified \Arg{name} and \Arg{alias}.
+Adds a new DNS record to the DNS zone. 
+The accepted arguments are depending on
+the record type. The \qcode{a} record type will add a new A-record with the 
+specified \Arg{name} and \Arg{address}; 
+the \qcode{ns} record type will add a 
+new NS-record with the specified \Arg{name}. If 
+the \Arg{address} of the NS-record is specified then a new A-record will be 
+created that maps this name to the specified address and uses the 
+same TTL duration;
+the \qcode{mx} record type will add a 
+new MX-record with the specified \Arg{name}. Optionally, the \Arg{priority}
+of the MX-record can be set. If the \Arg{address} of the MX-record is 
+specified then a new A-record will be created that maps this name to the 
+specified address and uses the same TTL duration;
+the \qcode{cname} record type will add
+a new CNAME-record with the specified \Arg{name} and \Arg{alias}.
+The placeholder \qcode{\%} can be used that is replaced by the current zone.
