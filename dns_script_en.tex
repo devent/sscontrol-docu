@@ -20,11 +20,12 @@ the automatically generated serial, otherwise the serial number is used
 as specified.
 
 \TheStatement[serial:bind]{bind}
-\TheStatement*[dns!bind]{bind [address: [\Arg{loopback}] [\Arg{all}] [\Arg{address}] [addresses: \Arg{addresses}]}
+\TheStatement*[dns!bind]{bind [address: [local|all|\Arg{address}] [, addresses: \Arg{addresses}]}
 
 The IP \Arg{address} or a list of \Arg{addresses} or the host name(s) 
-on which the dns server should listen to connections. Set to \Arg{loopback}
-to set the address to the loopback 
+on which the dns server should listen to connections. Set to \qcode{local}
+for the local host address \code{127.0.0.1} or to \qcode{all} to listen to all
+hosts.
 
 \TheStatement[dns:zone]{zone}
 \TheStatement*[dns!zone]{zone \Arg{name}, \Arg{primary}, \Arg{email} [, \Arg{address}] [, \Arg{ttl}] [, \{ ttl refresh retry expire minimum\_ttl ns\_record a\_record mx\_record cname\_record \} ]}
