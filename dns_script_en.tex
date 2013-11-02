@@ -2,7 +2,7 @@
 \input{dns_script_statements_en}
 
 \TheStatement{dns}
-\TheStatement*[dns]{dns \{ serial bind zone \}}
+\TheStatement*[dns]{dns \{ serial bind alias roots recursive zone \}}
 
 Entry point in the dns script.
 
@@ -26,6 +26,39 @@ The IP \Arg{address} or a list of \Arg{addresses} or the host name(s)
 on which the dns server should listen to connections. Set to \qcode{local}
 for the local host address \code{127.0.0.1} or to \qcode{all} to listen to all
 hosts.
+
+% alias
+\TheStatement[dns:alias]{alias}
+\TheStatement*[dns!alias]{alias \Arg{name} address \Arg{address}}
+
+Sets alias \Arg{name} for the specified \Arg{address}. Can be used multiple times
+for different aliases.
+
+% roots
+\TheStatement[dns:roots]{roots}
+\TheStatement*[dns!roots]{roots { servers }}
+
+Sets the servers as the root servers.
+
+% servers
+\TheStatement[dns:roots:servers]{servers}
+\TheStatement*[dns!roots!servers]{servers { servers \Arg{name} }}
+
+Sets servers group \Arg{name} as the root DNS servers. The group name is
+an alias for IP addresses that are defined.
+
+% recursive
+\TheStatement[dns:recursive]{recursive}
+\TheStatement*[dns!recursive]{recursive { servers }}
+
+Allow the servers recursive look-up.
+
+% servers
+\TheStatement[dns:recursive:servers]{servers}
+\TheStatement*[dns!recursive!servers]{servers { servers \Arg{name} }}
+
+Allow for servers \Arg{name} recursive look-up. The servers name is an alias
+for the IP addresses or host names that were defined previosly.
 
 \TheStatement[dns:zone]{zone}
 \TheStatement*[dns!zone]{zone \Arg{name}, primary: \Arg{primary}, email: \Arg{email} [, serial: \Arg{serial}]}\\
