@@ -36,7 +36,7 @@ dns {
         record mx, name: "mx1.anrisoftware.com", address: "192.168.0.49"
 
         // MX and A record with priority
-        record mx, name: "mx2.anrisoftware.com", address: "192.168.0.49", { priority 20 }
+        record mx, name: "mx2.anrisoftware.com", address: "192.168.0.49", priority 20
 
         // CNAME record
         record cname, name: "www.anrisoftware.com", alias: "anrisoftware.com"
@@ -89,7 +89,7 @@ dns {
         record mx, name: "mx1.%", address: "192.168.0.49"
         
         // mx-record with priority
-        record mx, name: "mx2.%", address: "192.168.0.50", { priority 20 }
+        record mx, name: "mx2.%", address: "192.168.0.50", priority 20
         
         // cname-record
         record cname, name: "www.%", alias: "%"
