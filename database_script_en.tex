@@ -13,10 +13,12 @@ Sets the debug logging \Arg{level} for the database server. The \Arg{level}
 can be any positive number, zero is normally interpreted as no logging.
 
 \TheStatement[database:bind]{bind}
-\TheStatement*[database!bind]{bind address: \Arg{address}}
+\TheStatement*[database!bind]{bind [address: [local|all|\Arg{address}] [, addresses: \Arg{addresses}]}
 
-Sets IP \Arg{address} or the host name on which the database server should listen
-to connections. Defaults to the localhost address \qcode{127.0.0.1}.
+The IP \Arg{address} or a list of \Arg{addresses} or the host name(s) 
+on which the database server should listen to connections. Set to \qcode{local}
+for the local host address \code{127.0.0.1} or to \qcode{all} to listen to all
+hosts.
 
 \TheStatement[database:admin]{admin}
 \TheStatement*[database!admin]{admin password: \Arg{password}}
