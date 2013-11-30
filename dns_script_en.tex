@@ -61,9 +61,7 @@ Allow for servers \Arg{name} recursive look-up. The servers name is an alias
 for the IP addresses or host names that were defined previosly.
 
 \TheStatement[dns:zone]{zone}
-\TheStatement*[dns!zone]{zone \Arg{name}, primary: \Arg{primary}, email: \Arg{email} [, serial: \Arg{serial}]}\\
-\TheStatement*{[, address: \Arg{address}] [, ttl: \Arg{time}] [, \{ ttl refresh retry}\\
-\TheStatement*{expire record \} ]}
+\TheStatement*[dns!zone]{\mbox{zone \Arg{name},} \mbox{primary: \Arg{primary},} \mbox{email: \Arg{email} [,} \mbox{serial: \Arg{serial}]\} [,} \mbox{address: \Arg{address}] [,} \mbox{ttl: \Arg{time}] [,} \{ ttl refresh retry expire \\\mbox{record \} ]}}
 
 Adds a new DNS zone. The \Arg{name}, the \Arg{primary} DNS server and 
 the \Arg{email} address of the zone are required. The \Arg{serial} number can
@@ -97,8 +95,7 @@ Sets the expire time \Arg{duration}.
 The duration accept ISO 8601 time formats.
 
 \TheStatement[dns:record]{record}
-\TheStatement*[dns!record]{record a|ns|mx|cname [, name: \Arg{name}] [, alias: \Arg{alias}]}\\
-\TheStatement*{[, address: \Arg{address}] [, priority: \Arg{priority}] [, \{ ttl \}]}
+\TheStatement*[dns!record]{record a|ns|mx|cname [, name: \Arg{name}] [, alias: \Arg{alias}] \} [,\\ \mbox{address: \Arg{address}] [,} priority: \Arg{priority}] [, \{ ttl \}]}
 
 Adds a new DNS record to the DNS zone. 
 The accepted arguments are depending on
