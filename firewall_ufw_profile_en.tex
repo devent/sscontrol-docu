@@ -1,0 +1,51 @@
+\label{sec:firewall_profile}
+\subsection{UFW Profile}
+
+%% install_command
+\TheProperty[firewall:ufw:install_command]{install\_\\command}
+\TheProperty*[firewall!ufw!install\_command]{install\_command \Arg{command}}
+
+The \Arg{command} to install package on the system. Can be a full path or
+just the command name that can be found in the current search path. 
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to \qcode{export DEBIAN\_FRONTEND=noninteractive\textbackslash{n} /usr/bin/aptitude update \&\& /usr/bin/aptitude -y install}.
+
+%% ufw_command
+\TheProperty[firewall:ufw:ufw_command]{ufw\_command}
+\TheProperty*[firewall!ufw!ufw\_command]{ufw\_command \Arg{command}}
+
+The \Arg{command} that is used to setup the firewall rules. Can be a full path or
+just the command name that can be found in the current search path. 
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{/usr/sbin/ufw}.
+
+%% packages
+\TheProperty[firewall:ufw:packages]{packages}
+\TheProperty*[firewall!ufw!packages]{packages \Arg{packages}}
+
+The list of \Arg{packages} that are needed for the UFW firewall. 
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{ufw}.
+
+%% charset
+\TheProperty[firewall:ufw:charset]{charset}
+\TheProperty*[firewall!ufw!charset]{charset \Arg{name}}
+
+Sets the default character set \Arg{name} in which configuration files are 
+saved. For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{utf-8}.

@@ -1,0 +1,21 @@
+\label{sec:firewall_profile}
+\subsection{Firewall - Profile}
+
+%% service
+\TheProperty[firewall:service]{service}
+\TheProperty*[firewall!service]{service \Arg{name}}
+
+The \Arg{name} of the firewall service. Can be one of the following 
+service types.
+\begin{asparaitem}
+%
+\item[\qcode{ufw}:] 
+the UFW\footnote{\url{https://launchpad.net/ufw}} firewall comes in the distributions 
+\begin{compactitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04 in version 0.30 in the main repository;
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04 in version 0.31 in the main repository;
+\item[\TheDistribution{debian}] Debian,
+\end{compactitem}
+%
+\end{asparaitem}
+

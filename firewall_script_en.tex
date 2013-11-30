@@ -1,48 +1,37 @@
 \subsection{Firewall Script}
+\input{firewall_script_statements_en}
 
-\paragraph{firewall}
-
-\statement{firewall}{firewall \{...\}}
+%% firewall
+\TheStatement{firewall}
+\TheStatement*[firewall]{firewall \{ allow deny \}}
 
 Entry point in the firewall script.
 
-\paragraph{allow}
-
-\statement*{allow [[port] [, proto]]}\\
-\statement*{[from [, port] [, proto]]}
+%% allow
+\TheStatement[firewall:allow]{allow}
+\TheStatement*[firewall!allow]{allow [[port] [, proto]] [from [, port] [, proto]]}
 
 Allow packets from the source host, port and protocol to the destination
-host, port and protocol.
+host, port and protocol. Without any arguments sets the default mode for the 
+firewall to allow all.
 
-\paragraph{allow}
-
-\statement{firewall!allow}{allow}
-
-Without any arguments sets the default mode for the firewall to allow all.
-
-\paragraph{deny}
-
-\statement*{deny [[port] [, proto]]}\\
-\statement*{[from [, port] [, proto]]}
+%% deny
+\TheStatement[firewall:deny]{deny}
+\TheStatement*[firewall!deny]{deny [[port] [, proto]] [from [, port] [, proto]]}
 
 Denies packets from the source host, port and protocol to the destination
 host, port and protocol.
-
-\paragraph{deny}
-
-\statement{firewall!deny}{deny}
-
 Without any arguments sets the default mode for the firewall to deny all.
 
-\paragraph{port}
+%% port
+\TheStatement[firewall:port]{port}
+\TheStatement*[firewall!port]{port \Arg{port}}
 
-\statement{firewall!port}{port \typeint$|$\typestring}
+Sets the \Arg{port} number or service name to allow or deny packets from.
 
-Sets the port as port number or service name to allow or deny packets from.
-
-\paragraph{proto}
-
-\statement{firewall!proto}{proto tcp$|$udp}
+%% proto
+\TheStatement[firewall:proto]{proto}
+\TheStatement*[firewall!proto]{proto tcp|udp}
 
 Sets the Internet protocol to allow or deny packets from. If no protocol
 is set TCP and UDP is assumed.
@@ -52,15 +41,15 @@ is set TCP and UDP is assumed.
 \item[udp] UDP/IP protocol.
 \end{compactdesc}
 
-\paragraph{from}
+%% from
+\TheStatement[firewall:from]{from}
+\TheStatement*[firewall!from]{from any|\Arg{address}}
 
-\statement{firewall!from}{from any$|$\typestring{}}
+Sets the host as the source. Keyword \qcode{any} means from any host.
 
-Sets the host as the source. Keyword ``any'' means from any host.
+%% to
+\TheStatement[firewall:to]{to}
+\TheStatement*[firewall!to]{to any|\Arg{address} [, port] [, proto]}
 
-\paragraph{to}
-
-\statement{firewall!to}{to any$|$\typestring{} [, port] [, proto]}
-
-Sets the host as the destination. Keyword ``any'' means from any host.
+Sets the host as the destination. Keyword \qcode{any} means from any host.
 
