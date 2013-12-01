@@ -1,0 +1,27 @@
+\subsection{Hostname Examples}
+
+\begin{lstlisting}[style=Sscontrol,
+label={lst:hostname_example_script},
+title={Sets the host name.}]
+hostname {
+    set "test"
+}
+\end{lstlisting}
+
+\begin{lstlisting}[style=Sscontrol,
+label={lst:hostname_ubuntu_profile},
+title={Ubuntu hostname profile.}]
+profile "ubuntu_10_04", {
+    hostname {
+    }
+}
+\end{lstlisting}
+
+\begin{lstlisting}[style=rcfile_nonumbers,
+label={lst:hostname_example},
+title={Hostname configuration file example.}]
+# SSCONTROL-hostname
+test
+# SSCONTROL-hostname-END
+\end{lstlisting}
+
