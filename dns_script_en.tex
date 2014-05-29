@@ -2,7 +2,7 @@
 \input{dns_script_statements_en}
 
 \TheStatement{dns}
-\TheStatement*[dns]{dns \{ serial bind alias roots recursive zone \}}
+\TheStatement*[dns]{dns \{ [serial] [bind] [alias] [roots] [recursive] zone \}}
 
 Entry point in the dns script.
 
@@ -61,7 +61,7 @@ Allow for servers \Arg{name} recursive look-up. The servers name is an alias
 for the IP addresses or host names that were defined previosly.
 
 \TheStatement[dns:zone]{zone}
-\TheStatement*[dns!zone]{\mbox{zone \Arg{name},} \mbox{primary: \Arg{primary},} \mbox{email: \Arg{email} [,} \mbox{serial: \Arg{serial}]\} [,} \mbox{address: \Arg{address}] [,} \mbox{ttl: \Arg{time}] [,} \{ ttl refresh retry expire \\\mbox{record \} ]}}
+\TheStatement*[dns!zone]{\mbox{zone \Arg{name},} \mbox{primary: \Arg{primary},} \mbox{email: \Arg{email} [,} \mbox{serial: \Arg{serial}]\} [,} \mbox{address: \Arg{address}] [,} \mbox{ttl: \Arg{time}] [,} \{ [ttl] [refresh] [retry] [expire] \\\mbox{record \} ]}}
 
 Adds a new DNS zone. The \Arg{name}, the \Arg{primary} DNS server and 
 the \Arg{email} address of the zone are required. The \Arg{serial} number can
@@ -107,7 +107,9 @@ the \Arg{address} of the NS-record is specified then a new A-record will be
 created that maps this name to the specified address and uses the 
 same TTL duration;
 the \qcode{mx} record type will add a 
-new MX-record with the specified \Arg{name}. Optionally, the \Arg{priority}
+new MX-record with the specified \Arg{name}. 
+
+Optionally, the \Arg{priority}
 of the MX-record can be set. If the \Arg{address} of the MX-record is 
 specified then a new A-record will be created that maps this name to the 
 specified address and uses the same TTL duration;

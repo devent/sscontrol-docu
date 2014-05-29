@@ -9,9 +9,10 @@ The \Arg{command} to install package on the system. Can be a full path or
 just the command name that can be found in the current search path. 
 For the distribution
 \begin{inparaitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
 \end{inparaitem}
-the value is set to \qcode{/usr/bin/aptitude update \&\& DEBIAN\_FRONTEND=noninteractive /usr/bin/aptitude -y install}.
+the value is set to \qcode{export DEBIAN\_FRONTEND=noninteractive \textbackslash{n} /usr/bin/aptitude -q update \&\& /usr/bin/aptitude -q -y install}.
 
 %% restart_command
 \TheProperty[dns:maradns:restart_command]{restart\_\\command}
@@ -21,88 +22,23 @@ The \Arg{command} to restart the service. Can be a full path or
 just the command name that can be found in the current search path. 
 For the distribution
 \begin{inparaitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
 \end{inparaitem}
 the value is set to \qcode{/etc/init.d/maradns restart}.
 
-%% enable_repository_command
-\TheProperty[dns:maradns:enable_repository_command]{enable\_\\repository\_\\command}
-\TheProperty*[dns!maradns!enable\_repository\_command]{enable\_repository\_command \Arg{command}}
-
-The \Arg{command} to enable additional repositories. Can be a full path or
-just the command name that can be found in the current search path. 
-For the distribution
-\begin{inparaitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04
-\end{inparaitem}
-the value is set to \qcode{/usr/bin/add-apt-repository}.
-
-%% packaging_configuration_directory
-\TheProperty[dns:maradns:packaging_configuration_directory]{packaging\_\\configuration\_\\directory}
-\TheProperty*[dns!maradns!packaging\_configuration\_directory]{packaging\_configuration\_directory \Arg{path}}
+%% packages_sources_file
+\TheProperty[dns:maradns:packages_sources_file]{packages\_\\sources\_\\file}
+\TheProperty*[dns!maradns!packages\_sources\_file]{packages\_sources\_file \Arg{path}}
 
 The \Arg{path} to the packaging configuration directory, that is the directory
 where to find the configuration of the repositories.
 For the distribution
 \begin{inparaitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
 \end{inparaitem}
-the value is set to \qcode{/etc/apt}.
-
-%% packaging_type
-\TheProperty[dns:maradns:packaging_type]{packaging\_type}
-\TheProperty*[dns!maradns!packaging\_type]{packaging\_type \Arg{name}}
-
-The \Arg{name} of the packaging type, that is used to enable an additional
-repository. For the distribution
-\begin{inparaitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04
-\end{inparaitem}
-the value is set to \qcode{apt}.
-
-%% distribution_name
-\TheProperty[dns:maradns:distribution_name]{distribution\_\\name}
-\TheProperty*[dns!maradns!distribution\_name]{distribution\_name \Arg{name}}
-
-The \Arg{name} of the distribution, that is used to enable an additional
-repository. For the distribution
-\begin{inparaitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04
-\end{inparaitem}
-the value is set to \qcode{lucid}.
-
-%% additional_repositories
-\TheProperty[dns:maradns:additional_repositories]{additional\_\\repositories}
-\TheProperty*[dns!maradns!additional\_repositories]{additional\_repositories \Arg{repositories}}
-
-The list of additional \Arg{repositories} that are needed for the service. 
-For the distribution
-\begin{inparaitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04
-\end{inparaitem}
-the value is set to \qcode{universe}.
-
-%% repository_string
-\TheProperty[dns:maradns:repository_string]{repository\_\\string}
-\TheProperty*[dns!maradns!repository\_string]{repository\_string \Arg{string}}
-
-The \Arg{string} to enable an additional repository.
-For the distribution
-\begin{inparaitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04
-\end{inparaitem}
-the value is set to \qcode{deb http://archive.ubuntu.com/ubuntu \%1\$s \%2\$s}.
-
-%% system_packages
-\TheProperty[dns:maradns:system_packages]{system\_packages}
-\TheProperty*[dns!maradns!system\_packages]{system\_packages \Arg{packages}}
-
-The list of \Arg{packages} that are installed before the service's packages.
-For the distribution
-\begin{inparaitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04
-\end{inparaitem}
-the value is set to \qcode{python-software-properties}.
+the value is set to \qcode{/etc/apt/sources.list}.
 
 %% configuration_directory
 \TheProperty[dns:maradns:configuration_directory]{configuration\_\\directory}
@@ -111,7 +47,8 @@ the value is set to \qcode{python-software-properties}.
 The \Arg{path} of the MaraDNS configuration directory.
 For the distribution
 \begin{inparaitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
 \end{inparaitem}
 the value is set to \qcode{/etc/maradns}.
 
@@ -123,9 +60,50 @@ The \Arg{name} of the MaraDNS configuration file. The file is saved
 under the configuration directory.
 For the distribution
 \begin{inparaitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
 \end{inparaitem}
 the value is set to \qcode{mararc}.
+
+%% distribution_name
+\TheProperty[dns:maradns:distribution_name]{distribution\_\\name}
+\TheProperty*[dns!maradns!distribution\_name]{distribution\_name \Arg{name}}
+
+The \Arg{name} of the distribution, that is used to enable an additional
+repository. For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to \qcode{lucid}.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{precise}.
+
+%% additional_repositories
+\TheProperty[dns:maradns:additional_repositories]{additional\_\\repositories}
+\TheProperty*[dns!maradns!additional\_repositories]{additional\_repositories \Arg{repositories}}
+
+The list of additional \Arg{repositories} that are needed for the service. 
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{universe}.
+
+%% repository_string
+\TheProperty[dns:maradns:repository_string]{repository\_\\string}
+\TheProperty*[dns!maradns!repository\_string]{repository\_string \Arg{string}}
+
+The \Arg{string} to enable an additional repository.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{deb http://archive.ubuntu.com/ubuntu <distributionName> <repository>}.
 
 %% packages
 \TheProperty[dns:maradns:packages]{packages}
@@ -138,3 +116,114 @@ For the distribution
 \end{inparaitem}
 the value is set to \qcode{maradns}.
 
+%% restart_services
+\TheProperty[dns:maradns:restart_services]{restart\_\\services}
+\TheProperty*[dns!maradns!restart\_services]{restart\_services \Arg{services}}
+
+The list of \Arg{services} to restart MaraDNS.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to \qcode{}, empty, i.e. no services.
+
+%% charset
+\TheProperty[dns:maradns:charset]{charset}
+\TheProperty*[dns!maradns!charset]{charset \Arg{name}}
+
+Sets the default character set \Arg{name} in which configuration files are 
+saved. For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{utf-8}.
+
+%% default_binding_addresses
+\TheProperty[dns:maradns:default_binding_addresses]{default\_\\binding\_\\addresses}
+\TheProperty*[dns!maradns!default\_binding\_addresses]{default\_binding\_addresses \Arg{addresses}}
+
+Sets the default binding \Arg{addresses}. For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{127.0.0.1}.
+
+%% default_ttl_duration
+\TheProperty[dns:maradns:default_ttl_duration]{default\_ttl\_\\duration}
+\TheProperty*[dns!maradns!default\_ttl\_duration]{default\_ttl\_duration \Arg{duration}}
+
+Sets the default time to life \Arg{duration}. The duration should be set in 
+ISO 8601 format\footnote{\url{http://www.ostyn.com/standards/scorm/samples/ISOTimeForSCORM.htm}}.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{P1D}.
+
+%% default_refresh_duration
+\TheProperty[dns:maradns:default_refresh_duration]{default\_\\refresh\_\\duration}
+\TheProperty*[dns!maradns!default\_refresh\_duration]{default\_refresh\_duration \Arg{duration}}
+
+Sets the default refresh \Arg{duration}. The duration should be set in 
+ISO 8601 format.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{PT8H}.
+
+%% default_retry_duration
+\TheProperty[dns:maradns:default_retry_duration]{default\_\\retry\_\\duration}
+\TheProperty*[dns!maradns!default\_retry\_duration]{default\_retry\_duration \Arg{duration}}
+
+Sets the default retry \Arg{duration}. The duration should be set in 
+ISO 8601 format.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{PT2H}.
+
+%% default_expire_duration
+\TheProperty[dns:maradns:default_expire_duration]{default\_\\expire\_\\duration}
+\TheProperty*[dns!maradns!default\_expire\_duration]{default\_expire\_duration \Arg{duration}}
+
+Sets the default expire \Arg{duration}. The duration should be set in 
+ISO 8601 format.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{P4D}.
+
+%% default_minimum_duration
+\TheProperty[dns:maradns:default_minimum_duration]{default\_\\minimum\_\\duration}
+\TheProperty*[dns!maradns!default\_minimum\_duration]{default\_minimum\_duration \Arg{duration}}
+
+Sets the default minimum TTL \Arg{duration}. The duration should be set in 
+ISO 8601 format.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{P1D}.
+
+%% default_mx_priority
+\TheProperty[dns:maradns:default_mx_priority]{default\_mx\_\\priority}
+\TheProperty*[dns!maradns!default\_mx\_priority]{default\_mx\_priority \Arg{priority}}
+
+Sets the default MX record priority \Arg{priority}.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{10}.
