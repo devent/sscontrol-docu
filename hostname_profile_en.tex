@@ -2,9 +2,8 @@
 
 The hostname comes in the distributions 
 \begin{compactitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04 in version 3.03 in the main repository;
-\item[\TheDistribution{ubuntu}] Ubuntu 12.04,
-\item[\TheDistribution{debian}] Debian,
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04\footnote{\TheUbuntuMaverickLTSDate} in version 3.03 in the main repository;
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04\footnote{\TheUbuntuPreciseLTSDate} in version 3.06 in the main repository;
 \end{compactitem}
 
 %% install_command
@@ -16,10 +15,9 @@ just the command name that can be found in the current search path.
 For the distributions 
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 10.04,
-\item[\TheDistribution{ubuntu}] Ubuntu 12.04,
-\item[\TheDistribution{debian}] Debian,
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
 \end{inparaitem}
-the value is set to \qcode{/usr/bin/aptitude update \&\& /usr/bin/aptitude install}.
+the value is set to \qcode{export DEBIAN\_FRONTEND=noninteractive\textbackslash{n} /usr/bin/aptitude -q update \&\& /usr/bin/aptitude -q -y install}.
 
 %% restart_command
 \TheProperty[hostname:restart_command]{restart\_\\command}
@@ -29,9 +27,10 @@ The \Arg{command} to reload the hostname. Can be a full path or
 just the command name that can be found in the current search path.
 For the distribution
 \begin{inparaitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
 \end{inparaitem}
-the value is set to \qcode{/sbin/restart}.
+the value is set to \qcode{/etc/init.d/hostname restart}.
 
 %% configuration_directory
 \TheProperty[hostname:configuration_directory]{configuration\_\\directory}
@@ -41,7 +40,8 @@ The path of the hostname configuration directory. Can be a full path or
 just the command name that can be found in the current search path.
 For the distribution
 \begin{inparaitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
 \end{inparaitem}
 the value is set to \qcode{/etc}, so that the hostname configuration
 file can be found in \qcode{/etc/hostname}.
@@ -54,7 +54,8 @@ The file \Arg{name} of the host name configuration file. The configuration file
 is places inside the specified configuration directory.
 For the distribution
 \begin{inparaitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
 \end{inparaitem}
 the value is set to the file \qcode{hostname}. The hostname configuration
 file is normally found in the directory \qcode{/etc}.
@@ -67,7 +68,8 @@ The list of \Arg{packages} needed for the hostname service. The packages
 are installed with the specified installation command.
 For the distribution
 \begin{inparaitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
 \end{inparaitem}
 the value is set to the package \qcode{hostname}.
 
@@ -80,5 +82,16 @@ For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 10.04
 \end{inparaitem}
-the value is set to \qcode{hostname}.
+the value is set to \qcode{}, empty, i.e. no services.
 
+%% charset
+\TheProperty[hostname:charset]{charset}
+\TheProperty*[hostname!charset]{charset \Arg{name}}
+
+Sets the default character set \Arg{name} in which configuration files are 
+saved. For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{utf-8}.
