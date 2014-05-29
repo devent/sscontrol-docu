@@ -13,6 +13,7 @@
 \RequirePackage{rcfilelang}
 \RequirePackage{letltxmacro}
 \RequirePackage{graphicsmaxwidth}
+\RequirePackage[american]{isodate}
 % show labels
 %\RequirePackage[inline]{showlabels}
 
@@ -55,11 +56,17 @@
 \WithSuffix\newcommand\TheProperty*[2][empty]{\AutoIdx[#1]{#2}{\ttfamily\bfseries#2}}
 \newcommand{\Property}[1]{{\ttfamily\bfseries#1}}
 \WithSuffix\newcommand\Property*[2][empty]{\Property{#2} (\AutoRef[#1]{#2})}
+
 % Distribution Logo
-\newcommand{\vcenteredinclude}[1]{\begingroup
+\newcommand*{\vcenteredinclude}[1]{\begingroup
 \setbox0=\hbox{#1}%
 \parbox{\wd0}{\box0}\endgroup}
 \newcommand{\TheDistribution}[1]{\vcenteredinclude{\includegraphics[width=12pt]{#1}}}
+% Distributions
+\newcommand*{\TheUbuntuMaverickLTSDate}{Ubuntu Maverick 10.04 LTS \printdayoff{2015/04}}
+\newcommand*{\TheUbuntuPreciseLTSDate}{Ubuntu Precise 12.04 LTS \printdayoff{2017/04}}
+\newcommand*{\TheUbuntuTrustyLTSDate}{Ubuntu Trusty 14.04 LTS \printdayoff{2019/04}}
+
 % Types
 \newcommand{\Type}[1]{\textit{#1}\xspace}
 \newcommand{\TypeString}{\textit{string}\xspace}

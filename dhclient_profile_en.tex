@@ -9,9 +9,10 @@ The \Arg{command} to install package on the system. Can be a full path or
 just the command name that can be found in the current search path. 
 For the distribution
 \begin{inparaitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04\footnote{\TheUbuntuMaverickLTSDate},
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04\footnote{\TheUbuntuPreciseLTSDate}
 \end{inparaitem}
-the value is set to \qcode{/usr/bin/aptitude update \&\& /usr/bin/aptitude -y install}.
+the value is set to \qcode{export DEBIAN\_FRONTEND=noninteractive \textbackslash{n} /usr/bin/aptitude -q update \&\& /usr/bin/aptitude -q -y install}.
 
 %% restart_command
 \TheProperty[dhclient:restart_command]{restart\_\\command}
@@ -21,9 +22,38 @@ The \Arg{command} to restart the service. Can be a full path or
 just the command name that can be found in the current search path. 
 For the distribution
 \begin{inparaitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
 \end{inparaitem}
 the value is set to \qcode{/etc/init.d/networking restart}.
+
+%% configuration_directory
+\TheProperty[dhclient:configuration_directory]{configuration\_\\directory}
+\TheProperty*[dhclient!configuration\_directory]{configuration\_directory \Arg{path}}
+
+The \Arg{path} of the configuration directory of the Dhclient service. 
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\end{inparaitem}
+the value is set to \qcode{/etc/dhcp3};
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{/etc/dhcp}.
+
+%% configuration_file
+\TheProperty[dhclient:configuration_file]{configuration\_\\file}
+\TheProperty*[dhclient!configuration\_file]{configuration\_file \Arg{name}}
+
+The \Arg{name} of the configuration file of the Dhclient service. 
+The file is located in the configuration directory.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{dhclient.conf}.
 
 %% packages
 \TheProperty[dhclient:packages]{packages}
@@ -36,25 +66,63 @@ For the distribution
 \end{inparaitem}
 the value is set to \qcode{dhcp3-client}.
 
-%% configuration_directory
-\TheProperty[dhclient:configuration_directory]{configuration\_\\directory}
-\TheProperty*[dhclient!configuration\_directory]{configuration\_directory \Arg{path}}
+%% restart_services
+\TheProperty[dhclient:restart_services]{restart\_\\services}
+\TheProperty*[dhclient!restart\_services]{restart\_services \Arg{services}}
 
-The \Arg{path} of the configuration directory of the Dhclient service. 
+The list of \Arg{services} to restart the dhclient.
 For the distribution
 \begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04,
 \item[\TheDistribution{ubuntu}] Ubuntu 10.04
 \end{inparaitem}
-the value is set to \qcode{/etc/dhcp3}.
+the value is set to \qcode{}, empty, i.e. no services.
 
-%% configuration_file
-\TheProperty[dhclient:configuration_file]{configuration\_\\file}
-\TheProperty*[dhclient!configuration\_file]{configuration\_file \Arg{name}}
+%% charset
+\TheProperty[dhclient:charset]{charset}
+\TheProperty*[dhclient!charset]{charset \Arg{name}}
 
-The \Arg{name} of the configuration file of the Dhclient service. 
-The file is located in the configuration directory.
-For the distribution
+Sets the default character set \Arg{name} in which configuration files are 
+saved. For the distribution
 \begin{inparaitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
 \end{inparaitem}
-the value is set to \qcode{dhclient.conf}.
+the value is set to \qcode{utf-8}.
+
+%% default_option
+\TheProperty[dhclient:default_option]{default\_option}
+\TheProperty*[dhclient!default\_option]{default\_option \Arg{option}}
+
+Sets the default \Arg{option} for the Dhclient. For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{rfc3442-classless-static-routes code 121 = array of unsigned integer 8}.
+
+%% default_sends
+\TheProperty[dhclient:default_sends]{default\_sends}
+\TheProperty*[dhclient!default\_sends]{default\_sends \Arg{sends}}
+
+Sets the default \Arg{sends} statement for the Dhclient. For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{host-name "<hostname>"}.
+
+%% default_requests
+\TheProperty[dhclient:default_requests]{default\_requests}
+\TheProperty*[dhclient!default\_requests]{default\_requests \Arg{requests}}
+
+Sets the default \Arg{requests} statement for the Dhclient. For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{subnet-mask,broadcast-address,time-offset,
+routers,domain-name,domain-name-servers,domain-search,host-name,
+netbios-name-servers,netbios-scope,interface-mtu,
+rfc3442-classless-static-routes,ntp-servers}.
+
