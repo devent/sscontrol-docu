@@ -2,12 +2,12 @@
 \input{database_script_statements_en}
 
 \TheStatement{database}
-\TheStatement*[database]{database \{ debug bind admin database user \}}
+\TheStatement*[database]{database \{ [debug] [bind] admin database user \}}
 
 Entry point in the database script.
 
 \TheStatement[database:debug]{debug}
-\TheStatement*[database!debug]{debug logging: \Arg{level}}
+\TheStatement*[database!debug]{debug level: \Arg{level}}
 
 Sets the debug logging \Arg{level} for the database server. The \Arg{level}
 can be any positive number, zero is normally interpreted as no logging.

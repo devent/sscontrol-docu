@@ -8,7 +8,7 @@
 <font BOLD="true" NAME="DejaVu Sans Mono" SIZE="12"/>
 <icon BUILTIN="forward"/>
 <icon BUILTIN="help"/>
-<node COLOR="#2121d3" CREATED="1380476462146" ID="ID_29083" MODIFIED="1380476481189" TEXT="logging">
+<node COLOR="#2121d3" CREATED="1380476462146" ID="ID_29083" MODIFIED="1401382165527" TEXT="level">
 <font BOLD="true" NAME="DejaVu Sans Mono" SIZE="12"/>
 <icon BUILTIN="forward"/>
 <node COLOR="#43a14b" CREATED="1380476474853" ID="ID_1196927094" MODIFIED="1380476479212" TEXT="level">
@@ -21,16 +21,24 @@
 <font BOLD="true" NAME="DejaVu Sans Mono" SIZE="12"/>
 <icon BUILTIN="forward"/>
 <icon BUILTIN="help"/>
+<node COLOR="#2121d3" CREATED="1401382177488" ID="ID_1585059714" MODIFIED="1401382184305" TEXT="address">
+<font BOLD="true" NAME="DejaVu Sans Mono" SIZE="12"/>
+<icon BUILTIN="forward"/>
 <node COLOR="#43a14b" CREATED="1373394389807" ID="ID_442162529" MODIFIED="1373394392557" TEXT="address">
 <font BOLD="true" ITALIC="true" NAME="DejaVu Sans Mono" SIZE="12"/>
+</node>
 </node>
 </node>
 <node COLOR="#2121d3" CREATED="1329133730009" ID="ID_1302914741" MODIFIED="1380476251649" POSITION="right" TEXT="admin">
 <edge STYLE="bezier"/>
 <font BOLD="true" NAME="DejaVu Sans Mono" SIZE="12"/>
 <icon BUILTIN="forward"/>
-<node COLOR="#43a14b" CREATED="1373394399256" ID="ID_1862109336" MODIFIED="1373394404184" TEXT="password">
+<node COLOR="#2121d3" CREATED="1373394399256" ID="ID_1862109336" MODIFIED="1401382197248" TEXT="password">
 <font BOLD="true" ITALIC="true" NAME="DejaVu Sans Mono" SIZE="12"/>
+<icon BUILTIN="forward"/>
+<node COLOR="#43a14b" CREATED="1401382198702" ID="ID_1087031212" MODIFIED="1401382204109" TEXT="password">
+<font BOLD="true" ITALIC="true" NAME="DejaVu Sans Mono" SIZE="12"/>
+</node>
 </node>
 </node>
 <node COLOR="#2121d3" CREATED="1329133996242" ID="ID_1223173541" MODIFIED="1373394322287" POSITION="right" TEXT="database">

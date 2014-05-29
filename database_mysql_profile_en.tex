@@ -9,7 +9,8 @@ The \Arg{command} to install package on the system. Can be a full path or
 just the command name that can be found in the current search path. 
 For the distribution
 \begin{inparaitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
 \end{inparaitem}
 the value is set to \qcode{export DEBIAN\_FRONTEND=noninteractive\textbackslash{n} /usr/bin/aptitude update \&\& /usr/bin/aptitude -y install}.
 
@@ -21,7 +22,8 @@ The \Arg{command} to restart the service. Can be a full path or
 just the command name that can be found in the current search path. 
 For the distribution
 \begin{inparaitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
 \end{inparaitem}
 the value is set to \qcode{/sbin/restart}.
 
@@ -34,7 +36,8 @@ MySQL database. Can be a full path or
 just the command name that can be found in the current search path. 
 For the distribution
 \begin{inparaitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
 \end{inparaitem}
 the value is set to \qcode{/usr/bin/mysqladmin}.
 
@@ -47,7 +50,8 @@ create users and set privileges. Can be a full path or
 just the command name that can be found in the current search path. 
 For the distribution
 \begin{inparaitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
 \end{inparaitem}
 the value is set to \qcode{/usr/bin/mysql}.
 
@@ -58,7 +62,8 @@ the value is set to \qcode{/usr/bin/mysql}.
 The \Arg{path} of the MySQL configuration directory.
 For the distribution
 \begin{inparaitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
 \end{inparaitem}
 the value is set to \qcode{/etc/mysql/conf.d}.
 
@@ -70,6 +75,7 @@ The \Arg{name} of the custom MySQL configuration file. The file is saved
 under the configuration directory.
 For the distribution
 \begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04,
 \item[\TheDistribution{ubuntu}] Ubuntu 10.04
 \end{inparaitem}
 the value is set to \qcode{sscontrol\_mysqld.cnf}.
@@ -81,6 +87,7 @@ the value is set to \qcode{sscontrol\_mysqld.cnf}.
 The list of \Arg{packages} that are needed for the MySQL database. 
 For the distribution
 \begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04,
 \item[\TheDistribution{ubuntu}] Ubuntu 10.04
 \end{inparaitem}
 the value is set to \qcode{mysql-server, mysql-client}.
@@ -92,6 +99,7 @@ the value is set to \qcode{mysql-server, mysql-client}.
 The list of \Arg{services} to restart the MySQL database.
 For the distribution
 \begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04,
 \item[\TheDistribution{ubuntu}] Ubuntu 10.04
 \end{inparaitem}
 the value is set to \qcode{mysql}.
@@ -103,7 +111,8 @@ the value is set to \qcode{mysql}.
 Sets the default character set \Arg{name} in which configuration files are 
 saved. For the distribution
 \begin{inparaitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
 \end{inparaitem}
 the value is set to \qcode{utf-8}.
 
@@ -114,6 +123,7 @@ the value is set to \qcode{utf-8}.
 The \Arg{name} of the character set to use per default for new created databases.
 For the distribution
 \begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04,
 \item[\TheDistribution{ubuntu}] Ubuntu 10.04
 \end{inparaitem}
 the value is set to \qcode{utf8}.
@@ -125,20 +135,22 @@ the value is set to \qcode{utf8}.
 The \Arg{name} of the collate to use per default for new created databases.
 For the distribution
 \begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04,
 \item[\TheDistribution{ubuntu}] Ubuntu 10.04
 \end{inparaitem}
 the value is set to \qcode{utf8\_general\_ci}.
  
-%% default_debug_logging
-\TheProperty[database:mysql:default_debug_logging]{default\_debug\_\\logging}
-\TheProperty*[database!mysql!default\_debug\_logging]{default\_debug\_logging \Arg{level}}
+%% default_debug
+\TheProperty[database:mysql:default_debug]{default\_debug}
+\TheProperty*[database!mysql!default\_debug]{default\_debug \Arg{debug}}
 
-The default debug logging \Arg{level}.
+The default \Arg{debug} logging.
 For the distribution
 \begin{inparaitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
 \end{inparaitem}
-the value is set to \qcode{0}.
+the value is set to \qcode{level: 0}.
 
 %% default_bind_address
 \TheProperty[database:mysql:default_bind_address]{default\_bind\_\\address}
@@ -147,7 +159,8 @@ the value is set to \qcode{0}.
 The default IP \Arg{address} or host name on which the database server should
 listen for connections. For the distribution
 \begin{inparaitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
 \end{inparaitem}
 the value is set to \qcode{127.0.0.1}.
  
@@ -158,6 +171,7 @@ the value is set to \qcode{127.0.0.1}.
 The default \Arg{server} that is used for database users.
 For the distribution
 \begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04,
 \item[\TheDistribution{ubuntu}] Ubuntu 10.04
 \end{inparaitem}
 the value is set to \qcode{localhost}.
