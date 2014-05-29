@@ -4,8 +4,8 @@
 label={lst:hosts_example_script},
 title={Adds IP addresses and the host name.}]
 hosts {
-    ip "192.168.0.49" host "srv1.ubuntutest.com" alias "srv1"
-    ip "192.168.0.50" host "srv1.ubuntutest.org" alias "srva", "srvb"
+    ip "192.168.0.49", host: "srv1.ubuntutest.com"
+    ip "192.168.0.50", host: "srv1.ubuntutest.org", alias: "srva, srvb"
 }
 \end{lstlisting}
 

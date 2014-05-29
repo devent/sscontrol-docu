@@ -2,47 +2,62 @@
 
 The distributions have the hosts file
 \begin{compactitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
-\item[\TheDistribution{ubuntu}] Ubuntu 12.04,
-\item[\TheDistribution{debian}] Debian.
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04\footnote{\TheUbuntuMaverickLTSDate},
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04\footnote{\TheUbuntuPreciseLTSDate}.
 \end{compactitem}
 
 %% configuration_directory
 \TheProperty[hosts:configuration_directory]{configuration\_\\directory}
-\TheProperty*[hosts!configuration\_directory]{configuration\_directory \TypeString}
+\TheProperty*[hosts!configuration\_directory]{configuration\_directory \Arg{command}}
 
-The path of the hosts configuration directory.
-For the distributions 
+The path of the hosts configuration directory. Can be a full path or
+just the command name that can be found in the current search path.
+For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 10.04,
-\item[\TheDistribution{ubuntu}] Ubuntu 12.04,
-\item[\TheDistribution{debian}] Debian,
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
 \end{inparaitem}
-the value is set to \qcode{/etc} so that the hosts configuration 
+the value is set to \qcode{/etc}, so that the hosts configuration
 file can be found in \qcode{/etc/hosts}.
 
 %% configuration_file
 \TheProperty[hosts:configuration_file]{configuration\_\\file}
-\TheProperty*[hosts!configuration\_file]{configuration\_file \TypeString}
+\TheProperty*[hosts!configuration\_file]{configuration\_file \Arg{name}}
 
-The file name of the {@code hosts} configuration file.
-For the distributions 
+The file \Arg{name} of the host name configuration file. The configuration file
+is places inside the specified configuration directory.
+For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 10.04,
-\item[\TheDistribution{ubuntu}] Ubuntu 12.04,
-\item[\TheDistribution{debian}] Debian,
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
 \end{inparaitem}
-the value is set to \qcode{hosts}. This is a text file that contains 
-the IP addresses, the host name and optional aliases on each line.
+the value is set to the file \qcode{hosts}. The hosts configuration
+file is normally found in the directory \qcode{/etc}.
 
 %% default_hosts
 \TheProperty[hosts:default_hosts]{default\_hosts}
-\TheProperty*[hosts!default\_hosts]{default\_hosts \TypeList}
+\TheProperty*[hosts!default\_hosts]{default\_hosts \Arg{hosts}}
 
-A list of the default hosts.
-Defaults to the IP addresses and the host names:
+A list of the default \Arg{hosts}.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the default hosts are set:
 \begin{compactitem}
 \item ``127.0.0.1'' -- localhost.localdomain -- localhost;
 \item ``::1'' -- localhost6.localdomain6 -- localhost6;
 \end{compactitem}
 
+%% charset
+\TheProperty[hosts:charset]{charset}
+\TheProperty*[hosts!charset]{charset \Arg{name}}
+
+Sets the default character set \Arg{name} in which configuration files are 
+saved. For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{utf-8}.
