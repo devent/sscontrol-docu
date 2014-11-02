@@ -4,6 +4,7 @@ The hostname comes in the distributions
 \begin{compactitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 10.04\footnote{\TheUbuntuMaverickLTSDate} in version 3.03 in the main repository;
 \item[\TheDistribution{ubuntu}] Ubuntu 12.04\footnote{\TheUbuntuPreciseLTSDate} in version 3.06 in the main repository;
+\item[\TheDistribution{ubuntu}] Ubuntu 14.04\footnote{\TheUbuntuTrustyLTSDate} in version 3.15 in the main repository;
 \end{compactitem}
 
 %% install_command
@@ -15,7 +16,8 @@ just the command name that can be found in the current search path.
 For the distributions 
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 10.04,
-\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 14.04
 \end{inparaitem}
 the value is set to \qcode{export DEBIAN\_FRONTEND=noninteractive\textbackslash{n} /usr/bin/aptitude -q update \&\& /usr/bin/aptitude -q -y install}.
 
@@ -31,6 +33,11 @@ For the distribution
 \item[\TheDistribution{ubuntu}] Ubuntu 12.04
 \end{inparaitem}
 the value is set to \qcode{/etc/init.d/hostname restart}.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 14.04
+\end{inparaitem}
+the value is set to \qcode{/usr/bin/service}.
 
 %% configuration_directory
 \TheProperty[hostname:configuration_directory]{configuration\_\\directory}
@@ -41,7 +48,8 @@ just the command name that can be found in the current search path.
 For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 10.04,
-\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 14.04
 \end{inparaitem}
 the value is set to \qcode{/etc}, so that the hostname configuration
 file can be found in \qcode{/etc/hostname}.
@@ -55,7 +63,8 @@ is places inside the specified configuration directory.
 For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 10.04,
-\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 14.04
 \end{inparaitem}
 the value is set to the file \qcode{hostname}. The hostname configuration
 file is normally found in the directory \qcode{/etc}.
@@ -69,7 +78,8 @@ are installed with the specified installation command.
 For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 10.04,
-\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 14.04
 \end{inparaitem}
 the value is set to the package \qcode{hostname}.
 
@@ -80,9 +90,26 @@ the value is set to the package \qcode{hostname}.
 The list of \Arg{services} to restart the hostname service.
 For the distribution
 \begin{inparaitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
 \end{inparaitem}
 the value is set to \qcode{}, empty, i.e. no services.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 14.04
+\end{inparaitem}
+the value is set to \qcode{hostname}.
+
+%% restart_command_flags
+\TheProperty[hostname:restart_command_flags]{restart\_\\command\_flags}
+\TheProperty*[hostname!mysql!restart\_command\_flags]{restart\_command\_flags \Arg{flags}}
+
+The list of \Arg{flags} that is appended to the restart command after the services.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 14.04
+\end{inparaitem}
+the value is set to \qcode{restart}.
 
 %% charset
 \TheProperty[hostname:charset]{charset}
@@ -92,6 +119,7 @@ Sets the default character set \Arg{name} in which configuration files are
 saved. For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 10.04,
-\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 14.04
 \end{inparaitem}
 the value is set to \qcode{utf-8}.
