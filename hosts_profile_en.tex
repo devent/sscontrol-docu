@@ -4,6 +4,7 @@ The distributions have the hosts file
 \begin{compactitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 10.04\footnote{\TheUbuntuMaverickLTSDate},
 \item[\TheDistribution{ubuntu}] Ubuntu 12.04\footnote{\TheUbuntuPreciseLTSDate}.
+\item[\TheDistribution{ubuntu}] Ubuntu 14.04\footnote{\TheUbuntuTrustyLTSDate}.
 \end{compactitem}
 
 %% configuration_directory
@@ -15,7 +16,8 @@ just the command name that can be found in the current search path.
 For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 10.04,
-\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 14.04
 \end{inparaitem}
 the value is set to \qcode{/etc}, so that the hosts configuration
 file can be found in \qcode{/etc/hosts}.
@@ -29,7 +31,8 @@ is places inside the specified configuration directory.
 For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 10.04,
-\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 14.04
 \end{inparaitem}
 the value is set to the file \qcode{hosts}. The hosts configuration
 file is normally found in the directory \qcode{/etc}.
@@ -50,6 +53,18 @@ the default hosts are set:
 \item ``::1'' -- localhost6.localdomain6 -- localhost6;
 \end{compactitem}
 
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 14.04
+\end{inparaitem}
+the default hosts are set:
+\begin{compactitem}
+\item ``127.0.0.1'' -- localhost;
+\item ``::1'' -- localhost -- ip6-localhost -- ip6-loopback;
+\item ``ff02::1'' -- ip6-allnodes
+\item ``ff02::2'' -- ip6-allrouters
+\end{compactitem}
+
 %% charset
 \TheProperty[hosts:charset]{charset}
 \TheProperty*[hosts!charset]{charset \Arg{name}}
@@ -58,6 +73,7 @@ Sets the default character set \Arg{name} in which configuration files are
 saved. For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 10.04,
-\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 14.04
 \end{inparaitem}
 the value is set to \qcode{utf-8}.
