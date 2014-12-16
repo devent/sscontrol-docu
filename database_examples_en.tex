@@ -4,10 +4,10 @@ title={Example script for a database. It will set the database server address, c
 database {
 
     // enable debugging output
-    debug level: 1
+    debug "general", level: 1
 
     // bind the database server to all addresses
-    bind address: "0.0.0.0"
+    bind "0.0.0.0"
 
     // set the administrator password
     admin password: "mysqladminpassword"
@@ -20,12 +20,12 @@ database {
 
     // add new database and import tables
     database "maildb", {
-        script execute: "postfixtables.sql"
+        script importing: "postfixtables.sql"
     }
 
     // add new database and import tables
     database "postfixdb", charset: "latin1", collate: "latin1_swedish_ci", {
-        script execute: "postfixtables.sql"
+        script importing: "postfixtables.sql"
     }
 
     // add a new user
@@ -40,7 +40,7 @@ database {
 
 \begin{lstlisting}[style=Java,label=lst:database_ubuntu_profile_min,
 title={Minimal Ubuntu database profile, only the database type is needed. The other profile properties are set to default values.}]
-profile "ubuntu_10_04", {
+profile "ubuntu_12_04", {
     database {
         service "mysql"
     }
@@ -51,10 +51,13 @@ profile "ubuntu_10_04", {
 label=lst:database_maincf_example,
 title={Example MySQL server configuration file that is created from the database profile.
 The file is saved as /etc/mysql/conf.d/sscontrol\_mysqld.cnf}]
-# SSCONTROL-database
+## RoboBee Auto Generated
 [mysqld]
-bind-address = 0.0.0.0
+bind-address = 127.0.0.1
+port = 3306
 general_log = 1
-# SSCONTROL-database-END
+general_log_file = /var/log/mysql/mysql.log
+log_error = /var/log/mysql/error.log
+log_slow_queries = /var/log/mysql/mysql-slow.log
 \end{lstlisting}
 
