@@ -11,27 +11,23 @@ Entry point in the dhclient script.
 \TheStatement*[dhclient!requests]{requests \Arg{requests}}
 
 Sets the list of DHCP \Arg{requests}. Request item that starts with an 
-exclamation mark \qcode{!} is removed from the list. The default list
-of requests is: 
-\begin{inparaitem}[]
-\item subnet-mask,
-\item broadcast-address,
-\item time-offset,
-\item routers,
-\item domain-name,
-\item domain-name-servers,
-\item domain-search,
-\item host-name,
-\item netbios-name-servers,
-\item netbios-scope,
-\item interface-mtu,
-\item rfc3442-classless-static-routes,
-\item ntp-servers.
-\end{inparaitem}
+exclamation mark \qcode{!} is removed from the list.
+
+\begin{lstlisting}[style=Java]
+dhclient {
+    requests "!domain-name-servers"
+}
+\end{lstlisting}
 
 \TheStatement[prepend]{prepend}
 \TheStatement*[dhclient!prepend]{prepend \Arg{option} \Arg{declaration}}
 
 Adds the \Arg{option} with the \Arg{declaration} as a prepend statement 
 to the DHCP configuration.
+
+\begin{lstlisting}[style=Java]
+dhclient {
+    prepend "domain_name_servers", "127.0.0.1"
+}
+\end{lstlisting}
 
