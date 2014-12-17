@@ -2,10 +2,11 @@
 \input{dns_script_statements_en}
 
 \TheStatement{dns}
-\TheStatement*[dns]{dns \{ [serial] [bind] [alias] [roots] [recursive] zone \}}
+\TheStatement*[dns]{dns \{ serial bind servers server acls alias zone \}}
 
 Entry point in the dns script.
 
+% serial
 \TheStatement[dns:serial]{serial}
 \TheStatement*[dns!serial]{serial \Arg{number} [, generate: true|false]}
 
@@ -19,47 +20,96 @@ If generate is set to \code{true} then the serial number is added to
 the automatically generated serial, otherwise the serial number is used 
 as specified.
 
-\TheStatement[dns:bind]{bind}
-\TheStatement*[dns!bind]{bind [address: [local|all|\Arg{address}] [, addresses: \Arg{addresses}]}
+\begin{lstlisting}[style=Java]
+dns {
+    serial 99, generate: false
+}
+\end{lstlisting}
 
-The IP \Arg{address} or a list of \Arg{addresses} or the host name(s) 
+% bind
+\TheStatement[dns:bind]{bind}
+\TheStatement*[dns!bind]{bind [local|all|\Arg{address} [, port: \Arg{port}]}
+
+The IP \Arg{address} or a list of addresses or the host name(s) 
 on which the dns server should listen to connections. Set to \qcode{local}
 for the local host address \code{127.0.0.1} or to \qcode{all} to listen to all
-hosts.
+hosts. Optionally, the \Arg{port} the dns server should listen.
+
+\begin{lstlisting}[style=Java]
+dns {
+    bind local, port: 53
+}
+\end{lstlisting}
+
+% servers upstream
+\TheStatement[dns:servers:upstream]{servers}
+\TheStatement*[dns!servers!upstream]{servers upstream: \Arg{server}}
+
+Sets the upstream \Arg{server} or servers. Can be used multiple times
+for different servers.
+
+\begin{lstlisting}[style=Java]
+dns {
+    servers upstream: "8.8.8.8"
+}
+\end{lstlisting}
+
+% servers root
+\TheStatement[dns:servers:root]{servers}
+\TheStatement*[dns!servers!root]{servers root: \Arg{server}}
+
+Sets the root \Arg{server} or servers. Can be used multiple times
+for different servers.
+
+\begin{lstlisting}[style=Java]
+dns {
+    servers root: "icann"
+}
+\end{lstlisting}
+
+% server
+\TheStatement[dns:server]{server}
+\TheStatement*[dns!server]{server \Arg{name}, address: \Arg{address}}
+
+Sets the named root \Arg{server} and its \Arg{address}. Can be used multiple times
+for different server.
+
+\begin{lstlisting}[style=Java]
+dns {
+    server "example1.com", address: "127.0.0.2"
+    server "example2.com", address: "127.0.0.3"
+}
+\end{lstlisting}
 
 % alias
 \TheStatement[dns:alias]{alias}
-\TheStatement*[dns!alias]{alias \Arg{name} address \Arg{address}}
+\TheStatement*[dns!alias]{alias \Arg{name}, address: \Arg{address}}
 
-Sets alias \Arg{name} for the specified \Arg{address}. Can be used multiple times
+Sets the \Arg{alias} and its \Arg{address}. Can be used multiple times
 for different aliases.
 
-% roots
-\TheStatement[dns:roots]{roots}
-\TheStatement*[dns!roots]{roots { servers }}
+\begin{lstlisting}[style=Java]
+dns {
+    alias "localhost", address: "127.0.0.1"
+    alias "vbox", addresses: "10.0.2.2, 10.0.2.3"
+}
+\end{lstlisting}
 
-Sets the servers as the root servers.
+% acls
+\TheStatement[dns:acls]{acls}
+\TheStatement*[dns!acls]{acls \Arg{address}}
 
-% servers
-\TheStatement[dns:roots:servers]{servers}
-\TheStatement*[dns!roots!servers]{servers { servers \Arg{name} }}
+Sets the ACLs \Arg{address} or addresses. Can be used multiple times
+for different aclses.
 
-Sets servers group \Arg{name} as the root DNS servers. The group name is
-an alias for IP addresses that are defined.
+\begin{lstlisting}[style=Java]
+dns {
+    acls "127.0.0.1"
+    acls "192.168.0.1, 192.168.0.2"
+}
+\end{lstlisting}
 
-% recursive
-\TheStatement[dns:recursive]{recursive}
-\TheStatement*[dns!recursive]{recursive { servers }}
-
-Allow the servers recursive look-up.
-
-% servers
-\TheStatement[dns:recursive:servers]{servers}
-\TheStatement*[dns!recursive!servers]{servers { servers \Arg{name} }}
-
-Allow for servers \Arg{name} recursive look-up. The servers name is an alias
-for the IP addresses or host names that were defined previosly.
-
+% zone
 \TheStatement[dns:zone]{zone}
 \TheStatement*[dns!zone]{\mbox{zone \Arg{name},} \mbox{primary: \Arg{primary},} \mbox{email: \Arg{email} [,} \mbox{serial: \Arg{serial}]\} [,} \mbox{address: \Arg{address}] [,} \mbox{ttl: \Arg{time}] [,} \{ [ttl] [refresh] [retry] [expire] \\\mbox{record \} ]}}
 
@@ -70,11 +120,18 @@ An A-record for the zone
 can be created if the IP \Arg{address} of the zone is specified. If the
 TTL \Arg{time} is specified it is set for the A-record.
 
+\begin{lstlisting}[style=Java]
+dns {
+    zone "example1.com", primary: "ns.example1.com", email: "hostmaster@example1.com", {
+    }
+}
+\end{lstlisting}
+
 \TheStatement[dns:ttl]{ttl}
 \TheStatement*[dns!ttl]{ttl duration: \Arg{duration} [, minimum: \Arg{duration}]}
 
 Sets the time to live \Arg{duration}. 
-The duration accept ISO 8601 time formats.
+The duration accepts ISO 8601 time formats.
 
 \TheStatement[dns:refresh]{refresh}
 \TheStatement*[dns!refresh]{refresh duration: \Arg{duration}}
@@ -93,6 +150,18 @@ The duration accept ISO 8601 time formats.
 
 Sets the expire time \Arg{duration}.
 The duration accept ISO 8601 time formats.
+
+\begin{lstlisting}[style=Java]
+dns {
+    zone "example1.com", primary: "ns.example1.com", email: "hostmaster@example1.com", {
+        ttl duration: "PT5S"
+        refresh duration: "PT20S"
+        retry duration: "PT20S"
+        expire duration: "PT20S"
+        minimum_ttl duration: "PT20S"
+    }
+}
+\end{lstlisting}
 
 \TheStatement[dns:record]{record}
 \TheStatement*[dns!record]{record a|ns|mx|cname [, name: \Arg{name}] [, alias: \Arg{alias}] \} [,\\ \mbox{address: \Arg{address}] [,} priority: \Arg{priority}] [, \{ ttl \}]}
@@ -116,3 +185,18 @@ specified address and uses the same TTL duration;
 the \qcode{cname} record type will add
 a new CNAME-record with the specified \Arg{name} and \Arg{alias}.
 The placeholder \qcode{\%} can be used that is replaced by the current zone.
+
+\begin{lstlisting}[style=Java]
+dns {
+    zone "example1.com", primary: "ns.example1.com", email: "hostmaster@example1.com", {
+        record a, name: "testa.com", address: "192.168.0.51"
+        record a, name: "testb.com", address: "192.168.0.52", { 
+            ttl duration: "PT24H" 
+        }
+        record ns, name: "ns1.testa.com"
+        record mx, name: "mx2.testa.com", priority: 20
+        record cname, name: "www.testa.com", alias: "testa.com"
+    }
+}
+\end{lstlisting}
+
