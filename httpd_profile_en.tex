@@ -1,84 +1,32 @@
-\subsection{Hostname Profile}
+\label{sec:httpd_profile}
+\subsection{Httpd Profile}
 
-The hostname comes in the distributions 
+%% service
+\TheProperty[httpd:service]{service}
+\TheProperty*[httpd!service]{service \Arg{name}}
+
+The \Arg{name} of the httpd service. Can be one of the following 
+service types.
+\begin{asparaitem}
+%
+\item[\qcode{apache}:] 
+the Apache service comes in the distributions 
 \begin{compactitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04 in version 3.03 in the main repository;
-\item[\TheDistribution{ubuntu}] Ubuntu 12.04,
-\item[\TheDistribution{debian}] Debian,
+\item[\TheDistribution{ubuntu}] 
+Ubuntu 12.04\footnote{\TheUbuntuPreciseLTSDate} in version 2.2.22 in the main repository;
+%
+%\item[\TheDistribution{ubuntu}] 
+%Ubuntu 14.04\footnote{\TheUbuntuTrustyLTSDate} in version 2.0.09 in the universe repository;
 \end{compactitem}
-
-%% install_command
-\TheProperty[hostname:install_command]{install\_\\command}
-\TheProperty*[hostname!install\_command]{install\_command \Arg{command}}
-
-The \Arg{command} to install package on the system. Can be a full path or
-just the command name that can be found in the current search path. 
-For the distributions 
-\begin{inparaitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
-\item[\TheDistribution{ubuntu}] Ubuntu 12.04,
-\item[\TheDistribution{debian}] Debian,
-\end{inparaitem}
-the value is set to \qcode{/usr/bin/aptitude update \&\& /usr/bin/aptitude install}.
-
-%% restart_command
-\TheProperty[hostname:restart_command]{restart\_\\command}
-\TheProperty*[hostname!restart\_command]{restart\_command \Arg{command}}
-
-The \Arg{command} to reload the hostname. Can be a full path or
-just the command name that can be found in the current search path.
-For the distribution
-\begin{inparaitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04
-\end{inparaitem}
-the value is set to \qcode{/sbin/restart}.
-
-%% configuration_directory
-\TheProperty[hostname:configuration_directory]{configuration\_\\directory}
-\TheProperty*[hostname!configuration\_directory]{configuration\_directory \Arg{command}}
-
-The path of the hostname configuration directory. Can be a full path or
-just the command name that can be found in the current search path.
-For the distribution
-\begin{inparaitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04
-\end{inparaitem}
-the value is set to \qcode{/etc}, so that the hostname configuration
-file can be found in \qcode{/etc/hostname}.
-
-%% configuration_file
-\TheProperty[hostname:configuration_file]{configuration\_\\file}
-\TheProperty*[hostname!configuration\_file]{configuration\_file \Arg{name}}
-
-The file \Arg{name} of the host name configuration file. The configuration file
-is places inside the specified configuration directory.
-For the distribution
-\begin{inparaitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04
-\end{inparaitem}
-the value is set to the file \qcode{hostname}. The hostname configuration
-file is normally found in the directory \qcode{/etc}.
-
-%% packages
-\TheProperty[hostname:packages]{packages}
-\TheProperty*[hostname!packages]{packages \Arg{packages}}
-
-The list of \Arg{packages} needed for the hostname service. The packages
-are installed with the specified installation command.
-For the distribution
-\begin{inparaitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04
-\end{inparaitem}
-the value is set to the package \qcode{hostname}.
-
-%% restart_services
-\TheProperty[hostname:restart_services]{restart\_\\services}
-\TheProperty*[hostname!mysql!restart\_services]{restart\_services \Arg{services}}
-
-The list of \Arg{services} to restart the hostname service.
-For the distribution
-\begin{inparaitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04
-\end{inparaitem}
-the value is set to \qcode{hostname}.
+%
+\item[\qcode{nginx}:] 
+the Nginx service comes in the distribution
+\begin{compactitem}
+\item[\TheDistribution{ubuntu}] 
+Ubuntu 12.04 in version 1.1.19 in the universe repository;
+\item[\TheDistribution{ubuntu}] 
+Ubuntu 14.04\footnote{\TheUbuntuTrustyLTSDate} in version 1.4.6 in the universe repository;
+\end{compactitem}
+%
+\end{asparaitem}
 

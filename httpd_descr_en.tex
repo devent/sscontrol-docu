@@ -1,7 +1,25 @@
-\subsection{Hostname Description}
+\subsection{Httpd Description}
 
-The DNS name of the system is set with the host name. Normally,
-the the host name can be set in a text file. The hostname service
-can set this host name for the system. It will override any previosly set
-name. After a new host name is set the hostname service needs to be reloaded
-to make the host name effective.
+Web server service to serve web sites under domain names. The service
+can create domains for which IP addresses and ports are assigned and install
+and configure the web service. Web service are the services that provide
+the web site for the user. 
+Currently supported is the web server
+Apache\footnote{\url{http://httpd.apache.org/}} and the caching proxy
+nginx\footnote{\url{http://nginx.org/}}.
+The following features are supported for each
+domain or web service:
+
+\begin{asparaitem}
+\item Domain address and port;
+\item SSL/domain and server certificates;
+\item redirects to different domains or servers;
+\item memory limit for uploads and requests per domain;
+\item error pages;
+\item debug levels per domain and per service;
+\item HTTP authentication;
+\item user separation per domain;
+\item proxies and caches per domain;
+\item domain aliases;
+\item httpd server modules;
+\end{asparaitem}
