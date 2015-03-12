@@ -1,0 +1,56 @@
+\label{sec:remoteaccess_profile}
+\subsection{OpenSSH Profile}
+
+%% install_command
+\TheProperty[remoteaccess:ufw:install_command]{install\_\\command}
+\TheProperty*[remoteaccess!ufw!install\_command]{install\_command \Arg{command}}
+
+The \Arg{command} to install package on the system. Can be a full path or
+just the command name that can be found in the current search path. 
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 14.04
+\end{inparaitem}
+the value is set to \qcode{export DEBIAN\_FRONTEND=noninteractive\textbackslash{n} /usr/bin/aptitude -q update \&\& /usr/bin/aptitude -q -y install}.
+
+%% ufw_command
+\TheProperty[remoteaccess:ufw:ufw_command]{ufw\_command}
+\TheProperty*[remoteaccess!ufw!ufw\_command]{ufw\_command \Arg{command}}
+
+The \Arg{command} that is used to setup the remoteaccess rules. Can be a full path or
+just the command name that can be found in the current search path. 
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 14.04
+\end{inparaitem}
+the value is set to \qcode{/usr/sbin/ufw}.
+
+%% packages
+\TheProperty[remoteaccess:ufw:packages]{packages}
+\TheProperty*[remoteaccess!ufw!packages]{packages \Arg{packages}}
+
+The list of \Arg{packages} that are needed for the UFW remoteaccess. 
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 14.04
+\end{inparaitem}
+the value is set to \qcode{ufw}.
+
+%% charset
+\TheProperty[remoteaccess:ufw:charset]{charset}
+\TheProperty*[remoteaccess!ufw!charset]{charset \Arg{name}}
+
+Sets the default character set \Arg{name} in which configuration files are 
+saved. For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 14.04
+\end{inparaitem}
+the value is set to \qcode{utf-8}.

@@ -1,0 +1,55 @@
+\subsection{Remote Access Script}
+\input{remote_script_statements_en}
+
+%% remote
+\TheStatement{remote}
+\TheStatement*[remote]{remote \{ user \}}
+
+Entry point in the remote script.
+
+%% allow
+\TheStatement[remote:allow]{allow}
+\TheStatement*[remote!allow]{allow [[port] [, proto]] [from [, port] [, proto]]}
+
+Allow packets from the source host, port and protocol to the destination
+host, port and protocol. Without any arguments sets the default mode for the 
+remote to allow all.
+
+%% deny
+\TheStatement[remote:deny]{deny}
+\TheStatement*[remote!deny]{deny [[port] [, proto]] [from [, port] [, proto]]}
+
+Denies packets from the source host, port and protocol to the destination
+host, port and protocol.
+Without any arguments sets the default mode for the remote to deny all.
+
+%% port
+\TheStatement[remote:port]{port}
+\TheStatement*[remote!port]{port \Arg{port}}
+
+Sets the \Arg{port} number or service name to allow or deny packets from.
+
+%% proto
+\TheStatement[remote:proto]{proto}
+\TheStatement*[remote!proto]{proto tcp|udp}
+
+Sets the Internet protocol to allow or deny packets from. If no protocol
+is set TCP and UDP is assumed.
+
+\begin{compactdesc}
+\item[tcp] TCP/IP protocol.
+\item[udp] UDP/IP protocol.
+\end{compactdesc}
+
+%% from
+\TheStatement[remote:from]{from}
+\TheStatement*[remote!from]{from any|\Arg{address}}
+
+Sets the host as the source. Keyword \qcode{any} means from any host.
+
+%% to
+\TheStatement[remote:to]{to}
+\TheStatement*[remote!to]{to any|\Arg{address} [, port] [, proto]}
+
+Sets the host as the destination. Keyword \qcode{any} means from any host.
+

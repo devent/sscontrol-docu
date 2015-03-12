@@ -1,0 +1,42 @@
+\begin{lstlisting}[
+style=Java,
+label=lst:remoteaccess_example_script,
+title={Remote access.}]
+remote {
+    user "devent", password: "foopass", {
+        passphrase "somepass"
+        access key: fooremote_pub
+        require password, passphrase, accesskeys
+    }
+    user "bar", password: "barpass", uid: 2001
+    user "baz", password: "bazpass", {
+        passphrase "somepass"
+        home "/var/home/baz"
+    }
+    user "foo", password: "foopass", {
+        passphrase "somepass"
+        access key: fooremote_pub
+        access key: barremote_pub
+    }
+    user "foobar", password: "foopass", {
+        group "foob", gid: 2001
+        passphrase "somepass"
+        access key: fooremote_pub
+        access key: barremote_pub
+    }
+    user "foobaz", password: "foopass", {
+        passphrase "somepass"
+    }
+}
+\end{lstlisting}
+
+\begin{lstlisting}[
+style=Java,
+label=lst:firewall_ubuntu_profile_min,
+title={Minimal Ubuntu remote access profile.}]
+profile "ubuntu_14_04", {
+    remote {
+        service "openssh"
+    }
+}
+\end{lstlisting}
