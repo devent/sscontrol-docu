@@ -1,8 +1,7 @@
 \subsection{Hostname Profile}
 
-The hostname comes in the distributions 
+The hostname comes in the distributionss 
 \begin{compactitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04\footnote{\TheUbuntuMaverickLTSDate} in version 3.03 in the main repository;
 \item[\TheDistribution{ubuntu}] Ubuntu 12.04\footnote{\TheUbuntuPreciseLTSDate} in version 3.06 in the main repository;
 \item[\TheDistribution{ubuntu}] Ubuntu 14.04\footnote{\TheUbuntuTrustyLTSDate} in version 3.15 in the main repository;
 \end{compactitem}
@@ -13,13 +12,12 @@ The hostname comes in the distributions
 
 The \Arg{command} to install package on the system. Can be a full path or
 just the command name that can be found in the current search path. 
-For the distributions 
+For the distributionss 
 \begin{inparaitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
 \item[\TheDistribution{ubuntu}] Ubuntu 12.04,
 \item[\TheDistribution{ubuntu}] Ubuntu 14.04
 \end{inparaitem}
-the value is set to \qcode{export DEBIAN\_FRONTEND=noninteractive\textbackslash{n} /usr/bin/aptitude -q update \&\& /usr/bin/aptitude -q -y install}.
+the value is set to \qcode{/usr/bin/aptitude}.
 
 %% restart_command
 \TheProperty[hostname:restart_command]{restart\_\\command}
@@ -27,13 +25,12 @@ the value is set to \qcode{export DEBIAN\_FRONTEND=noninteractive\textbackslash{
 
 The \Arg{command} to reload the hostname. Can be a full path or
 just the command name that can be found in the current search path.
-For the distribution
+For the distributions
 \begin{inparaitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
 \item[\TheDistribution{ubuntu}] Ubuntu 12.04
 \end{inparaitem}
-the value is set to \qcode{/etc/init.d/hostname restart}.
-For the distribution
+the value is set to \qcode{/etc/init.d/hostname}.
+For the distributions
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 14.04
 \end{inparaitem}
@@ -41,13 +38,11 @@ the value is set to \qcode{/usr/bin/service}.
 
 %% configuration_directory
 \TheProperty[hostname:configuration_directory]{configuration\_\\directory}
-\TheProperty*[hostname!configuration\_directory]{configuration\_directory \Arg{command}}
+\TheProperty*[hostname!configuration\_directory]{configuration\_directory \Arg{path}}
 
-The path of the hostname configuration directory. Can be a full path or
-just the command name that can be found in the current search path.
-For the distribution
+The \Arg{path} of the service configuration directory.
+For the distributions
 \begin{inparaitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
 \item[\TheDistribution{ubuntu}] Ubuntu 12.04,
 \item[\TheDistribution{ubuntu}] Ubuntu 14.04
 \end{inparaitem}
@@ -58,26 +53,33 @@ file can be found in \qcode{/etc/hostname}.
 \TheProperty[hostname:configuration_file]{configuration\_\\file}
 \TheProperty*[hostname!configuration\_file]{configuration\_file \Arg{name}}
 
-The file \Arg{name} of the host name configuration file. The configuration file
-is places inside the specified configuration directory.
-For the distribution
+The file \Arg{name} of the service configuration file. The file is 
+located in the configuration directory. For the distributions
 \begin{inparaitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
 \item[\TheDistribution{ubuntu}] Ubuntu 12.04,
 \item[\TheDistribution{ubuntu}] Ubuntu 14.04
 \end{inparaitem}
-the value is set to the file \qcode{hostname}. The hostname configuration
-file is normally found in the directory \qcode{/etc}.
+the value is set to the file \qcode{hostname}.
+
+%% system_name
+\TheProperty[hostname:hostname:system_name]{system\_name}
+\TheProperty*[hostname!hostname!system\_name]{system\_name \Arg{name}}
+
+The system \Arg{name}. 
+For the distributions
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 14.04
+\end{inparaitem}
+the value is set to \qcode{ubuntu}.
 
 %% packages
 \TheProperty[hostname:packages]{packages}
 \TheProperty*[hostname!packages]{packages \Arg{packages}}
 
-The list of \Arg{packages} needed for the hostname service. The packages
-are installed with the specified installation command.
-For the distribution
+The list of \Arg{packages} needed for the service.
+For the distributions
 \begin{inparaitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
 \item[\TheDistribution{ubuntu}] Ubuntu 12.04,
 \item[\TheDistribution{ubuntu}] Ubuntu 14.04
 \end{inparaitem}
@@ -85,40 +87,41 @@ the value is set to the package \qcode{hostname}.
 
 %% restart_services
 \TheProperty[hostname:restart_services]{restart\_\\services}
-\TheProperty*[hostname!mysql!restart\_services]{restart\_services \Arg{services}}
+\TheProperty*[hostname!restart\_services]{restart\_services \Arg{services}}
 
-The list of \Arg{services} to restart the hostname service.
-For the distribution
+The list of \Arg{services} that are needed to be restarted after the 
+configuration was deployed to the server.
+For the distributions
 \begin{inparaitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
 \item[\TheDistribution{ubuntu}] Ubuntu 12.04
 \end{inparaitem}
-the value is set to \qcode{}, empty, i.e. no services.
-For the distribution
+the value is set to \qcode{}, empty, i.e. no services;
+%
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 14.04
 \end{inparaitem}
 the value is set to \qcode{hostname}.
 
-%% restart_command_flags
-\TheProperty[hostname:restart_command_flags]{restart\_\\command\_flags}
-\TheProperty*[hostname!mysql!restart\_command\_flags]{restart\_command\_flags \Arg{flags}}
+%% restart_flags
+\TheProperty[hostname:restart_flags]{restart\_flags}
+\TheProperty*[hostname!restart\_flags]{restart\_flags \Arg{flags}}
 
 The list of \Arg{flags} that is appended to the restart command after the services.
-For the distribution
+For the distributions
 \begin{inparaitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 14.04
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\item[\TheDistribution{ubuntu}] Ubuntu 14.04,
 \end{inparaitem}
 the value is set to \qcode{restart}.
+
 
 %% charset
 \TheProperty[hostname:charset]{charset}
 \TheProperty*[hostname!charset]{charset \Arg{name}}
 
-Sets the default character set \Arg{name} in which configuration files are 
-saved. For the distribution
+The character set \Arg{name} of the service configuration files. 
+For the distributions
 \begin{inparaitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
 \item[\TheDistribution{ubuntu}] Ubuntu 12.04,
 \item[\TheDistribution{ubuntu}] Ubuntu 14.04
 \end{inparaitem}
