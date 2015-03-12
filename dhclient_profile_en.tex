@@ -37,7 +37,7 @@ the value is set to \qcode{<interfaces:\{inet|ifdown <inet> \&\& ifup <inet>\}>}
 \TheProperty[dhclient:configuration_directory]{configuration\_\\directory}
 \TheProperty*[dhclient!configuration\_directory]{configuration\_directory \Arg{path}}
 
-The \Arg{path} of the configuration directory of the Dhclient service. 
+The \Arg{path} of the service configuration directory. 
 For the distributions
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 12.04,
@@ -49,9 +49,9 @@ the value is set to \qcode{/etc/dhcp}.
 \TheProperty[dhclient:configuration_file]{configuration\_\\file}
 \TheProperty*[dhclient!configuration\_file]{configuration\_file \Arg{name}}
 
-The \Arg{name} of the configuration file of the Dhclient service. 
+The \Arg{name} of the service configuration file. 
 The file is located in the configuration directory.
-For the distribution
+For the distributions
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 12.04,
 \item[\TheDistribution{ubuntu}] Ubuntu 14.04
@@ -74,8 +74,8 @@ the value is set to \qcode{ubuntu}.
 \TheProperty[dhclient:packages]{packages}
 \TheProperty*[dhclient!packages]{packages \Arg{packages}}
 
-The \Arg{packages} list that needed to be installed for the Dhclient service.
-For the distribution
+The list of \Arg{packages} that are needed for the service.
+For the distributions
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 12.04,
 \item[\TheDistribution{ubuntu}] Ubuntu 14.04
@@ -86,8 +86,9 @@ the value is set to \qcode{dhcp3-client}.
 \TheProperty[dhclient:restart_services]{restart\_\\services}
 \TheProperty*[dhclient!restart\_services]{restart\_services \Arg{services}}
 
-The list of \Arg{services} to restart the dhclient.
-For the distribution
+The list of \Arg{services} that are needed to be restarted after 
+the configuration was deployed to the server. 
+For the distributions
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 12.04,
 \item[\TheDistribution{ubuntu}] Ubuntu 14.04,
@@ -98,7 +99,8 @@ the value is set to \qcode{}, empty, i.e. no services.
 \TheProperty[dhclient:restart_interfaces]{restart\_\\interfaces}
 \TheProperty*[dhclient!restart\_interfaces]{restart\_interfaces \Arg{interfaces}}
 
-The list of \Arg{interfaces} to restart.
+The list of network \Arg{interfaces} that are needed to be restarted after 
+the configuration was deployed to the server. 
 For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 14.04
@@ -109,8 +111,8 @@ the value is set to \qcode{eth0}.
 \TheProperty[dhclient:charset]{charset}
 \TheProperty*[dhclient!charset]{charset \Arg{name}}
 
-Sets the default character set \Arg{name} in which configuration files are 
-saved. For the distributions
+Sets the character set \Arg{name} of the service configuration files. 
+For the distributions
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 12.04,
 \item[\TheDistribution{ubuntu}] Ubuntu 14.04
@@ -121,7 +123,8 @@ the value is set to \qcode{utf-8}.
 \TheProperty[dhclient:default_option]{default\_option}
 \TheProperty*[dhclient!default\_option]{default\_option \Arg{option}}
 
-Sets the default \Arg{option} for the Dhclient. For the distributions
+Sets the default \Arg{option} for the service. 
+For the distributions
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 12.04,
 \item[\TheDistribution{ubuntu}] Ubuntu 14.04
@@ -132,7 +135,8 @@ the value is set to \qcode{rfc3442-classless-static-routes code 121 = array of u
 \TheProperty[dhclient:default_sends]{default\_sends}
 \TheProperty*[dhclient!default\_sends]{default\_sends \Arg{sends}}
 
-Sets the default \Arg{sends} statement for the Dhclient. For the distributions
+Sets the default \Arg{sends} statement for the service. 
+For the distributions
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 12.04,
 \item[\TheDistribution{ubuntu}] Ubuntu 14.04
@@ -143,7 +147,8 @@ the value is set to \qcode{host-name "<hostname>"}.
 \TheProperty[dhclient:default_requests]{default\_requests}
 \TheProperty*[dhclient!default\_requests]{default\_requests \Arg{requests}}
 
-Sets the default \Arg{requests} statement for the Dhclient. For the distributions
+Sets the default \Arg{requests} statement for the service. 
+For the distributions
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 12.04,
 \item[\TheDistribution{ubuntu}] Ubuntu 14.04
