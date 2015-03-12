@@ -7,13 +7,12 @@
 
 The \Arg{command} to install package on the system. Can be a full path or
 just the command name that can be found in the current search path. 
-For the distribution
+For the distributions
 \begin{inparaitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
 \item[\TheDistribution{ubuntu}] Ubuntu 12.04,
 \item[\TheDistribution{ubuntu}] Ubuntu 14.04
 \end{inparaitem}
-the value is set to \qcode{export DEBIAN\_FRONTEND=noninteractive\textbackslash{n} /usr/bin/aptitude -q update \&\& /usr/bin/aptitude -q -y install}.
+the value is set to \qcode{/usr/bin/aptitude}.
 
 %% ufw_command
 \TheProperty[firewall:ufw:ufw_command]{ufw\_command}
@@ -21,22 +20,32 @@ the value is set to \qcode{export DEBIAN\_FRONTEND=noninteractive\textbackslash{
 
 The \Arg{command} that is used to setup the firewall rules. Can be a full path or
 just the command name that can be found in the current search path. 
-For the distribution
+For the distributions
 \begin{inparaitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
 \item[\TheDistribution{ubuntu}] Ubuntu 12.04,
 \item[\TheDistribution{ubuntu}] Ubuntu 14.04
 \end{inparaitem}
 the value is set to \qcode{/usr/sbin/ufw}.
 
+%% system_name
+\TheProperty[firewall:ufw:system_name]{system\_name}
+\TheProperty*[firewall!ufw!system\_name]{system\_name \Arg{name}}
+
+The system \Arg{name}. 
+For the distributions
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04,
+\item[\TheDistribution{ubuntu}] Ubuntu 14.04
+\end{inparaitem}
+the value is set to \qcode{ubuntu}.
+
 %% packages
 \TheProperty[firewall:ufw:packages]{packages}
 \TheProperty*[firewall!ufw!packages]{packages \Arg{packages}}
 
-The list of \Arg{packages} that are needed for the UFW firewall. 
-For the distribution
+The list of \Arg{packages} that are needed for the service. 
+For the distributions
 \begin{inparaitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
 \item[\TheDistribution{ubuntu}] Ubuntu 12.04,
 \item[\TheDistribution{ubuntu}] Ubuntu 14.04
 \end{inparaitem}
@@ -47,9 +56,8 @@ the value is set to \qcode{ufw}.
 \TheProperty*[firewall!ufw!charset]{charset \Arg{name}}
 
 Sets the default character set \Arg{name} in which configuration files are 
-saved. For the distribution
+saved. For the distributions
 \begin{inparaitem}
-\item[\TheDistribution{ubuntu}] Ubuntu 10.04,
 \item[\TheDistribution{ubuntu}] Ubuntu 12.04,
 \item[\TheDistribution{ubuntu}] Ubuntu 14.04
 \end{inparaitem}

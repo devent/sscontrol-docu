@@ -15,6 +15,16 @@ Allow packets from the source host, port and protocol to the destination
 host, port and protocol. Without any arguments sets the default mode for the 
 firewall to allow all.
 
+\begin{lstlisting}[style=Java]
+firewall {
+    allow
+    allow port: 22
+    allow port: 22, proto: tcp
+    allow port: "ssh"
+    allow from: any to any
+}
+\end{lstlisting}
+
 %% deny
 \TheStatement[firewall:deny]{deny}
 \TheStatement*[firewall!deny]{deny [[port] [, proto]] [from [, port] [, proto]]}
@@ -23,15 +33,25 @@ Denies packets from the source host, port and protocol to the destination
 host, port and protocol.
 Without any arguments sets the default mode for the firewall to deny all.
 
+\begin{lstlisting}[style=Java]
+firewall {
+    deny
+    deny port: 22
+    deny port: 22, proto: tcp
+    deny port: "ssh"
+    deny from: any to any
+}
+\end{lstlisting}
+
 %% port
 \TheStatement[firewall:port]{port}
-\TheStatement*[firewall!port]{port \Arg{port}}
+\TheStatement*[firewall!port]{port: \Arg{port}}
 
 Sets the \Arg{port} number or service name to allow or deny packets from.
 
 %% proto
 \TheStatement[firewall:proto]{proto}
-\TheStatement*[firewall!proto]{proto tcp|udp}
+\TheStatement*[firewall!proto]{proto: tcp|udp}
 
 Sets the Internet protocol to allow or deny packets from. If no protocol
 is set TCP and UDP is assumed.
@@ -43,13 +63,13 @@ is set TCP and UDP is assumed.
 
 %% from
 \TheStatement[firewall:from]{from}
-\TheStatement*[firewall!from]{from any|\Arg{address}}
+\TheStatement*[firewall!from]{from: any|\Arg{address}}
 
 Sets the host as the source. Keyword \qcode{any} means from any host.
 
 %% to
 \TheStatement[firewall:to]{to}
-\TheStatement*[firewall!to]{to any|\Arg{address} [, port] [, proto]}
+\TheStatement*[firewall!to]{to: any|\Arg{address} [, port] [, proto]}
 
 Sets the host as the destination. Keyword \qcode{any} means from any host.
 
