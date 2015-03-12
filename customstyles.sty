@@ -1,6 +1,6 @@
 \ProvidesPackage{customstyles}[2013/04/08 Custom styles for the document]
 \RequirePackage{suffix}
-\RequirePackage{ulem}
+\RequirePackage[normalem]{ulem}
 \RequirePackage{emptyspacecolumns}
 \RequirePackage{listingstyles}
 \RequirePackage{groovylstlang}
@@ -14,7 +14,15 @@
 \RequirePackage{letltxmacro}
 \RequirePackage{graphicsmaxwidth}
 \RequirePackage[american]{isodate}
+
+%%%%  
+% Multicolumn TOC
+%
+\RequirePackage[toc]{multitoc}
+
+%%%%  
 % show labels
+%
 %\RequirePackage[inline]{showlabels}
 
 %%%%  
@@ -34,6 +42,11 @@
 \renewcommand*{\chapterformat}{\makebox[0pt][r]{\chapappifchapterprefix{\ }\thechapter\autodot\enskip}\noindent}
 \renewcommand*{\othersectionlevelsformat}[3]{\makebox[0pt][r]{#3\autodot\enskip}}
 %%%%
+
+%%%%
+%
+%
+\newcommand{\paraText}[1]{\textsl{#1}}
 
 %%%%
 % hyphenation for code

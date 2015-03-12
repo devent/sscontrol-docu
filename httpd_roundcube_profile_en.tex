@@ -1,0 +1,625 @@
+\label{sec:roundcube_profile}
+\subsection{Roundcube Profile}
+
+The current version of Roundcube is 
+1.1.0\footnote{\printdate{2015-02-08}} from the vendor web site
+\url{http://roundcube.net/}.
+
+%% roundcube_config_file
+\TheProperty[httpd:roundcube:roundcube_config_file]{roundcube\_\\config\_file}
+\TheProperty*[httpd!roundcube!roundcube\_config\_file]{roundcube\_config\_file \Arg{path}}
+
+The \Arg{path} of the service configuration file. If the path is not absolute
+then it is assumed to be under the service installation directory.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{config/config.inc.php}.
+
+%% roundcube_sample_config_file
+\TheProperty[httpd:roundcube:roundcube_sample_config_file]{reroundcube\_\\sample\_\\config\_file}
+\TheProperty*[httpd!roundcube!roundcube\_sample\_config\_file]{roundcube\_sample\_config\_file \Arg{path}}
+
+The \Arg{path} of the service sample configuration file. If the path is
+not absolute then it is assumed to be under the service installation
+directory.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{config/config.inc.php.sample}.
+
+%% roundcube_temp_directory
+\TheProperty[httpd:roundcube:roundcube_temp_directory]{roundcube\_\\temp\_directory}
+\TheProperty*[httpd!roundcube!roundcube!roundcube\_temp\_directory]{roundcube\_temp\_directory \Arg{path}}
+
+The \Arg{path} of the service temp directory. If the path is
+not absolute then it is assumed to be under the service installation
+directory.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{temp}.
+
+%% roundcube_logs_directory
+\TheProperty[httpd:roundcube:roundcube_logs_directory]{roundcube\_\\logs\_directory}
+\TheProperty*[httpd!roundcube!roundcube!roundcube\_logs\_directory]{roundcube\_logs\_directory \Arg{path}}
+
+The \Arg{path} of the service logging directory. If the path is
+not absolute then it is assumed to be under the service installation
+directory.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{logs}.
+
+%% roundcube_mysql_initial_file
+\TheProperty[httpd:roundcube:roundcube_mysql_initial_file]{roundcube\_\\mysql\_\\initial\_file}
+\TheProperty*[httpd!roundcube!roundcube!roundcube\_mysql\_initial\_file]{roundcube\_mysql\_initial\_file \Arg{path}}
+
+The \Arg{path} of the MySQL database initial script file. If the path is
+not absolute then it is assumed to be under the service installation
+directory.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{SQL/mysql.initial.sql}.
+
+%% roundcube_backup_archive
+\TheProperty[httpd:roundcube:roundcube_backup_archive]{roundcube\_\\backup\_archive}
+\TheProperty*[httpd!roundcube!roundcube!roundcube\_backup\_archive]{roundcube\_backup\_archive \Arg{template}}
+
+The backup archive file \Arg{template}.
+The placeholder are replaced with the following values:
+
+\begin{compactitem}
+\item \qcode{<domainName>} with the current domain name;
+\item \qcode{<timestamp>} with the current time stamp;
+\end{compactitem}
+
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to\\ \qcode{<domainName>/roundcube\_<domainName>\_<timestamp>.tar.gz}.
+
+%% roundcube_backup_database_archive
+\TheProperty[httpd:roundcube:roundcube_backup_database_archive]{roundcube\_\\backup\_\\database\_archive}
+\TheProperty*[httpd!roundcube!roundcube!roundcube\_backup\_database\_archive]{roundcube\_backup\_database\_archive \Arg{template}}
+
+The backup database archive file \Arg{template}.
+The placeholder are replaced with the following values:
+
+\begin{compactitem}
+\item \qcode{<domainName>} with the current domain name;
+\item \qcode{<timestamp>} with the current time stamp;
+\end{compactitem}
+
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \\
+\qcode{<domainName>/roundcube\_database\_<domainName>\_<timestamp>.gz}.
+
+%% roundcube_packages
+\TheProperty[httpd:roundcube:roundcube_packages]{roundcube\_\\packages}
+\TheProperty*[httpd!roundcube!roundcube\_packages]{roundcube\_packages \Arg{packages}}
+
+The list of \Arg{packages} that are needed for the service.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{php5, php5-mcrypt, php5-pspell}.
+
+%% roundcube_mysql_packages
+\TheProperty[httpd:roundcube:roundcube_mysql_packages]{roundcube\_\\mysql\_packages}
+\TheProperty*[httpd!roundcube!roundcube\_mysql\_packages]{roundcube\_mysql\_packages \Arg{packages}}
+
+The list of \Arg{packages} that are needed for the MySQL database.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{php5-mysql, mysql-client, mysql-server}.
+
+%% roundcube_apache_mods
+\TheProperty[httpd:roundcube:roundcube_apache_mods]{roundcube\_\\apache\_mods}
+\TheProperty*[httpd!roundcube!roundcube!roundcube\_apache\_mods]{roundcube\_apache\_mods \Arg{mods}}
+
+The list of Apache \Arg{mods} that are needed to be enabled for the service.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{rewrite}.
+
+%% roundcube_backup_timeout
+\TheProperty[httpd:roundcube:roundcube_backup_timeout]{roundcube\_\\backup\_timeout}
+\TheProperty*[httpd!roundcube!roundcube\_backup\_timeout]{roundcube\_backup\_timeout \Arg{duration}}
+
+The timeout \Arg{duration} to backup the service.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{PT1H}.
+
+%% roundcube_des_key
+\TheProperty[httpd:roundcube:roundcube_des_key]{roundcube\_\\des\_key}
+\TheProperty*[httpd!roundcube!roundcube\_des\_key]{roundcube\_des\_key \Arg{key}}
+
+The DES \Arg{key}. If the property is empty then the key is
+auto-generated.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{}, empty.
+
+\paraText{Various profile properties that matches the description of the Roundcube configuration.}
+
+% roundcube_debug_driver
+\TheProperty[httpd:roundcube:roundcube_debug_driver]{roundcube\_\\debug\_driver}
+\TheProperty*[httpd!roundcube!roundcube\_debug\_driver]{roundcube\_debug\_driver \Arg{driver}}
+
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{syslog}.
+
+% roundcube_debug_date_format
+\TheProperty[httpd:roundcube:roundcube_debug_date_format]{roundcube\_\\debug\_\\date\_format}
+\TheProperty*[httpd!roundcube!roundcube\_debug\_date\_format]{roundcube\_debug\_date\_format \Arg{format}}
+
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{d-M-Y H:i:s O}.
+
+% roundcube_debug_syslog_id
+\TheProperty[httpd:roundcube:roundcube_debug_syslog_id]{roundcube\_\\debug\_syslog\_id}
+\TheProperty*[httpd!roundcube!roundcube\_debug\_syslog\_id]{roundcube\_debug\_syslog\_id \Arg{id}}
+
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{roundcube}.
+
+% roundcube_debug_syslog_facility
+\TheProperty[httpd:roundcube:roundcube_debug_syslog_facility]{roundcube\_\\debug\_\\syslog\_facility}
+\TheProperty*[httpd!roundcube!roundcube\_debug\_syslog\_facility]{roundcube\_debug\_syslog\_facility \Arg{name}}
+
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{LOG\_USER}.
+
+% roundcube_debug_per_user_logging
+\TheProperty[httpd:roundcube:roundcube_debug_per_user_logging]{roundcube\_\\debug\_\\per\_user\_logging}
+\TheProperty*[httpd!roundcube!roundcube\_debug\_per\_user\_logging]{roundcube\_debug\_per\_user\_logging \Arg{enabled}}
+
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to true.
+
+\TheProperty[httpd:roundcube:roundcube_database_table_prefix]{roundcube\_\\database\_\\table\_prefix}
+\TheProperty*[httpd!roundcube!roundcube\_database\_table\_prefix]{roundcube\_database\_table\_prefix \Arg{prefix}}
+
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{}, empty.
+
+\TheProperty[httpd:roundcube:roundcube_log_driver]{roundcube\_\\log\_driver}
+\TheProperty*[httpd!roundcube!roundcube\_log\_driver]{roundcube\_log\_driver \Arg{name}}
+
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{syslog}.
+
+\TheProperty[httpd:roundcube:roundcube_log_facility]{roundcube\_\\log\_facility}
+\TheProperty*[httpd!roundcube!roundcube\_log\_facility]{roundcube\_log\_facility \Arg{name}}
+
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{LOG\_USER}.
+
+\TheProperty[httpd:roundcube:roundcube_imap_auth_type]{roundcube\_\\imap\_auth\_type}
+\TheProperty*[httpd!roundcube!roundcube\_imap\_auth\_type]{roundcube\_imap\_auth\_type \Arg{name}}
+
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{PLAIN}.
+
+\TheProperty[httpd:roundcube:roundcube_imap_delimiter]{roundcube\_\\imap\_delimiter}
+\TheProperty*[httpd!roundcube!roundcube\_imap\_delimiter]{roundcube\_imap\_delimiter \Arg{name}}
+
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{}, empty.
+
+\TheProperty[httpd:roundcube:roundcube_imap_ns_personal]{roundcube\_\\imap\_ns\_personal}
+\TheProperty*[httpd!roundcube!roundcube\_imap\_ns\_personal]{roundcube\_imap\_ns\_personal \Arg{name}}
+
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{}, empty.
+
+\TheProperty[httpd:roundcube:roundcube_imap_ns_other]{roundcube\_\\imap\_ns\_other}
+\TheProperty*[httpd!roundcube!roundcube\_imap\_ns\_other]{roundcube\_imap\_ns\_other \Arg{name}}
+
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{}, empty.
+
+\TheProperty[httpd:roundcube:roundcube_imap_ns_shared]{roundcube\_\\imap\_ns\_shared}
+\TheProperty*[httpd!roundcube!roundcube\_imap\_ns\_shared]{roundcube\_imap\_ns\_shared \Arg{name}}
+
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{}, empty.
+
+\TheProperty[httpd:roundcube:roundcube_smtp_server_port]{roundcube\_\\smtp\_server\_port}
+\TheProperty*[httpd!roundcube!roundcube\_smtp\_server\_port]{roundcube\_smtp\_server\_port \Arg{port}}
+
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{25}.
+
+\TheProperty[httpd:roundcube:roundcube_smtp_server_auth_type]{roundcube\_\\smtp\_\\server\_auth\_type}
+\TheProperty*[httpd!roundcube!roundcube\_smtp\_server\_auth\_type]{roundcube\_smtp\_server\_auth\_type \Arg{name}}
+
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{PLAIN}.
+
+\TheProperty[httpd:roundcube:roundcube_enable_installer]{roundcube\_\\enable\_installer}
+\TheProperty*[httpd!roundcube!roundcube\_enable\_installer]{roundcube\_enable\_installer \Arg{enabled}}
+
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to false.
+
+\TheProperty[httpd:roundcube:roundcube_force_https]{roundcube\_\\force\_https}
+\TheProperty*[httpd!roundcube!roundcube\_force\_https]{roundcube\_force\_https \Arg{enabled}}
+
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to false.
+
+\TheProperty[httpd:roundcube:roundcube_login_autocomplete]{roundcube\_\\login\_\\autocomplete}
+\TheProperty*[httpd!roundcube!roundcube\_login\_autocomplete]{roundcube\_login\_autocomplete \Arg{number}}
+
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{2}.
+
+\TheProperty[httpd:roundcube:roundcube_ip_check]{roundcube\_\\ip\_check}
+\TheProperty*[httpd!roundcube!roundcube\_ip\_check]{roundcube\_ip\_check \Arg{enabled}}
+
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to true.
+
+\TheProperty[httpd:roundcube:roundcube_login_case_sensitive]{roundcube\_\\login\_\\case\_sensitive}
+\TheProperty*[httpd!roundcube!roundcube\_login\_case\_sensitive]{roundcube\_login\_case\_sensitive \Arg{enabled}}
+
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to true.
+
+\TheProperty[httpd:roundcube:roundcube_auto_create_user]{roundcube\_\\auto\_create\_user}
+\TheProperty*[httpd!roundcube!roundcube\_auto\_create\_user]{roundcube\_auto\_create\_user \Arg{enabled}}
+
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to true.
+
+\TheProperty[httpd:roundcube:roundcube_product_name]{roundcube\_\\product\_name}
+\TheProperty*[httpd!roundcube!roundcube\_product\_name]{roundcube\_product\_name \Arg{name}}
+
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{RoundCube WebMail}.
+
+\TheProperty[httpd:roundcube:roundcube_identities_level]{roundcube\_\\identities\_level}
+\TheProperty*[httpd!roundcube!roundcube\_identities\_level]{roundcube\_identities\_level \Arg{level}}
+
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{0}.
+
+\TheProperty[httpd:roundcube:roundcube_enable_spellcheck]{roundcube\_\\enable\_spellcheck}
+\TheProperty*[httpd!roundcube!roundcube\_enable\_spellcheck]{roundcube\_enable\_spellcheck \Arg{enabled}}
+
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to true.
+
+\paraText{Php profile properties that matches the description of the Roundcube configuration.}
+
+\TheProperty[httpd:roundcube:roundcube_php_magic_quotes_gpc]{roundcube\_\\php\_magic\_\\quotes\_gpc}
+\TheProperty*[httpd!roundcube!roundcube\_php\_magic\_quotes\_gpc]{roundcube\_php\_magic\_quotes\_gpc \Arg{enabled}}
+
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to false.
+
+\TheProperty[httpd:roundcube:roundcube_php_magic_quotes_runtime]{roundcube\_\\php\_magic\_\\quotes\_runtime}
+\TheProperty*[httpd!roundcube!roundcube\_php\_magic\_quotes\_runtime]{roundcube\_php\_magic\_quotes\_runtime \Arg{enabled}}
+
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to false.
+
+\TheProperty[httpd:roundcube:roundcube_php_magic_quotes_sybase]{roundcube\_\\php\_magic\_\\quotes\_sybase}
+\TheProperty*[httpd!roundcube!roundcube\_php\_magic\_quotes\_sybase]{roundcube\_php\_magic\_quotes\_sybase \Arg{enabled}}
+
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to false.
+
+\TheProperty[httpd:roundcube:roundcube_php_file_uploads]{roundcube\_\\php\_file\_uploads}
+\TheProperty*[httpd!roundcube!roundcube\_php\_file\_uploads]{roundcube\_php\_file\_uploads \Arg{enabled}}
+
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to true.
+
+\TheProperty[httpd:roundcube:roundcube_php_session_auto_start]{roundcube\_\\php\_session\_\\auto\_start}
+\TheProperty*[httpd!roundcube!roundcube\_php\_session\_auto\_start]{roundcube\_php\_session\_auto\_start \Arg{enabled}}
+
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to false.
+
+\TheProperty[httpd:roundcube:roundcube_php_zend_ze1_compatibility_mode]{roundcube\_\\php\_zend\_ze1\_\\compatibility\_\\mode}
+\TheProperty*[httpd!roundcube!roundcube\_php\_zend\_ze1\_compatibility\_mode]{roundcube\_php\_zend\_ze1\_compatibility\_mode \Arg{enabled}}
+
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to false.
+
+\TheProperty[httpd:roundcube:roundcube_php_suhosin_session_encrypt]{roundcube\_\\php\_suhosin\_\\session\_encrypt}
+\TheProperty*[httpd!roundcube!roundcube\_php\_suhosin\_session\_encrypt]{roundcube\_php\_suhosin\_session\_encrypt \Arg{enabled}}
+
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to false.
+
+\TheProperty[httpd:roundcube:roundcube_php_mbstring_func_overload]{roundcube\_\\php\_mbstring\_\\func\_overload}
+\TheProperty*[httpd!roundcube!roundcube\_php\_mbstring\_func\_overload]{roundcube\_php\_mbstring\_func\_overload \Arg{number}}
+
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{0}.
+
+\paraText{Default profile properties.}
+
+\TheProperty[httpd:roundcube:roundcube_default_prefix]{roundcube\_\\default\_prefix}
+\TheProperty*[httpd!roundcube!roundcube\_default\_prefix]{roundcube\_default\_prefix \Arg{name}}
+
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{roundcube\_1}.
+
+\TheProperty[httpd:roundcube:roundcube_default_override_mode]{roundcube\_\\default\_\\override\_mode}
+\TheProperty*[httpd!roundcube!roundcube\_default\_override\_mode]{roundcube\_default\_override\_mode \Arg{mode}}
+
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{upgrade}.
+
+\TheProperty[httpd:roundcube:roundcube_default_debug_level_roundcube]{roundcube\_\\default\_debug\_\\level\_roundcube}
+\TheProperty*[httpd!roundcube!roundcube\_default\_debug\_level\_roundcube]{roundcube\_default\_debug\_level\_roundcube \Arg{level}}
+
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{1}.
+
+\TheProperty[httpd:roundcube:roundcube_default_debug_level_smtplog]{roundcube\_\\default\_debug\_\\level\_smtplog}
+\TheProperty*[httpd!roundcube!roundcube\_default\_debug\_level\_smtplog]{roundcube\_default\_debug\_level\_smtplog \Arg{level}}
+
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{0}.
+
+\TheProperty[httpd:roundcube:roundcube_default_debug_level_logins]{roundcube\_\\default\_debug\_\\level\_logins}
+\TheProperty*[httpd!roundcube!roundcube\_default\_debug\_level\_logins]{roundcube\_default\_debug\_level\_logins \Arg{level}}
+
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{0}.
+
+\TheProperty[httpd:roundcube:roundcube_default_debug_level_session]{roundcube\_\\default\_debug\_\\level\_session}
+\TheProperty*[httpd!roundcube!roundcube\_default\_debug\_level\_session]{roundcube\_default\_debug\_level\_session \Arg{level}}
+
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{0}.
+
+\TheProperty[httpd:roundcube:roundcube_default_debug_level_sql]{roundcube\_\\default\_debug\_\\level\_sql}
+\TheProperty*[httpd!roundcube!roundcube\_default\_debug\_level\_sql]{roundcube\_default\_debug\_level\_sql \Arg{level}}
+
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{0}.
+
+\TheProperty[httpd:roundcube:roundcube_default_debug_level_imap]{roundcube\_\\default\_debug\_\\level\_imap}
+\TheProperty*[httpd!roundcube!roundcube\_default\_debug\_level\_imap]{roundcube\_default\_debug\_level\_imap \Arg{level}}
+
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{0}.
+
+\TheProperty[httpd:roundcube:roundcube_default_debug_level_ldap]{roundcube\_\\default\_debug\_\\level\_ldap}
+\TheProperty*[httpd!roundcube!roundcube\_default\_debug\_level\_ldap]{roundcube\_default\_debug\_level\_ldap \Arg{level}}
+
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{0}.
+
+\TheProperty[httpd:roundcube:roundcube_default_debug_level_smtp]{roundcube\_\\default\_debug\_\\level\_smtp}
+\TheProperty*[httpd!roundcube!roundcube\_default\_debug\_level\_smtp]{roundcube\_default\_debug\_level\_smtp \Arg{level}}
+
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{0}.
+
+\TheProperty[httpd:roundcube:roundcube_default_debug_level_php]{roundcube\_\\default\_debug\_\\level\_php}
+\TheProperty*[httpd!roundcube!roundcube\_default\_debug\_level\_php]{roundcube\_default\_debug\_level\_php \Arg{level}}
+
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{0}.
+
+\TheProperty[httpd:roundcube:roundcube_default_database_host]{roundcube\_\\default\_\\database\_host}
+\TheProperty*[httpd!roundcube!roundcube\_default\_database\_host]{roundcube\_default\_database\_host \Arg{name}}
+
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{localhost}.
+
+\TheProperty[httpd:roundcube:roundcube_default_database_port]{roundcube\_\\default\_\\database\_port}
+\TheProperty*[httpd!roundcube!roundcube\_default\_database\_port]{roundcube\_default\_database\_port \Arg{port}}
+
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{3306}.
+
+\TheProperty[httpd:roundcube:roundcube_default_smtp_host]{roundcube\_\\default\_\\smtp\_host}
+\TheProperty*[httpd!roundcube!roundcube\_default\_smtp\_host]{roundcube\_default\_smtp\_host \Arg{host}}
+
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{\%h}.
+
+\TheProperty[httpd:roundcube:roundcube_default_smtp_user]{roundcube\_\\default\_\\smtp\_user}
+\TheProperty*[httpd!roundcube!roundcube\_default\_smtp\_user]{roundcube\_default\_smtp\_user \Arg{name}}
+
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{\%u}.
+
+\TheProperty[httpd:roundcube:roundcube_default_smtp_password]{roundcube\_\\default\_\\smtp\_password}
+\TheProperty*[httpd!roundcube!roundcube\_default\_smtp\_password]{roundcube\_default\_smtp\_password \Arg{password}}
+
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{\%p}.
+
+\TheProperty[httpd:roundcube:roundcube_default_imap_port]{roundcube\_\\default\_\\imap\_port}
+\TheProperty*[httpd!roundcube!roundcube\_default\_imap\_port]{roundcube\_default\_imap\_port \Arg{port}}
+
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{143}.
+
+\TheProperty[httpd:roundcube:roundcube_default_plugins]{roundcube\_\\default\_plugins}
+\TheProperty*[httpd!roundcube!roundcube\_default\_plugins]{roundcube\_default\_plugins \Arg{plugins}}
+
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{archive, zipdownload}.
+

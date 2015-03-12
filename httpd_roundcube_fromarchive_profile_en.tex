@@ -1,0 +1,77 @@
+\label{sec:roundcube_fromarchive_profile}
+\subsection{Roundcube From Archive Profile}
+
+Since Roundcube is available only in the older
+version 0.7.1\footnote{\printdate{2012-01-08}} for Ubuntu 12.04
+in the universe repository the service will be downloaded and installed
+from the vendor site.
+
+%% roundcube_version_file
+\TheProperty[httpd:roundcube:roundcube_version_file]{roundcube\_\\version\_file}
+\TheProperty*[httpd!roundcube!roundcube\_version\_file]{roundcube\_version\_file \Arg{path}}
+
+The \Arg{path} of the service version file. If the path is not absolute
+then it is assumed to be under the service installation directory.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{version.txt}.
+
+%% roundcube_archive
+\TheProperty[httpd:roundcube:roundcube_archive]{roundcube\_\\archive}
+\TheProperty*[httpd!roundcube!roundcube\_archive]{roundcube\_archive \Arg{resource}}
+
+The service archive \Arg{resource}.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to 
+\qcode{http://downloads.sourceforge.net/project/roundcubemail/roundcubemail/1.1.0/ roundcubemail-1.1.0-complete.tar.gz}.
+
+%% roundcube_archive_hash
+\TheProperty[httpd:roundcube:roundcube_archive_hash]{roundcube\_\\archive\_hash}
+\TheProperty*[httpd!roundcube!roundcube!roundcube\_archive\_hash]{roundcube\_archive\_hash \Arg{hash}}
+
+The service archive \Arg{hash}. The hash takes the form of a URI with a path
+or without a path component. If no path component is specified, the hierarchical part
+is interpreted as the alpha-numerical hash.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{md5:efb4dad2281df2f3ac7a6efe9eb82c96}.
+
+%% roundcube_strip_archive
+\TheProperty[httpd:roundcube:roundcube_strip_archive]{roundcube\_\\strip\_archive}
+\TheProperty*[httpd!roundcube!roundcube!roundcube\_strip\_archive]{roundcube\_strip\_archive \Arg{enabled}}
+
+The enable strip the service archive from the container directory.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{true}.
+
+%% roundcube_version
+\TheProperty[httpd:roundcube:roundcube_version]{roundcube\_\\version}
+\TheProperty*[httpd!roundcube!roundcube!roundcube\_version]{roundcube\_version \Arg{version}}
+
+The service \Arg{version}.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{1.1.0}.
+
+%% roundcube_upper_version
+\TheProperty[httpd:roundcube:roundcube_upper_version]{roundcube\_\\upper\_version}
+\TheProperty*[httpd!roundcube!roundcube!roundcube\_upper\_version]{roundcube\_upper\_version \Arg{version}}
+
+The upper limit \Arg{version}.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{1}.
