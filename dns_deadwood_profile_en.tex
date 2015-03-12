@@ -1,6 +1,9 @@
 \label{sec:deadwood_profile}
 \subsection{Deadwood Profile}
 
+The Deadwood service comes in the distribution Ubuntu 14.04 in version 2.0.09 
+in the universe repository.
+
 The Deadwood service is only a recursive DNS server, the 
 DNS \Statement*[dns:record]{record} statements are going to be ignored.
 
@@ -10,7 +13,7 @@ DNS \Statement*[dns:record]{record} statements are going to be ignored.
 
 The \Arg{command} to install package on the system. Can be a full path or
 just the command name that can be found in the current search path. 
-For the distributions
+For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 14.04
 \end{inparaitem}
@@ -26,19 +29,35 @@ The \Arg{command} to restart the service. Can be a full path or
 just the command name that can be found in the current search path. 
 The with \qcode{deadwood\_} prefixed property have precendence over the 
 nonprefixed property.
-For the distributions
+For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 14.04
 \end{inparaitem}
-the value is set to \qcode{/etc/init.d/deadwood recache}.
+the value is set to \qcode{/etc/init.d/deadwood}.
+
+%% deadwood_status_command
+%% status_command
+\TheProperty[dns:deadwood:status_command]{status\_\\command}
+\TheProperty*[dns!deadwood!status\_command]{status\_command \Arg{command}}\\
+\TheProperty*[dns!deadwood!deadwood\_status\_command]{deadwood\_status\_command \Arg{command}}
+
+The \Arg{command} to request the status the service. Can be a full path or
+just the command name that can be found in the current search path. 
+The with \qcode{deadwood\_} prefixed property have precendence over the 
+nonprefixed property.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 14.04
+\end{inparaitem}
+the value is set to \qcode{/etc/init.d/deadwood}.
 
 %% group_add_command
 \TheProperty[dns:deadwood:group_add_command]{group\_add\_\\command}
 \TheProperty*[dns!deadwood!group\_add\_command]{group\_add\_command \Arg{command}}\\
 
-The \Arg{command} to add the local group. Can be a full path or
+The \Arg{command} to add a new local group. Can be a full path or
 just the command name that can be found in the current search path. 
-For the distributions
+For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 14.04
 \end{inparaitem}
@@ -48,9 +67,9 @@ the value is set to \qcode{/usr/sbin/groupadd}.
 \TheProperty[dns:deadwood:user_add_command]{user\_add\_\\command}
 \TheProperty*[dns!deadwood!user\_add\_command]{user\_add\_command \Arg{command}}\\
 
-The \Arg{command} to add the local user. Can be a full path or
+The \Arg{command} to add a new local user. Can be a full path or
 just the command name that can be found in the current search path. 
-For the distributions
+For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 14.04
 \end{inparaitem}
@@ -60,9 +79,9 @@ the value is set to \qcode{/usr/sbin/useradd}.
 \TheProperty[dns:deadwood:id_command]{id\_command}
 \TheProperty*[dns!deadwood!id\_command]{id\_command \Arg{command}}\\
 
-The \Arg{command} to show local user and local group ids. Can be a full path or
-just the command name that can be found in the current search path. 
-For the distributions
+The \Arg{command} to reguests information about local user and local group. Can 
+be a full path or just the command name that can be found in the current search path. 
+For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 14.04
 \end{inparaitem}
@@ -72,9 +91,9 @@ the value is set to \qcode{/usr/bin/id}.
 \TheProperty[dns:deadwood:chmod_command]{chmod\_command}
 \TheProperty*[dns!deadwood!chmod\_command]{chmod\_command \Arg{command}}\\
 
-The \Arg{command} to change the file mods. Can be a full path or
+The \Arg{command} to change the file mode bits. Can be a full path or
 just the command name that can be found in the current search path. 
-For the distributions
+For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 14.04
 \end{inparaitem}
@@ -86,7 +105,7 @@ the value is set to \qcode{/bin/chmod}.
 
 The \Arg{command} to change the file owner. Can be a full path or
 just the command name that can be found in the current search path. 
-For the distributions
+For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 14.04
 \end{inparaitem}
@@ -98,19 +117,19 @@ the value is set to \qcode{/bin/chown}.
 
 The \Arg{command} of the Deadwood service. Can be a full path or
 just the command name that can be found in the current search path. 
-For the distributions
+For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 14.04
 \end{inparaitem}
 the value is set to \qcode{/usr/sbin/deadwood}.
 
 %% update_rc_command
-\TheProperty[dns:update_rc:update_rc_command]{update\_rc\_\\command}
-\TheProperty*[dns!update_rc!update\_rc\_command]{update\_rc\_command \Arg{command}}\\
+\TheProperty[dns:deadwood:update_rc_command]{update\_rc\_\\command}
+\TheProperty*[dns!deadwood!update\_rc\_command]{update\_rc\_command \Arg{command}}\\
 
-The \Arg{command} to update the System V init scripts. Can be a full path or
+The \Arg{command} to update the System V init type scripts. Can be a full path or
 just the command name that can be found in the current search path. 
-For the distributions
+For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 14.04
 \end{inparaitem}
@@ -118,10 +137,10 @@ the value is set to \qcode{/usr/sbin/update-rc.d}.
 
 %% groups_file
 \TheProperty[dns:deadwood:groups_file]{groups\_file}
-\TheProperty*[dns!deadwood!deadwood!groups\_file]{groups\_file \Arg{path}}\\
+\TheProperty*[dns!deadwood!groups\_file]{groups\_file \Arg{path}}\\
 
 The \Arg{path} of the local groups file.
-For the distributions
+For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 14.04
 \end{inparaitem}
@@ -129,10 +148,10 @@ the value is set to \qcode{/etc/group}.
 
 %% users_file
 \TheProperty[dns:deadwood:users_file]{users\_file}
-\TheProperty*[dns!deadwood!deadwood!users\_file]{users\_file \Arg{path}}\\
+\TheProperty*[dns!deadwood!users\_file]{users\_file \Arg{path}}\\
 
 The \Arg{path} of the local users file.
-For the distributions
+For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 14.04
 \end{inparaitem}
@@ -141,13 +160,13 @@ the value is set to \qcode{/etc/passwd}.
 %% deadwood_configuration_directory
 %% configuration_directory
 \TheProperty[dns:deadwood:configuration_directory]{configuration\_\\directory}
-\TheProperty*[dns!deadwood!deadwood!configuration\_directory]{configuration\_directory \Arg{path}}\\
-\TheProperty*[dns!deadwood!deadwood!deadwood\_configuration\_directory]{deadwood\_configuration\_directory \Arg{path}}
+\TheProperty*[dns!deadwood!configuration\_directory]{configuration\_directory \Arg{path}}\\
+\TheProperty*[dns!deadwood!deadwood\_configuration\_directory]{deadwood\_configuration\_directory \Arg{path}}
 
-The \Arg{path} of the Deadwood configuration directory.
+The \Arg{path} of the service configuration directory.
 The with \qcode{deadwood\_} prefixed property have precendence over the 
 nonprefixed property.
-For the distributions
+For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 14.04
 \end{inparaitem}
@@ -156,25 +175,24 @@ the value is set to \qcode{/etc/maradns/deadwood}.
 %% deadwood_configuration_file
 %% configuration_file
 \TheProperty[dns:deadwood:configuration_file]{configuration\_\\file}
-\TheProperty*[dns!deadwood!deadwood!configuration\_file]{configuration\_file \Arg{name}}\\
-\TheProperty*[dns!deadwood!deadwood!deadwood\_configuration\_file]{deadwood\_configuration\_file \Arg{name}}
+\TheProperty*[dns!deadwood!configuration\_file]{configuration\_file \Arg{name}}\\
+\TheProperty*[dns!deadwood!deadwood\_configuration\_file]{deadwood\_configuration\_file \Arg{name}}
 
-The \Arg{name} of the Deadwood configuration file. The file is saved
-under the configuration directory.
-The with \qcode{deadwood\_} prefixed property have precendence over the 
-nonprefixed property.
-For the distributions
+The \Arg{name} of the service configuration file. The file is saved
+under the configuration directory. The with \qcode{deadwood\_} prefixed 
+property have precendence over the nonprefixed property.
+For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 14.04
 \end{inparaitem}
 the value is set to \qcode{dwood3rc}.
 
 %% deadwood_script_file
-\TheProperty[dns:deadwood:deadwood_script_file]{deadwood\_script\_\\file}
-\TheProperty*[dns!deadwood!deadwood!deadwood\_script\_file]{deadwood\_script\_file \Arg{path}}\\
+\TheProperty[dns:deadwood:deadwood_script_file]{deadwood\_\\script\_\\file}
+\TheProperty*[dns!deadwood!deadwood\_script\_file]{deadwood\_script\_file \Arg{path}}\\
 
-The \Arg{path} of the Deadwood service script file.
-For the distributions
+The \Arg{path} of the service service init script file.
+For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 14.04
 \end{inparaitem}
@@ -185,7 +203,7 @@ the value is set to \qcode{/etc/init.d/deadwood}.
 \TheProperty*[dns!deadwood!system\_name]{system\_name \Arg{name}}
 
 The system \Arg{name}. 
-For the distributions
+For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 14.04
 \end{inparaitem}
@@ -195,8 +213,8 @@ the value is set to \qcode{ubuntu}.
 \TheProperty[dns:deadwood:packages]{packages}
 \TheProperty*[dns!deadwood!packages]{packages \Arg{packages}}
 
-The list of \Arg{packages} that are needed for the Deadwood.
-For the distributions
+The list of \Arg{packages} that are needed for the service.
+For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 14.04
 \end{inparaitem}
@@ -204,21 +222,50 @@ the value is set to \qcode{maradns-deadwood, dpkg}.
 
 %% restart_services
 \TheProperty[dns:deadwood:restart_services]{restart\_\\services}
-\TheProperty*[dns!deadwood!restart\_services]{restart\_services \Arg{services}}
+\TheProperty*[dns!deadwood!restart\_services]{restart\_services \Arg{services}}\\
+\TheProperty*[dns!deadwood!deadwood\_restart\_services]{deadwood\_restart\_services \Arg{services}}
 
-The list of \Arg{services} to restart Deadwood.
-For the distributions
+The list of \Arg{services} that are needed to be restarted after the 
+configuration was deployed to the server. The with \qcode{deadwood\_} prefixed 
+property have precendence over the nonprefixed property.
+For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 14.04
 \end{inparaitem}
 the value is set to \qcode{}, empty, i.e. no services.
 
+%% restart_flags
+\TheProperty[dns:deadwood:restart_flags]{restart\_flags}
+\TheProperty*[dns!deadwood!restart\_flags]{restart\_flags \Arg{flags}}\\
+\TheProperty*[dns!deadwood!deadwood\_restart\_flags]{deadwood\_restart\_flags \Arg{flags}}
+
+The \Arg{flags} for the restart command. The with \qcode{deadwood\_} prefixed 
+property have precendence over the nonprefixed property.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 14.04
+\end{inparaitem}
+the value is set to \qcode{restart}.
+
+%% status_flags
+\TheProperty[dns:deadwood:status_flags]{status\_flags}
+\TheProperty*[dns!deadwood!status\_flags]{status\_flags \Arg{flags}}\\
+\TheProperty*[dns!deadwood!deadwood\_status\_flags]{deadwood\_status\_flags \Arg{flags}}
+
+The \Arg{flags} for the status command. The with \qcode{deadwood\_} prefixed 
+property have precendence over the nonprefixed property.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 14.04
+\end{inparaitem}
+the value is set to \qcode{status}.
+
 %% charset
 \TheProperty[dns:deadwood:charset]{charset}
 \TheProperty*[dns!deadwood!charset]{charset \Arg{name}}
 
-Sets the default character set \Arg{name} in which configuration files are 
-saved. For the distributions
+The character set \Arg{name} of the service configuration files. 
+For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 14.04
 \end{inparaitem}
@@ -226,10 +273,10 @@ the value is set to \qcode{utf-8}.
 
 %% deadwood_user
 \TheProperty[dns:deadwood:deadwood_user]{deadwood\_user}
-\TheProperty*[dns!deadwood!deadwood\_user]{deadwood\_user \Arg{user}}
+\TheProperty*[dns!deadwood!deadwood\_user]{deadwood\_user \Arg{name}}
 
-Sets the Deadwood service \Arg{user}.
-For the distributions
+The local user \Arg{name} under which the service is run.
+For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 14.04
 \end{inparaitem}
@@ -237,10 +284,10 @@ the value is set to \qcode{deadwood}.
 
 %% deadwood_group
 \TheProperty[dns:deadwood:deadwood_group]{deadwood\_group}
-\TheProperty*[dns!deadwood!deadwood\_group]{deadwood\_group \Arg{group}}
+\TheProperty*[dns!deadwood!deadwood\_group]{deadwood\_group \Arg{name}}
 
-Sets the Deadwood service \Arg{group}.
-For the distributions
+Sets local group \Arg{name} under which the service is run.
+For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 14.04
 \end{inparaitem}
@@ -251,7 +298,7 @@ the value is set to \qcode{deadwood}.
 \TheProperty*[dns!deadwood!ipv4\_pattern]{ipv4\_pattern \Arg{pattern}}
 
 The IPv4 match \Arg{pattern}.
-For the distributions
+For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 14.04
 \end{inparaitem}
@@ -262,7 +309,7 @@ the value is set to \qcode{\textasciicircum((\textbackslash\textbackslash{d}\{1,
 \TheProperty*[dns!deadwood!ipv6\_pattern]{ipv6\_pattern \Arg{pattern}}
 
 The IPv6 match \Arg{pattern}.
-For the distributions
+For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 14.04
 \end{inparaitem}
@@ -273,18 +320,18 @@ the value is set to \qcode{\textasciicircum(([0-9a-fA-F]\{0,4\}:)\{1,7\}[0-9a-fA
 \TheProperty*[dns!deadwood!deadwood\_max\_requests]{deadwood\_max\_requests \Arg{requests}}
 
 The the maximum \Arg{requests}.
-For the distributions
+For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 14.04
 \end{inparaitem}
 the value is set to \code{8}.
 
 %% deadwood_handle_overload
-\TheProperty[dns:deadwood:deadwood_handle_overload]{deadwood\_handle\_\\overload}
-\TheProperty*[dns!deadwood!deadwood\_handle\_overload]{deadwood\_handle\_overload \Arg{enable}}
+\TheProperty[dns:deadwood:deadwood_handle_overload]{deadwood\_\\handle\_\\overload}
+\TheProperty*[dns!deadwood!deadwood\_handle\_overload]{deadwood\_handle\_overload \Arg{enabled}}
 
 The handle overload \Arg{enabled}.
-For the distributions
+For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 14.04
 \end{inparaitem}
@@ -295,18 +342,18 @@ the value is set to \code{true}.
 \TheProperty*[dns!deadwood!deadwood\_max\_cache]{deadwood\_max\_cache \Arg{size}}
 
 The maximum cache \Arg{size}.
-For the distributions
+For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 14.04
 \end{inparaitem}
 the value is set to \code{60000}.
 
 %% deadwood_cache_file
-\TheProperty[dns:deadwood:deadwood_cache_file]{deadwood\_cache\_\\file}
+\TheProperty[dns:deadwood:deadwood_cache_file]{deadwood\_\\cache\_\\file}
 \TheProperty*[dns!deadwood!deadwood\_cache\_file]{deadwood\_cache\_file \Arg{name}}
 
 The cache file \Arg{name}.
-For the distributions
+For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 14.04
 \end{inparaitem}
@@ -317,28 +364,39 @@ the value is set to \qcode{dw\_cache}.
 \TheProperty*[dns!deadwood!deadwood\_resurrections]{deadwood\_resurrections \Arg{enabled}}
 
 The fetch expired records \Arg{enabled}.
-For the distributions
+For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 14.04
 \end{inparaitem}
 the value is set to \code{true}.
 
 %% deadwood_filter_rfc1918
-\TheProperty[dns:deadwood:deadwood_filter_rfc1918]{deadwood\_filter\_\\rfc1918}
+\TheProperty[dns:deadwood:deadwood_filter_rfc1918]{deadwood\_\\filter\_\\rfc1918}
 \TheProperty*[dns!deadwood!deadwood\_filter\_rfc1918]{deadwood\_filter\_rfc1918 \Arg{enabled}}
 
 The filter RFC1928 \Arg{enabled}.
-For the distributions
+For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 14.04
 \end{inparaitem}
 the value is set to \code{true}.
 
-%% default_binding_addresses
-\TheProperty[dns:deadwood:default_binding_addresses]{default\_\\binding\_\\addresses}
-\TheProperty*[dns!deadwood!default\_binding\_addresses]{default\_binding\_addresses \Arg{addresses}}
+%% deadwood_reject_mx
+\TheProperty[dns:deadwood:deadwood_reject_mx]{deadwood\_\\reject\_\\mx}
+\TheProperty*[dns!deadwood!deadwood\_reject\_mx]{deadwood\_reject\_mx \Arg{enabled}}
 
-Sets the default binding \Arg{addresses}. For the distributions
+The reject MX queries \Arg{enabled}.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 14.04
+\end{inparaitem}
+the value is set to \code{true}.
+
+%% default_binding_address
+\TheProperty[dns:deadwood:default_binding_address]{default\_\\binding\_\\address}
+\TheProperty*[dns!deadwood!default\_binding\_address]{default\_binding\_address \Arg{addresses}}
+
+Sets the default binding \Arg{address}. For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 14.04
 \end{inparaitem}
@@ -348,7 +406,7 @@ the value is set to \qcode{127.0.0.1}.
 \TheProperty[dns:deadwood:default_binding_port]{default\_\\binding\_\\port}
 \TheProperty*[dns!deadwood!default\_binding\_port]{default\_binding\_port \Arg{port}}
 
-Sets the default binding \Arg{port}. For the distributions
+Sets the default binding \Arg{port}. For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 14.04
 \end{inparaitem}
@@ -361,8 +419,7 @@ the value is set to \qcode{53}.
 Sets the ICANN root server \Arg{addresses}. Those server groups are used in 
 the DNS service script when used in 
 the \Statement*[dns:servers:root]{servers-root} statement.
-
-For the distributions
+For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 14.04
 \end{inparaitem}

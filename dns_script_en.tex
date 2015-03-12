@@ -71,7 +71,7 @@ dns {
 \TheStatement[dns:server]{server}
 \TheStatement*[dns!server]{server \Arg{name}, address: \Arg{address}}
 
-Sets the named root \Arg{server} and its \Arg{address}. Can be used multiple times
+Sets the named root server \Arg{name} and its \Arg{address}. Can be used multiple times
 for different server.
 
 \begin{lstlisting}[style=Java]
@@ -85,7 +85,7 @@ dns {
 \TheStatement[dns:alias]{alias}
 \TheStatement*[dns!alias]{alias \Arg{name}, address: \Arg{address}}
 
-Sets the \Arg{alias} and its \Arg{address}. Can be used multiple times
+Sets the alias \Arg{name} and its \Arg{address}. Can be used multiple times
 for different aliases.
 
 \begin{lstlisting}[style=Java]
@@ -111,7 +111,7 @@ dns {
 
 % zone
 \TheStatement[dns:zone]{zone}
-\TheStatement*[dns!zone]{\mbox{zone \Arg{name},} \mbox{primary: \Arg{primary},} \mbox{email: \Arg{email} [,} \mbox{serial: \Arg{serial}]\} [,} \mbox{address: \Arg{address}] [,} \mbox{ttl: \Arg{time}] [,} \{ [ttl] [refresh] [retry] [expire] \\\mbox{record \} ]}}
+\TheStatement*[dns!zone]{\mbox{zone \Arg{name},} \mbox{primary: \Arg{primary},} \mbox{email: \Arg{email} [,} \mbox{serial: \Arg{serial}] [,} \mbox{address: \Arg{address}] [,} \mbox{ttl: \Arg{time}]} \{ [ttl] [refresh] [retry] [expire] [record] \}}
 
 Adds a new DNS zone. The \Arg{name}, the \Arg{primary} DNS server and 
 the \Arg{email} address of the zone are required. The \Arg{serial} number can
@@ -164,7 +164,7 @@ dns {
 \end{lstlisting}
 
 \TheStatement[dns:record]{record}
-\TheStatement*[dns!record]{record a|ns|mx|cname [, name: \Arg{name}] [, alias: \Arg{alias}] \} [,\\ \mbox{address: \Arg{address}] [,} priority: \Arg{priority}] [, \{ ttl \}]}
+\TheStatement*[dns!record]{record a|ns|mx|cname [, name: \Arg{name}] [, alias: \Arg{alias}] [, address: \Arg{address}] [, priority: \Arg{priority}], \{ [ttl] \}}
 
 Adds a new DNS record to the DNS zone. 
 The accepted arguments are depending on
@@ -184,7 +184,7 @@ specified then a new A-record will be created that maps this name to the
 specified address and uses the same TTL duration;
 the \qcode{cname} record type will add
 a new CNAME-record with the specified \Arg{name} and \Arg{alias}.
-The placeholder \qcode{\%} can be used that is replaced by the current zone.
+The placeholder \qcode{\%} can be used which is replaced by the current zone.
 
 \begin{lstlisting}[style=Java]
 dns {
@@ -195,7 +195,7 @@ dns {
         }
         record ns, name: "ns1.testa.com"
         record mx, name: "mx2.testa.com", priority: 20
-        record cname, name: "www.testa.com", alias: "testa.com"
+        record cname, name: "www.%", alias: "%"
     }
 }
 \end{lstlisting}
