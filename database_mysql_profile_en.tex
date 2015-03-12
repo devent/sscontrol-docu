@@ -29,7 +29,7 @@ the value is set to \qcode{/sbin/restart}.
 \TheProperty[database:mysql:mysqladmin_command]{mysqladmin\_\\command}
 \TheProperty*[database!mysql!mysqladmin\_command]{mysqladmin\_command \Arg{name}}
 
-The \Arg{command} to \code{mysqladmin} command that is used to administer the 
+The \Arg{command} to the \code{mysqladmin} command that is used to administer the 
 MySQL database. Can be a full path or
 just the command name that can be found in the current search path. 
 For the distribution
@@ -42,7 +42,7 @@ the value is set to \qcode{/usr/bin/mysqladmin}.
 \TheProperty[database:mysql:mysql_command]{mysql\_command}
 \TheProperty*[database!mysql!mysql\_command]{mysql\_command \Arg{name}}
 
-The \Arg{command} to \code{mysql} command that is used to create databases,
+The \Arg{command} to the \code{mysql} command that is used to create databases,
 create users and set privileges. Can be a full path or
 just the command name that can be found in the current search path. 
 For the distribution
@@ -55,7 +55,7 @@ the value is set to \qcode{/usr/bin/mysql}.
 \TheProperty[database:unzip:unzip_command]{unzip\_command}
 \TheProperty*[database!unzip!unzip\_command]{unzip\_command \Arg{name}}
 
-The \Arg{command} to \code{unzip} command that is used to unzip database scripts,
+The \Arg{command} to the \code{unzip} command that is used to unzip database scripts,
 create users and set privileges. Can be a full path or
 just the command name that can be found in the current search path. 
 For the distribution
@@ -68,7 +68,7 @@ the value is set to \qcode{/usr/bin/unzip}.
 \TheProperty[database:gunzip:gunzip_command]{gunzip\_command}
 \TheProperty*[database!gunzip!gunzip\_command]{gunzip\_command \Arg{name}}
 
-The \Arg{command} to \code{gunzip} command that is used to unzip database scripts,
+The \Arg{command} to the \code{gunzip} command that is used to unzip database scripts,
 create users and set privileges. Can be a full path or
 just the command name that can be found in the current search path. 
 For the distribution
@@ -81,7 +81,7 @@ the value is set to \qcode{/bin/gunzip}.
 \TheProperty[database:tar:tar_command]{tar\_command}
 \TheProperty*[database!tar!tar\_command]{tar\_command \Arg{name}}
 
-The \Arg{command} to \code{tar} command that is used to unzip database scripts,
+The \Arg{command} to the \code{tar} command that is used to unzip database scripts,
 create users and set privileges. Can be a full path or
 just the command name that can be found in the current search path. 
 For the distribution
@@ -94,7 +94,7 @@ the value is set to \qcode{/bin/tar}.
 \TheProperty[database:mysql:configuration_directory]{configuration\_\\directory}
 \TheProperty*[database!mysql!configuration\_directory]{configuration\_directory \Arg{path}}
 
-The \Arg{path} of the MySQL configuration directory.
+The \Arg{path} of the service configuration directory.
 For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 12.04
@@ -105,7 +105,7 @@ the value is set to \qcode{/etc/mysql/conf.d}.
 \TheProperty[database:mysql:mysqld_configuration_file]{mysqld\_\\configuration\_\\file}
 \TheProperty*[database!mysql!mysqld\_configuration\_file]{mysqld\_configuration\_file \Arg{name}}
 
-The \Arg{name} of the custom MySQL configuration file. The file is saved
+The \Arg{name} of the custom configuration file. The file is saved
 under the configuration directory.
 For the distribution
 \begin{inparaitem}
@@ -128,7 +128,7 @@ the value is set to \qcode{ubuntu}.
 \TheProperty[database:mysql:packages]{packages}
 \TheProperty*[database!mysql!packages]{packages \Arg{packages}}
 
-The list of \Arg{packages} that are needed for the MySQL database. 
+The list of \Arg{packages} that are needed for the service. 
 For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 12.04
@@ -139,7 +139,8 @@ the value is set to \qcode{mysql-server, mysql-client, unzip, gzip}.
 \TheProperty[database:mysql:restart_services]{restart\_\\services}
 \TheProperty*[database!mysql!restart\_services]{restart\_services \Arg{services}}
 
-The list of \Arg{services} to restart the MySQL database.
+The list of \Arg{services} that are needed to be restarted after the 
+configuration was deployed to the server.
 For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 12.04
@@ -150,8 +151,8 @@ the value is set to \qcode{mysql}.
 \TheProperty[database:mysql:charset]{charset}
 \TheProperty*[database!mysql!charset]{charset \Arg{name}}
 
-Sets the default character set \Arg{name} in which configuration files are 
-saved. For the distribution
+The character set \Arg{name} of the service configuration files. 
+For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 12.04
 \end{inparaitem}
@@ -161,7 +162,8 @@ the value is set to \qcode{utf-8}.
 \TheProperty[database:mysql:default_character_set]{default\_\\character\_\\set}
 \TheProperty*[database!mysql!default\_character\_set]{default\_character\_set \Arg{name}}
 
-The \Arg{name} of the character set to use per default for new created databases.
+The character set \Arg{name} to use per default for new databases.
+The character set name must be known to the database service.
 For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 12.04
@@ -172,7 +174,8 @@ the value is set to \qcode{utf8}.
 \TheProperty[database:mysql:default_collate]{default\_collate}
 \TheProperty*[database!mysql!default\_collate]{default\_collate \Arg{name}}
 
-The \Arg{name} of the collate to use per default for new created databases.
+The collate \Arg{name} to use per default for new databases.
+The collate name must be known to the database service.
 For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 12.04
@@ -183,18 +186,19 @@ the value is set to \qcode{utf8\_general\_ci}.
 \TheProperty[database:mysql:default_debug_general_level]{default\_debug\_\\general\_level}
 \TheProperty*[database!mysql!default\_debug\_general\_level]{default\_debug\_general\_level \Arg{level}}
 
-The default debug general logging \Arg{level}.
+The default general logging \Arg{level}.
 For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 12.04
 \end{inparaitem}
-the value is set to \code{0}.
+the values can be \code{0} for logging disabled or \code{1} for logging 
+enabled. The value is set to \code{0} per default.
 
 %% default_debug_general_file
 \TheProperty[database:mysql:default_debug_general_file]{default\_debug\_\\general\_file}
 \TheProperty*[database!mysql!default\_debug\_general\_file]{default\_debug\_general\_file \Arg{file}}
 
-The default debug general logging \Arg{file}.
+The default general logging \Arg{file}.
 For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 12.04
@@ -205,18 +209,19 @@ the value is set to \qcode{/var/log/mysql/mysql.log}.
 \TheProperty[database:mysql:default_debug_error_level]{default\_debug\_\\error\_level}
 \TheProperty*[database!mysql!default\_debug\_error\_level]{default\_debug\_error\_level \Arg{level}}
 
-The default debug error logging \Arg{level}.
+The default error logging \Arg{level}.
 For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 12.04
 \end{inparaitem}
-the value is set to \code{1}.
+the values can be \code{0} for logging disabled or \code{1} for logging 
+enabled. The value is set to \code{1} per default.
 
 %% default_debug_error_file
 \TheProperty[database:mysql:default_debug_error_file]{default\_debug\_\\error\_file}
 \TheProperty*[database!mysql!default\_debug\_error\_file]{default\_debug\_error\_file \Arg{file}}
 
-The default debug error logging \Arg{file}.
+The default error logging \Arg{file}.
 For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 12.04
@@ -227,18 +232,19 @@ the value is set to \qcode{/var/log/mysql/error.log}.
 \TheProperty[database:mysql:default_debug_slow_queries_level]{default\_debug\_\\slow\_queries\_level}
 \TheProperty*[database!mysql!default\_debug\_slow\_queries\_level]{default\_debug\_slow\_queries\_level \Arg{level}}
 
-The default debug slow queries logging \Arg{level}.
+The default slow queries logging \Arg{level}.
 For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 12.04
 \end{inparaitem}
-the value is set to \code{0}.
+the values can be \code{0} for logging disabled or \code{1} for logging 
+enabled. The value is set to \code{1} per default.
 
 %% default_debug_slow_queries_file
 \TheProperty[database:mysql:default_debug_slow_queries_file]{default\_debug\_\\slow\_queries\_file}
 \TheProperty*[database!mysql!default\_debug\_slow\_queries\_file]{default\_debug\_slow\_queries\_file \Arg{file}}
 
-The default debug slow queries logging \Arg{file}.
+The default slow queries logging \Arg{file}.
 For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 12.04
@@ -249,7 +255,7 @@ the value is set to \qcode{/var/log/mysql/mysql-slow.log}.
 \TheProperty[database:mysql:default_bind_address]{default\_bind\_\\address}
 \TheProperty*[database!mysql!default\_bind\_address]{default\_bind\_address \Arg{address}}
 
-The default IP \Arg{address} or host name on which the database server should
+The default \Arg{address} or host name on which the database server should
 listen for connections. For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 12.04
@@ -260,7 +266,7 @@ the value is set to \qcode{127.0.0.1}.
 \TheProperty[database:mysql:default_bind_port]{default\_bind\_\\port}
 \TheProperty*[database!mysql!default\_bind\_port]{default\_bind\_port \Arg{port}}
 
-The \Arg{port} on which the database server should
+The default \Arg{port} on which the database server should
 listen for connections. For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 12.04
@@ -271,7 +277,7 @@ the value is set to \code{3306}.
 \TheProperty[database:mysql:default_user_server]{default\_user\_\\server}
 \TheProperty*[database!mysql!default\_user\_server]{default\_user\_server \Arg{server}}
 
-The default \Arg{server} that is used for database users.
+The default \Arg{server} that is used for created database users.
 For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 12.04,
