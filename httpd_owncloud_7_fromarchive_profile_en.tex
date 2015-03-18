@@ -1,0 +1,66 @@
+\label{sec:owncloud_7_fromarchive_profile}
+\subsection{ownCloud 7 From Archive Profile}
+
+Since ownCloud is available only in the older
+version 3\footnote{\printdate{2012-04-11}} for Ubuntu 12.04
+in the universe repository the service will be downloaded and installed
+from the vendor site.
+
+%% owncloud_version_file
+\TheProperty[httpd:roundcube:owncloud_version_file]{owncloud\_\\version\_file}
+\TheProperty*[httpd!roundcube!owncloud\_version\_file]{owncloud\_version\_file \Arg{path}}
+
+The \Arg{path} of the service version file. If the path is not absolute
+then it is assumed to be under the service installation directory.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{version.txt}.
+
+%% owncloud_archive
+\TheProperty[httpd:roundcube:owncloud_archive]{owncloud\_archive}
+\TheProperty*[httpd!roundcube!owncloud\_archive]{owncloud\_archive \Arg{resource}}
+
+The service archive \Arg{resource}.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to 
+\qcode{https://download.owncloud.org/community/owncloud-7.0.4.tar.bz2}.
+
+%% owncloud_archive_hash
+\TheProperty[httpd:roundcube:owncloud_archive_hash]{owncloud\_\\archive\_hash}
+\TheProperty*[httpd!roundcube!roundcube!owncloud\_archive\_hash]{owncloud\_archive\_hash \Arg{hash}}
+
+The service archive \Arg{hash}. The hash takes the form of a URI with a path
+or without a path component. If no path component is specified, the hierarchical part
+is interpreted as the alpha-numerical hash.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{https://download.owncloud.org/community/owncloud-7.0.4.tar.bz2.md5}.
+
+%% owncloud_version
+\TheProperty[httpd:owncloud:owncloud_version]{owncloud\_\\version}
+\TheProperty*[httpd!owncloud!owncloud!owncloud\_version]{owncloud\_version \Arg{version}}
+
+The service \Arg{version}.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{7.0.4}.
+
+%% owncloud_upper_version
+\TheProperty[httpd:owncloud:owncloud_upper_version]{owncloud\_\\upper\_version}
+\TheProperty*[httpd!owncloud!owncloud!owncloud\_upper\_version]{owncloud\_upper\_version \Arg{version}}
+
+The upper limit \Arg{version}.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{7}.

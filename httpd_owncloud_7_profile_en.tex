@@ -1,0 +1,292 @@
+\label{sec:owncloud_7_profile}
+\subsection{ownCloud 7 Profile}
+
+The current versions of ownCloud 7 is 
+7.0.5\footnote{\printdate{2015-03-11}} from the vendor web site
+\url{https://owncloud.org}.
+
+%% owncloud_php_command
+\TheProperty[httpd:owncloud_7:owncloud_php_command]{owncloud\_\\php\_command}
+\TheProperty*[httpd!owncloud\_7!owncloud\_php\_command]{owncloud\_php\_command \Arg{path}}
+
+The \Arg{path} of the \code{php} command.
+Can be a full path or just the command name that can be found in the current search path. 
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{/usr/bin/php-cgi}.
+
+%% owncloud_apps_directory
+\TheProperty[httpd:owncloud_7:owncloud_apps_directory]{owncloud\_\\apps\_directory}
+\TheProperty*[httpd!owncloud\_7!owncloud\_apps\_directory]{owncloud\_apps\_directory \Arg{path}}
+
+The \Arg{path} of the service apps directory. If the path is not absolute
+then it is assumed to be under the service installation directory.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{apps}.
+
+%% owncloud_config_directory
+\TheProperty[httpd:owncloud_7:owncloud_config_directory]{owncloud\_\\config\_directory}
+\TheProperty*[httpd!owncloud\_7!owncloud\_config\_directory]{owncloud\_config\_directory \Arg{path}}
+
+The \Arg{path} of the service configuration directory. If the path is
+not absolute then it is assumed to be under the service installation
+directory.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{config}.
+
+%% owncloud_config_file
+\TheProperty[httpd:owncloud_7:owncloud_config_file]{owncloud\_\\config\_file}
+\TheProperty*[httpd!owncloud\_7!owncloud\_7!owncloud\_config\_file]{owncloud\_config\_file \Arg{path}}
+
+The \Arg{path} of the service configuration file. If the path is
+not absolute then it is assumed to be under the service installation
+directory.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{config/config.php}.
+
+%% owncloud_data_directory
+\TheProperty[httpd:owncloud_7:owncloud_data_directory]{owncloud\_\\data\_directory}
+\TheProperty*[httpd!owncloud\_7!owncloud\_7!owncloud\_data\_directory]{owncloud\_data\_directory \Arg{path}}
+
+The \Arg{path} of the service data directory. If the path is
+not absolute then it is assumed to be under the service installation
+directory.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{data}.
+
+%% owncloud_backup_archive
+\TheProperty[httpd:owncloud_7:owncloud_backup_archive]{owncloud\_\\backup\_archive}
+\TheProperty*[httpd!owncloud\_7!owncloud\_7!owncloud\_backup\_archive]{owncloud\_backup\_archive \Arg{template}}
+
+The backup archive file \Arg{template}.
+The placeholder are replaced with the following values:
+
+\begin{compactitem}
+\item \qcode{<domainName>} with the current domain name;
+\item \qcode{<timestamp>} with the current time stamp;
+\end{compactitem}
+
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to\\ \qcode{<domainName>/owncloud\_<domainName>\_<timestamp>.tar.gz}.
+
+%% owncloud_backup_database_archive
+\TheProperty[httpd:owncloud_7:owncloud_backup_database_archive]{owncloud\_\\backup\_\\database\_archive}
+\TheProperty*[httpd!owncloud\_7!owncloud\_7!owncloud\_backup\_database\_archive]{owncloud\_backup\_database\_archive \Arg{template}}
+
+The backup database archive file \Arg{template}.
+The placeholder are replaced with the following values:
+
+\begin{compactitem}
+\item \qcode{<domainName>} with the current domain name;
+\item \qcode{<timestamp>} with the current time stamp;
+\end{compactitem}
+
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \\
+\qcode{<domainName>/owncloud\_database\_<domainName>\_<timestamp>.gz}.
+
+%% owncloud_cronjobs_directory
+\TheProperty[httpd:owncloud_7:owncloud_cronjobs_directory]{owncloud\_\\cronjobs\_\\directory}
+\TheProperty*[httpd!owncloud\_7!owncloud\_7!owncloud\_cronjobs\_directory]{owncloud\_cronjobs\_directory \Arg{path}}
+
+The \Arg{path} of the cronjobs configuration directory.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{/etc/cron.d}.
+
+%% owncloud_cronjob_file
+\TheProperty[httpd:owncloud_7:owncloud_cronjob_file]{owncloud\_\\cronjob\_file}
+\TheProperty*[httpd!owncloud\_7!owncloud\_7!owncloud\_cronjob\_file]{owncloud\_cronjob\_file \Arg{template}}
+
+The \Arg{template} of the cronjob background task file. If the path is not 
+absolute it is assumed to be under the cronjobs configuration directory.
+The placeholder are replaced with the following values:
+
+\begin{compactitem}
+\item \qcode{<domainName>} with the domain name;
+\item \qcode{<servicePrefix>} with the service prefix;
+\end{compactitem}
+
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{<domainName>-<servicePrefix>-owncloud-background}.
+
+%% owncloud_cronscript_file
+\TheProperty[httpd:owncloud_7:owncloud_cronscript_file]{owncloud\_\\cronscript\_file}
+\TheProperty*[httpd!owncloud\_7!owncloud\_7!owncloud\_cronscript\_file]{owncloud\_cronscript\_file \Arg{path}}
+
+The \Arg{path} of the cronjobs background task script file. If the path is 
+not absolute it is assumed to be under the service installation directory.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{cron.php}.
+
+%% owncloud_packages
+\TheProperty[httpd:owncloud_7:owncloud_packages]{owncloud\_\\packages}
+\TheProperty*[httpd!owncloud\_7!owncloud\_packages]{owncloud\_packages \Arg{packages}}
+
+The list of \Arg{packages} that are needed for the service.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{php5, php5-gd, php5-json, php5-mysql, php5-curl, php5-intl, php5-mcrypt, php5-imagick}.
+
+%% owncloud_apache_mods
+\TheProperty[httpd:owncloud_7:owncloud_apache_mods]{owncloud\_\\apache\_mods}
+\TheProperty*[httpd!owncloud\_7!owncloud\_7!owncloud\_apache\_mods]{owncloud\_apache\_mods \Arg{mods}}
+
+The list of Apache \Arg{mods} that are needed to be enabled for the service.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{rewrite}.
+
+%% owncloud_backup_timeout
+\TheProperty[httpd:owncloud_7:owncloud_backup_timeout]{owncloud\_\\backup\_timeout}
+\TheProperty*[httpd!owncloud\_7!owncloud\_backup\_timeout]{owncloud\_backup\_timeout \Arg{duration}}
+
+The timeout \Arg{duration} to backup the service.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{PT1H}.
+
+%% owncloud_overwrite_cli
+\TheProperty[httpd:owncloud_7:owncloud_overwrite_cli]{owncloud\_\\overwrite\_cli}
+\TheProperty*[httpd!owncloud\_7!owncloud\_overwrite\_cli]{owncloud\_overwrite\_cli \Arg{template}}
+
+The \Arg{template} of the service base URL.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{<domainProto><domainName><if(serviceAlias)>/<serviceAlias><endif>}.
+
+%% owncloud_force_ssl_enabled
+\TheProperty[httpd:owncloud_7:owncloud_force_ssl_enabled]{owncloud\_\\force\_ssl\_enabled}
+\TheProperty*[httpd!owncloud\_7!owncloud\_force\_ssl\_enabled]{owncloud\_force\_ssl\_enabled \Arg{enabled}}
+
+If force SSL is \Arg{enabled}.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{true}.
+
+%% owncloud_cronjob_enabled
+\TheProperty[httpd:owncloud_7:owncloud_cronjob_enabled]{owncloud\_\\cronjob\_enabled}
+\TheProperty*[httpd!owncloud\_7!owncloud\_cronjob\_enabled]{owncloud\_cronjob\_enabled \Arg{enabled}}
+
+If cronjob for background tasks is \Arg{enabled}.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{true}.
+
+% owncloud_default_prefix
+\TheProperty[httpd:owncloud_7:owncloud_default_prefix]{owncloud\_\\default\_prefix}
+\TheProperty*[httpd!owncloud\_7!owncloud\_default\_prefix]{owncloud\_default\_prefix \Arg{prefix}}
+
+The default service \Arg{prefix}.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{owncloud\_7}.
+
+% owncloud_default_debug_owncloud_level
+\TheProperty[httpd:owncloud_7:owncloud_default_debug_owncloud_level]{owncloud\_\\default\_\\debug\_\\owncloud\_level}
+\TheProperty*[httpd!owncloud\_7!owncloud\_default\_debug\_owncloud\_level]{owncloud\_default\_debug\_owncloud\_level \Arg{level}}
+
+The default logging \Arg{level} for the ownCloud service module.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{1}.
+
+% owncloud_default_override_mode
+\TheProperty[httpd:owncloud_7:owncloud_default_override_mode]{owncloud\_\\default\_\\override\_mode}
+\TheProperty*[httpd!owncloud\_7!owncloud\_default\_override\_mode]{owncloud\_default\_override\_mode \Arg{mode}}
+
+The default override \Arg{mode}.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{upgrade}.
+
+% owncloud_default_database_host
+\TheProperty[httpd:owncloud_7:owncloud_default_database_host]{owncloud\_\\default\_\\database\_host}
+\TheProperty*[httpd!owncloud\_7!owncloud\_default\_database\_host]{owncloud\_default\_database\_host \Arg{host}}
+
+The default database \Arg{host}.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{localhost}.
+
+% owncloud_default_database_port
+\TheProperty[httpd:owncloud_7:owncloud_default_database_port]{owncloud\_\\default\_\\database\_port}
+\TheProperty*[httpd!owncloud\_7!owncloud\_default\_database\_port]{owncloud\_default\_database\_port \Arg{port}}
+
+The default database \Arg{port}.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{3306}.
+
+% owncloud_default_database_table_prefix
+\TheProperty[httpd:owncloud_7:owncloud_default_database_table_prefix]{owncloud\_\\default\_\\database\_\\table\_prefix}
+\TheProperty*[httpd!owncloud\_7!owncloud\_default\_database\_table\_prefix]{owncloud\_default\_database\_table\_prefix \Arg{prefix}}
+
+The default database table \Arg{prefix}.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{oc\_}.
+
+% owncloud_default_database_adapter
+\TheProperty[httpd:owncloud_7:owncloud_default_database_adapter]{owncloud\_\\default\_\\database\_adapter}
+\TheProperty*[httpd!owncloud\_7!owncloud\_default\_database\_adapter]{owncloud\_default\_database\_adapter \Arg{adapter}}
+
+The default database \Arg{adapter}.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{mysql}.
+
