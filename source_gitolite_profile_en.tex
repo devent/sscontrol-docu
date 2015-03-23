@@ -1,0 +1,301 @@
+\label{sec:gitolite_profile}
+\subsection{Gitolite Profile}
+
+The Gitolite\footnote{\url{http://gitolite.com/}} hosting service can fully
+manage a Git\footnote{\url{http://git-scm.com/}} repository on the server.
+It allowes for fine grained access control per repository.
+
+For the distribution \TheDistribution{ubuntu} Ubuntu 12.04 the Gitolite
+service is downloaded and installed into the prefix directory. The local
+user and group is created or updated and is used under which the the service
+is run. The repositories directory is created under the data directory path
+and the owner is set to the service user and group name, and the file permissions
+are updated based on the specified umask. The structure of the service on the
+file system will be as follow:
+
+\begin{compactitem}
+%
+\item \code{/usr/local/gitolite}
+Gitolite service files, owner is root, as set 
+in the \Statement*[source:setup:gitolite:prefix]{prefix} statement and in 
+the \Property*[source:gitolite:gitolite_default_prefix]{gitolite\_default\_prefix} property;
+%
+\item \code{/var/git/.gitolite.rc}
+Gitolite configuration file, owner is Gitolite user and group, as set 
+in \Statement*[source:setup:gitolite:user]{user} statement and in 
+the \Property*[source:gitolite:user_add_command]{user\_add\_command} property;
+%
+\item \code{/var/git/repositories}
+repositories parent directory, owner is Gitolite user and group, permissions set 
+to ([0777]-umask), set 
+in \Property*[source:gitolite:gitolite_umask]{gitolite\_umask} property.
+\end{compactitem}
+
+After the installation, the Gitolite service is available and the administration
+repository can be downloaded via the 
+command \qcode{git clone git@server.com:gitolite-admin}. The user name is set
+in the \Statement*[source:setup:gitolite:user]{user} statement and in 
+the \Property*[source:gitolite:gitolite_default_user]{gitolite\_\\default\_user} property.
+
+\subsubsection{Commands}
+
+%% install_command
+\TheStatement[source:gitolite:install_command]{install\_\\command}
+\TheStatement*[source!gitolite!install\_command]{install\_command \Arg{command}}
+
+The \Arg{command} to install packages on the system. Can be a full path or
+just the command name that can be found in the current search path. 
+For the distributions
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{/usr/bin/aptitude}.
+
+%% su_command
+\TheStatement[source:gitolite:su_command]{su\_command}
+\TheStatement*[source!gitolite!su\_command]{su\_command \Arg{command}}
+
+The \Arg{command} to change local user under which a scrip is run. Can be a full path or
+just the command name that can be found in the current search path. 
+For the distributions
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{/bin/su}.
+
+%% chmod_command
+\TheStatement[source:gitolite:chmod_command]{chmod\_command}
+\TheStatement*[source!gitolite!chmod\_command]{chmod\_command \Arg{command}}
+
+The \Arg{command} to the change permissions command. Can be a full path or
+just the command name that can be found in the current search path. 
+For the distributions
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{/bin/su}.
+
+%% chown_command
+\TheStatement[source:gitolite:chown_command]{chown\_command}
+\TheStatement*[source!gitolite!chown\_command]{chown\_command \Arg{command}}
+
+The \Arg{command} to the change permissions command. Can be a full path or
+just the command name that can be found in the current search path. 
+For the distributions
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{/bin/su}.
+
+%% group_add_command
+\TheStatement[source:gitolite:group_add_command]{group\_\\add\_command}
+\TheStatement*[source!gitolite!group\_add\_command]{group\_add\_command \Arg{command}}
+
+The \Arg{command} to create a new local group. Can be a full path or
+just the command name that can be found in the current search path. 
+For the distributions
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{/bin/su}.
+
+%% user_add_command
+\TheStatement[source:gitolite:user_add_command]{user\_\\add\_command}
+\TheStatement*[source!gitolite!user\_add\_command]{user\_add\_command \Arg{command}}
+
+The \Arg{command} of the \code{tar} utility. Can be a full path or
+just the command name that can be found in the current search path. 
+For the distributions
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{/bin/tar}.
+
+%% gitolite_install_command
+\TheStatement[source:gitolite:gitolite_install_command]{gitolite\_\\install\_command}
+\TheStatement*[source!gitolite!gitolite\_install\_command]{gitolite\_install\_command \Arg{path}}
+
+The \Arg{path} of the Gitolite install command. If the path is not absolute it
+is assumed to be located under the service installation directory.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{install}.
+
+%% gitolite_command
+\TheStatement[source:gitolite:gitolite_command]{gitolite\_\\command}
+\TheStatement*[source!gitolite!gitolite\_command]{gitolite\_command \Arg{path}}
+
+The \Arg{path} of the Gitolite command. If the path is not absolute it
+is assumed to be located under the service installation directory.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{../bin/gitolite}.
+
+\subsubsection{Files and Directories}
+
+%% temp_directory
+\TheStatement[source:gitolite:temp_directory]{temp\_\\directory}
+\TheStatement*[source!gitolite!temp\_directory]{temp\_directory \Arg{path}}
+
+Returns the \Arg{path} of the temporary directory, if empty, the path
+of the system temporary directory is used.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{}, empty.
+
+%% groups_file
+\TheStatement[source:gitolite:groups_file]{groups\_file}
+\TheStatement*[source!gitolite!groups\_file]{groups\_file \Arg{path}}
+
+Returns the \Arg{path} of the local groups file.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{/etc/group}.
+
+%% users_file
+\TheStatement[source:gitolite:users_file]{users\_file}
+\TheStatement*[source!gitolite!users\_file]{users\_file \Arg{path}}
+
+Returns the \Arg{path} of the local users file.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{/etc/passwd}.
+
+%% gitolite_repositories_directory
+\TheStatement[source:gitolite:gitolite_repositories_directory]{gitolite\_\\repositories\_\\directory}
+\TheStatement*[source!gitolite!gitolite\_repositories\_directory]{gitolite\_repositories\_directory \Arg{path}}
+
+Returns the \Arg{path} of the repositories directory. If the path is not
+absolute it is assumed to be located under the service
+data directory.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{repositories}.
+
+%% gitolite_rc_file
+\TheStatement[source:gitolite:gitolite_rc_file]{gitolite\_\\rc\_file}
+\TheStatement*[source!gitolite!gitolite\_rc\_file]{gitolite\_rc\_file \Arg{path}}
+
+Returns the \Arg{path} of the \qcode{.gitolite.rc} file. If the path is not
+absolute it is assumed to be located under the service
+data directory.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{.gitolite.rc}.
+
+\subsubsection{Other Properties}
+
+%% system_name
+\TheStatement[source:gitolite:system_name]{system\_name}
+\TheStatement*[source!gitolite!system\_name]{system\_name \Arg{name}}
+
+The system \Arg{name}. 
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{ubuntu}.
+
+%% charset
+\TheStatement[source:gitolite:charset]{charset}
+\TheStatement*[source!gitolite!charset]{charset \Arg{name}}
+
+The character set \Arg{name} of the service configuration files. 
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{utf-8}.
+
+%% gitolite_packages
+\TheStatement[source:gitolite:gitolite_packages]{gitolite\_\\packages}
+\TheStatement*[source!gitolite!gitolite\_packages]{gitolite\_packages \Arg{packages}}
+
+The list of \Arg{packages} that are needed for the service.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{git, openssh-server, perl}.
+
+%% gitolite_umask
+\TheStatement[source:gitolite:gitolite_umask]{gitolite\_\\umask}
+\TheStatement*[source!gitolite!gitolite\_umask]{gitolite\_umask \Arg{mask}}
+
+The file creation \Arg{mask} for new repositories.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{0077}.
+
+%% gitolite_default_prefix
+\TheStatement[source:gitolite:gitolite_default_prefix]{gitolite\_\\default\_\\prefix}
+\TheStatement*[source!gitolite!gitolite\_default\_prefix]{gitolite\_default\_prefix \Arg{path}}
+
+The default service prefix \Arg{path}. That is the path where the
+service is installed to. 
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{/usr/local/gitolite}.
+
+%% gitolite_default_data
+\TheStatement[source:gitolite:gitolite_default_data]{gitolite\_\\default\_\\data}
+\TheStatement*[source!gitolite!gitolite\_default\_data]{gitolite\_default\_data \Arg{path}}
+
+The default service prefix \Arg{path}. That is the path where the
+service is installed to. 
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{/usr/local/gitolite}.
+
+% gitolite_default_override_mode
+\TheStatement[source:gitolite:gitolite_default_override_mode]{gitolite\_\\default\_\\override\_mode}
+\TheStatement*[source!gitolite!gitolite\_default\_override\_mode]{gitolite\_default\_override\_mode \Arg{mode}}
+
+The default override \Arg{mode}.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{upgrade}.
+
+% gitolite_default_user
+\TheStatement[source:gitolite:gitolite_default_user]{gitolite\_\\default\_user}
+\TheStatement*[source!gitolite!gitolite\_default\_user]{gitolite\_default\_user \Arg{name}}
+
+The default service local user \Arg{name}.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{git}.
+
+% gitolite_default_group
+\TheStatement[source:gitolite:gitolite_default_group]{gitolite\_\\default\_group}
+\TheStatement*[source!gitolite!gitolite\_default\_group]{gitolite\_default\_group \Arg{name}}
+
+The default service local group \Arg{name}.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{git}.

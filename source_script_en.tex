@@ -1,0 +1,22 @@
+\subsection{Source Script}
+\input{source_script_statements_en}
+
+\TheStatement{source}
+\TheStatement*[source]{source \{ setup \}}
+
+Entry point in the source script.
+
+% setup
+\TheStatement[source:setup]{setup}
+\TheStatement*[source!setup]{setup \Arg{name}, \{ ... \}}
+
+Setups the service with the specified \Arg{name}.
+
+\begin{lstlisting}[style=Java]
+source {
+    setup "service", {
+    }
+}
+\end{lstlisting}
+
+

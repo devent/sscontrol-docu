@@ -1,0 +1,67 @@
+\label{sec:gitolite_fromarchive_profile}
+\subsection{Gitolite From Archive Profile}
+
+The Gitolite service is downloaded and extracted into the prefix directory.
+The version of the service is saved and is used for comparison of updates.
+
+\subsubsection{Files and Directories}
+
+%% gitolite_version_file
+\TheStatement[source:gitolite:gitolite_version_file]{gitolite\_\\version\_file}
+\TheStatement*[source!gitolite!gitolite\_version\_file]{gitolite\_version\_file \Arg{name}}
+
+Returns the \Arg{name} of the version file. If the path is not
+absolute it is assumed to be located under the service
+installation directory.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{version.txt}.
+
+\subsubsection{Other Properties}
+
+%% gitolite_archive
+\TheStatement[source:gitolite:gitolite_archive]{gitolite\_archive}
+\TheStatement*[source!gitolite!gitolite\_archive]{gitolite\_archive \Arg{resource}}
+
+The Gitolite archive \Arg{resource}.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{https://github.com/sitaramc/gitolite/archive/v3.6.2.tar.gz}.
+
+%% gitolite_archive_hash
+\TheStatement[source:gitolite:gitolite_archive_hash]{gitolite\_\\archive\_hash}
+\TheStatement*[source!gitolite!gitolite\_archive\_hash]{gitolite\_archive\_hash \Arg{resource}}
+
+The Gitolite archive hash \Arg{resource}.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{md5:72b70ed378a775b5cd496ee02b81c467}.
+
+%% gitolite_version
+\TheStatement[source:gitolite:gitolite_version]{gitolite\_version}
+\TheStatement*[source!gitolite!gitolite\_version]{gitolite\_version \Arg{version}}
+
+The service \Arg{version}.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{3.6.2}.
+
+%% gitolite_upper_version
+\TheStatement[source:gitolite:gitolite_upper_version]{gitolite\_\\upper\_version}
+\TheStatement*[source!gitolite!gitolite\_upper\_version]{gitolite\_upper\_version \Arg{version}}
+
+The upper service \Arg{version}.
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{3}.
+
