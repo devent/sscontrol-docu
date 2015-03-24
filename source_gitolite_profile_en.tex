@@ -45,7 +45,7 @@ the \Property*[source:gitolite:gitolite_default_user]{gitolite\_\\default\_user}
 
 The \Arg{command} to install packages on the system. Can be a full path or
 just the command name that can be found in the current search path. 
-For the distributions
+For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 12.04
 \end{inparaitem}
@@ -57,7 +57,7 @@ the value is set to \qcode{/usr/bin/aptitude}.
 
 The \Arg{command} to change local user under which a scrip is run. Can be a full path or
 just the command name that can be found in the current search path. 
-For the distributions
+For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 12.04
 \end{inparaitem}
@@ -69,11 +69,11 @@ the value is set to \qcode{/bin/su}.
 
 The \Arg{command} to the change permissions command. Can be a full path or
 just the command name that can be found in the current search path. 
-For the distributions
+For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 12.04
 \end{inparaitem}
-the value is set to \qcode{/bin/su}.
+the value is set to \qcode{/bin/chmod}.
 
 %% chown_command
 \TheStatement[source:gitolite:chown_command]{chown\_command}
@@ -81,11 +81,11 @@ the value is set to \qcode{/bin/su}.
 
 The \Arg{command} to the change permissions command. Can be a full path or
 just the command name that can be found in the current search path. 
-For the distributions
+For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 12.04
 \end{inparaitem}
-the value is set to \qcode{/bin/su}.
+the value is set to \qcode{/bin/chown}.
 
 %% group_add_command
 \TheStatement[source:gitolite:group_add_command]{group\_\\add\_command}
@@ -93,19 +93,55 @@ the value is set to \qcode{/bin/su}.
 
 The \Arg{command} to create a new local group. Can be a full path or
 just the command name that can be found in the current search path. 
-For the distributions
+For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 12.04
 \end{inparaitem}
-the value is set to \qcode{/bin/su}.
+the value is set to \qcode{/usr/sbin/groupadd}.
+
+%% group_mod_command
+\TheStatement[source:gitolite:group_mod_command]{group\_\\mod\_command}
+\TheStatement*[source!gitolite!group\_mod\_command]{group\_mod\_command \Arg{command}}
+
+The \Arg{command} to modify a local group. Can be a full path or
+just the command name that can be found in the current search path. 
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{/usr/sbin/groupmod}.
 
 %% user_add_command
 \TheStatement[source:gitolite:user_add_command]{user\_\\add\_command}
 \TheStatement*[source!gitolite!user\_add\_command]{user\_add\_command \Arg{command}}
 
+Returns the \Arg{command} to create a new local user. Can be a full path or
+just the command name that can be found in the current search path. 
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{/usr/sbin/useradd}.
+
+%% user_mod_command
+\TheStatement[source:gitolite:user_mod_command]{user\_\\mod\_command}
+\TheStatement*[source!gitolite!user\_mod\_command]{user\_mod\_command \Arg{command}}
+
+The \Arg{command} to modify a local user. Can be a full path or
+just the command name that can be found in the current search path. 
+For the distribution
+\begin{inparaitem}
+\item[\TheDistribution{ubuntu}] Ubuntu 12.04
+\end{inparaitem}
+the value is set to \qcode{/usr/sbin/usermod}.
+
+%% tar_command
+\TheStatement[source:gitolite:tar_command]{tar\_command}
+\TheStatement*[source!gitolite!tar\_command]{tar\_command \Arg{command}}
+
 The \Arg{command} of the \code{tar} utility. Can be a full path or
 just the command name that can be found in the current search path. 
-For the distributions
+For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 12.04
 \end{inparaitem}
@@ -265,7 +301,7 @@ For the distribution
 \begin{inparaitem}
 \item[\TheDistribution{ubuntu}] Ubuntu 12.04
 \end{inparaitem}
-the value is set to \qcode{/usr/local/gitolite}.
+the value is set to \qcode{/var/git}.
 
 % gitolite_default_override_mode
 \TheStatement[source:gitolite:gitolite_default_override_mode]{gitolite\_\\default\_\\override\_mode}
