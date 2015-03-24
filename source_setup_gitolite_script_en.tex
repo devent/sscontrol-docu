@@ -1,3 +1,11 @@
+\subsection{Setup Gitolite}
+
+\initmarginpar{%
+\includegraphics[width=\marginparwidth]{git_logo}
+\begin{flushright}
+\scriptsize{Git Logo, \mbox{CC BY 3.0 Unported,} \mbox{Author Jason Long,} \url{http://twitter.com/jasonlong}}%
+\end{flushright}}
+
 \begin{figure}[htp]
 \centering
 \includegraphics[width=0.7\textwidth]{source_setup_gitolite}
@@ -40,7 +48,7 @@ skip installation otherwise.
 \begin{lstlisting}[style=Java]
 source {
     setup "gitolite", {
-        override mode: override
+        override mode: OverrideMode.override
     }
 }
 \end{lstlisting}
