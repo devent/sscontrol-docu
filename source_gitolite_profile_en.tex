@@ -40,8 +40,8 @@ the \Property*[source:gitolite:gitolite_default_user]{gitolite\_\\default\_user}
 \subsubsection{Commands}
 
 %% install_command
-\TheStatement[source:gitolite:install_command]{install\_\\command}
-\TheStatement*[source!gitolite!install\_command]{install\_command \Arg{command}}
+\TheProperty[source:gitolite:install_command]{install\_\\command}
+\TheProperty*[source!gitolite!install\_command]{install\_command \Arg{command}}
 
 The \Arg{command} to install packages on the system. Can be a full path or
 just the command name that can be found in the current search path. 
@@ -52,8 +52,8 @@ For the distribution
 the value is set to \qcode{/usr/bin/aptitude}.
 
 %% su_command
-\TheStatement[source:gitolite:su_command]{su\_command}
-\TheStatement*[source!gitolite!su\_command]{su\_command \Arg{command}}
+\TheProperty[source:gitolite:su_command]{su\_command}
+\TheProperty*[source!gitolite!su\_command]{su\_command \Arg{command}}
 
 The \Arg{command} to change local user under which a scrip is run. Can be a full path or
 just the command name that can be found in the current search path. 
@@ -64,8 +64,8 @@ For the distribution
 the value is set to \qcode{/bin/su}.
 
 %% chmod_command
-\TheStatement[source:gitolite:chmod_command]{chmod\_command}
-\TheStatement*[source!gitolite!chmod\_command]{chmod\_command \Arg{command}}
+\TheProperty[source:gitolite:chmod_command]{chmod\_command}
+\TheProperty*[source!gitolite!chmod\_command]{chmod\_command \Arg{command}}
 
 The \Arg{command} to the change permissions command. Can be a full path or
 just the command name that can be found in the current search path. 
@@ -76,8 +76,8 @@ For the distribution
 the value is set to \qcode{/bin/chmod}.
 
 %% chown_command
-\TheStatement[source:gitolite:chown_command]{chown\_command}
-\TheStatement*[source!gitolite!chown\_command]{chown\_command \Arg{command}}
+\TheProperty[source:gitolite:chown_command]{chown\_command}
+\TheProperty*[source!gitolite!chown\_command]{chown\_command \Arg{command}}
 
 The \Arg{command} to the change permissions command. Can be a full path or
 just the command name that can be found in the current search path. 
@@ -88,8 +88,8 @@ For the distribution
 the value is set to \qcode{/bin/chown}.
 
 %% group_add_command
-\TheStatement[source:gitolite:group_add_command]{group\_\\add\_command}
-\TheStatement*[source!gitolite!group\_add\_command]{group\_add\_command \Arg{command}}
+\TheProperty[source:gitolite:group_add_command]{group\_\\add\_command}
+\TheProperty*[source!gitolite!group\_add\_command]{group\_add\_command \Arg{command}}
 
 The \Arg{command} to create a new local group. Can be a full path or
 just the command name that can be found in the current search path. 
@@ -100,8 +100,8 @@ For the distribution
 the value is set to \qcode{/usr/sbin/groupadd}.
 
 %% group_mod_command
-\TheStatement[source:gitolite:group_mod_command]{group\_\\mod\_command}
-\TheStatement*[source!gitolite!group\_mod\_command]{group\_mod\_command \Arg{command}}
+\TheProperty[source:gitolite:group_mod_command]{group\_\\mod\_command}
+\TheProperty*[source!gitolite!group\_mod\_command]{group\_mod\_command \Arg{command}}
 
 The \Arg{command} to modify a local group. Can be a full path or
 just the command name that can be found in the current search path. 
@@ -112,8 +112,8 @@ For the distribution
 the value is set to \qcode{/usr/sbin/groupmod}.
 
 %% user_add_command
-\TheStatement[source:gitolite:user_add_command]{user\_\\add\_command}
-\TheStatement*[source!gitolite!user\_add\_command]{user\_add\_command \Arg{command}}
+\TheProperty[source:gitolite:user_add_command]{user\_\\add\_command}
+\TheProperty*[source!gitolite!user\_add\_command]{user\_add\_command \Arg{command}}
 
 Returns the \Arg{command} to create a new local user. Can be a full path or
 just the command name that can be found in the current search path. 
@@ -124,8 +124,8 @@ For the distribution
 the value is set to \qcode{/usr/sbin/useradd}.
 
 %% user_mod_command
-\TheStatement[source:gitolite:user_mod_command]{user\_\\mod\_command}
-\TheStatement*[source!gitolite!user\_mod\_command]{user\_mod\_command \Arg{command}}
+\TheProperty[source:gitolite:user_mod_command]{user\_\\mod\_command}
+\TheProperty*[source!gitolite!user\_mod\_command]{user\_mod\_command \Arg{command}}
 
 The \Arg{command} to modify a local user. Can be a full path or
 just the command name that can be found in the current search path. 
@@ -136,8 +136,8 @@ For the distribution
 the value is set to \qcode{/usr/sbin/usermod}.
 
 %% tar_command
-\TheStatement[source:gitolite:tar_command]{tar\_command}
-\TheStatement*[source!gitolite!tar\_command]{tar\_command \Arg{command}}
+\TheProperty[source:gitolite:tar_command]{tar\_command}
+\TheProperty*[source!gitolite!tar\_command]{tar\_command \Arg{command}}
 
 The \Arg{command} of the \code{tar} utility. Can be a full path or
 just the command name that can be found in the current search path. 
@@ -148,8 +148,8 @@ For the distribution
 the value is set to \qcode{/bin/tar}.
 
 %% gitolite_install_command
-\TheStatement[source:gitolite:gitolite_install_command]{gitolite\_\\install\_command}
-\TheStatement*[source!gitolite!gitolite\_install\_command]{gitolite\_install\_command \Arg{path}}
+\TheProperty[source:gitolite:gitolite_install_command]{gitolite\_\\install\_command}
+\TheProperty*[source!gitolite!gitolite\_install\_command]{gitolite\_install\_command \Arg{path}}
 
 The \Arg{path} of the Gitolite install command. If the path is not absolute it
 is assumed to be located under the service installation directory.
@@ -160,8 +160,8 @@ For the distribution
 the value is set to \qcode{install}.
 
 %% gitolite_command
-\TheStatement[source:gitolite:gitolite_command]{gitolite\_\\command}
-\TheStatement*[source!gitolite!gitolite\_command]{gitolite\_command \Arg{path}}
+\TheProperty[source:gitolite:gitolite_command]{gitolite\_\\command}
+\TheProperty*[source!gitolite!gitolite\_command]{gitolite\_command \Arg{path}}
 
 The \Arg{path} of the Gitolite command. If the path is not absolute it
 is assumed to be located under the service installation directory.
@@ -174,8 +174,8 @@ the value is set to \qcode{../bin/gitolite}.
 \subsubsection{Files and Directories}
 
 %% temp_directory
-\TheStatement[source:gitolite:temp_directory]{temp\_\\directory}
-\TheStatement*[source!gitolite!temp\_directory]{temp\_directory \Arg{path}}
+\TheProperty[source:gitolite:temp_directory]{temp\_\\directory}
+\TheProperty*[source!gitolite!temp\_directory]{temp\_directory \Arg{path}}
 
 Returns the \Arg{path} of the temporary directory, if empty, the path
 of the system temporary directory is used.
@@ -186,8 +186,8 @@ For the distribution
 the value is set to \qcode{}, empty.
 
 %% groups_file
-\TheStatement[source:gitolite:groups_file]{groups\_file}
-\TheStatement*[source!gitolite!groups\_file]{groups\_file \Arg{path}}
+\TheProperty[source:gitolite:groups_file]{groups\_file}
+\TheProperty*[source!gitolite!groups\_file]{groups\_file \Arg{path}}
 
 Returns the \Arg{path} of the local groups file.
 For the distribution
@@ -197,8 +197,8 @@ For the distribution
 the value is set to \qcode{/etc/group}.
 
 %% users_file
-\TheStatement[source:gitolite:users_file]{users\_file}
-\TheStatement*[source!gitolite!users\_file]{users\_file \Arg{path}}
+\TheProperty[source:gitolite:users_file]{users\_file}
+\TheProperty*[source!gitolite!users\_file]{users\_file \Arg{path}}
 
 Returns the \Arg{path} of the local users file.
 For the distribution
@@ -208,8 +208,8 @@ For the distribution
 the value is set to \qcode{/etc/passwd}.
 
 %% gitolite_repositories_directory
-\TheStatement[source:gitolite:gitolite_repositories_directory]{gitolite\_\\repositories\_\\directory}
-\TheStatement*[source!gitolite!gitolite\_repositories\_directory]{gitolite\_repositories\_directory \Arg{path}}
+\TheProperty[source:gitolite:gitolite_repositories_directory]{gitolite\_\\repositories\_\\directory}
+\TheProperty*[source!gitolite!gitolite\_repositories\_directory]{gitolite\_repositories\_directory \Arg{path}}
 
 Returns the \Arg{path} of the repositories directory. If the path is not
 absolute it is assumed to be located under the service
@@ -221,8 +221,8 @@ For the distribution
 the value is set to \qcode{repositories}.
 
 %% gitolite_rc_file
-\TheStatement[source:gitolite:gitolite_rc_file]{gitolite\_\\rc\_file}
-\TheStatement*[source!gitolite!gitolite\_rc\_file]{gitolite\_rc\_file \Arg{path}}
+\TheProperty[source:gitolite:gitolite_rc_file]{gitolite\_\\rc\_file}
+\TheProperty*[source!gitolite!gitolite\_rc\_file]{gitolite\_rc\_file \Arg{path}}
 
 Returns the \Arg{path} of the \qcode{.gitolite.rc} file. If the path is not
 absolute it is assumed to be located under the service
@@ -236,8 +236,8 @@ the value is set to \qcode{.gitolite.rc}.
 \subsubsection{Other Properties}
 
 %% system_name
-\TheStatement[source:gitolite:system_name]{system\_name}
-\TheStatement*[source!gitolite!system\_name]{system\_name \Arg{name}}
+\TheProperty[source:gitolite:system_name]{system\_name}
+\TheProperty*[source!gitolite!system\_name]{system\_name \Arg{name}}
 
 The system \Arg{name}. 
 For the distribution
@@ -247,8 +247,8 @@ For the distribution
 the value is set to \qcode{ubuntu}.
 
 %% charset
-\TheStatement[source:gitolite:charset]{charset}
-\TheStatement*[source!gitolite!charset]{charset \Arg{name}}
+\TheProperty[source:gitolite:charset]{charset}
+\TheProperty*[source!gitolite!charset]{charset \Arg{name}}
 
 The character set \Arg{name} of the service configuration files. 
 For the distribution
@@ -258,8 +258,8 @@ For the distribution
 the value is set to \qcode{utf-8}.
 
 %% gitolite_packages
-\TheStatement[source:gitolite:gitolite_packages]{gitolite\_\\packages}
-\TheStatement*[source!gitolite!gitolite\_packages]{gitolite\_packages \Arg{packages}}
+\TheProperty[source:gitolite:gitolite_packages]{gitolite\_\\packages}
+\TheProperty*[source!gitolite!gitolite\_packages]{gitolite\_packages \Arg{packages}}
 
 The list of \Arg{packages} that are needed for the service.
 For the distribution
@@ -269,8 +269,8 @@ For the distribution
 the value is set to \qcode{git, openssh-server, perl}.
 
 %% gitolite_umask
-\TheStatement[source:gitolite:gitolite_umask]{gitolite\_\\umask}
-\TheStatement*[source!gitolite!gitolite\_umask]{gitolite\_umask \Arg{mask}}
+\TheProperty[source:gitolite:gitolite_umask]{gitolite\_\\umask}
+\TheProperty*[source!gitolite!gitolite\_umask]{gitolite\_umask \Arg{mask}}
 
 The file creation \Arg{mask} for new repositories.
 For the distribution
@@ -280,8 +280,8 @@ For the distribution
 the value is set to \qcode{0077}.
 
 %% gitolite_default_prefix
-\TheStatement[source:gitolite:gitolite_default_prefix]{gitolite\_\\default\_\\prefix}
-\TheStatement*[source!gitolite!gitolite\_default\_prefix]{gitolite\_default\_prefix \Arg{path}}
+\TheProperty[source:gitolite:gitolite_default_prefix]{gitolite\_\\default\_\\prefix}
+\TheProperty*[source!gitolite!gitolite\_default\_prefix]{gitolite\_default\_prefix \Arg{path}}
 
 The default service prefix \Arg{path}. That is the path where the
 service is installed to. 
@@ -292,8 +292,8 @@ For the distribution
 the value is set to \qcode{/usr/local/gitolite}.
 
 %% gitolite_default_data
-\TheStatement[source:gitolite:gitolite_default_data]{gitolite\_\\default\_\\data}
-\TheStatement*[source!gitolite!gitolite\_default\_data]{gitolite\_default\_data \Arg{path}}
+\TheProperty[source:gitolite:gitolite_default_data]{gitolite\_\\default\_\\data}
+\TheProperty*[source!gitolite!gitolite\_default\_data]{gitolite\_default\_data \Arg{path}}
 
 The default service prefix \Arg{path}. That is the path where the
 service is installed to. 
@@ -304,8 +304,8 @@ For the distribution
 the value is set to \qcode{/var/git}.
 
 % gitolite_default_override_mode
-\TheStatement[source:gitolite:gitolite_default_override_mode]{gitolite\_\\default\_\\override\_mode}
-\TheStatement*[source!gitolite!gitolite\_default\_override\_mode]{gitolite\_default\_override\_mode \Arg{mode}}
+\TheProperty[source:gitolite:gitolite_default_override_mode]{gitolite\_\\default\_\\override\_mode}
+\TheProperty*[source!gitolite!gitolite\_default\_override\_mode]{gitolite\_default\_override\_mode \Arg{mode}}
 
 The default override \Arg{mode}.
 For the distribution
@@ -315,8 +315,8 @@ For the distribution
 the value is set to \qcode{upgrade}.
 
 % gitolite_default_user
-\TheStatement[source:gitolite:gitolite_default_user]{gitolite\_\\default\_user}
-\TheStatement*[source!gitolite!gitolite\_default\_user]{gitolite\_default\_user \Arg{name}}
+\TheProperty[source:gitolite:gitolite_default_user]{gitolite\_\\default\_user}
+\TheProperty*[source!gitolite!gitolite\_default\_user]{gitolite\_default\_user \Arg{name}}
 
 The default service local user \Arg{name}.
 For the distribution
@@ -326,8 +326,8 @@ For the distribution
 the value is set to \qcode{git}.
 
 % gitolite_default_group
-\TheStatement[source:gitolite:gitolite_default_group]{gitolite\_\\default\_group}
-\TheStatement*[source!gitolite!gitolite\_default\_group]{gitolite\_default\_group \Arg{name}}
+\TheProperty[source:gitolite:gitolite_default_group]{gitolite\_\\default\_group}
+\TheProperty*[source!gitolite!gitolite\_default\_group]{gitolite\_default\_group \Arg{name}}
 
 The default service local group \Arg{name}.
 For the distribution

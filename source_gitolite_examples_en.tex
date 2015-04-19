@@ -1,4 +1,4 @@
-\subsubsection{Gitolite Script Examples}
+\subsubsection{Gitolite Examples}
 
 Gitolite example script, shows all available statements.
 
@@ -6,7 +6,7 @@ Gitolite example script, shows all available statements.
 source {
     setup "gitolite", {
         override mode: OverrideMode.override
-        prefix path: "/usr/local/gitosis"
+        prefix path: "/usr/local/gitolite"
         data path: "/var/git"
         user "git", group: "git", uid: 99, gid: 99
         admin key: "yourname.pub"
@@ -24,7 +24,8 @@ source {
 }
 \end{lstlisting}
 
-Minimal Gitolite profile for Ubuntu 12.04, all profile properties have already sensible default values.
+Minimal Gitolite profile for Ubuntu 12.04, all profile properties have 
+already sensible default values.
 
 \begin{lstlisting}[style=Java,label=lst:gitolite_ubuntu_profile_min, title={UbuntuProfile.groovy}]
 profile "ubuntu_12_04", {
